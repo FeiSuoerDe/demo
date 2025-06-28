@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tlke3xjg60k6"]
 
-[ext_resource type="Script" uid="uid://bwl4shda3h75k" path="res://script/Home.cs" id="1_krot7"]
+[ext_resource type="Script" uid="uid://bwl4shda3h75k" path="res://Script/Home.cs" id="1_uq2cn"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_krot7")
+script = ExtResource("1_uq2cn")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
