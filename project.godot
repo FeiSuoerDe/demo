@@ -14,11 +14,31 @@ config/name="demo"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/handheld/orientation=4
+window/vsync/vsync_mode=0
+
 [dotnet]
 
 project/assembly_name="demo"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "orange",
+"res://Scenes/": "green",
+"res://Scripts/": "purple"
+}
+
+[gui]
+
+theme/custom="uid://bq85hq2tmv3h1"
+
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true
+environment/defaults/default_clear_color=Color(0.0383972, 0.0383972, 0.0383971, 1)

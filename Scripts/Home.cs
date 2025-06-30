@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace demo;
 
 public partial class Home : Control
 {
