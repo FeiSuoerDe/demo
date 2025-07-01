@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6711j47f85et"
+path="res://.godot/imported/Hiss Glitch A.wav-ecd2f3943a39fe9834fff1366cd895d5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Hiss Glitch A.wav"
+dest_files=["res://.godot/imported/Hiss Glitch A.wav-ecd2f3943a39fe9834fff1366cd895d5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,15 @@
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\bin\ExportDebug\net8.0\TO.Infras.Writers.deps.json
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\bin\ExportDebug\net8.0\TO.Infras.Writers.dll
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\bin\ExportDebug\net8.0\TO.Infras.Writers.pdb
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.csproj.AssemblyReference.cache
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.GeneratedMSBuildEditorConfig.editorconfig
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.AssemblyInfoInputs.cache
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.AssemblyInfo.cs
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.csproj.CoreCompileInputs.cache
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.dll
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\refint\TO.Infras.Writers.dll
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infras.Writers.pdb
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\ref\TO.Infras.Writers.dll
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\bin\ExportDebug\net8.0\TO.Commons.dll
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\bin\ExportDebug\net8.0\TO.Commons.pdb
+D:\GodotProjects\MagicFarmTales\TO.Infras.Writers\obj\ExportDebug\net8.0\TO.Infra.7B91133A.Up2Date

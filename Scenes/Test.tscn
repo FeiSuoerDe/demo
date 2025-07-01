@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvtkenavxmqiw"]
+
+[ext_resource type="PackedScene" uid="uid://y61lfhwltmpu" path="res://Scenes/Managers/TimeManager.tscn" id="1_ko2s7"]
+
+[node name="Test" type="Node"]
+
+[node name="TimeManager" parent="." instance=ExtResource("1_ko2s7")]

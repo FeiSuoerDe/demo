@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fUFTTjc3+sw=",
+  "success": true,
+  "projectFilePath": "D:\\GodotProjects\\MagicFarmTales\\TO.Domains.Models.AggregateRoots.Abstractions\\TO.Domains.Models.AggregateRoots.Abstractions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\吴鸿润\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsw7wehxy1e1q"
+path="res://.godot/imported/Tech Trash Low B.wav-bf7a86752770a60d499cbc76a9c10dd5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Tech Trash Low B.wav"
+dest_files=["res://.godot/imported/Tech Trash Low B.wav-bf7a86752770a60d499cbc76a9c10dd5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

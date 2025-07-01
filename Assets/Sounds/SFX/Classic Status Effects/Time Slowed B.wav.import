@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4clirsiik8j0"
+path="res://.godot/imported/Time Slowed B.wav-ef9b10cdf95c501d0839fca54a0e5a9e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Time Slowed B.wav"
+dest_files=["res://.godot/imported/Time Slowed B.wav-ef9b10cdf95c501d0839fca54a0e5a9e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

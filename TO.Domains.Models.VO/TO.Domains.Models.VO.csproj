@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>TO.Domains.Models</RootNamespace>
+    </PropertyGroup>
+    
+
+    <ItemGroup>
+      <Folder Include="UISystem\" />
+    </ItemGroup>
+    
+
+    <ItemGroup>
+      <PackageReference Include="GodotSharp" Version="4.4.1" />
+    </ItemGroup>
+
+</Project>

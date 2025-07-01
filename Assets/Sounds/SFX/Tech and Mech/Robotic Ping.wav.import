@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://q7x2p0bxe1e1"
+path="res://.godot/imported/Robotic Ping.wav-1b1828dba342d5de9db6215fb6ca381a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Robotic Ping.wav"
+dest_files=["res://.godot/imported/Robotic Ping.wav-1b1828dba342d5de9db6215fb6ca381a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

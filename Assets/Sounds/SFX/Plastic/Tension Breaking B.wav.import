@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cm4d7nnfb8cce"
+path="res://.godot/imported/Tension Breaking B.wav-a736457b396426fd4d97d29ef164beec.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Tension Breaking B.wav"
+dest_files=["res://.godot/imported/Tension Breaking B.wav-a736457b396426fd4d97d29ef164beec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

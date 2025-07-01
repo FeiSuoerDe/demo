@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://do2ik4sswjskm"
+path="res://.godot/imported/Monstrous Machine A.wav-4bfbfe5052d1b6022a0bfa8ddff1e0fd.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Monstrous Machine A.wav"
+dest_files=["res://.godot/imported/Monstrous Machine A.wav-4bfbfe5052d1b6022a0bfa8ddff1e0fd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

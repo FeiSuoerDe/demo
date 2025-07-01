@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsn4neb8p3brr"
+path="res://.godot/imported/Ship Ghost Warning.wav-749a97586e52d0a40ea373c5a1bd5593.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Ship Ghost Warning.wav"
+dest_files=["res://.godot/imported/Ship Ghost Warning.wav-749a97586e52d0a40ea373c5a1bd5593.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "NbhL5GrDrwg=",
+  "success": true,
+  "projectFilePath": "D:\\GodotProjects\\MagicFarmTales\\TO.Contexts\\TO.Contexts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\吴鸿润\\.nuget\\packages\\autofac\\8.3.0\\autofac.8.3.0.nupkg.sha512",
+    "C:\\Users\\吴鸿润\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
+    "C:\\Users\\吴鸿润\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.1\\system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
+}

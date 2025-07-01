@@ -11,8 +11,20 @@ config_version=5
 [application]
 
 config/name="demo"
+run/main_scene="uid://cja4cqqj2p0dm"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+FrameProviderDispatcher="*res://addons/R3.Godot/FrameProviderDispatcher.cs"
+ObservableTrackerRuntimeHook="*res://addons/R3.Godot/ObservableTrackerRuntimeHook.cs"
+GdTaskPlayerLoopAutoload="*res://addons/GDTask/Autoload/GDTaskPlayerLoopAutoload.cs"
+AudioManager="*res://Scripts/Singletons/AudioManager.cs"
+SaveManager="*res://Scripts/Singletons/SaveManager.cs"
+SceneManager="*res://Scripts/Singletons/SceneManager.cs"
+SequenceManager="*res://Scripts/Singletons/SequenceManager.cs"
+UiManager="*res://Scripts/Singletons/UIManager.cs"
 
 [display]
 
@@ -24,6 +36,10 @@ window/vsync/vsync_mode=0
 [dotnet]
 
 project/assembly_name="demo"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/R3.Godot/plugin.cfg")
 
 [file_customization]
 

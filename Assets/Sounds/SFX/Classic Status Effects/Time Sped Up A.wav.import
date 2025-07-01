@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvpg06cob6wvx"
+path="res://.godot/imported/Time Sped Up A.wav-e874a6fabc4327a30aa6028191c79922.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Time Sped Up A.wav"
+dest_files=["res://.godot/imported/Time Sped Up A.wav-e874a6fabc4327a30aa6028191c79922.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bk721wv24i3w"
+path="res://.godot/imported/Plink Glitch B.wav-5f8138e674b1682df3879b1c2cc9609b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Plink Glitch B.wav"
+dest_files=["res://.godot/imported/Plink Glitch B.wav-5f8138e674b1682df3879b1c2cc9609b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

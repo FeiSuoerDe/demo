@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqb0ykrslwwsx"
+path="res://.godot/imported/Tweak.wav-536cfa04a1471af38f462b9923e726cd.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Tweak.wav"
+dest_files=["res://.godot/imported/Tweak.wav-536cfa04a1471af38f462b9923e726cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

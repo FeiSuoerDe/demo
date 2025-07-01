@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bw7yjodbtjhgv"
+path="res://.godot/imported/Bubble Wrap Short D.wav-f20100a4020f58369c2d2cc2fec2c010.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Bubble Wrap Short D.wav"
+dest_files=["res://.godot/imported/Bubble Wrap Short D.wav-f20100a4020f58369c2d2cc2fec2c010.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

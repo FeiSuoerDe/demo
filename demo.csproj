@@ -2,5 +2,21 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="TO.*\**"/>
+    <Compile Remove="**\*.Abstractions"/>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="TO.*\**"/>
+    <EmbeddedResource Remove="**\*.Abstractions"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="TO.Contexts\TO.Contexts.csproj" />
+    <ProjectReference Include="TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.3.0" />
+  </ItemGroup>
 </Project>
