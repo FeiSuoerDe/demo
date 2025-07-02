@@ -40,7 +40,7 @@ namespace demo.addons.GDTask
     /// <typeparam name="T">Return value of the task source</typeparam>
     public interface IGdTaskSource<out T> : IGdTaskSource
     {
-        // Hide the original void GetResult method
+        // HideUI the original void GetResult method
         new T? GetResult(short token);
     }
 

@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 using TO.Domains.Models.Repositories.Abstractions.Core.ResourceSystem;
 using TO.Domains.Models.Repositories.Abstractions.Core.UISystem;
@@ -13,16 +14,16 @@ namespace Domains.Core.UISystem;
 public class UILifecycleService(IUIManagerRepo uiManagerRepo, IResourceLoaderRepo resourceLoaderRepo) : BasesService, IUILifecycleService
 {
     /// <summary>
-    /// 创建UI实例，支持缓存复用
+    /// 创建UI实例并注册到管理器
     /// </summary>
     /// <param name="path">UI场景路径</param>
-    /// <param name="parent">父节点</param>
     /// <returns>创建的UI实例</returns>
     public IUIScreen CreateUI(string path)
     {
-        var packedScene = resourceLoaderRepo.LoadResource(path) as PackedScene;
+        var packedScene = resourceLoaderRepo.LoadResource(path) as PackedScene
+            ?? throw new InvalidOperationException($"Failed to load UI scene at {path}");
 
-        var instance = packedScene?.Instantiate<Node>();
+        var instance = packedScene.Instantiate<Node>();
         if (instance is not IUIScreen screen)
         {
             throw new InvalidCastException($"UI at {path} does not implement IUIScreen");
@@ -33,7 +34,7 @@ public class UILifecycleService(IUIManagerRepo uiManagerRepo, IResourceLoaderRep
     }
 
     /// <summary>
-    /// 销毁UI实例，处理资源释放
+    /// 销毁UI实例并释放资源
     /// </summary>
     /// <param name="screen">要销毁的UI实例</param>
     /// <param name="path">UI场景路径</param>
@@ -42,8 +43,28 @@ public class UILifecycleService(IUIManagerRepo uiManagerRepo, IResourceLoaderRep
         if (screen == null) return;
 
         uiManagerRepo.UnregisterScreen(screen);
-
         resourceLoaderRepo.DecreaseReferenceCount(path);
     }
-    
+
+  
+    public void DestroyAllUI()
+    {
+        // 获取所有已注册的屏幕副本，避免在遍历时修改集合
+        var allScreens = uiManagerRepo.ScreensByName.Values.ToList();
+        
+        // 逐个注销所有屏幕
+        foreach (var screen in allScreens)
+        {
+            uiManagerRepo.UnregisterScreen(screen);
+        }
+        
+        // 清空历史记录
+        uiManagerRepo.History?.Clear();
+        
+        // 重置当前屏幕
+        uiManagerRepo.CurrentScreen = null;
+        
+        // 清理所有资源缓存
+        resourceLoaderRepo.ClearCache();
+    }
 }

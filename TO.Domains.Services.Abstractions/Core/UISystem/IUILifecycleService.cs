@@ -11,7 +11,6 @@ public interface IUILifecycleService
     /// 创建UI实例
     /// </summary>
     /// <param name="path">UI场景路径</param>
-    /// <param name="parent">父节点</param>
     /// <returns>创建的UI实例</returns>
     IUIScreen CreateUI(string path);
 
@@ -22,7 +21,10 @@ public interface IUILifecycleService
     /// <param name="path">UI场景路径</param>
     void DestroyUI(IUIScreen? screen, string path);
 
-
+    /// <summary>
+    /// 销毁所有UI实例并释放所有资源
+    /// </summary>
+    void DestroyAllUI();
 
 }
 

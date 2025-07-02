@@ -1,549 +1,229 @@
 
-## 概述
+# UI框架使用指南
 
-本UI框架基于Godot引擎实现，提供完整的UI生命周期管理、场景导航和事件处理功能。采用模块化设计，支持依赖注入和自动化的命令绑定机制。
+## 1. 核心功能
 
-## 整体架构
+提供完整的UI管理服务，主要功能包括：
 
+- UI屏幕的显示/隐藏管理
+- 层级关系处理
+- 生命周期管理
+- 事件驱动的UI操作
+- 智能屏幕切换
 
-```
-+---------------------+
-|   Contexts (DI)     |
-+----------+----------+
-           |
-+----------v----------+
-|    NodeRegister     |
-+----------+----------+
-           |
-+----------v----------+
-|    UIManager        |
-|  (IUIManager)       |
-+----------+----------+
-           |
-+----------v----------+
-|  UIScreen Base      |
-+----------+----------+
-           |
-+----------v----------+
-|  Specific Screens   |
-|  (MainMenu, etc.)   |
-+---------------------+
+## 2. 基本使用
 
+### 应用层服务获取
 
-```
-
-## 框架结构概览
-
-整个框架由多个模块组成，包括：
-
-模块 | 职责
-:----------- | :-----------
-[UIManager](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L11-L126) | 控制全局UI的显示与隐藏逻辑，继承自Godot`CanvasLayer`。
-[IUIManagerService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services.Abstractions\UISystem\Managers\IUIManagerService.cs#L4-L10)/[UIManagerService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L6-L68) | 提供高层服务接口，封装UI管理行为。
-[MainMenuScreenCommand](file://D:\GodotProjects\MagicFarmTales\TO.Apps.Commands\UI\Screens\MainMenuScreenCommand.cs#L8-L39) | 处理主菜单界面的按钮事件响应。
-[MainMenuScreen](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L17-L17) | 主菜单UI的具体实现类，继承自基础类[UIScreen](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\Base\UIScreen.cs#L8-L41)。
-[UIManagerRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Managers\UIManagerRepo.cs#L7-L34) | 数据仓库类，负责管理具体的UI屏幕实例及其状态。
-
-
-## 核心组件详解
-
-### [Contexts](file://D:\GodotProjects\MagicFarmTales\TO.Contexts\Contexts.cs#L8-L72)
-
+通过依赖注入获取UI服务实例：
 
 ```csharp
-public class Contexts : LazySingleton<Contexts>
-
-
-```
-
-
-- 实现依赖注入容器
-- 自动绑定`Repo`与`Command`的对应关系
-- 提供全局注册接口`RegisterNode<T>()`
-
-### [NodeRegister](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers.Abstractions\Nodes\NodeRegister.cs#L10-L34)
-
-
-```csharp
-public class NodeRegister
-
-
-```
-
-
-- 单例节点注册中心
-- 支持不同类型的节点注册
-- 当前仅实现
-[IUIManager](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Managers\IUIManager.cs#L5-L9)
-注册
-
-### [UIManager](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L11-L26)
-
-
-```csharp
-public partial class UIManager : CanvasLayer, IUIManager
-
-
-```
-
-
-- UI系统的根节点
-- 负责管理所有UI屏幕实例
-- 实现
-[IUIManager](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Managers\IUIManager.cs#L5-L9)
-接口
-
-### [UIScreen](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\Base\UIScreen.cs#L8-L41)
-
-
-```csharp
-public abstract partial class UIScreen : Control
-
-
-```
-
-
-- 所有UI界面的基类
-- 提供标准显示/隐藏方法
-- 支持动画效果
-
-## 二、核心功能详解
-
-### 1. UI 场景注册
-
-在 
-
-UIManagerRepo.cs
-
- 中通过 
-
-Screens
-
- 列表统一管理所有UI组件，并在 
-
-[RegisterScreens()](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L44-L51)
-
- 方法中初始化：
-
-
-```csharp
-private void RegisterScreens()
-  {
-      MainMenuScreen = Singleton?.MainMenuScreen;
-      SettingsMenuScreen = Singleton?.SettingsMenuScreen;
-      Screens =
-      [
-          MainMenuScreen ?? throw new InvalidOperationException(),
-          SettingsMenuScreen ?? throw new InvalidOperationException(),
-      ];
-  }
-
-```
-
->
-
-**说明**：使用 `[Export]` 特性绑定到 Godot 编辑器中的节点，确保 
-[MainMenuScreen](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L17-L17)
- 和 
-[SettingsMenuScreen](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L18-L18)
- 已正确赋值。
-
---- 
-
-
-### 2. UI 显示与切换
-
-#### (1) 高层接口定义
-
-
-```csharp
-public interface IUIManagerService
+public class MyService(IUIManagerService uiManager, IUILayerService layerService)
 {
-    void HideScreens();
-    void ShowMainMenuScreen();
-    void CloseScreen();
-    void ShowSettingsMenuScreen();
+    // 使用uiManager访问UI管理功能
 }
-
-
 ```
 
-#### (2) 实现类 [UIManagerService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L6-L68)
-
-
-- 
-[ShowMainMenuScreen()](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L28-L34)
-
+### 显示UI屏幕
 
 ```csharp
-  public void ShowMainMenuScreen()
-  {
-      _uiManagerRepo.CurrentScreen = _uiManagerRepo.MainMenuScreen;
-      HideScreens();
-      _uiManagerRepo.History?.Push(_uiManagerRepo.MainMenuScreen);
-      _uiManagerRepo.MainMenuScreen?.Show();
-  }
+// 通过事件显示UI
+var eventBus = _eventBus[EventEnums.UI];
+eventBus.Publish(new ShowUI(UIName.MainMenuScreen));
 
-
+// 直接调用服务
+uiManager.Show(screen);
 ```
 
-
-- 
-[ShowSettingsMenuScreen()](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L36-L39)
+### 隐藏UI屏幕
 
 ```csharp
-public void ShowSettingsMenuScreen()
+// 隐藏当前屏幕
+eventBus.Publish(new HideUI());
+
+// 隐藏所有屏幕
+eventBus.Publish(new HideAllUI());
+```
+
+### 关闭UI屏幕
+
+```csharp
+// 关闭指定屏幕
+eventBus.Publish(new CloseUI(UIName.SettingsMenuScreen));
+
+// 关闭所有屏幕
+eventBus.Publish(new CloseAllUI());
+```
+
+## 3. 层级管理
+
+### 层级类型
+
+```csharp
+public enum UILayerType
 {
-    Show(_uiManagerRepo.SettingsMenuScreen);
+    Background = 0,
+    Normal = 100,
+    Dialog = 200, 
+    Popup = 300,
+    Loading = 400, 
+    Alert = 500,
+    System = 600,
 }
-
-
 ```
-- `CloseScreen()`
+
+### 层级操作
 
 ```csharp
-public void CloseScreen()
-{
-    if (_uiManagerRepo.HasUI)
-    {	
-        Show(_uiManagerRepo.History?.Pop(), false);
-    }
-}
+// 显示指定层级
+layerService.ShowLayer(UILayerType.Dialog);
 
+// 隐藏指定层级
+layerService.HideLayer(UILayerType.Popup);
 
+// 设置层级可见性
+layerService.SetLayerVisible(UILayerType.Normal, true);
+
+// 处理屏幕显示时的层级关系
+layerService.HandleShowScreenLayerRelation(newScreen, currentScreen);
 ```
-- `Show(UIScreen?, bool)`
+
+## 4. 生命周期管理
+
+### 创建UI
 
 ```csharp
-private void Show(UIScreen? screen, bool keepInHistory = true)
-{
-    if (screen == null)
-        return;
+// 推荐：使用UIConfigs中的路径配置
+var path = UIConfigs.UIPaths[UIName.MainMenuScreen];
+var screen = lifecycleService.CreateUI(path);
 
-    if (_uiManagerRepo.CurrentScreen != null)
+// 不推荐：直接使用硬编码路径
+// var screen = lifecycleService.CreateUI("res://Scenes/UI/Screens/MainMenuScreen.tscn");
+```
+
+### 销毁UI
+
+```csharp
+// 推荐：使用UIConfigs中的路径配置
+var path = UIConfigs.UIPaths[UIName.MainMenuScreen];
+lifecycleService.DestroyUI(screen, path);
+
+// 不推荐：直接使用硬编码路径
+// lifecycleService.DestroyUI(screen, "res://Scenes/UI/Screens/MainMenuScreen.tscn");
+
+// 销毁所有UI
+lifecycleService.DestroyAllUI();
+```
+
+## 5. 配置管理
+
+### UI路径配置
+
+```csharp
+public class UIConfigs
+{
+    public static Dictionary<UIName,string> UIPaths = new()
     {
-        if (screen.IsTransparent)
-            _uiManagerRepo.CurrentScreen.Hide();
-
-        if (keepInHistory)
-        {
-            _uiManagerRepo.History?.Push(_uiManagerRepo.CurrentScreen);
-        }
-    }
-
-    screen.Show();
-    _uiManagerRepo.CurrentScreen = screen;
+        {UIName.MainMenuScreen, "res://Scenes/UI/Screens/MainMenuScreen.tscn"},
+        {UIName.SettingsMenuScreen, "res://Scenes/UI/Screens/SettingsMenuScreen.tscn"},
+        {UIName.VolumeSettingsScreen, "res://Scenes/UI/Screens/VolumeSettingsScreen.tscn"},
+        {UIName.LoadingScreen, "res://Scenes/UI/Screens/LoadingScreen.tscn"}
+    };
 }
-
-
 ```
 
---- 
-
-
-### 3. 屏幕切换逻辑
-
-
-- 使用一个栈（`Stack<UIScreen?>`）来记录历史页面，支持返回上一级。
-- 当前屏幕存储在 `_uiManagerRepo.CurrentScreen`。
-- 支持透明屏幕叠加（如弹窗），不会影响背景页面的显示。
-
---- 
-
-
-### 4. UI 生命周期管理
-
-
-- 所有UI类继承自 `UIScreen`，并实现以下方法：
-
-    - `_Ready()`：初始化资源或绑定事件。
-    - `Show()`：显示UI。
-    - `Hide()`：隐藏UI。
-    - `OnDisable()`：销毁或清理资源。
-
-## 功能模块
-
-### 依赖注入系统
-
-#### [UIModule](file://D:\GodotProjects\MagicFarmTales\TO.Contexts\UIModule.cs#L9-L35)
-
+### UI名称枚举
 
 ```csharp
-builder.RegisterType<MainMenuScreenCommand>()
-    .AsSelf()
-    .InstancePerMatchingLifetimeScope(typeof(MainMenuScreenRepo));
-
-
-```
-
-
-- 注册UI相关服务
-- 实现`Repo`与`Command`的生命周期绑定
-
-#### [SingleModule](file://D:\GodotProjects\MagicFarmTales\TO.Contexts\SingleModule.cs#L7-L12)
-
-
-```csharp
-builder.RegisterType<UIManagerRepo>().As<IUIManagerRepo>().SingleInstance();
-
-
-```
-
-
-- 注册单例服务
-- 管理全局状态
-
-### UI服务层
-
-#### [IUIManagerService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services.Abstractions\UISystem\Managers\IUIManagerService.cs#L5-L11)
-
-
-```csharp
-public interface IUIManagerService
+public enum UIName
 {
-    void ShowMainMenuScreen();
-    void ShowSettingsMenuScreen();
-    void CloseScreen();
+    MainMenuScreen,
+    SettingsMenuScreen,
+    VolumeSettingsScreen,
+    LoadingScreen
 }
-
-
 ```
 
+## 6. 事件系统
 
-- 定义UI操作接口
-- 解耦UI和业务逻辑
-
-#### [UIManagerService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L7-L70)
-
+### 可用事件
 
 ```csharp
-private void Show(UIScreen? screen, bool keepInHistory = true)
+// 显示UI事件
+public record ShowUI(UIName UIName) : IEvent;
 
+// 隐藏UI事件
+public record HideUI() : IEvent;
 
+// 隐藏所有UI事件
+public record HideAllUI() : IEvent;
+
+// 关闭UI事件
+public record CloseUI(UIName UIName) : IEvent;
+
+// 关闭所有UI事件
+public record CloseAllUI() : IEvent;
 ```
 
-
-- 实现具体UI切换逻辑
-- 维护界面栈状态
-- 处理透明界面叠加情况
-
-### 数据存储层
-
-#### [IUIManagerRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers.Abstractions\Nodes\UI\Managers\IUIManagerRepo.cs#L7-L24)
-
+### 事件发布
 
 ```csharp
-public interface IUIManagerRepo : ISingletonNodeRepo<IUIManager>
-{
-    UIScreen? MainMenuScreen { get; set; }
-    UIScreen? SettingsMenuScreen { get; set; }
-    Stack<UIScreen?>? History { get; set; }
-}
+// 获取事件总线
+var eventBus = _eventBus[EventEnums.UI];
 
+// 发布显示事件
+eventBus.Publish(new ShowUI(UIName.MainMenuScreen));
 
+// 发布关闭事件
+eventBus.Publish(new CloseUI(UIName.SettingsMenuScreen));
 ```
 
+## 7. 屏幕管理
 
-- 定义UI状态存储结构
-- 继承自
-[ISingletonNodeRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers.Abstractions\Bases\ISingletonNodeRepo.cs#L7-L16)
-
-#### [UIManagerRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Managers\UIManagerRepo.cs#L9-L54)
-
+### 获取屏幕实例
 
 ```csharp
-public class UIManagerRepo : SingletonNodeRepo<IUIManager>, IUIManagerRepo
+// 通过名称获取屏幕
+var screen = uiManagerRepo.GetScreenByName("MainMenuScreen");
 
-
+// 通过层级获取屏幕列表
+var screens = uiManagerRepo.GetScreensInLayer(UILayerType.Dialog);
 ```
 
-
-- 实现具体的UI状态存储
-- 初始化时注册所有UI元素
-- 维护界面历史记录
-
-### 事件系统
-
-#### [IMainMenuScreenRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers.Abstractions\Nodes\UI\Screens\IMainMenuScreenRepo.cs#L4-L10)
-
+### 屏幕注册
 
 ```csharp
-public interface IMainMenuScreenRepo
-{
-    event Action? StartButtonPressed;
-    event Action? SettingsButtonPressed;
-}
+// 注册屏幕到仓库
+uiManagerRepo.RegisterScreen(screenName, screen);
 
-
+// 注销屏幕
+uiManagerRepo.UnregisterScreen(screenName);
 ```
 
-
-- 定义UI事件接口
-- 实现观察者模式
-
-#### [MainMenuScreenCommand](file://D:\GodotProjects\MagicFarmTales\TO.Apps.Commands\UI\Screens\MainMenuScreenCommand.cs#L9-L75)
-
-
-```csharp
-public class MainMenuScreenCommand
-{
-    public MainMenuScreenCommand(IMainMenuScreenRepo mainMenuScreenRepo, IUIManagerService uiManagerService)
-    {
-        _mainMenuScreenRepo.StartButtonPressed += OnStartButtonPressed;
-    }
-}
-
-
-```
-
-
-- 事件处理器
-- 实现具体业务逻辑
-- 解耦UI和游戏逻辑
-
-## 工作流程详解
-
-
-1. **初始化阶段**
-
-    - 创建
-[Contexts](file://D:\GodotProjects\MagicFarmTales\TO.Contexts\Contexts.cs#L8-L72)
-实例
-    - 配置依赖注入容器
-    - 注册
-[NodeRegister](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers.Abstractions\Nodes\NodeRegister.cs#L10-L34)
-2. **UI加载阶段**
-
-    - 加载
-[UIManager](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L11-L26)
-节点
-    - 通过`[Export]`属性加载所有UI场景
-    - 注册到
-[UIManagerRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Managers\UIManagerRepo.cs#L9-L54)
-3. **事件绑定阶段**
-
-    - 创建
-[MainMenuScreenRepo](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Screens\MainMenuScreenRepo.cs#L9-L54)
-    - 自动触发
-[OnRegisterNodeRepo](file://D:\GodotProjects\MagicFarmTales\TO.Contexts\Contexts.cs#L39-L51)
-事件
-    - 解析并创建对应的
-[MainMenuScreenCommand](file://D:\GodotProjects\MagicFarmTales\TO.Apps.Commands\UI\Screens\MainMenuScreenCommand.cs#L9-L75)
-4. **运行时交互**
-
-    - 用户点击按钮
-    - 触发
-[EmitStartButtonPressed()](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Screens\MainMenuScreenRepo.cs#L13-L13)
-    - 调用
-[OnStartButtonPressed()](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Screens\MainMenuScreenRepo.cs#L12-L12)
-处理逻辑
-    - 可能调用
-[IUIManagerService.ShowSettingsMenuScreen()](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services.Abstractions\UISystem\Managers\IUIManagerService.cs#L9-L9)
-切换界面
-
-## 使用指南
-
-### 添加新UI界面
-
-
-1. 创建继承自
-[UIScreen](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\Base\UIScreen.cs#L8-L41)
-的新类
-
-
-```csharp
-public partial class NewScreen : UIScreen
-
-
-```
-
-
-1. 在
-[UIManager](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Managers\UIManager.cs#L11-L26)
-中添加导出属性
-
-
-```csharp
-[Export] public UIScreen? NewScreen { get; set; }
-
-
-```
-
-
-1. 创建对应的`INewScreenRepo`和`NewScreenRepo`
-
-
-```csharp
-public class NewScreenRepo : NodeRepo<INewScreen>, INewScreenRepo
-
-
-```
-
-
-1. 实现具体UI元素和交互逻辑
-
-### 事件处理扩展
-
-
-1. 在对应的`Repo`中定义事件
-
-
-```csharp
-public event Action? CustomButtonPressed;
-
-
-```
-
-
-1. 在
-[ConnectNodeEvents()](file://D:\GodotProjects\MagicFarmTales\TO.Infras.Readers\Nodes\UI\Screens\MainMenuScreenRepo.cs#L27-L33)
-中绑定事件
-
-
-```csharp
-if (Node.CustomButton != null) Node.CustomButton.Pressed += EmitCustomButtonPressed;
-
-
-```
-
-
-1. 在`Command`中订阅事件
-
-
-```csharp
-_mainMenuScreenRepo.CustomButtonPressed += OnCustomButtonPressed;
-
-
-```
-
-## 最佳实践
-
-
-1. **保持UI和逻辑分离**
-
-    - UI元素操作应在`Repo`中完成
-    - 业务逻辑应在`Command`中实现
-2. **合理使用界面栈**
-
-    - 显示新界面时使用
-[Show(screen, true)](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L47-L65)
-    - 替换当前界面使用
-[Show(screen, false)](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\Managers\UIManagerService.cs#L47-L65)
-3. **资源管理**
-
-    - 不要手动释放UI对象
-    - 依赖框架自动管理生命周期
-4. **错误处理**
-
-    - 使用`GD.Print()`进行调试输出
-    - 对关键操作添加异常捕获
-
-## 注意事项
-
-
-1. 所有UI元素必须继承自
-[UIScreen](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\Base\UIScreen.cs#L8-L41)
-2. 使用`[Export]`属性确保场景正确加载
-3. 业务逻辑应放在对应的`Command`类中
-4. 避免直接操作UI元素，应通过服务接口进行
-5. 使用事件系统实现松耦合的交互
+## 8. 最佳实践
+
+1. **事件驱动优先**：
+   - 优先使用事件系统进行UI操作
+   - 保持组件间的松耦合
+
+2. **层级管理**：
+   - 合理设置UI层级类型
+   - 利用自动层级处理功能
+
+3. **资源管理**：
+   - 及时销毁不再使用的UI
+   - 使用DestroyAllUI进行批量清理
+
+4. **配置集中化**：
+   - 在UIConfigs中统一管理UI路径
+   - 避免硬编码路径字符串
+   - 调用方法时使用UIConfigs.UIPaths[UIName]获取路径
+
+## 9. 注意事项
+
+- 所有UI路径必须在UIConfigs中配置
+- **避免硬编码路径**：调用UI相关方法时，应使用`UIConfigs.UIPaths[UIName]`获取路径，而不是直接写入路径字符串
+- 使用事件系统时需要正确的EventEnums类型
+- 销毁UI会同时清理资源引用计数
+- 层级关系会自动处理，无需手动管理
+- 屏幕切换会自动处理历史记录和层级关系

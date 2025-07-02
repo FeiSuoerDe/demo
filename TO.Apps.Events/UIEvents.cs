@@ -6,6 +6,10 @@ namespace TO.Apps.Events;
 
 public record ShowUI(UIName UIName) : IEvent;
 
-public record Hide() : IEvent;
+public record HideUI() : IEvent;
 
-public record HideAll() : IEvent;
+public record HideAllUI() : IEvent;
+
+public record CloseUI(UIName UIName) : IEvent;
+
+public record CloseAllUI() : IEvent;

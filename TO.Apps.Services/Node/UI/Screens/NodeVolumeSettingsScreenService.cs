@@ -101,7 +101,7 @@ public class NodeVolumeSettingsScreenService : BaseService
 
     private void OnBackButtonPressed()
     {
-        _eventBus[EventEnums.UI].Publish(new Hide());
+        _eventBus[EventEnums.UI].Publish(new HideUI());
     }
     protected override void UnSubscriber()
     {

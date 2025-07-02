@@ -35,7 +35,7 @@ public class NodeSettingsMenuScreenService: BaseService
 
     private void OnBackButtonPressed()
     {
-        _eventBus.Publish(new Hide());
+        _eventBus.Publish(new HideUI());
     }
 
     protected override void UnSubscriber()

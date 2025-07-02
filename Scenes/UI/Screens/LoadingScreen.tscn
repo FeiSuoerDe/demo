@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b5m0m80btl6cr" path="res://Scripts/UI/Screens/LoadingScreen.cs" id="1_bfg03"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8hhjh"]
-load_path = "res://.godot/imported/loading_sprite_sheet.png-4dc37bd86ade914f7529959925c30726.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jf28a"]
 atlas = SubResource("CompressedTexture2D_8hhjh")

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using TO.Nodes.Abstractions.Nodes.UI.Bases;
 
@@ -30,4 +31,23 @@ public partial class UILayer : CanvasLayer, IUILayer
         RemoveChild(child);
         child.QueueFree();
     }
+    
+    /// <summary>
+    /// 获取当前层级中的所有屏幕
+    /// </summary>
+    /// <returns>屏幕列表</returns>
+    public IReadOnlyList<IUIScreen> GetScreens()
+    {
+        var screens = new List<IUIScreen>();
+        foreach (Node child in GetChildren())
+        {
+            if (child is IUIScreen screen)
+            {
+                screens.Add(screen);
+            }
+        }
+        return screens.AsReadOnly();
+    }
+    
+
 }

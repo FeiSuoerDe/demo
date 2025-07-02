@@ -1,177 +1,234 @@
 
-本系统基于 Godot 引擎与 C# 实现，采用领域驱动设计（DDD）架构，构建一个完全解耦、事件驱动、支持多种触发方式的 UI 动画系统。以下为详细的技术实现说明。
+# UI动画系统 API 文档
 
---- 
+## 核心功能
 
+- **触发器系统**：支持多种UI事件触发（鼠标进入/离开、点击、双击等）
+- **反应器系统**：响应触发器事件并执行动画效果
+- **动画类型**：提供淡入淡出、缩放、移动等常用动画
+- **参数配置**：支持持续时间、缓动类型、过渡类型等动画参数
+- **生命周期管理**：自动管理动画资源和取消令牌
 
-## 一、系统结构概览
+## 基本使用
 
-### 1. 分层架构
-
-
-- **应用层（TO.Apps.Commands）**：负责将动画命令与具体事件绑定。
-- **领域层（TO.Domains.Services）**：封装核心动画逻辑和触发服务。
-- **基础设施层（TO.Infras.Readers）**：提供节点仓库实现与事件注册机制。
-- **抽象接口层（TO.Nodes.Abstractions）**：定义统一的接口规范，确保模块间松耦合。
-- **通用工具层（TO.Commons）**：提供扩展方法、枚举等基础功能。
-
-### 2. 核心组件关系图
-
-
-```
-+-------------------+       +----------------------+        +--------------------------+
-| ObservableTrigger |<----->| ObservableTriggerRepo |<------| ObservableTriggerService |
-+-------------------+       +----------------------+        +--------------------------+
-         |
-         v
-+-------------------+       +----------------------+        +-------------------------+
-| ObservableReactor |<----->| ObservableReactorRepo |<------| ObservableReactorCommand |
-+-------------------+       +----------------------+        +-------------------------+
-                                                             |
-                                                             v
-                                                +---------------------------+
-                                                |   IUiAnimationService     |
-                                                | (Concrete: UiAnimationService) |
-                                                +---------------------------+
-
-
-```
-
---- 
-
-
-## 二、关键节点配置与使用说明
-
-### 1. `ObservableTrigger` 节点（[IObservableTrigger](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableTrigger.cs#L6-L15)）
-
-#### 配置字段说明：
-
-字段名 | 类型 | 描述
-:----------- | :----------- | :-----------
-`TriggerControl` | `Control?` | 绑定的目标控件，用于监听其输入或状态变化事件
-`TriggerOnReady` | `bool` | 是否在控件就绪时自动触发一次动画
-`TriggerType` | `TriggerType` | 触发类型，如按下、释放、鼠标进入/离开、双击、可见性变化等
-`Triggered` | `Action<Dictionary<string, object>?>` | 触发事件回调，由`ObservableReactor`监听并执行动画
-
-
---- 
-
-
-### 2. [ObservableReactor](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Trigger\ObservableReactor.cs#L10-L34) 节点（[IObservableReactor](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L6-L17)）
-
-#### 配置字段说明：
-
-字段名 | 类型 | 描述
-:----------- | :----------- | :-----------
-[ReactControl](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L8-L8) | `Control?` | 被操作的控件，即要执行动画的对象
-[Trigger](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L9-L9) | `Node?` | 关联的[ObservableTrigger](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Trigger\ObservableTrigger.cs#L15-L36)节点
-[FnName](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L11-L11) | `string` | 动画方法名，需与[IUiAnimationService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services.Abstractions\UISystem\UiAnimationService\IUiAnimationService.cs#L5-L39)接口中定义的方法名一致
-[FnArgs](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L12-L12) | `Array<Variant>` | 动画参数数组，顺序与目标方法签名一致
-[Ease](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L14-L14) | `Tween.EaseType` | 缓动函数类型
-[Trans](file://D:\GodotProjects\MagicFarmTales\TO.Nodes.Abstractions\Nodes\UI\Trigger\IObservableReactor.cs#L16-L16) | `Tween.TransitionType` | 过渡类型
-
-
---- 
-
-
-## 三、动画服务与命令模式
-
-### 1. [IUiAnimationService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services.Abstractions\UISystem\UiAnimationService\IUiAnimationService.cs#L5-L39) / [UiAnimationService](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L7-L141)
-
-该接口封装了所有动画行为，包括：
-
-
-- 
-[Scale](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L24-L33)
-：缩放动画
-- 
-[Move](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L35-L45)
-：移动动画
-- 
-[MoveFrom](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L47-L56)
-：从某位置移动过来
-- 
-[Visible](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L58-L67)
-：透明度渐变显示/隐藏
-- 
-[MouseInOut](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L69-L87)
-：根据鼠标进入/离开做缩放动画
-- 
-[MousePressedReleased](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L89-L109)
-：根据按压状态改变透明度
-- 
-[Popup](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L111-L130)
-：弹出/收回动画
-- 
-[Test](file://D:\GodotProjects\MagicFarmTales\TO.Domains.Services\UISystem\UiAnimationService\UiAnimationService.cs#L132-L135)
-：测试方法，输出日志
-
-每个方法接受 `Control`, `ease`, `trans`, `args`, `kwargs` 等参数，支持动态调用。
-
-### 2. [ObservableReactorCommand](file://D:\GodotProjects\MagicFarmTales\TO.Apps.Commands\UI\Trigger\ObservableReactorCommand.cs#L8-L40)
-
-通过反射调用动画方法，实现命令与动画逻辑解耦。
-
+### 服务获取
 
 ```csharp
-public class ObservableReactorCommand : IDisposable
-{
-    private readonly IObservableReactorRepo _observableReactorRepo;
-    private readonly IUiAnimationService _uiAnimationService;
-
-    public ObservableReactorCommand(IObservableReactorRepo observableReactorRepo, IUiAnimationService uiAnimationService)
-    {
-        _observableReactorRepo = observableReactorRepo;
-        _uiAnimationService = uiAnimationService;
-        if (_observableReactorRepo.Trigger != null) _observableReactorRepo.Trigger.Triggered += Triggered;
-    }
-
-    private void Triggered(Dictionary<string, object>? data)
-    {
-        var methodInfo = _uiAnimationService.GetType().GetMethod(_observableReactorRepo.FnName);
-        if (methodInfo == null) throw new Exception("没有找到该动画！");
-        
-        methodInfo.Invoke(_uiAnimationService,
-            [_observableReactorRepo.ReactControl, _observableReactorRepo.Ease, 
-             _observableReactorRepo.Trans, _observableReactorRepo.FnArgs, data]);
-    }
-}
-
-
+// 获取UI动画服务
+var animationService = serviceProvider.GetService<IUiAnimationService>();
 ```
 
---- 
-
-
-## 四、生命周期管理与依赖注入
-
-### 1. 生命周期控制
-
-
-- 所有类实现 `IDisposable`，保证资源释放。
-- 使用 
-[NodeScope](file://D:\GodotProjects\MagicFarmTales\Scripts\UI\Trigger\ObservableTrigger.cs#L25-L25)
- 管理局部上下文生命周期，避免全局污染。
-
-### 2. 依赖注入（Autofac）
-
-
-- 所有组件通过构造函数注入依赖项，符合依赖倒置原则。
-- 例如：
-
+### 触发器配置
 
 ```csharp
-public class ObservableTriggerService : IObservableTriggerService
-{
-    private readonly IObservableTriggerRepo _observableTriggerRepo;
-
-    public ObservableTriggerService(IObservableTriggerRepo observableTriggerRepo)
-    {
-        _observableTriggerRepo = observableTriggerRepo;
-        Initialize();
-        Register();
-    }
-}
-
-
+// 在场景中配置ObservableTrigger节点
+[Export] public TriggerType TriggerType { get; set; } = TriggerType.MouseInOut;
+[Export] public Control? TriggerControl { get; set; }
+[Export] public bool TriggerOnReady { get; set; } = false;
 ```
+
+### 反应器配置
+
+```csharp
+// 在场景中配置ObservableReactor节点
+[Export] public Control? ReactControl { get; set; }
+[Export] public ObservableTrigger? TriggerNode { get; set; }
+[Export] public string FnName { get; set; } = "MouseInOut";
+[Export] public Array<Variant> FnArgs { get; set; } = [];
+[Export] public Tween.EaseType Ease { get; set; } = Tween.EaseType.Out;
+[Export] public Tween.TransitionType Trans { get; set; } = Tween.TransitionType.Cubic;
+```
+
+## 触发器类型
+
+### 支持的触发类型
+
+```csharp
+public enum TriggerType
+{
+    MouseIn,           // 鼠标进入
+    MouseOut,          // 鼠标离开
+    MouseInOut,        // 鼠标进入/离开
+    Pressed,           // 按下
+    Released,          // 释放
+    PressedReleased,   // 按下/释放
+    DoubleClicked,     // 双击
+    Ready,             // 节点准备就绪
+    VisibilityChanged  // 可见性改变
+}
+```
+
+### 触发器使用示例
+
+```csharp
+// 鼠标进入/离开触发器
+var trigger = new ObservableTrigger
+{
+    TriggerType = TriggerType.MouseInOut,
+    TriggerControl = targetControl,
+    TriggerOnReady = false
+};
+```
+
+## 动画系统
+
+### 预设动画方法
+
+```csharp
+// 鼠标进入/离开缩放动画
+await animationService.MouseInOut(control, cancellationToken);
+
+// 鼠标按下/释放渐变动画
+await animationService.MousePressedReleased(control, cancellationToken);
+
+// 弹出动画
+await animationService.Popup(control, cancellationToken);
+
+// 设置锚点偏移
+animationService.SetPivotOffset(control, Vector2.Zero);
+```
+
+### 动画参数配置
+
+#### 基础动画参数
+
+```csharp
+public record BaseAnimationParameters 
+{
+    public float Duration { get; init; } = 0.3f;                    // 动画持续时间
+    public Tween.EaseType Ease { get; init; } = Tween.EaseType.Out; // 缓动类型
+    public Tween.TransitionType Trans { get; init; } = Tween.TransitionType.Cubic; // 过渡类型
+}
+```
+
+#### 淡入淡出动画参数
+
+```csharp
+var fadeParams = new FadeAnimationParameters
+{
+    Duration = 0.5f,
+    FromAlpha = 0.0f,  // 起始透明度
+    ToAlpha = 1.0f,    // 目标透明度
+    Ease = Tween.EaseType.InOut,
+    Trans = Tween.TransitionType.Sine
+};
+```
+
+#### 缩放动画参数
+
+```csharp
+var scaleParams = new ScaleAnimationParameters
+{
+    Duration = 0.3f,
+    FromScale = Vector2.One,      // 起始缩放
+    ToScale = new Vector2(1.1f, 1.1f), // 目标缩放
+    Ease = Tween.EaseType.Out,
+    Trans = Tween.TransitionType.Back
+};
+```
+
+#### 移动动画参数
+
+```csharp
+var moveParams = new MoveAnimationParameters
+{
+    Duration = 0.4f,
+    FromPosition = Vector2.Zero,     // 起始位置
+    ToPosition = new Vector2(100, 0), // 目标位置
+    Ease = Tween.EaseType.InOut,
+    Trans = Tween.TransitionType.Quart
+};
+```
+
+## 动画上下文
+
+### 创建动画上下文
+
+```csharp
+// 创建动画上下文
+var context = new AnimationContext(control, parameters, cancellationToken);
+
+// 使用上下文执行动画
+context.Tween?.TweenProperty(control, "modulate:a", 1.0f, parameters.Duration);
+
+// 清理资源
+context.Dispose();
+```
+
+### 取消令牌管理
+
+```csharp
+// 设置取消令牌
+animationService.SetupCancellationToken(control, cancellationToken);
+
+// 动画会在令牌取消时自动停止
+if (cancellationToken.IsCancellationRequested)
+{
+    return;
+}
+```
+
+## 场景配置
+
+### 在Godot场景中配置
+
+1. **添加触发器节点**
+   ```
+   Control (目标控件)
+   └── ObservableTrigger
+       └── ObservableReactor
+   ```
+
+2. **配置触发器属性**
+   - `TriggerType`: 选择触发类型
+   - `TriggerControl`: 设置触发控件（通常为父节点）
+   - `TriggerOnReady`: 是否在Ready时触发
+
+3. **配置反应器属性**
+   - `ReactControl`: 设置反应控件
+   - `TriggerNode`: 关联触发器节点
+   - `FnName`: 动画方法名称
+   - `FnArgs`: 动画参数数组
+   - `Ease`: 缓动类型
+   - `Trans`: 过渡类型
+
+## 最佳实践
+
+### 动画性能优化
+
+```csharp
+// 推荐：使用预设动画方法
+await animationService.MouseInOut(control, cancellationToken);
+
+// 避免：频繁创建动画上下文
+// 应该复用或使用对象池
+```
+
+### 资源管理
+
+```csharp
+// 确保动画上下文正确释放
+using var context = new AnimationContext(control, parameters, cancellationToken);
+// 动画执行代码
+// context会在using块结束时自动释放
+```
+
+### 取消令牌使用
+
+```csharp
+// 为每个控件设置独立的取消令牌
+var cts = new CancellationTokenSource();
+animationService.SetupCancellationToken(control, cts.Token);
+
+// 在适当时机取消动画
+cts.Cancel();
+```
+
+## 注意事项
+
+- **节点生命周期**：确保触发器和反应器节点在目标控件的子节点中
+- **参数验证**：动画参数会自动验证，无效参数将导致动画失败
+- **内存管理**：动画上下文实现了IDisposable，使用完毕后需要释放
+- **线程安全**：动画操作应在主线程中执行
+- **性能考虑**：避免同时运行过多动画，可能影响帧率
+- **取消机制**：合理使用CancellationToken来控制动画生命周期

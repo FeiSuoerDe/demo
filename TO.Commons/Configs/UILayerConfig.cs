@@ -14,12 +14,12 @@ public class UILayerConfig
     /// </summary>
     private static readonly Dictionary<UILayerType, LayerBehavior> DefaultLayerBehaviors = new()
     {
-        { UILayerType.System, new LayerBehavior(false) },  // 系统层级显示时隐藏所有下层
-        { UILayerType.Alert, new LayerBehavior(false) },   // 警告层级显示时隐藏所有下层
-        { UILayerType.Loading, new LayerBehavior(true) }, // 加载层级显示时隐藏所有下层
-        { UILayerType.Popup, new LayerBehavior(false) },   // 弹出层级显示时不影响下层
-        { UILayerType.Dialog, new LayerBehavior(false) },  // 对话框层级显示时不影响下层
-        { UILayerType.Normal, new LayerBehavior(false) },   // 普通层级显示时不影响下层
+        { UILayerType.System, new LayerBehavior(true) },     // 系统层级显示时隐藏所有下层
+        { UILayerType.Alert, new LayerBehavior(true) },      // 警告层级显示时隐藏所有下层
+        { UILayerType.Loading, new LayerBehavior(false) },   // 加载层级显示时不影响下层
+        { UILayerType.Popup, new LayerBehavior(false) },     // 弹出层级显示时不影响下层
+        { UILayerType.Dialog, new LayerBehavior(false) },    // 对话框层级显示时不影响下层
+        { UILayerType.Normal, new LayerBehavior(true) },     // 普通层级显示时隐藏下层
         { UILayerType.Background, new LayerBehavior(false) } // 背景层级显示时不影响其他层
     };
 

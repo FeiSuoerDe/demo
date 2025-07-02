@@ -20,7 +20,7 @@ public class StartGameCommandHandle(ISceneManagerService sceneManagerService,
     {
         // eventBus[EventEnums.UI].Publish(new ShowUI(UIName.LoadingScreen));
         // await sceneManagerService.ChangeScene(SceneConfig.FarmScene);
-        // eventBus[EventEnums.UI].Publish(new HideAll());
+        // eventBus[EventEnums.UI].Publish(new HideAllUI());
         // timeManagerService.StartTimeSystem(new GameTime(0,1,1,6,0));
         GD.Print("Starting game...");
     }
