@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbll56ish383e"]
+
+[ext_resource type="Script" uid="uid://cscvqrd4d8nkk" path="res://Scripts/UI/Screens/VolumeSettingsScreen.cs" id="1"]
+[ext_resource type="PackedScene" uid="uid://cxris2a4ilend" path="res://Scenes/UI/Components/slider_components.tscn" id="2_bsgcl"]
+
+[node name="VolumeSettingsScreen" type="MarginContainer" node_paths=PackedStringArray("MasterSliderComponents", "MusicSliderComponents", "SFXSliderComponents", "VoiceSliderComponents", "AmbientSliderComponents", "MuteCheckBox", "BackButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+MasterSliderComponents = NodePath("MainContainer/VBoxContainer/SliderComponents")
+MusicSliderComponents = NodePath("MainContainer/VBoxContainer/SliderComponents2")
+SFXSliderComponents = NodePath("MainContainer/VBoxContainer/SliderComponents3")
+VoiceSliderComponents = NodePath("MainContainer/VBoxContainer/SliderComponents4")
+AmbientSliderComponents = NodePath("MainContainer/VBoxContainer/SliderComponents5")
+MuteCheckBox = NodePath("MainContainer/MuteContainer/MuteContainer#MuteCheckBox")
+BackButton = NodePath("MainContainer/ButtonContainer/ButtonContainer#BackButton")
+LayerType = 300
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Header" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Audio Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="SliderComponents" parent="MainContainer/VBoxContainer" instance=ExtResource("2_bsgcl")]
+layout_mode = 2
+
+[node name="SliderComponents2" parent="MainContainer/VBoxContainer" instance=ExtResource("2_bsgcl")]
+layout_mode = 2
+
+[node name="SliderComponents3" parent="MainContainer/VBoxContainer" instance=ExtResource("2_bsgcl")]
+layout_mode = 2
+
+[node name="SliderComponents4" parent="MainContainer/VBoxContainer" instance=ExtResource("2_bsgcl")]
+layout_mode = 2
+
+[node name="SliderComponents5" parent="MainContainer/VBoxContainer" instance=ExtResource("2_bsgcl")]
+layout_mode = 2
+
+[node name="VolumeGrid" type="GridContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MuteContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MuteContainer#MuteCheckBox" type="CheckBox" parent="MainContainer/MuteContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Mute All"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ButtonContainer#BackButton" type="Button" parent="MainContainer/ButtonContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Back"

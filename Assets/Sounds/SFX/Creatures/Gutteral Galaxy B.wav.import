@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vxap4d5kgkqp"
+path="res://.godot/imported/Gutteral Galaxy B.wav-47189e1f6f1dc0fc0dc0f4ce94fc36b2.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Gutteral Galaxy B.wav"
+dest_files=["res://.godot/imported/Gutteral Galaxy B.wav-47189e1f6f1dc0fc0dc0f4ce94fc36b2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

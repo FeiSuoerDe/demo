@@ -1,0 +1,13 @@
+D:\GodotProjects\demo\TO.Domains.Models.VO\bin\Debug\net9.0\TO.Domains.Models.VO.deps.json
+D:\GodotProjects\demo\TO.Domains.Models.VO\bin\Debug\net9.0\TO.Domains.Models.VO.dll
+D:\GodotProjects\demo\TO.Domains.Models.VO\bin\Debug\net9.0\TO.Domains.Models.VO.pdb
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.csproj.AssemblyReference.cache
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.GeneratedMSBuildEditorConfig.editorconfig
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.AssemblyInfoInputs.cache
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.AssemblyInfo.cs
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.csproj.CoreCompileInputs.cache
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.sourcelink.json
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.dll
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\refint\TO.Domains.Models.VO.dll
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.pdb
+D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\ref\TO.Domains.Models.VO.dll

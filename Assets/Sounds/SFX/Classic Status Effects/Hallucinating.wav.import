@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://v1tfib5iso7g"
+path="res://.godot/imported/Hallucinating.wav-87f2f242a0d88e4e8a802860739a68e3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Hallucinating.wav"
+dest_files=["res://.godot/imported/Hallucinating.wav-87f2f242a0d88e4e8a802860739a68e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

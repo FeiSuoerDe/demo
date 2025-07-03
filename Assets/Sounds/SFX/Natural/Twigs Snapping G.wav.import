@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cpvxwhumtbosn"
+path="res://.godot/imported/Twigs Snapping G.wav-4ae04b76476951bb5435d7b2c4097635.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Natural/Twigs Snapping G.wav"
+dest_files=["res://.godot/imported/Twigs Snapping G.wav-4ae04b76476951bb5435d7b2c4097635.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

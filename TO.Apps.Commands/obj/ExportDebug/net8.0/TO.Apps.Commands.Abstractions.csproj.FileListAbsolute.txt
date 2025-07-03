@@ -1,0 +1,15 @@
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\bin\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.deps.json
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\bin\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.dll
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\bin\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.pdb
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\bin\ExportDebug\net8.0\TO.Commons.dll
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\bin\ExportDebug\net8.0\TO.Commons.pdb
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.csproj.AssemblyReference.cache
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.AssemblyInfoInputs.cache
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.AssemblyInfo.cs
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.csproj.CoreCompileInputs.cache
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps..F9FAF3A4.Up2Date
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.dll
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\refint\TO.Apps.Commands.Abstractions.dll
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\TO.Apps.Commands.Abstractions.pdb
+D:\GodotProjects\MagicFarmTales\TO.Apps.Commands.Abstractions\obj\ExportDebug\net8.0\ref\TO.Apps.Commands.Abstractions.dll

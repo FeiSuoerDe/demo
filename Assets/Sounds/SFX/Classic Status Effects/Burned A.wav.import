@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://me046g8e5k81"
+path="res://.godot/imported/Burned A.wav-6c3898191f13c32c69179b2d59253f56.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Burned A.wav"
+dest_files=["res://.godot/imported/Burned A.wav-6c3898191f13c32c69179b2d59253f56.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

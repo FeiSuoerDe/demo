@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwwqfw1roj2rq"
+path="res://.godot/imported/Tech Trash Rummage B.wav-6ca628f8227f5576e5b3a08c3b48ad7f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Tech Trash Rummage B.wav"
+dest_files=["res://.godot/imported/Tech Trash Rummage B.wav-6ca628f8227f5576e5b3a08c3b48ad7f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

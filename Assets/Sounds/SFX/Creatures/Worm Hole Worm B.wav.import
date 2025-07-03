@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dt404mxvy48c0"
+path="res://.godot/imported/Worm Hole Worm B.wav-5fcdcf28d16a44cd158a2d2ab12430cc.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Worm Hole Worm B.wav"
+dest_files=["res://.godot/imported/Worm Hole Worm B.wav-5fcdcf28d16a44cd158a2d2ab12430cc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

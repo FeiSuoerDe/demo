@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lrxh53i7ppcy"
+path="res://.godot/imported/Cause E.wav-75cf6ddbb38b93f2d041e00c2f88e211.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/General Status Effects/Cause E.wav"
+dest_files=["res://.godot/imported/Cause E.wav-75cf6ddbb38b93f2d041e00c2f88e211.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b83mvj18hw1ep"
+path="res://.godot/imported/Interrupted Hologram A.wav-2fcec9a7254e011e4ce33f02f528555d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Interrupted Hologram A.wav"
+dest_files=["res://.godot/imported/Interrupted Hologram A.wav-2fcec9a7254e011e4ce33f02f528555d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xh3nev6bk3jn"
+path="res://.godot/imported/Wall Break Stone D.wav-770ef842a5ac308264b933c959d7c5bf.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Walls/Wall Break Stone D.wav"
+dest_files=["res://.godot/imported/Wall Break Stone D.wav-770ef842a5ac308264b933c959d7c5bf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

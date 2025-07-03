@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://votg4gn4obut"
+path="res://.godot/imported/Cardboard Sawing A.wav-069370cf2aafc92adc0a1d6e71f0bc30.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cardboard/Cardboard Sawing A.wav"
+dest_files=["res://.godot/imported/Cardboard Sawing A.wav-069370cf2aafc92adc0a1d6e71f0bc30.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

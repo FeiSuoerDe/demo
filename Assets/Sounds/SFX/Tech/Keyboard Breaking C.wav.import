@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ci54v7fvr6dlu"
+path="res://.godot/imported/Keyboard Breaking C.wav-8bc84aa986b798bf2b9feec5be4050e8.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Keyboard Breaking C.wav"
+dest_files=["res://.godot/imported/Keyboard Breaking C.wav-8bc84aa986b798bf2b9feec5be4050e8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

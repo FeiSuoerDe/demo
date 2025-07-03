@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dne6t22qhvb2b"
+path="res://.godot/imported/They Are But Vermin A.wav-b6e4c9d5e9594df3256ce7204fc47364.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/They Are But Vermin A.wav"
+dest_files=["res://.godot/imported/They Are But Vermin A.wav-b6e4c9d5e9594df3256ce7204fc47364.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

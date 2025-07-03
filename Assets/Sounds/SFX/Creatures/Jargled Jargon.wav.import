@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsqcyt0uhfhdd"
+path="res://.godot/imported/Jargled Jargon.wav-2628cba0d0e789f8afea1fa3a89b2830.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Jargled Jargon.wav"
+dest_files=["res://.godot/imported/Jargled Jargon.wav-2628cba0d0e789f8afea1fa3a89b2830.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

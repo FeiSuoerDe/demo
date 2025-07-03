@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "dH/SptMh+n8=",
+  "success": false,
+  "projectFilePath": "D:\\GodotProjects\\demo\\TO.Domains.Models.AggregateRoots\\TO.Domains.Models.AggregateRoots.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\GodotProjects\\demo\\TO.Domains.Models.AggregateRoots.Abstractions\\TO.Domains.Models.AggregateRoots.Abstractions.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\GodotProjects\\demo\\TO.Domains.Models.AggregateRoots.Abstractions\\TO.Domains.Models.AggregateRoots.Abstractions.csproj",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
+}

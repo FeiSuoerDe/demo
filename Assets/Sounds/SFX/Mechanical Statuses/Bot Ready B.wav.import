@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://glxf2gu7yhrp"
+path="res://.godot/imported/Bot Ready B.wav-e7dcc79781bf9bc0ab4cacdd2d30277a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Mechanical Statuses/Bot Ready B.wav"
+dest_files=["res://.godot/imported/Bot Ready B.wav-e7dcc79781bf9bc0ab4cacdd2d30277a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

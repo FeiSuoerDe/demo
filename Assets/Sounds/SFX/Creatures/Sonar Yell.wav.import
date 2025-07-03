@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0ddrtrudx6on"
+path="res://.godot/imported/Sonar Yell.wav-b49006e0a2b3921ea78d0379933ed80d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Sonar Yell.wav"
+dest_files=["res://.godot/imported/Sonar Yell.wav-b49006e0a2b3921ea78d0379933ed80d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c26bpu4q8d5wp"
+path="res://.godot/imported/Scream Button B.wav-f0fb0115ea8e9c5f4459f92376e1652a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Stingers/Scream Button B.wav"
+dest_files=["res://.godot/imported/Scream Button B.wav-f0fb0115ea8e9c5f4459f92376e1652a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

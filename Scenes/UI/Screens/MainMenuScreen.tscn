@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=3 uid="uid://cphqq1y0totpl"]
+
+[ext_resource type="Script" uid="uid://cdwpn06k27sfs" path="res://Scripts/UI/Screens/MainMenuScreen.cs" id="1_g18y6"]
+[ext_resource type="Script" uid="uid://c07ny3ji6crey" path="res://Scripts/UI/Trigger/ObservableTrigger.cs" id="2_4aspo"]
+[ext_resource type="Script" uid="uid://csdmi3sp1jsif" path="res://Scripts/UI/Trigger/ObservableReactor.cs" id="3_qscpb"]
+[ext_resource type="Script" uid="uid://mvsojlgw62yw" path="res://Scripts/UI/Trigger/ObservableSoundReactor.cs" id="4_sbar1"]
+
+[node name="MainMenuSreen" type="Control" node_paths=PackedStringArray("StartButton", "SettingsButton", "ExitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_g18y6")
+StartButton = NodePath("MainContainer/StartButton")
+SettingsButton = NodePath("MainContainer/OptionsButton")
+ExitButton = NodePath("MainContainer/ExitButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.7, 0.85, 0.95, 1)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Magic Farm Tales"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="ObservableTrigger3" type="Node" parent="MainContainer/StartButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 2
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor2" type="Node" parent="MainContainer/StartButton/ObservableTrigger3" node_paths=PackedStringArray("ReactControl", "TriggerNode")]
+script = ExtResource("3_qscpb")
+ReactControl = NodePath("../..")
+TriggerNode = NodePath("..")
+FnName = "MouseInOut"
+FnArgs = [0.1, 1.1, 1.0]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"
+
+[node name="ObservableTrigger2" type="Node" parent="MainContainer/StartButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 3
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableSoundReactor" type="Node" parent="MainContainer/StartButton/ObservableTrigger2"]
+script = ExtResource("4_sbar1")
+AudioType = 2
+Loop = false
+metadata/_custom_type_script = "uid://mvsojlgw62yw"
+
+[node name="OptionsButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="ObservableTrigger4" type="Node" parent="MainContainer/OptionsButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 2
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor2" type="Node" parent="MainContainer/OptionsButton/ObservableTrigger4" node_paths=PackedStringArray("ReactControl", "TriggerNode")]
+script = ExtResource("3_qscpb")
+ReactControl = NodePath("../..")
+TriggerNode = NodePath("..")
+FnName = "MouseInOut"
+FnArgs = [0.1, 1.1, 1.0]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"
+
+[node name="ObservableTrigger3" type="Node" parent="MainContainer/OptionsButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 3
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableSoundReactor" type="Node" parent="MainContainer/OptionsButton/ObservableTrigger3"]
+script = ExtResource("4_sbar1")
+AudioType = 2
+Loop = false
+metadata/_custom_type_script = "uid://mvsojlgw62yw"
+
+[node name="ExitButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="ObservableTrigger3" type="Node" parent="MainContainer/ExitButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 2
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor2" type="Node" parent="MainContainer/ExitButton/ObservableTrigger3" node_paths=PackedStringArray("ReactControl", "TriggerNode")]
+script = ExtResource("3_qscpb")
+ReactControl = NodePath("../..")
+TriggerNode = NodePath("..")
+FnName = "MouseInOut"
+FnArgs = [0.1, 1.1, 1.0]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"
+
+[node name="ObservableTrigger4" type="Node" parent="MainContainer/ExitButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 3
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableSoundReactor" type="Node" parent="MainContainer/ExitButton/ObservableTrigger4"]
+script = ExtResource("4_sbar1")
+AudioType = 2
+Loop = false
+metadata/_custom_type_script = "uid://mvsojlgw62yw"
+
+[node name="ObservableTrigger" type="Node" parent="." node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_4aspo")
+TriggerControl = NodePath("..")
+TriggerType = 8
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor" type="Node" parent="ObservableTrigger" node_paths=PackedStringArray("ReactControl")]
+script = ExtResource("3_qscpb")
+ReactControl = NodePath("../..")
+FnName = "Popup"
+FnArgs = [0.5, Vector2(0, 0), Vector2(0, 680)]
+Trans = 6
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"

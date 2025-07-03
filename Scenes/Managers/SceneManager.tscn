@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdcg8nbhonrv2"]
+
+[ext_resource type="Script" uid="uid://bynj6x70tbtwg" path="res://Scripts/Singletons/SceneManager.cs" id="1_ebsso"]
+
+[sub_resource type="Shader" id="Shader_y2ov5"]
+code = "shader_type canvas_item;
+
+uniform sampler2D dissolve_texture;
+uniform float dissolve_amount : hint_range(0.0, 1.0) = 0.5;
+uniform vec4 fade_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform bool fade = false;
+uniform bool inverted = false;
+
+void fragment() {
+	if (dissolve_amount < 0.0001 || dissolve_amount > 0.9999 || fade) {
+		COLOR = vec4(fade_color.rgb, dissolve_amount);
+	} else {
+		float sample = texture(dissolve_texture, UV).r;
+		if (inverted) {
+			sample = 1.0 - sample;
+		}
+		COLOR = vec4(fade_color.rgb, step(sample, dissolve_amount));
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0imdi"]
+shader = SubResource("Shader_y2ov5")
+shader_parameter/dissolve_amount = 0.807
+shader_parameter/fade_color = Color(1, 1, 1, 1)
+shader_parameter/fade = false
+shader_parameter/inverted = false
+
+[node name="SceneManager" type="Node" node_paths=PackedStringArray("CanvasLayer", "ColorRect")]
+script = ExtResource("1_ebsso")
+CanvasLayer = NodePath("CanvasLayer")
+ColorRect = NodePath("CanvasLayer/ColorRect")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_0imdi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2

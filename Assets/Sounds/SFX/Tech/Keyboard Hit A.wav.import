@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkwwaywdoqpfk"
+path="res://.godot/imported/Keyboard Hit A.wav-314cb3ce00b9c5e853c948e26bbd6f3e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Keyboard Hit A.wav"
+dest_files=["res://.godot/imported/Keyboard Hit A.wav-314cb3ce00b9c5e853c948e26bbd6f3e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

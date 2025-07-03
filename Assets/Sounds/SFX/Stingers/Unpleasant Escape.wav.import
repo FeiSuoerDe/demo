@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfistmo7uj2yd"
+path="res://.godot/imported/Unpleasant Escape.wav-375a276366effbac7f0b0b9d97917d30.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Stingers/Unpleasant Escape.wav"
+dest_files=["res://.godot/imported/Unpleasant Escape.wav-375a276366effbac7f0b0b9d97917d30.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

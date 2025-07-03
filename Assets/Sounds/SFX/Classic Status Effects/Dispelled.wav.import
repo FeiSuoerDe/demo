@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2fklyrd4vd3c"
+path="res://.godot/imported/Dispelled.wav-424363e02211870a3037abfa709c5f8f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Dispelled.wav"
+dest_files=["res://.godot/imported/Dispelled.wav-424363e02211870a3037abfa709c5f8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

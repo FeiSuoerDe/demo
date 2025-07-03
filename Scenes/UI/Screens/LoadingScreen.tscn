@@ -1,0 +1,168 @@
+[gd_scene load_steps=19 format=3 uid="uid://bmvevjt7ojo40"]
+
+[ext_resource type="Script" uid="uid://b5m0m80btl6cr" path="res://Scripts/UI/Screens/LoadingScreen.cs" id="1_bfg03"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8hhjh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf28a"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd3is"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvn0q"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efm7h"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6clc4"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnbdr"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdkdb"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pitr"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot3c6"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bugdx"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c18fr"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwcbt"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsknd"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rimh"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4rg0"]
+atlas = SubResource("CompressedTexture2D_8hhjh")
+region = Rect2(0, 224, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lmmu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf28a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd3is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvn0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efm7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6clc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnbdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdkdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pitr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot3c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bugdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c18fr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwcbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsknd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rimh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4rg0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("ProgressBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bfg03")
+ProgressBar = NodePath("VBoxContainer2/MarginContainer/Progress")
+LayerType = 400
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.831373, 0.458824, 0, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Progress" type="ProgressBar" parent="VBoxContainer2/MarginContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+
+[node name="Loading" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(11, 441)
+scale = Vector2(10.375, 10.375)
+sprite_frames = SubResource("SpriteFrames_lmmu3")
+autoplay = "default"
+frame_progress = 0.501213
+speed_scale = 2.0
+centered = false

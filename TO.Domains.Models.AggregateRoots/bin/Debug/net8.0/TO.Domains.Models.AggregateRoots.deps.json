@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TO.Domains.Models.AggregateRoots/1.0.0": {
+        "runtime": {
+          "TO.Domains.Models.AggregateRoots.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TO.Domains.Models.AggregateRoots/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

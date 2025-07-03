@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmgki886kkw4a"
+path="res://.godot/imported/What Was That B.wav-07dc4e428ec4453e07d9071ef7799b63.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Stingers/What Was That B.wav"
+dest_files=["res://.godot/imported/What Was That B.wav-07dc4e428ec4453e07d9071ef7799b63.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

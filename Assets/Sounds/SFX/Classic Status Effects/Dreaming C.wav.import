@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ct10008kc3l55"
+path="res://.godot/imported/Dreaming C.wav-f1a80a335ae835538c949987d0073cf6.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Dreaming C.wav"
+dest_files=["res://.godot/imported/Dreaming C.wav-f1a80a335ae835538c949987d0073cf6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

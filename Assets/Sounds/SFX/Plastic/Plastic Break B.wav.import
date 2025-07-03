@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsntwplukq8l2"
+path="res://.godot/imported/Plastic Break B.wav-2f0d897fdc5561bbfafef1e0fa3fa167.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Plastic Break B.wav"
+dest_files=["res://.godot/imported/Plastic Break B.wav-2f0d897fdc5561bbfafef1e0fa3fa167.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
