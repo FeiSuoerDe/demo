@@ -11,3 +11,16 @@ D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO
 D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\refint\TO.Domains.Models.VO.dll
 D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.pdb
 D:\GodotProjects\demo\TO.Domains.Models.VO\obj\Debug\net9.0\ref\TO.Domains.Models.VO.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\bin\Debug\net9.0\TO.Domains.Models.VO.deps.json
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\bin\Debug\net9.0\TO.Domains.Models.VO.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\bin\Debug\net9.0\TO.Domains.Models.VO.pdb
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.csproj.AssemblyReference.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.GeneratedMSBuildEditorConfig.editorconfig
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.AssemblyInfoInputs.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.AssemblyInfo.cs
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.csproj.CoreCompileInputs.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.sourcelink.json
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\refint\TO.Domains.Models.VO.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\TO.Domains.Models.VO.pdb
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Domains.Models.VO\obj\Debug\net9.0\ref\TO.Domains.Models.VO.dll

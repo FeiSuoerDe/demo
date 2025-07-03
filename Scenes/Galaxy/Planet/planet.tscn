@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bov01ni1ktell"]
+
+[ext_resource type="Texture2D" uid="uid://d1t1mbugkgvak" path="res://Assets/贴图/星球贴图/Planets/Baren.png" id="1_24oxb"]
+[ext_resource type="Script" uid="uid://b0lc70p5d5s1t" path="res://Scripts/Galaxy/planet/Planet.cs" id="1_aghct"]
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_aghct")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_24oxb")

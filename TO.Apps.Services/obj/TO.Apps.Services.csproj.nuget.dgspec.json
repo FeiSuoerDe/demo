@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj": {}
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj": {}
   },
   "projects": {
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
         "projectName": "TO.Apps.Commands",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
               }
             }
           }
@@ -73,14 +73,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
         "projectName": "TO.Apps.Events",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -95,8 +95,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
               }
             }
           }
@@ -136,14 +136,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj",
         "projectName": "TO.Apps.Services.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -158,8 +158,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
               }
             }
           }
@@ -199,14 +199,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj",
         "projectName": "TO.Apps.Services",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -221,29 +221,29 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
               }
             }
           }
@@ -289,14 +289,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
         "projectName": "TO.Commons",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -366,14 +366,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj",
         "projectName": "TO.Domains.Eevents",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -388,11 +388,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
               }
             }
           }
@@ -432,14 +432,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
         "projectName": "TO.Domains.Models.Entities",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -454,11 +454,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
               }
             }
           }
@@ -498,14 +498,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
         "projectName": "TO.Domains.Models.Repositories.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -520,11 +520,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
               }
             }
           }
@@ -574,14 +574,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
         "projectName": "TO.Domains.Services.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -596,14 +596,14 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
               }
             }
           }
@@ -649,14 +649,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
         "projectName": "TO.Events",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -718,14 +718,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
         "projectName": "TO.GodotNodes.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -740,8 +740,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj"
               }
             }
           }
@@ -791,14 +791,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj",
         "projectName": "TO.Infras.Repositories",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -813,20 +813,20 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
               }
             }
           }
@@ -888,14 +888,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
         "projectName": "TO.Infras.Writers.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -953,14 +953,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
         "projectName": "TO.Infras.Writers",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -975,8 +975,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
               }
             }
           }
@@ -1026,14 +1026,14 @@
         }
       }
     },
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
         "projectName": "TO.Nodes.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1048,11 +1048,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
               },
-              "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
-                "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
+              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
               }
             }
           }

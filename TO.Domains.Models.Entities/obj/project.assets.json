@@ -476,11 +476,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
+      "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
       "projectName": "TO.Domains.Models.Entities",
-      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
+      "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
       "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\obj\\",
+      "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -495,11 +495,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
             }
           }
         }

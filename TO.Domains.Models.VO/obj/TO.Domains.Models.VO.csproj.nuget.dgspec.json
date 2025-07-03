@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj": {}
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj": {}
   },
   "projects": {
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
         "projectName": "TO.Domains.Models.VO",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"

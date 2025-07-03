@@ -438,11 +438,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
+      "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
       "projectName": "TO.Domains.Models.Repositories.Abstractions",
-      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
+      "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj",
       "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\obj\\",
+      "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -457,11 +457,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
             }
           }
         }

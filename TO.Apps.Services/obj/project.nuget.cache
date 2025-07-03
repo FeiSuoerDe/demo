@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZFVt++2KsFw=",
+  "dgSpecHash": "RGCqZRQQbRk=",
   "success": true,
-  "projectFilePath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj",
+  "projectFilePath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services\\TO.Apps.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lxl\\.nuget\\packages\\autofac\\8.3.0\\autofac.8.3.0.nupkg.sha512",
     "C:\\Users\\lxl\\.nuget\\packages\\csvhelper\\33.1.0\\csvhelper.33.1.0.nupkg.sha512",

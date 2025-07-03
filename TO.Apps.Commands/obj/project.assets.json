@@ -183,11 +183,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
+      "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
       "projectName": "TO.Apps.Commands",
-      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
+      "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
       "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\obj\\",
+      "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -202,8 +202,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
             }
           }
         }

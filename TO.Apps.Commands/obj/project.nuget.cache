@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wSOiGlXYcNg=",
+  "dgSpecHash": "oTgrR5BBBDc=",
   "success": true,
-  "projectFilePath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
+  "projectFilePath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lxl\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
     "C:\\Users\\lxl\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",

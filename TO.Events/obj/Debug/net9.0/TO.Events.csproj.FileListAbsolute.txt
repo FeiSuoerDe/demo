@@ -11,3 +11,16 @@ D:\GodotProjects\demo\TO.Events\obj\Debug\net9.0\TO.Events.dll
 D:\GodotProjects\demo\TO.Events\obj\Debug\net9.0\refint\TO.Events.dll
 D:\GodotProjects\demo\TO.Events\obj\Debug\net9.0\TO.Events.pdb
 D:\GodotProjects\demo\TO.Events\obj\Debug\net9.0\ref\TO.Events.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\bin\Debug\net9.0\TO.Events.deps.json
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\bin\Debug\net9.0\TO.Events.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\bin\Debug\net9.0\TO.Events.pdb
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.csproj.AssemblyReference.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.GeneratedMSBuildEditorConfig.editorconfig
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.AssemblyInfoInputs.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.AssemblyInfo.cs
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.csproj.CoreCompileInputs.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.sourcelink.json
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\refint\TO.Events.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\TO.Events.pdb
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Events\obj\Debug\net9.0\ref\TO.Events.dll

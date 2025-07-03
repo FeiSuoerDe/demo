@@ -730,11 +730,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.CommandHandles\\TO.Apps.CommandHandles.csproj",
+      "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.CommandHandles\\TO.Apps.CommandHandles.csproj",
       "projectName": "TO.Apps.CommandHandles",
-      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.CommandHandles\\TO.Apps.CommandHandles.csproj",
+      "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.CommandHandles\\TO.Apps.CommandHandles.csproj",
       "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.CommandHandles\\obj\\",
+      "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.CommandHandles\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -749,23 +749,23 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Commands\\TO.Apps.Commands.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Services.Abstractions\\TO.Apps.Services.Abstractions.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj"
             }
           }
         }

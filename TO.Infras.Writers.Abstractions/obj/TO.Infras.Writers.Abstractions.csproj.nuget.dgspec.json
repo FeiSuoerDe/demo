@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {}
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {}
   },
   "projects": {
-    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
+    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
         "projectName": "TO.Infras.Writers.Abstractions",
-        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
         "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
+        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"

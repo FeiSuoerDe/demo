@@ -11,3 +11,16 @@ D:\GodotProjects\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.
 D:\GodotProjects\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\refint\TO.Infras.Writers.Abstractions.dll
 D:\GodotProjects\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.pdb
 D:\GodotProjects\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\ref\TO.Infras.Writers.Abstractions.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\bin\Debug\net9.0\TO.Infras.Writers.Abstractions.deps.json
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\bin\Debug\net9.0\TO.Infras.Writers.Abstractions.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\bin\Debug\net9.0\TO.Infras.Writers.Abstractions.pdb
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.csproj.AssemblyReference.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.AssemblyInfoInputs.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.AssemblyInfo.cs
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.csproj.CoreCompileInputs.cache
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.sourcelink.json
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\refint\TO.Infras.Writers.Abstractions.dll
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\TO.Infras.Writers.Abstractions.pdb
+E:\360MoveData\Users\lxl\Desktop\demo\TO.Infras.Writers.Abstractions\obj\Debug\net9.0\ref\TO.Infras.Writers.Abstractions.dll

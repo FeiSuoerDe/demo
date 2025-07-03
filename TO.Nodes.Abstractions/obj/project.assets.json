@@ -315,11 +315,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+      "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
       "projectName": "TO.Nodes.Abstractions",
-      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+      "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
       "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\obj\\",
+      "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -334,11 +334,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
             },
-            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
-              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
+            "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+              "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
             }
           }
         }
