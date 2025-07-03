@@ -519,19 +519,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\": {}
+    "C:\\Users\\lxl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
+      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
       "projectName": "TO.Domains.Services.Abstractions",
-      "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
-      "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\GodotProjects\\demo\\TO.Domains.Services.Abstractions\\obj\\",
+      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\TO.Domains.Services.Abstractions.csproj",
+      "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
+      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Services.Abstractions\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -543,14 +543,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\GodotProjects\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj": {
-              "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj"
+            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj": {
+              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj"
             },
-            "D:\\GodotProjects\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj": {
-              "projectPath": "D:\\GodotProjects\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj"
+            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj": {
+              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Repositories\\TO.Infras.Repositories.csproj"
             },
-            "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
-              "projectPath": "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
+            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj"
             }
           }
         }

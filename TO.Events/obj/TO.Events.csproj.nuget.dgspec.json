@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj": {}
+    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {}
   },
   "projects": {
-    "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj": {
+    "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
+        "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
         "projectName": "TO.Events",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
-        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.Events\\obj\\",
+        "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
+        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
+        "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"

@@ -38,19 +38,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\": {}
+    "C:\\Users\\lxl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
+      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
       "projectName": "TO.Domains.Models.VO",
-      "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
-      "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.VO\\obj\\",
+      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
+      "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
+      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

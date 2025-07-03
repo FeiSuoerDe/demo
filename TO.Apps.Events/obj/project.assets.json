@@ -451,19 +451,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\": {}
+    "C:\\Users\\lxl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
+      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
       "projectName": "TO.Apps.Events",
-      "projectPath": "D:\\GodotProjects\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
-      "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\GodotProjects\\demo\\TO.Apps.Events\\obj\\",
+      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\TO.Apps.Events.csproj",
+      "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
+      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Apps.Events\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -475,8 +475,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\GodotProjects\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-              "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+            "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+              "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
             }
           }
         }

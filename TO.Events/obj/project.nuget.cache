@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "y3hRNPKEH2s=",
+  "dgSpecHash": "V6FN+Ipep4w=",
   "success": true,
-  "projectFilePath": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
+  "projectFilePath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\autofac\\8.3.0\\autofac.8.3.0.nupkg.sha512",
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.1\\system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512"
+    "C:\\Users\\lxl\\.nuget\\packages\\autofac\\8.3.0\\autofac.8.3.0.nupkg.sha512",
+    "C:\\Users\\lxl\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
+    "C:\\Users\\lxl\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.1\\system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512"
   ],
   "logs": []
 }

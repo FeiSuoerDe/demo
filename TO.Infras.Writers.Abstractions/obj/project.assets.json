@@ -100,19 +100,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BananaPeel\\.nuget\\packages\\": {}
+    "C:\\Users\\lxl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
       "projectName": "TO.Infras.Writers.Abstractions",
-      "projectPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
-      "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
+      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+      "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
+      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
