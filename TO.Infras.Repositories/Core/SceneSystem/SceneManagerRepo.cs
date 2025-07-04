@@ -36,41 +36,33 @@ public class SceneManagerRepo : SingletonNodeRepo<ISceneManager>, ISceneManagerR
         // 可以在这里添加状态变化的回调处理
         GD.Print($"Transition state changed to: {state}");
     }
-        
-
-    // 淡出效果
-    public async GDTask FadeOut(float time = 1.0f)
+    
+    /// <summary>
+    /// 执行过渡效果的通用方法
+    /// </summary>
+    /// <param name="effectType">效果类型</param>
+    /// <param name="time">过渡时间</param>
+    /// <param name="isEntering">是否为入场效果</param>
+    public async GDTask ExecuteTransitionEffect(TransitionEffectType effectType, float time, bool isEntering)
     {
         if (_transitionSystem == null) return;
-        var effect = new FadeTransitionEffect(false)
+        
+        // 尝试从注册系统创建效果
+        var effect = TransitionEffectRegistry.CreateEffect(effectType, isEntering);
+        if (effect != null)
         {
-            Parameters =
-            {
-                ["time"] = time
-            }
-        };
-
-        _transitionSystem.EnqueueEffect(effect);
-        await _transitionSystem.ExecuteAll();
-    }
-
-    // 淡入效果
-    public async GDTask FadeIn(float time = 1.0f)
-    {
-        if (_transitionSystem == null)
-        {
-            return;
+            effect.Parameters["time"] = time;
+            await ExecuteEffectChain(effect);
         }
-        var effect = new FadeTransitionEffect(true)
+        else
         {
-            Parameters =
+            // 回退到默认淡入淡出效果
+            var fadeEffect = new FadeTransitionEffect(isEntering)
             {
-                ["time"] = time
-            }
-        };
-
-        _transitionSystem.EnqueueEffect(effect);
-        await _transitionSystem.ExecuteAll();
+                Parameters = { ["time"] = time }
+            };
+            await ExecuteEffectChain(fadeEffect);
+        }
     }
 
     // 打断当前过渡

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TO.Domains.Models.AggregateRoots")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87ff9d220510c3f0daa0951de03e752efc356f9d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2fcc777dde95abbbb263af1f6536e2e0335b1280")]
 [assembly: System.Reflection.AssemblyProductAttribute("TO.Domains.Models.AggregateRoots")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TO.Domains.Models.AggregateRoots")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

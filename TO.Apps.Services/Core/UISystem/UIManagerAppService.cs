@@ -35,11 +35,10 @@ public class UIManagerAppService : BaseService
         _logger = logger;
         _eventBus = eventBus;
         _eventBus[EventEnums.UI].Subscribe<ShowUI>(e => ExecuteShowCommand(e.UIName)).AddTo(CancellationTokenSource.Token);
-        _eventBus[EventEnums.UI].Subscribe<HideUI>(_ => ExecuteHideUICommand()).AddTo(CancellationTokenSource.Token);
-        _eventBus[EventEnums.UI].Subscribe<HideAllUI>(_ => ExecuteHideAllUICommand()).AddTo(CancellationTokenSource.Token);
+        _eventBus[EventEnums.UI].Subscribe<HideUI>(_ => ExecuteHideCommand()).AddTo(CancellationTokenSource.Token);
+        _eventBus[EventEnums.UI].Subscribe<HideAllUI>(_ => ExecuteHideAllCommand()).AddTo(CancellationTokenSource.Token);
         _eventBus[EventEnums.UI].Subscribe<CloseUI>(e => ExecuteCloseCommand(e.UIName)).AddTo(CancellationTokenSource.Token);
         _eventBus[EventEnums.UI].Subscribe<CloseAllUI>(_ => ExecuteCloseAllCommand()).AddTo(CancellationTokenSource.Token);
-        uiManagerRepo.Ready += () => ExecuteShowCommand(UIName.MainMenuScreen);
     }
     
     private void ExecuteShowCommand(UIName screenName)
@@ -54,13 +53,13 @@ public class UIManagerAppService : BaseService
         _uiManagerService.Show(screen);
     }
 
-    private void ExecuteHideUICommand() => _uiManagerService.HideScreen();
+    private void ExecuteHideCommand() => _uiManagerService.HideScreen();
 
-    private void ExecuteHideAllUICommand() => _uiManagerService.HideAllScreens();
+    private void ExecuteHideAllCommand() => _uiManagerService.HideAllScreens();
     
     private void ExecuteCloseCommand(UIName screenName)
     {
-        if (!UIConfigs.UIPaths.ContainsKey(screenName))
+        if (!UIConfigs.UIPaths.TryGetValue(screenName, out var value))
         {
             _logger.Warning($"UI screen '{screenName}' not found in configuration");
             return;
@@ -69,7 +68,7 @@ public class UIManagerAppService : BaseService
         if (screen != null)
         {
             _logger.Info($"Closing current UI screen: {screenName}");
-            _uiLifecycleService.DestroyUI(screen, UIConfigs.UIPaths[screenName]);
+            _uiLifecycleService.DestroyUI(screen, value);
         }
         else
         {

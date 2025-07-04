@@ -1,5 +1,6 @@
 using Godot;
 using GodotTask;
+using TO.Commons.Enums;
 using TO.Domains.Models.Repositories.Abstractions.Bases;
 using TO.Nodes.Abstractions.Nodes.Singletons;
 
@@ -11,8 +12,17 @@ public interface ISceneManagerRepo : ISingletonNodeRepo<ISceneManager>
     ColorRect? ColorRect { get; set; }
     Node? CurrentScene { get; set; }
     SceneTree? SceneTree { get; set; }
-
-    GDTask FadeOut(float time);
-
-    GDTask FadeIn(float time);
+    
+    /// <summary>
+    /// 执行过渡效果
+    /// </summary>
+    /// <param name="effectType">效果类型</param>
+    /// <param name="time">过渡时间</param>
+    /// <param name="isEntering">是否为入场效果</param>
+    GDTask ExecuteTransitionEffect(TransitionEffectType effectType, float time, bool isEntering);
+    
+    /// <summary>
+    /// 打断当前过渡
+    /// </summary>
+    void InterruptTransition();
 }

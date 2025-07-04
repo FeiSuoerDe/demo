@@ -18,7 +18,19 @@ namespace inFras.Core.SceneSystem
         /// <summary>
         /// 当前过渡状态
         /// </summary>
-        private TransitionState CurrentState { get; set; } = TransitionState.Idle;
+        private TransitionState _currentState = TransitionState.Idle;
+        public TransitionState CurrentState 
+        { 
+            get => _currentState;
+            private set
+            {
+                if (_currentState != value)
+                {
+                    _currentState = value;
+                    OnStateChanged?.Invoke(value);
+                }
+            }
+        }
 
         /// <summary>
         /// 状态变化事件
@@ -55,7 +67,6 @@ namespace inFras.Core.SceneSystem
             try
             {
                 CurrentState = TransitionState.Running;
-                OnStateChanged?.Invoke(CurrentState);
 
                 while (_effectQueue.Count > 0 && CurrentState == TransitionState.Running)
                 {
@@ -73,7 +84,6 @@ namespace inFras.Core.SceneSystem
                 }
 
                 CurrentState = TransitionState.Completed;
-                OnStateChanged?.Invoke(CurrentState);
             }
             finally
             {
@@ -85,7 +95,6 @@ namespace inFras.Core.SceneSystem
                 else
                 {
                     CurrentState = TransitionState.Idle;
-                    OnStateChanged?.Invoke(CurrentState);
                 }
             }
         }
@@ -96,16 +105,24 @@ namespace inFras.Core.SceneSystem
         private async GDTask SafeReset()
         {
             // 中断当前效果
-            if (_effectQueue.Count > 0)
-            {
-                Interrupt();
-            }
+            InterruptEffects();
             
             // 重置状态
             CurrentState = TransitionState.Idle;
-            OnStateChanged?.Invoke(CurrentState);
             
             await Task.CompletedTask;
+        }
+        
+        /// <summary>
+        /// 中断所有效果但不改变状态
+        /// </summary>
+        private void InterruptEffects()
+        {
+            foreach (var effect in _effectQueue)
+            {
+                effect.Interrupt();
+            }
+            _effectQueue.Clear();
         }
 
         /// <summary>
@@ -116,13 +133,7 @@ namespace inFras.Core.SceneSystem
             if (CurrentState != TransitionState.Running) return;
 
             CurrentState = TransitionState.Interrupted;
-            OnStateChanged?.Invoke(CurrentState);
-
-            foreach (var effect in _effectQueue)
-            {
-                effect.Interrupt();
-            }
-            _effectQueue.Clear();
+            InterruptEffects();
         }
     }
 }
