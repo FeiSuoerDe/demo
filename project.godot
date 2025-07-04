@@ -25,6 +25,7 @@ SaveManager="*res://Scripts/Singletons/SaveManager.cs"
 SceneManager="*res://Scripts/Singletons/SceneManager.cs"
 SequenceManager="*res://Scripts/Singletons/SequenceManager.cs"
 UiManager="*res://Scripts/Singletons/UIManager.cs"
+TestManager="*res://Scripts/Tests/Examples/TestManager.cs"
 
 [display]
 
