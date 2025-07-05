@@ -2,3 +2,7 @@
 .godot/
 /android/
 Documents/
+*.user
+obj/
+bin/
+*.suo
