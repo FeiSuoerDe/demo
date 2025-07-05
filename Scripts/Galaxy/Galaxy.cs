@@ -97,23 +97,3 @@ public partial class Galaxy : Node2D
 
 
 }
-// 此类为一个星球类，负责生成星球以及作为星球单位存储
-public partial class Planet
-{
-    // 卫星列表
-    public List<Planet> Satellites { get; private set; } = new List<Planet>();
-    // Name
-    public string Name { get; set; }
-    // 体积
-    public float Volume { get; set; }
-    // 质量
-    public float Mass { get; set; }
-    // 距离恒星距离
-    public float DistanceFromStar { get; set; }
-    // 轨道方向（顺时针逆时针）
-    public bool IsClockwise { get; set; }
-    // 轨道周期
-    public float OrbitPeriod { get; set; }
-    // 偏转
-    public float Eccentricity { get; set; }
-}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dr71ZXp3+Cg=",
+  "dgSpecHash": "o3S8HRNnlAM=",
   "success": true,
-  "projectFilePath": "D:\\GodotProjects\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
+  "projectFilePath": "D:\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BananaPeel\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512"
   ],

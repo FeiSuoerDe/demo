@@ -128,11 +128,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
+      "projectUniqueName": "D:\\demo\\TO.Events\\TO.Events.csproj",
       "projectName": "TO.Events",
-      "projectPath": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
+      "projectPath": "D:\\demo\\TO.Events\\TO.Events.csproj",
       "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\GodotProjects\\demo\\TO.Events\\obj\\",
+      "outputPath": "D:\\demo\\TO.Events\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"

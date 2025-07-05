@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GodotProjects\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {}
+    "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {}
   },
   "projects": {
-    "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj": {
+    "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
         "projectName": "TO.Commons",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "D:\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\GodotProjects\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+    "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
         "projectName": "TO.Infras.Writers",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+        "projectPath": "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers\\obj\\",
+        "outputPath": "D:\\demo\\TO.Infras.Writers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -103,8 +103,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj"
+              "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj"
               }
             }
           }

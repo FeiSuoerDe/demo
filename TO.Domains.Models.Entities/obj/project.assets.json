@@ -476,11 +476,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
+      "projectUniqueName": "D:\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
       "projectName": "TO.Domains.Models.Entities",
-      "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
+      "projectPath": "D:\\demo\\TO.Domains.Models.Entities\\TO.Domains.Models.Entities.csproj",
       "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.Entities\\obj\\",
+      "outputPath": "D:\\demo\\TO.Domains.Models.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -495,11 +495,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\GodotProjects\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
-              "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
+            "D:\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj": {
+              "projectPath": "D:\\demo\\TO.Domains.Eevents\\TO.Domains.Eevents.csproj"
             },
-            "D:\\GodotProjects\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
-              "projectPath": "D:\\GodotProjects\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
+            "D:\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj": {
+              "projectPath": "D:\\demo\\TO.Domains.Models.Repositories.Abstractions\\TO.Domains.Models.Repositories.Abstractions.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {}
+    "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {}
   },
   "projects": {
-    "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj": {
+    "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
         "projectName": "TO.Commons",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "D:\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj": {
+    "D:\\demo\\TO.Events\\TO.Events.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Events\\TO.Events.csproj",
         "projectName": "TO.Events",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj",
+        "projectPath": "D:\\demo\\TO.Events\\TO.Events.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.Events\\obj\\",
+        "outputPath": "D:\\demo\\TO.Events\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -150,14 +150,14 @@
         }
       }
     },
-    "D:\\GodotProjects\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+    "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
+        "projectUniqueName": "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
         "projectName": "TO.GodotNodes.Abstractions",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
+        "projectPath": "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.GodotNodes.Abstractions\\obj\\",
+        "outputPath": "D:\\demo\\TO.GodotNodes.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -172,8 +172,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj": {
-                "projectPath": "D:\\GodotProjects\\demo\\TO.Events\\TO.Events.csproj"
+              "D:\\demo\\TO.Events\\TO.Events.csproj": {
+                "projectPath": "D:\\demo\\TO.Events\\TO.Events.csproj"
               }
             }
           }
@@ -223,14 +223,14 @@
         }
       }
     },
-    "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+    "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
         "projectName": "TO.Nodes.Abstractions",
-        "projectPath": "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+        "projectPath": "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\obj\\",
+        "outputPath": "D:\\demo\\TO.Nodes.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -245,11 +245,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj"
+              "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj"
               },
-              "D:\\GodotProjects\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
-                "projectPath": "D:\\GodotProjects\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
+              "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+                "projectPath": "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
               }
             }
           }
