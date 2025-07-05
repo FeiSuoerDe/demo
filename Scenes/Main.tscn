@@ -1,3 +1,11 @@
-[gd_scene load_steps=0 format=3 uid="uid://cja4cqqj2p0dm"]
+[gd_scene load_steps=3 format=3 uid="uid://cja4cqqj2p0dm"]
+
+[ext_resource type="Script" uid="uid://mkki6ig655b7" path="res://Scripts/Scenes/Main.cs" id="1_r150o"]
+[ext_resource type="Script" uid="uid://c57ey563g1cbh" path="res://Scripts/Tests/Examples/TestNode.cs" id="2_idj7w"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_r150o")
+
+[node name="TestNode" type="Node" parent="."]
+script = ExtResource("2_idj7w")
+metadata/_custom_type_script = "uid://c57ey563g1cbh"
