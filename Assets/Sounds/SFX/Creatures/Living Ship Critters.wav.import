@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bds637skm767d"
+path="res://.godot/imported/Living Ship Critters.wav-88e8d04b4746e73e2bcb5c0bad494cf6.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Living Ship Critters.wav"
+dest_files=["res://.godot/imported/Living Ship Critters.wav-88e8d04b4746e73e2bcb5c0bad494cf6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

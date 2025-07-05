@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clwo6848tqg67"
+path="res://.godot/imported/Nightmare.wav-3aa3b5957b6e93cf1af034d3bb72e72b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Nightmare.wav"
+dest_files=["res://.godot/imported/Nightmare.wav-3aa3b5957b6e93cf1af034d3bb72e72b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

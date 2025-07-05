@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6u1fseqjfb8v"
+path="res://.godot/imported/Warp Roar A.wav-80c9891afd5b6c8f373fc3c66f668c6c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Warp Roar A.wav"
+dest_files=["res://.godot/imported/Warp Roar A.wav-80c9891afd5b6c8f373fc3c66f668c6c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

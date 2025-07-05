@@ -1,0 +1,12 @@
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\bin\ExportDebug\net8.0\TO.Domains.Models.VO.deps.json
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\bin\ExportDebug\net8.0\TO.Domains.Models.VO.dll
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\bin\ExportDebug\net8.0\TO.Domains.Models.VO.pdb
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.csproj.AssemblyReference.cache
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.GeneratedMSBuildEditorConfig.editorconfig
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.AssemblyInfoInputs.cache
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.AssemblyInfo.cs
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.csproj.CoreCompileInputs.cache
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.dll
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\refint\TO.Domains.Models.VO.dll
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\TO.Domains.Models.VO.pdb
+D:\GodotProjects\MagicFarmTales\TO.Domains.Models.VO\obj\ExportDebug\net8.0\ref\TO.Domains.Models.VO.dll

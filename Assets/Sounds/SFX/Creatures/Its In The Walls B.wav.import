@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w6fnw8i3wjys"
+path="res://.godot/imported/Its In The Walls B.wav-a9bd8eeccb0924f613a741a441218483.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Its In The Walls B.wav"
+dest_files=["res://.godot/imported/Its In The Walls B.wav-a9bd8eeccb0924f613a741a441218483.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

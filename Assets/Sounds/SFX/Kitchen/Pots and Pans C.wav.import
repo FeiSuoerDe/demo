@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2a3fd373xx1u"
+path="res://.godot/imported/Pots and Pans C.wav-b08405b41cbb9e071b2d42ed9cf9b086.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Kitchen/Pots and Pans C.wav"
+dest_files=["res://.godot/imported/Pots and Pans C.wav-b08405b41cbb9e071b2d42ed9cf9b086.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

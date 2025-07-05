@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgog2k30jih4j"
+path="res://.godot/imported/Warp Tendril B.wav-0a4e516cbdd035fc77c558336db424f7.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Warp Tendril B.wav"
+dest_files=["res://.godot/imported/Warp Tendril B.wav-0a4e516cbdd035fc77c558336db424f7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

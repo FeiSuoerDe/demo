@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmdfxofwpw3yv"
+path="res://.godot/imported/Kitchen Clatter Distant E.wav-90a72bfe0a10f82a2f306bd1ab56e975.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Kitchen/Kitchen Clatter Distant E.wav"
+dest_files=["res://.godot/imported/Kitchen Clatter Distant E.wav-90a72bfe0a10f82a2f306bd1ab56e975.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

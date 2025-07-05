@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://batea4esplt1g"
+path="res://.godot/imported/Bubble Wrap Cutting A.wav-979f98449abbc89a4f3da3a6523bd9f3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Bubble Wrap Cutting A.wav"
+dest_files=["res://.godot/imported/Bubble Wrap Cutting A.wav-979f98449abbc89a4f3da3a6523bd9f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

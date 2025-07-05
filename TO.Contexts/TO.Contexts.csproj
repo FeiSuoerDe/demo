@@ -1,0 +1,29 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.4.1">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <RootNamespace>Contexts</RootNamespace>
+    </PropertyGroup>
+
+  
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="8.3.0" />
+      <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="12.3.0" />
+    </ItemGroup>
+
+  
+    <ItemGroup>
+      <ProjectReference Include="..\TO.Apps.CommandHandles\TO.Apps.CommandHandles.csproj" />
+      <ProjectReference Include="..\TO.Apps.Services.Abstractions\TO.Apps.Services.Abstractions.csproj" />
+      <ProjectReference Include="..\TO.Apps.Services\TO.Apps.Services.csproj" />
+      <ProjectReference Include="..\TO.Commons\TO.Commons.csproj" />
+      <ProjectReference Include="..\TO.Domains.Services\TO.Domains.Services.csproj" />
+      <ProjectReference Include="..\TO.Infras.Repositories\TO.Infras.Repositories.csproj" />
+     
+    </ItemGroup>
+
+</Project>

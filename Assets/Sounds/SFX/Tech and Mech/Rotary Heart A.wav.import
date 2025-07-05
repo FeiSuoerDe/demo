@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cv4s1yoekncvr"
+path="res://.godot/imported/Rotary Heart A.wav-dfc1a199fdd0d2916a6769fe56cf5c6a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Rotary Heart A.wav"
+dest_files=["res://.godot/imported/Rotary Heart A.wav-dfc1a199fdd0d2916a6769fe56cf5c6a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

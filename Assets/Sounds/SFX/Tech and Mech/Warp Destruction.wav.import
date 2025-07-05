@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://db46j8la07r04"
+path="res://.godot/imported/Warp Destruction.wav-c72fd8c54c88555c153c50e68814f9f3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Warp Destruction.wav"
+dest_files=["res://.godot/imported/Warp Destruction.wav-c72fd8c54c88555c153c50e68814f9f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

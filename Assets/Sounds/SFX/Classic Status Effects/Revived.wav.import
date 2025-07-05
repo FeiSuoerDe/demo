@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://den5oqq4h4jap"
+path="res://.godot/imported/Revived.wav-61dd443852bc01abc131a7adf0c9fad6.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Revived.wav"
+dest_files=["res://.godot/imported/Revived.wav-61dd443852bc01abc131a7adf0c9fad6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

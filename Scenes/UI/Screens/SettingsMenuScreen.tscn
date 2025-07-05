@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=3 uid="uid://4b4ti35x1ayk"]
+
+[ext_resource type="Script" uid="uid://c3i1jiijdwqsr" path="res://Scripts/UI/Screens/SettingsMenuScreen.cs" id="1_qnect"]
+[ext_resource type="Script" uid="uid://c07ny3ji6crey" path="res://Scripts/UI/Trigger/ObservableTrigger.cs" id="2_emfwu"]
+[ext_resource type="Script" uid="uid://csdmi3sp1jsif" path="res://Scripts/UI/Trigger/ObservableReactor.cs" id="3_acdm7"]
+[ext_resource type="Script" uid="uid://mvsojlgw62yw" path="res://Scripts/UI/Trigger/ObservableSoundReactor.cs" id="4_7s26x"]
+
+[node name="SettingsMenuScreen" type="Control" node_paths=PackedStringArray("AudioButton", "VideoButton", "BackButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qnect")
+AudioButton = NodePath("VBoxContainer/AudioButton")
+VideoButton = NodePath("VBoxContainer/VideoButton")
+BackButton = NodePath("VBoxContainer/BackButton")
+IsTransparent = true
+LayerType = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="AudioButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Audio Settings"
+
+[node name="ObservableTrigger" type="Node" parent="VBoxContainer/AudioButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 2
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor" type="Node" parent="VBoxContainer/AudioButton/ObservableTrigger" node_paths=PackedStringArray("ReactControl")]
+script = ExtResource("3_acdm7")
+ReactControl = NodePath("../..")
+FnName = "MouseInOut"
+FnArgs = [0.1, 1.1, 1.0]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"
+
+[node name="ObservableTrigger2" type="Node" parent="VBoxContainer/AudioButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 3
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableSoundReactor" type="Node" parent="VBoxContainer/AudioButton/ObservableTrigger2"]
+script = ExtResource("4_7s26x")
+AudioType = 2
+metadata/_custom_type_script = "uid://mvsojlgw62yw"
+
+[node name="VideoButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Video Settings"
+
+[node name="ObservableTrigger3" type="Node" parent="VBoxContainer/VideoButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 2
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor" type="Node" parent="VBoxContainer/VideoButton/ObservableTrigger3" node_paths=PackedStringArray("ReactControl")]
+script = ExtResource("3_acdm7")
+ReactControl = NodePath("../..")
+FnName = "MouseInOut"
+FnArgs = [0.1, 1.1, 1.0]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"
+
+[node name="ObservableTrigger4" type="Node" parent="VBoxContainer/VideoButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 3
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableSoundReactor" type="Node" parent="VBoxContainer/VideoButton/ObservableTrigger4"]
+script = ExtResource("4_7s26x")
+AudioType = 2
+metadata/_custom_type_script = "uid://mvsojlgw62yw"
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Back"
+
+[node name="ObservableTrigger5" type="Node" parent="VBoxContainer/BackButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 2
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor" type="Node" parent="VBoxContainer/BackButton/ObservableTrigger5" node_paths=PackedStringArray("ReactControl")]
+script = ExtResource("3_acdm7")
+ReactControl = NodePath("../..")
+FnName = "MouseInOut"
+FnArgs = [0.1, 1.1, 1.0]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"
+
+[node name="ObservableTrigger6" type="Node" parent="VBoxContainer/BackButton" node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 3
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableSoundReactor" type="Node" parent="VBoxContainer/BackButton/ObservableTrigger6"]
+script = ExtResource("4_7s26x")
+AudioType = 2
+metadata/_custom_type_script = "uid://mvsojlgw62yw"
+
+[node name="ObservableTrigger" type="Node" parent="." node_paths=PackedStringArray("TriggerControl")]
+script = ExtResource("2_emfwu")
+TriggerControl = NodePath("..")
+TriggerType = 8
+metadata/_custom_type_script = "uid://c07ny3ji6crey"
+
+[node name="ObservableReactor" type="Node" parent="ObservableTrigger" node_paths=PackedStringArray("ReactControl")]
+script = ExtResource("3_acdm7")
+ReactControl = NodePath("../..")
+FnName = "Popup"
+FnArgs = [0.5, Vector2(0, 0), Vector2(1152, 0)]
+metadata/_custom_type_script = "uid://csdmi3sp1jsif"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwig2rtjgtd55"
+path="res://.godot/imported/Wall Break Wood A.wav-3fd8a54c1200842e9ff650a5c8898fae.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Walls/Wall Break Wood A.wav"
+dest_files=["res://.godot/imported/Wall Break Wood A.wav-3fd8a54c1200842e9ff650a5c8898fae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

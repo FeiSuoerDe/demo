@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://br2xvrjfrnfuw"
+path="res://.godot/imported/Confused D.wav-578fc6090232c0f2f244f68a09573a94.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Confused D.wav"
+dest_files=["res://.godot/imported/Confused D.wav-578fc6090232c0f2f244f68a09573a94.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b08xmm132iusr"
+path="res://.godot/imported/Pathetic Alarm.wav-bf7e9e6499707c6e67b2f3d91b7bb8ea.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Pathetic Alarm.wav"
+dest_files=["res://.godot/imported/Pathetic Alarm.wav-bf7e9e6499707c6e67b2f3d91b7bb8ea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

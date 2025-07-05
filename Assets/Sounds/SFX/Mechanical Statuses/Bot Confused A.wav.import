@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6vh6pbpenu3d"
+path="res://.godot/imported/Bot Confused A.wav-fecb0344b105341e61c1e7cd158a233f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Mechanical Statuses/Bot Confused A.wav"
+dest_files=["res://.godot/imported/Bot Confused A.wav-fecb0344b105341e61c1e7cd158a233f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

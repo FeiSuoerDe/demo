@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://rm7cw4t2snq0"
+path="res://.godot/imported/Energized Dark C.wav-38efb1b48964066e7ee83fe3f3e192c0.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Energized Dark C.wav"
+dest_files=["res://.godot/imported/Energized Dark C.wav-38efb1b48964066e7ee83fe3f3e192c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcn2wmqbo7i52"
+path="res://.godot/imported/In Space He Can Hear You B.wav-0a116dfd891fe7ac615fbc49a60caa10.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Stingers/In Space He Can Hear You B.wav"
+dest_files=["res://.godot/imported/In Space He Can Hear You B.wav-0a116dfd891fe7ac615fbc49a60caa10.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

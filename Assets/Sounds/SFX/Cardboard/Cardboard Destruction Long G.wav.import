@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvh1a1tyo3t60"
+path="res://.godot/imported/Cardboard Destruction Long G.wav-4178fb3ca01039a84e5f96a25c79860b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cardboard/Cardboard Destruction Long G.wav"
+dest_files=["res://.godot/imported/Cardboard Destruction Long G.wav-4178fb3ca01039a84e5f96a25c79860b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

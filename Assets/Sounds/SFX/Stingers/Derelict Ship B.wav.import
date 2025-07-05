@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6xgn8ihphp3x"
+path="res://.godot/imported/Derelict Ship B.wav-352992ae59960766f3bb2a9075998bb2.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Stingers/Derelict Ship B.wav"
+dest_files=["res://.godot/imported/Derelict Ship B.wav-352992ae59960766f3bb2a9075998bb2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
