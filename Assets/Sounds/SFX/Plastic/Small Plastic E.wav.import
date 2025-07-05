@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwie2m8dxj0vm"
+path="res://.godot/imported/Small Plastic E.wav-01e852271c88187a1940a415d2f8f26d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Small Plastic E.wav"
+dest_files=["res://.godot/imported/Small Plastic E.wav-01e852271c88187a1940a415d2f8f26d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

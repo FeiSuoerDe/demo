@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5bbqymj4l45d"
+path="res://.godot/imported/Shards Move A.wav-1aaea3f142ea6fc38a73a1a241933fb3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Metal/Shards Move A.wav"
+dest_files=["res://.godot/imported/Shards Move A.wav-1aaea3f142ea6fc38a73a1a241933fb3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

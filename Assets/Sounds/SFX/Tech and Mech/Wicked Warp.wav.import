@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://csjjwpgj03e1v"
+path="res://.godot/imported/Wicked Warp.wav-422b8c90558ab4f56f7b2ce7570e6ff3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Wicked Warp.wav"
+dest_files=["res://.godot/imported/Wicked Warp.wav-422b8c90558ab4f56f7b2ce7570e6ff3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

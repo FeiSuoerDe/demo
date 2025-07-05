@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq0ogjcye7kgm"
+path="res://.godot/imported/Sonar Hiss.wav-af7169233179041e3f07617e96b9c46e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Sonar Hiss.wav"
+dest_files=["res://.godot/imported/Sonar Hiss.wav-af7169233179041e3f07617e96b9c46e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://da5hpa2p0cqww"
+path="res://.godot/imported/Effect C.wav-7a3a818184d7cce96a078871195ed76e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/General Status Effects/Effect C.wav"
+dest_files=["res://.godot/imported/Effect C.wav-7a3a818184d7cce96a078871195ed76e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

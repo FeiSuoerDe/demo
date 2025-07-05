@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnkcon5p8uybi"
+path="res://.godot/imported/Cardboard Stab A.wav-91f5502c452d1c3749ff9e34276c98cd.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cardboard/Cardboard Stab A.wav"
+dest_files=["res://.godot/imported/Cardboard Stab A.wav-91f5502c452d1c3749ff9e34276c98cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

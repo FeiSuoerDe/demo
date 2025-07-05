@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5oq151kavwal"
+path="res://.godot/imported/Ship Ghost Door.wav-a5c9c9cbbe47be0d33255ca8c7042864.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Ship Ghost Door.wav"
+dest_files=["res://.godot/imported/Ship Ghost Door.wav-a5c9c9cbbe47be0d33255ca8c7042864.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

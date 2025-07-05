@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cebcw5dcohk2n"
+path="res://.godot/imported/Batteries Scatter F.wav-d6c8ed725a5b6240c85df081aba85a90.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Batteries Scatter F.wav"
+dest_files=["res://.godot/imported/Batteries Scatter F.wav-d6c8ed725a5b6240c85df081aba85a90.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ci61k5o818tp8"
+path="res://.godot/imported/Bleeding D.wav-5fd2ead1517b29744bbb8e5e323ade6a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Bleeding D.wav"
+dest_files=["res://.godot/imported/Bleeding D.wav-5fd2ead1517b29744bbb8e5e323ade6a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dypk1imam1j55"
+path="res://.godot/imported/Ship Ghost Talking.wav-399d7b491061f20b14b086f7e144c385.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Ship Ghost Talking.wav"
+dest_files=["res://.godot/imported/Ship Ghost Talking.wav-399d7b491061f20b14b086f7e144c385.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ii2tavu537in"
+path="res://.godot/imported/Galactic Ghost A.wav-dbbe2ac8e0164fe2fcd9eea10c01c822.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Galactic Ghost A.wav"
+dest_files=["res://.godot/imported/Galactic Ghost A.wav-dbbe2ac8e0164fe2fcd9eea10c01c822.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

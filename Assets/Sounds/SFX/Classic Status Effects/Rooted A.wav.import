@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlcatg01o7qaw"
+path="res://.godot/imported/Rooted A.wav-7346ffddb8a9d6c12780dd643ce14923.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Rooted A.wav"
+dest_files=["res://.godot/imported/Rooted A.wav-7346ffddb8a9d6c12780dd643ce14923.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://huuqmiefq6le"
+path="res://.godot/imported/Static Monster.wav-597bdce1f175c53fdecfdfe0c8ab3395.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Static Monster.wav"
+dest_files=["res://.godot/imported/Static Monster.wav-597bdce1f175c53fdecfdfe0c8ab3395.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

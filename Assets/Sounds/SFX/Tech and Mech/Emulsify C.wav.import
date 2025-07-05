@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x0kdus8vm4mk"
+path="res://.godot/imported/Emulsify C.wav-6eeb3830f76d79785c48623e21539ef1.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Emulsify C.wav"
+dest_files=["res://.godot/imported/Emulsify C.wav-6eeb3830f76d79785c48623e21539ef1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

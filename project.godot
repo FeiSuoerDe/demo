@@ -10,35 +10,18 @@ config_version=5
 
 [application]
 
-config/name="demo"
-config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+config/name="Time-lapseInvoices"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
+[autoload]
 
-window/size/viewport_width=1280
-window/size/viewport_height=800
-window/handheld/orientation=4
-window/vsync/vsync_mode=0
+GameManager="*res://Scripts/Autoloads/GameManager.cs"
 
 [dotnet]
 
-project/assembly_name="demo"
-
-[file_customization]
-
-folder_colors={
-"res://Assets/": "orange",
-"res://Scenes/": "green",
-"res://Scripts/": "purple"
-}
-
-[gui]
-
-theme/custom="uid://bq85hq2tmv3h1"
+project/assembly_name="Time-lapseInvoices"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.0383972, 0.0383972, 0.0383971, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

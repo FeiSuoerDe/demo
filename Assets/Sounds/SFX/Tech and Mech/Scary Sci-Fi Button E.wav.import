@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://do0y0s6fdboog"
+path="res://.godot/imported/Scary Sci-Fi Button E.wav-01d52782d0f0bc0e7364f432abbcfd42.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Scary Sci-Fi Button E.wav"
+dest_files=["res://.godot/imported/Scary Sci-Fi Button E.wav-01d52782d0f0bc0e7364f432abbcfd42.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

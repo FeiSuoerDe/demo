@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ibo8lay3262k"
+path="res://.godot/imported/Warped Teleport D.wav-b315d347a3761a082bbe2ce5ff4c2ff9.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Warped Teleport D.wav"
+dest_files=["res://.godot/imported/Warped Teleport D.wav-b315d347a3761a082bbe2ce5ff4c2ff9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

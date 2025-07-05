@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://br5tyxwvj0ktq"
+path="res://.godot/imported/Pliers Cut High D.wav-59091a7f787285e368059c5fd70b0733.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Pliers Cut High D.wav"
+dest_files=["res://.godot/imported/Pliers Cut High D.wav-59091a7f787285e368059c5fd70b0733.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
