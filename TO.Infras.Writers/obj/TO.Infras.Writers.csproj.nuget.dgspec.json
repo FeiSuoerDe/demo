@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {}
+    "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {}
   },
   "projects": {
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+    "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
         "projectName": "TO.Commons",
-        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
-        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
+        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+        "outputPath": "D:\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -81,17 +81,17 @@
         }
       }
     },
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
+    "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
         "projectName": "TO.Infras.Writers",
-        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
-        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Infras.Writers\\obj\\",
+        "projectPath": "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+        "outputPath": "D:\\demo\\TO.Infras.Writers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -103,8 +103,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj"
               }
             }
           }

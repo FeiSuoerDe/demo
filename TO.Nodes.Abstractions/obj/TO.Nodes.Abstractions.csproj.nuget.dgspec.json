@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {}
+    "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {}
   },
   "projects": {
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
+    "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
         "projectName": "TO.Commons",
-        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj",
-        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj",
+        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+        "outputPath": "D:\\demo\\TO.Commons\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -81,17 +81,17 @@
         }
       }
     },
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
+    "D:\\demo\\TO.Events\\TO.Events.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Events\\TO.Events.csproj",
         "projectName": "TO.Events",
-        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
-        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\obj\\",
+        "projectPath": "D:\\demo\\TO.Events\\TO.Events.csproj",
+        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+        "outputPath": "D:\\demo\\TO.Events\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -150,17 +150,17 @@
         }
       }
     },
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+    "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
+        "projectUniqueName": "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
         "projectName": "TO.GodotNodes.Abstractions",
-        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\obj\\",
+        "projectPath": "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+        "outputPath": "D:\\demo\\TO.GodotNodes.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -172,8 +172,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj": {
-                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj"
+              "D:\\demo\\TO.Events\\TO.Events.csproj": {
+                "projectPath": "D:\\demo\\TO.Events\\TO.Events.csproj"
               }
             }
           }
@@ -223,17 +223,17 @@
         }
       }
     },
-    "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
+    "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+        "projectUniqueName": "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
         "projectName": "TO.Nodes.Abstractions",
-        "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-        "outputPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Nodes.Abstractions\\obj\\",
+        "projectPath": "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+        "outputPath": "D:\\demo\\TO.Nodes.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -245,11 +245,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj": {
-                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Commons\\TO.Commons.csproj"
+              "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
+                "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj"
               },
-              "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
-                "projectPath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
+              "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj": {
+                "projectPath": "D:\\demo\\TO.GodotNodes.Abstractions\\TO.GodotNodes.Abstractions.csproj"
               }
             }
           }

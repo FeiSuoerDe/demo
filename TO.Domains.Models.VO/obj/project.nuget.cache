@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wqZSm09CNY4=",
+  "dgSpecHash": "o3S8HRNnlAM=",
   "success": true,
-  "projectFilePath": "E:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
+  "projectFilePath": "D:\\demo\\TO.Domains.Models.VO\\TO.Domains.Models.VO.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lxl\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512"
+    "C:\\Users\\BananaPeel\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512"
   ],
   "logs": []
 }

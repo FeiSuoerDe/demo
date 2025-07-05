@@ -123,19 +123,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lxl\\.nuget\\packages\\": {}
+    "C:\\Users\\BananaPeel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
+      "projectUniqueName": "D:\\demo\\TO.Events\\TO.Events.csproj",
       "projectName": "TO.Events",
-      "projectPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\TO.Events.csproj",
-      "packagesPath": "C:\\Users\\lxl\\.nuget\\packages\\",
-      "outputPath": "e:\\360MoveData\\Users\\lxl\\Desktop\\demo\\TO.Events\\obj\\",
+      "projectPath": "D:\\demo\\TO.Events\\TO.Events.csproj",
+      "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
+      "outputPath": "D:\\demo\\TO.Events\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lxl\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
