@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsgjc2664tku3"
+path="res://.godot/imported/Subtractive H.wav-f81eba59d1beb10c964d6d3a1fb774fc.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/General Status Effects/Subtractive H.wav"
+dest_files=["res://.godot/imported/Subtractive H.wav-f81eba59d1beb10c964d6d3a1fb774fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

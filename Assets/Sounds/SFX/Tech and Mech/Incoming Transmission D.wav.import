@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3p0v6r21mcmi"
+path="res://.godot/imported/Incoming Transmission D.wav-a75d86682d393f87b7cb217ee470004c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Incoming Transmission D.wav"
+dest_files=["res://.godot/imported/Incoming Transmission D.wav-a75d86682d393f87b7cb217ee470004c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://f4a220jev8p8"
+path="res://.godot/imported/Bot Powered B.wav-6efd1207d07cbf9a59e01cded1ad1b1c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Mechanical Statuses/Bot Powered B.wav"
+dest_files=["res://.godot/imported/Bot Powered B.wav-6efd1207d07cbf9a59e01cded1ad1b1c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0r4e15a4m107"
+path="res://.godot/imported/Purged B.wav-fcd91c0cc0058bc0bfae720168f79e9a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Purged B.wav"
+dest_files=["res://.godot/imported/Purged B.wav-fcd91c0cc0058bc0bfae720168f79e9a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

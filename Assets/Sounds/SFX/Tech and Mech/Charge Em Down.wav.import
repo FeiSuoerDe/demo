@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1mx5dw6clsly"
+path="res://.godot/imported/Charge Em Down.wav-1abc72d7c5f8dc8255d1a4a66fe419f7.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Charge Em Down.wav"
+dest_files=["res://.godot/imported/Charge Em Down.wav-1abc72d7c5f8dc8255d1a4a66fe419f7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bpy6hwj8uun1x"
+path="res://.godot/imported/Ship Ghost Jumpscare.wav-fc4e5a62d8a4ac4dc8c1bd470c9a0901.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Ship Ghost Jumpscare.wav"
+dest_files=["res://.godot/imported/Ship Ghost Jumpscare.wav-fc4e5a62d8a4ac4dc8c1bd470c9a0901.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

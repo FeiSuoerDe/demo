@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvoepe6xih4y1"
+path="res://.godot/imported/Signal Recieved A.wav-17e56cce6591c7b817a4c5a6db5e777f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Signal Recieved A.wav"
+dest_files=["res://.godot/imported/Signal Recieved A.wav-17e56cce6591c7b817a4c5a6db5e777f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

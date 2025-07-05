@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwf5uls10uent"
+path="res://.godot/imported/Charmed B.wav-e90a0d4ca5b4529de2c3058f58324f08.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Charmed B.wav"
+dest_files=["res://.godot/imported/Charmed B.wav-e90a0d4ca5b4529de2c3058f58324f08.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

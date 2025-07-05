@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ce7pjurv18y7p"
+path="res://.godot/imported/Evaporator A.wav-aa10a6f6db387d5a518777d3a2354faf.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Evaporator A.wav"
+dest_files=["res://.godot/imported/Evaporator A.wav-aa10a6f6db387d5a518777d3a2354faf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

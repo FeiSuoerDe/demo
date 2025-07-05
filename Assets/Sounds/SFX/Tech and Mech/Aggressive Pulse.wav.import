@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtvnr8t8rqvjd"
+path="res://.godot/imported/Aggressive Pulse.wav-c9e668d10179ffbb14a723243e15f633.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Aggressive Pulse.wav"
+dest_files=["res://.godot/imported/Aggressive Pulse.wav-c9e668d10179ffbb14a723243e15f633.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

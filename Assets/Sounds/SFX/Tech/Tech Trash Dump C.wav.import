@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dueoohov20wu3"
+path="res://.godot/imported/Tech Trash Dump C.wav-3656ddcf370e29580dd099450a26c46c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Tech Trash Dump C.wav"
+dest_files=["res://.godot/imported/Tech Trash Dump C.wav-3656ddcf370e29580dd099450a26c46c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

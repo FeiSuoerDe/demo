@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ewf8pqlqaidf"
+path="res://.godot/imported/Bot Armed B.wav-01e47af346eda824f6d55d449c8d7d65.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Mechanical Statuses/Bot Armed B.wav"
+dest_files=["res://.godot/imported/Bot Armed B.wav-01e47af346eda824f6d55d449c8d7d65.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

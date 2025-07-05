@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7van6wq0d404"
+path="res://.godot/imported/Marked D.wav-a3b7ddd7412b37b89ccd9e8f5f7abc49.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Marked D.wav"
+dest_files=["res://.godot/imported/Marked D.wav-a3b7ddd7412b37b89ccd9e8f5f7abc49.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

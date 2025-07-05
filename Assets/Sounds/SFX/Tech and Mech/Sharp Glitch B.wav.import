@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t62oe1ks03fx"
+path="res://.godot/imported/Sharp Glitch B.wav-449e2244948f44ef8a3fb88ae0f1258d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Sharp Glitch B.wav"
+dest_files=["res://.godot/imported/Sharp Glitch B.wav-449e2244948f44ef8a3fb88ae0f1258d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

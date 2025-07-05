@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4s12nlp5vtkp"
+path="res://.godot/imported/Small Tear E.wav-c9474a2a4250e13157f3241461f24ac5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cardboard/Small Tear E.wav"
+dest_files=["res://.godot/imported/Small Tear E.wav-c9474a2a4250e13157f3241461f24ac5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

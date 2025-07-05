@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://biaa6h0uy0rpc"
+path="res://.godot/imported/Warp Load No Click.wav-5dbed6c7054d1f0edbaa61416fff8cf6.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech and Mech/Warp Load No Click.wav"
+dest_files=["res://.godot/imported/Warp Load No Click.wav-5dbed6c7054d1f0edbaa61416fff8cf6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

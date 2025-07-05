@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6h1hhtf75ere"
+path="res://.godot/imported/Ringer A.wav-ea8031efd42fc45cf08456e70cfd962b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/General Status Effects/Ringer A.wav"
+dest_files=["res://.godot/imported/Ringer A.wav-ea8031efd42fc45cf08456e70cfd962b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwfol5vk1c2vb"
+path="res://.godot/imported/Regenerating F.wav-75b59cecfaca332848d4828578813967.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Classic Status Effects/Regenerating F.wav"
+dest_files=["res://.godot/imported/Regenerating F.wav-75b59cecfaca332848d4828578813967.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

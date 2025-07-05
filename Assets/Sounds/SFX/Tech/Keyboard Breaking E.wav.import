@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1kaleltjjeye"
+path="res://.godot/imported/Keyboard Breaking E.wav-455fb37271730caa38ecdb2ea0640e4e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Tech/Keyboard Breaking E.wav"
+dest_files=["res://.godot/imported/Keyboard Breaking E.wav-455fb37271730caa38ecdb2ea0640e4e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

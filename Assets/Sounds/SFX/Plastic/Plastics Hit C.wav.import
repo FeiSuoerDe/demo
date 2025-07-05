@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4hxamd74d0rc"
+path="res://.godot/imported/Plastics Hit C.wav-12c1e7c13860674ccbc38e3f9116c6cc.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Plastic/Plastics Hit C.wav"
+dest_files=["res://.godot/imported/Plastics Hit C.wav-12c1e7c13860674ccbc38e3f9116c6cc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

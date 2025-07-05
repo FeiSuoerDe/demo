@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8r887wweh5au"
+path="res://.godot/imported/Subtractive C.wav-fc91364e3547b4476e6ebe66af2ada88.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/General Status Effects/Subtractive C.wav"
+dest_files=["res://.godot/imported/Subtractive C.wav-fc91364e3547b4476e6ebe66af2ada88.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

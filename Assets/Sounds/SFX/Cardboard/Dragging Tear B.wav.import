@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3ce30u2w0ekt"
+path="res://.godot/imported/Dragging Tear B.wav-9adc16d2826104279f8680e4e5cfcc2f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Cardboard/Dragging Tear B.wav"
+dest_files=["res://.godot/imported/Dragging Tear B.wav-9adc16d2826104279f8680e4e5cfcc2f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

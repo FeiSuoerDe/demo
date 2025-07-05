@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1euum8y2rnnj"
+path="res://.godot/imported/Bot Attention C.wav-a70886170b8f0b17f0fe80375471da1e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Mechanical Statuses/Bot Attention C.wav"
+dest_files=["res://.godot/imported/Bot Attention C.wav-a70886170b8f0b17f0fe80375471da1e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

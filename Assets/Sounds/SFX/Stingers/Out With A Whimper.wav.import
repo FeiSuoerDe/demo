@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcndkf3uy0p5d"
+path="res://.godot/imported/Out With A Whimper.wav-e94561a948d59c4603859b9a66581985.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Stingers/Out With A Whimper.wav"
+dest_files=["res://.godot/imported/Out With A Whimper.wav-e94561a948d59c4603859b9a66581985.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

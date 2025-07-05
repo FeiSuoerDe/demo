@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgtaq7qawwvnl"
+path="res://.godot/imported/Robotic Critter B.wav-347c2d78a92a2555bb74f5a026f2213a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Creatures/Robotic Critter B.wav"
+dest_files=["res://.godot/imported/Robotic Critter B.wav-347c2d78a92a2555bb74f5a026f2213a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
