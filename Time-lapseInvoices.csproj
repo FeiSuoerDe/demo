@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>TimelapseInvoices</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="planetGenerator.js" />
+  </ItemGroup>
 </Project>

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cavfvilmd723x"]
+[gd_scene load_steps=3 format=3 uid="uid://cavfvilmd723x"]
 
 [ext_resource type="Script" uid="uid://2q6k6vn6x57c" path="res://Scripts/Galaxy/Galaxy.cs" id="1_21xk7"]
+[ext_resource type="Texture2D" uid="uid://wuqpmtffdquw" path="res://Assets/贴图/星球贴图/Planets/Lava.png" id="2_rc21o"]
 
 [node name="Galaxy" type="Node2D"]
 script = ExtResource("1_21xk7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rc21o")

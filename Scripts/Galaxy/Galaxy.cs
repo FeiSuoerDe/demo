@@ -44,43 +44,90 @@ public partial class Galaxy : Node2D
     public void GeneratePlanets()
     {
         int planetCount = random.Next(2, 16); // 随机生成2到15颗行星
+        float lastDistance = 0f;
         for (int i = 0; i < planetCount; i++)
         {
+            // 保证每颗行星距离都比前一颗远，步进范围可调整
+            float minStep = 5f; // 最小距离步进
+            float maxStep = 30f; // 最大距离步进
+            float step = (float)(random.NextDouble() * (maxStep - minStep) + minStep);
+            float distance = lastDistance + step;
+            lastDistance = distance;
+
             Planet planet = new Planet
             {
                 Name = "行星" + (i + 1),
                 Type = (Planet.PlanetType)random.Next(0, 4), // 随机选择行星类型
-                DistanceFromStar = (float)(random.NextDouble() * 100 + 1), // 距离恒星范围1到101
+                DistanceFromStar = distance, // 距离恒星递增
                 Volume = (float)(random.NextDouble() * 1000 + 1), // 体积范围1到1001
                 Mass = (float)(random.NextDouble() * 10 + 1), // 质量范围1到11
-                RotationSpeed = (float)(random.NextDouble() * 100 + 1), // 自转转速范围1到101
+                RotationSpeed = (float)(random.NextDouble() * 1 + 10), // 自转转速范围1到101
                 RevolutionPeriod = (float)(random.NextDouble() * 365 + 1) // 公转周期范围1到366
             };
             
             // 有20%的概率生成卫星
-            if (random.NextDouble() < 0.2)
-            {
-                int satelliteCount = random.Next(1, 4); // 随机生成1到3颗卫星
-                for (int j = 0; j < satelliteCount; j++)
-                {
-                    Planet satellite = new Planet
-                    {
-                        Name = "卫星" + (j + 1) + " of " + planet.Name,
-                        Type = (Planet.PlanetType)random.Next(0, 4), // 随机选择卫星类型
-                        DistanceFromStar = planet.DistanceFromStar + (float)(random.NextDouble() * 10 + 1), // 卫星距离恒星的距离
-                        Volume = (float)(random.NextDouble() * 100 + 1), // 卫星体积范围1到101
-                        Mass = (float)(random.NextDouble() * 5 + 1), // 卫星质量范围1到6
-                        RotationSpeed = (float)(random.NextDouble() * 50 + 1), // 卫星自转转速范围1到51
-                        RevolutionPeriod = (float)(random.NextDouble() * 30 + 1) // 卫星公转周期范围1到31
-                    };
-                    planet.Satellites.Add(satellite);
-                }
-            }
+            // if (random.NextDouble() < 0.2)
+            // {
+            //     int satelliteCount = random.Next(1, 4); // 随机生成1到3颗卫星
+            //     for (int j = 0; j < satelliteCount; j++)
+            //     {
+            //         Planet satellite = new Planet
+            //         {
+            //             Name = "卫星" + (j + 1) + " of " + planet.Name,
+            //             Type = (Planet.PlanetType)random.Next(0, 4), // 随机选择卫星类型
+            //             DistanceFromStar = planet.DistanceFromStar + (float)(random.NextDouble() * 100 + 1), // 卫星距离恒星的距离
+            //             Volume = (float)(random.NextDouble() * 100 + 1), // 卫星体积范围1到101
+            //             Mass = (float)(random.NextDouble() * 5 + 1), // 卫星质量范围1到6
+            //             RotationSpeed = (float)(random.NextDouble() * 50 + 1), // 卫星自转转速范围1到51
+            //             RevolutionPeriod = (float)(random.NextDouble() * 30 + 1) // 卫星公转周期范围1到31
+            //         };
+            //         planet.Satellites.Add(satellite);
+            //     }
+            // }
             
             Planets.Add(planet);
         }
+        CreatePlanets(); // 创建行星实体
         
     }
+    
+    
+    //依照列表,创建planet实体
+    public void CreatePlanets()
+    {
+        foreach (var planet in Planets)
+        {
+            var planetScene = GD.Load<PackedScene>("res://Scenes/Galaxy/Planet/planet.tscn");
+            var planetInstance = planetScene.Instantiate<Planet>();
+            planetInstance.Name = planet.Name;
+            planetInstance.Type = planet.Type;
+            planetInstance.DistanceFromStar = planet.DistanceFromStar;
+            planetInstance.Volume = planet.Volume;
+            planetInstance.Mass = planet.Mass;
+            planetInstance.RotationSpeed = planet.RotationSpeed;
+            planetInstance.RevolutionPeriod = planet.RevolutionPeriod;
+
+            // 添加卫星
+            foreach (var satellite in planet.Satellites)
+            {
+                var satelliteScene = GD.Load<PackedScene>("res://Scenes/Galaxy/Planet/planet.tscn");
+                var satelliteInstance = satelliteScene.Instantiate<Planet>();
+                satelliteInstance.Name = satellite.Name;
+                satelliteInstance.Type = satellite.Type;
+                satelliteInstance.DistanceFromStar = satellite.DistanceFromStar;
+                satelliteInstance.Volume = satellite.Volume;
+                satelliteInstance.Mass = satellite.Mass;
+                satelliteInstance.RotationSpeed = satellite.RotationSpeed;
+                satelliteInstance.RevolutionPeriod = satellite.RevolutionPeriod;
+                planetInstance.Satellites.Add(satelliteInstance);
+            }
+            AddChild(planetInstance); // 将行星实例添加到当前节点
+            planetInstance.Position = new Vector2(planet.DistanceFromStar, 0); // 设置行星位置
+            planetInstance.Rotation = 0; // 初始化行星自转角度
+        }
+    }
+    
+    
     
     //打印整个星系信息
     public void PrintGalaxyInfo()
@@ -122,23 +169,3 @@ public class Star
     }
 }
 
-//行星类
-public class Planet
-{
-    public string Name { get; set; } // 行星名称
-    public PlanetType Type { get; set; } // 行星类型
-    public float DistanceFromStar { get; set; } // 距离恒星的距离
-    public float Volume { get; set; } // 体积
-    public float Mass { get; set; } // 质量
-    public float RotationSpeed { get; set; } // 自转转速
-    public float RevolutionPeriod { get; set; } // 公转周期
-    // 卫星list
-    public List<Planet> Satellites { get; set; } = new List<Planet>();
-    public enum PlanetType
-    {
-        Terrestrial, // 类地行星
-        GasGiant, // 气态巨行星
-        IceGiant, // 冰冻巨行星
-        RockyPlanet // 岩石行星
-    }
-}

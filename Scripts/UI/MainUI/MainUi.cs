@@ -20,6 +20,32 @@ public partial class MainUi : Control
         // 处理开始按钮的逻辑
         GD.Print("开始按钮被按下");
         // 这里可以添加开始游戏的逻辑
+        //添加星系场景
+        var galaxyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Galaxy/galaxy.tscn");
+        //添加相机
+        var cameraScene = ResourceLoader.Load<PackedScene>("res://Scenes/Camera/main_camera_2d.tscn");
+        if (cameraScene != null)
+        {
+            var cameraInstance = cameraScene.Instantiate();
+            GetTree().Root.AddChild(cameraInstance);
+            GD.Print("相机场景已加载");
+        }
+        else
+        {
+            GD.PrintErr("无法加载相机场景");
+        }
+        if (galaxyScene != null)
+        {
+            var galaxyInstance = galaxyScene.Instantiate();
+            GetTree().Root.AddChild(galaxyInstance);
+            GD.Print("星系场景已加载");
+            //删除自身
+            QueueFree(); // 删除当前的 MainUi 实例
+        }
+        else
+        {
+            GD.PrintErr("无法加载星系场景");
+        }
     }
     private void OnExitButtonPressed()
     {
