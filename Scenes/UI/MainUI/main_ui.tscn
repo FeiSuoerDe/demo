@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://4t34r4diq7nm" path="res://Scripts/UI/MainUI/MainUi.cs" id="1_ln6rs"]
 [ext_resource type="Script" uid="uid://bviljfkh3f0ug" path="res://Scripts/UI/MainUI/Background.gd" id="2_68cjw"]
 
-[node name="MainUI" type="Control" node_paths=PackedStringArray("StartButton")]
+[node name="MainUI" type="Control" node_paths=PackedStringArray("StartButton", "ExitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ln6rs")
 StartButton = NodePath("Buttons/Start")
-ExitButton = null
+ExitButton = NodePath("Buttons/Exit")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

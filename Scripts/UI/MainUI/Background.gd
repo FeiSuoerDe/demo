@@ -18,7 +18,10 @@ func new_sprite_animation() -> void:
 	var start_x = randf_range(1000.,1250.)
 	var start_pos = Vector2(start_x, 1152+648-start_x)
 	sprite2d.texture = now_texture
-	sprite2d.position - start_pos
+	sprite2d.position = start_pos
+	sprite2d.rotation_degrees -= 45
 	add_child(sprite2d)
 	var tween = create_tween()
-	tween.tween_property(sprite2d,"position",start_pos,-start_pos)
+	tween.tween_property(sprite2d,"position",start_pos,0)
+	tween.tween_property(sprite2d,"position",-start_pos,5)
+	tween.tween_callback(sprite2d.queue_free)
