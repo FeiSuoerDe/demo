@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c67siooh605qb"]
+[gd_scene load_steps=3 format=3 uid="uid://c67siooh605qb"]
 
 [ext_resource type="Script" uid="uid://4t34r4diq7nm" path="res://Scripts/UI/MainUI/MainUi.cs" id="1_ln6rs"]
+[ext_resource type="Script" uid="uid://bviljfkh3f0ug" path="res://Scripts/UI/MainUI/Background.gd" id="2_68cjw"]
 
-[node name="MainUI" type="Control" node_paths=PackedStringArray("StartButton", "ExitButton")]
+[node name="MainUI" type="Control" node_paths=PackedStringArray("StartButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,30 +11,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ln6rs")
-StartButton = NodePath("VBoxContainer/Start")
-ExitButton = NodePath("VBoxContainer/Exit")
+StartButton = NodePath("Buttons/Start")
+ExitButton = null
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -21.5
-offset_right = 20.0
-offset_bottom = 21.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_68cjw")
+BackgroundSpritesPath = "res://Assets/贴图/UI/BackgroundSprites"
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_bottom = -50.0
+grow_vertical = 0
+
+[node name="Start" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
-theme_override_font_sizes/font_size = 41
 text = "开始
 "
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
-theme_override_font_sizes/font_size = 41
 text = "退出"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 50.0
+offset_top = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 100
+text = "超光速发票"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Background" method="_on_timer_timeout"]

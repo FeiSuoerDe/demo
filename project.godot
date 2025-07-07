@@ -23,6 +23,10 @@ GameManager="*res://Scripts/Autoloads/GameManager.cs"
 
 project/assembly_name="Time-lapseInvoices"
 
+[gui]
+
+theme/custom="uid://bq85hq2tmv3h1"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
