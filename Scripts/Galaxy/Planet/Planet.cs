@@ -24,28 +24,29 @@ public partial class Planet : Node2D
 
     public override void _Ready()
     {
-        
+
         //应用距离恒星距离
-        Position = new Vector2(DistanceFromStar*10 ,0); // 初始位置在X轴上，距离恒星的距离
-        
+        DistanceFromStar *= 10;
+        Position = new Vector2(DistanceFromStar * 10, 0); // 初始位置在X轴上，距离恒星的距离
+
     }
-    
-    
+
+
     //应用公转与自传
     public override void _Process(double delta)
     {
         // 累计公转时间
         revolutionTime += (float)delta;
-        
+
         // 计算自转角度
         float rotationAngle = RotationSpeed * (float)delta;
         Rotation += rotationAngle; // 自转
-        
+
         // 计算公转角度
         if (RevolutionPeriod > 0)
         {
             float revolutionAngle = (360f / RevolutionPeriod) * (float)revolutionTime;
-            Position = new Vector2(DistanceFromStar*10, 0).Rotated(Mathf.DegToRad(revolutionAngle)); // 公转
+            Position = new Vector2(DistanceFromStar * 10, 0).Rotated(Mathf.DegToRad(revolutionAngle)); // 公转
         }
     }
 }

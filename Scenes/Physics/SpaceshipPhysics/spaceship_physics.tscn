@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://chb6n5xsexgxh"]
+
+[ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
+[ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_tqu3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4688"]
+
+[node name="SpaceshipPhysics" type="RigidBody2D"]
+script = ExtResource("1_5j5wk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tqu3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f4688")
