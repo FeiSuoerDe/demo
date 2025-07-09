@@ -3,11 +3,11 @@ using Godot;
 
 namespace TimelapseInvoices.Scripts.Autoloads;
 
-public partial class NodeController:Node
+public partial class NodeController : Node
 {
-    
+
     // 节点控制器
-  
+
     public static NodeController Instance { get; private set; }
     public override void _Ready()
     {
@@ -23,13 +23,15 @@ public partial class NodeController:Node
         }
     }
     //字典
-    public Dictionary<string,string> NodeDictionary { get; private set; } = new Dictionary<string, string>()
+    public Dictionary<string, string> NodeDictionary { get; private set; } = new Dictionary<string, string>()
     {
         { "GameManager", "GameManager" },
         { "Galaxy", "res://Scenes/Galaxy/galaxy.tscn" },
         {"Planet", "res://Scenes/Galaxy/Planet/planet.tscn" },
-        {"MainCamera","res://Scenes/Camera/main_camera_2d.tscn"}
+        {"MainCamera","res://Scenes/Camera/main_camera_2d.tscn"} ,
+        {"CosmicMap","res://Scenes/CosmicMap/cosmic_map.tscn" },
+        { "Portal","res://Scenes/CosmicMap/Portal/portal.tscn"}
     };
-    
-    
+
+
 }

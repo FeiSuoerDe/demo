@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://3a2eupm5uoye"]
+
+[ext_resource type="Script" uid="uid://cyw4avsfbxvel" path="res://Scripts/CosmicMap/Portal/Portal.cs" id="1_od6ke"]
+[ext_resource type="Texture2D" uid="uid://cejnb52r7ubam" path="res://Assets/贴图/星球贴图/Planets/Black_hole.png" id="2_igpjl"]
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_od6ke")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_igpjl")

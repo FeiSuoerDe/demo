@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using TimelapseInvoices.Scripts.Autoloads;
 
 public partial class MainUi : Control
 {
@@ -20,10 +21,10 @@ public partial class MainUi : Control
         // 处理开始按钮的逻辑
         GD.Print("开始按钮被按下");
         // 这里可以添加开始游戏的逻辑
-        //添加星系场景
-        var galaxyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Galaxy/galaxy.tscn");
+        //添加宇宙地图
+        var CosmicMap = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["CosmicMap"]);
         //添加相机
-        var cameraScene = ResourceLoader.Load<PackedScene>("res://Scenes/Camera/main_camera_2d.tscn");
+        var cameraScene = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["MainCamera"]);
         if (cameraScene != null)
         {
             var cameraInstance = cameraScene.Instantiate();
@@ -34,9 +35,9 @@ public partial class MainUi : Control
         {
             GD.PrintErr("无法加载相机场景");
         }
-        if (galaxyScene != null)
+        if (CosmicMap != null)
         {
-            var galaxyInstance = galaxyScene.Instantiate();
+            var galaxyInstance = CosmicMap.Instantiate();
             GetTree().Root.AddChild(galaxyInstance);
             GD.Print("星系场景已加载");
             //删除自身
