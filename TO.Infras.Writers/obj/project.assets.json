@@ -196,11 +196,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+      "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
       "projectName": "TO.Infras.Writers",
-      "projectPath": "D:\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
+      "projectPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers\\TO.Infras.Writers.csproj",
       "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-      "outputPath": "D:\\demo\\TO.Infras.Writers\\obj\\",
+      "outputPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -215,8 +215,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\demo\\TO.Commons\\TO.Commons.csproj": {
-              "projectPath": "D:\\demo\\TO.Commons\\TO.Commons.csproj"
+            "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj": {
+              "projectPath": "D:\\GodotProjects\\demo\\TO.Commons\\TO.Commons.csproj"
             }
           }
         }

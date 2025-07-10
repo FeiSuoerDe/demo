@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X3M9siKgNNY=",
+  "dgSpecHash": "YhGfh2MIVbo=",
   "success": true,
-  "projectFilePath": "D:\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+  "projectFilePath": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BananaPeel\\.nuget\\packages\\gdtask\\1.4.1\\gdtask.1.4.1.nupkg.sha512",
     "C:\\Users\\BananaPeel\\.nuget\\packages\\godot.sourcegenerators\\4.1.0\\godot.sourcegenerators.4.1.0.nupkg.sha512",

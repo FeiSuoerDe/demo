@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Cii+T8+73fA=",
+  "dgSpecHash": "xvoQgzLp+cI=",
   "success": true,
-  "projectFilePath": "D:\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
+  "projectFilePath": "D:\\GodotProjects\\demo\\TO.Nodes.Abstractions\\TO.Nodes.Abstractions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BananaPeel\\.nuget\\packages\\autofac\\8.3.0\\autofac.8.3.0.nupkg.sha512",
     "C:\\Users\\BananaPeel\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",

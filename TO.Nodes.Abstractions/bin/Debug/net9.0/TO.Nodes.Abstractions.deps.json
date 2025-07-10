@@ -11,8 +11,7 @@
           "Autofac": "8.3.0",
           "GodotSharp": "4.4.1",
           "R3": "1.3.0",
-          "TO.Commons": "1.0.0",
-          "TO.GodotNodes.Abstractions": "1.0.0"
+          "TO.Commons": "1.0.0"
         },
         "runtime": {
           "TO.Nodes.Abstractions.dll": {}
@@ -79,31 +78,6 @@
             "fileVersion": "0.0.0.0"
           }
         }
-      },
-      "TO.Events/1.0.0": {
-        "dependencies": {
-          "Autofac": "8.3.0",
-          "GodotSharp": "4.4.1"
-        },
-        "runtime": {
-          "TO.Events.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "TO.GodotNodes.Abstractions/1.0.0": {
-        "dependencies": {
-          "Autofac": "8.3.0",
-          "GodotSharp": "4.4.1",
-          "TO.Events": "1.0.0"
-        },
-        "runtime": {
-          "TO.GodotNodes.Abstractions.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -163,16 +137,6 @@
       "hashPath": "system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512"
     },
     "TO.Commons/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "TO.Events/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "TO.GodotNodes.Abstractions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

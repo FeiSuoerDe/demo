@@ -1,6 +1,6 @@
 using Autofac;
 using Godot;
-using TO.Nodes.Abstractions.Nodes.Singletons;
+using TO.Nodes.Abstractions.Singletons;
 
 namespace demo.Singletons;
 
@@ -19,7 +19,7 @@ public partial class AudioManager : Node, IAudioManager
     {
         AudioNodeRoot = this;
         
-        Contexts.Contexts.Instance.RegisterNode<IAudioManager>(this);
+        Contexts.Contexts.Instance.RegisterSingleNode<IAudioManager>(this);
         
     }
     

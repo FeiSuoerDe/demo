@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="TO.Contexts\TO.Contexts.csproj" />
     <ProjectReference Include="TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
+    <ProjectReference Include="TO.Services\TO.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.3.0" />

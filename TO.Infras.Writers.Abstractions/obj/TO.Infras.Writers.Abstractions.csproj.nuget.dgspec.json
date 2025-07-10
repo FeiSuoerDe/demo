@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {}
+    "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {}
   },
   "projects": {
-    "D:\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
+    "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+        "projectUniqueName": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
         "projectName": "TO.Infras.Writers.Abstractions",
-        "projectPath": "D:\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
+        "projectPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\TO.Infras.Writers.Abstractions.csproj",
         "packagesPath": "C:\\Users\\BananaPeel\\.nuget\\packages\\",
-        "outputPath": "D:\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
+        "outputPath": "D:\\GodotProjects\\demo\\TO.Infras.Writers.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BananaPeel\\AppData\\Roaming\\NuGet\\NuGet.Config"

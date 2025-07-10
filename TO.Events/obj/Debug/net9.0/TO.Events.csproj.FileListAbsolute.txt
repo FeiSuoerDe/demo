@@ -37,3 +37,12 @@ D:\demo\TO.Events\obj\Debug\net9.0\TO.Events.dll
 D:\demo\TO.Events\obj\Debug\net9.0\refint\TO.Events.dll
 D:\demo\TO.Events\obj\Debug\net9.0\TO.Events.pdb
 D:\demo\TO.Events\obj\Debug\net9.0\ref\TO.Events.dll
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Commons.dll
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Nodes.Abstractions.dll
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Repositories.Abstractions.dll
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Commons.pdb
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Repositories.Abstractions.pdb
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Nodes.Abstractions.pdb
+D:\GodotProjects\demo\TO.Events\obj\Debug\net9.0\TO.Events.csproj.Up2Date
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Repositories.dll
+D:\GodotProjects\demo\TO.Events\bin\Debug\net9.0\TO.Repositories.pdb

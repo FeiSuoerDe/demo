@@ -1,6 +1,6 @@
 using Autofac;
 using Godot;
-using TO.Nodes.Abstractions.Nodes.Singletons;
+using TO.Nodes.Abstractions.Singletons;
 
 namespace demo.Singletons;
 
@@ -17,7 +17,7 @@ public partial class SceneManager : Node, ISceneManager
     
     public override void _Ready()
     {
-        Contexts.Contexts.Instance.RegisterNode<ISceneManager>(this);
+        Contexts.Contexts.Instance.RegisterSingleNode<ISceneManager>(this);
     }
     
 }

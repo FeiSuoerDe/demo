@@ -17,7 +17,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TO.Commons\TO.Commons.csproj" />
-      <ProjectReference Include="..\TO.GodotNodes.Abstractions\TO.GodotNodes.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

@@ -2,11 +2,7 @@ D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Nodes.Abstractio
 D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Nodes.Abstractions.dll
 D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Nodes.Abstractions.pdb
 D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Commons.dll
-D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Events.dll
-D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.GodotNodes.Abstractions.dll
 D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Commons.pdb
-D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.GodotNodes.Abstractions.pdb
-D:\GodotProjects\demo\TO.Nodes.Abstractions\bin\Debug\net9.0\TO.Events.pdb
 D:\GodotProjects\demo\TO.Nodes.Abstractions\obj\Debug\net9.0\TO.Nodes.Abstractions.csproj.AssemblyReference.cache
 D:\GodotProjects\demo\TO.Nodes.Abstractions\obj\Debug\net9.0\TO.Nodes.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
 D:\GodotProjects\demo\TO.Nodes.Abstractions\obj\Debug\net9.0\TO.Nodes.Abstractions.AssemblyInfoInputs.cache

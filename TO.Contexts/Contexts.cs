@@ -1,12 +1,9 @@
-using System.Reflection;
 using Autofac;
-using TO.Apps.Services.Abstractions.Core.SerializationSystem;
-using TO.Apps.Services.Core.UISystem;
 using TO.Commons;
-using TO.Domains.Models.Repositories.Abstractions.Core.AudioSystem;
-using TO.Domains.Models.Repositories.Abstractions.Nodes;
-using TO.Events.Contexts;
-using TO.GodotNodes.Abstractions;
+using TO.Nodes.Abstractions.Bases;
+using TO.Repositories.Bases;
+using TO.Services.Abstractions.Core.UISystem;
+using TO.Services.Bases;
 
 namespace Contexts;
 
@@ -16,7 +13,7 @@ public class Contexts : LazySingleton<Contexts>
     
     private NodeRegister? _nodeRegister;
     
-    public bool RegisterNode<T>(T singleton) where T : INode
+    public bool RegisterSingleNode<T>(T singleton) where T : INode
     {
         return _nodeRegister != null && _nodeRegister.Register(singleton);
     }
@@ -25,70 +22,42 @@ public class Contexts : LazySingleton<Contexts>
         var builder = new ContainerBuilder();
         builder.RegisterType<NodeRegister>().SingleInstance();
         builder.RegisterModule<SingleModule>();
-        builder.RegisterModule<NodeModule>();
-        builder.RegisterModule<EventBusModule>();
         builder.RegisterModule<MediatorModule>();
         
         Container = builder.Build();
         
         _nodeRegister = Container.Resolve<NodeRegister>();
-        Container.Resolve<IAudioManagerRepo>();
-        Container.Resolve<ISaveManagerAppService>();
-        Container.Resolve<UIManagerAppService>();
-        ContextEvents.RegisterNodeRepo += OnRegisterNodeRepo;
+        Container.Resolve<IUIManagerService>();
     }
-
-    private void OnRegisterNodeRepo(object o, Action<ILifetimeScope>? action)
+    
+    public ILifetimeScope RegisterNode<TNode, TRepo, TService>(TNode scene)
+        where TNode : class, INode
+        where TRepo : NodeRepo<TNode>
+        where TService : BaseService
     {
-        var repoType = o.GetType();
-        var scope = Container.BeginLifetimeScope(repoType,builder =>
+        var scope = Container.BeginLifetimeScope(builder =>
         {
-            builder.RegisterInstance(o).AsImplementedInterfaces().SingleInstance();
-            
+            builder.RegisterInstance(scene).AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<TRepo>().AsSelf().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<TService>().AsSelf().AsImplementedInterfaces().SingleInstance();
         });
-        var commandType = GetCorrespondingAppServiceType(repoType);
-        if (commandType != null) scope.Resolve(commandType);
-        
-        var serviceType = GetCorrespondingServiceType(repoType);
-        if (serviceType != null) scope.Resolve(serviceType);
-        
-        action?.Invoke(scope);
+        scope.Resolve<TRepo>();
+        scope.Resolve<TService>();
+        return scope;
     }
     
-    // 根据 Repo 类型推导出对应的 Service 类型
-    private Type? GetCorrespondingAppServiceType(Type repoType)
+    public ILifetimeScope RegisterNode<TNode, TService>(TNode scene)
+        where TNode : class, INode
+        where TService : BaseService
     {
-        var repoName = repoType.Name;
-
-        if (!repoName.EndsWith("Repo")) return null;
-        var serviceName = repoName.Replace("Repo", "Service");
-        var assembly = Assembly.Load("TO.Apps.Services");
-        
-        var appServiceType = assembly.GetTypes().FirstOrDefault(t => 
-            t.Name == serviceName
-        );
-        return appServiceType;
-    }
-    
-    private Type? GetCorrespondingServiceType(Type repoType)
-    {
-        
-        var repoName = repoType.Name;
-
-        if (!repoName.EndsWith("Repo")) return null;
-        var serviceName = repoName.Replace("Repo", "Service");
-        var assembly = Assembly.Load("TO.Domains.Services");
+        var scope = Container.BeginLifetimeScope(builder =>
+        {
+            builder.RegisterInstance(scene).AsImplementedInterfaces().SingleInstance();
             
-        var serviceType = assembly.GetTypes().FirstOrDefault(t => 
-            t.Name == serviceName
-        );
-        return serviceType;
-    }
-
-    protected override void UnSubscriber()
-    {
-        base.UnSubscriber();
-        ContextEvents.RegisterNodeRepo -= OnRegisterNodeRepo;
+            builder.RegisterType<TService>().AsSelf().AsImplementedInterfaces().SingleInstance();
+        });
+        scope.Resolve<TService>();
+        return scope;
     }
     
 }
