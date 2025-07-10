@@ -41,9 +41,9 @@ public class NodeMainMenuScreenService: BaseService
     {
         _iEventBusRepo.Publish(new ShowUI(UIName.SettingsMenuScreen));
     }
-    private void OnExitButtonPressed()
+    private  void OnExitButtonPressed()
     {
-        _mediator.Send(new QuitGameCommand());
+         _mediator.Send(new QuitGameCommand());
     }
 
     protected override void UnSubscriber()

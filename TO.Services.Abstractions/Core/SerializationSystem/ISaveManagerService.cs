@@ -2,7 +2,7 @@
 
 namespace TO.Services.Abstractions.Core.SerializationSystem;
 
-public interface ISaveManagerAppService
+public interface ISaveManagerService
 {
     Task LoadAutosaveAsync();
     Task SaveAutosaveAsync();

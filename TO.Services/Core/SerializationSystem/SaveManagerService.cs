@@ -6,7 +6,7 @@ using TO.Services.Bases;
 
 namespace TO.Services.Core.SerializationSystem;
 
-public class SaveManagerService : BaseService,ISaveManagerAppService
+public class SaveManagerService : BaseService,ISaveManagerService
 {
 
     private readonly ISaveManagerRepo _saveManagerRepo;
