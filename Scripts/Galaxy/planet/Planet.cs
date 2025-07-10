@@ -1,6 +1,8 @@
-using Godot;
 using System;
 using System.Collections.Generic;
+using Godot;
+
+namespace demo.Galaxy.planet;
 
 public partial class Planet : Node2D
 {
@@ -25,7 +27,7 @@ public partial class Planet : Node2D
 
     // 自转速度
     public float RotationSpeed { get; set; } = 1.0f; // 默认自转速度为1.0
-                                                     // 应用自转速度
+    // 应用自转速度
     public override void _Process(double delta)
     {
         // 计算自转角度

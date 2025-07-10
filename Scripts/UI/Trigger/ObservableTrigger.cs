@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using Autofac;
 using Contexts;
 using Godot;
-using inFras.Nodes.UI.Trigger;
 using TO.Commons.Enums;
-using TO.Nodes.Abstractions.Nodes.UI.Trigger;
+using TO.Nodes.Abstractions.UI.Trigger;
+using TO.Services.UI.Trigger;
 
 namespace demo.UI.Trigger;
 
@@ -29,8 +29,13 @@ public partial class ObservableTrigger : Node,IObservableTrigger
 
 		TriggerControl ??= GetParent() as Control;
 		if (TriggerControl == null) throw new Exception("TriggerControl is null");
-		NodeScope = NodeContexts.Instance.RegisterNode<IObservableTrigger, NodeObservableTriggerRepo>(this);
+		NodeScope = Contexts.Contexts.Instance.RegisterNode<IObservableTrigger, NodeObservableTriggerService>(this);
 
+	}
+	
+	public void RiseTrigger(Dictionary<string, object>? data = null)
+	{
+		Triggered?.Invoke(data);
 	}
 
 }

@@ -1,6 +1,6 @@
-﻿using TO.GodotNodes.Abstractions;
+﻿using TO.Nodes.Abstractions.Bases;
 
-namespace TO.Nodes.Abstractions.Nodes.Scenes;
+namespace TO.Nodes.Abstractions.Scenes;
 
 public interface IMain: INode
 {

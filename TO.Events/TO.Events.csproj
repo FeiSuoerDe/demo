@@ -11,4 +11,14 @@
       <PackageReference Include="GodotSharp" Version="4.4.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TO.Commons\TO.Commons.csproj" />
+      <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
+      <ProjectReference Include="..\TO.Repositories\TO.Repositories.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Game\" />
+    </ItemGroup>
+
 </Project>
