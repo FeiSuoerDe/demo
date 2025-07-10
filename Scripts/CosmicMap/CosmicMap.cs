@@ -58,21 +58,26 @@ public partial class CosmicMap : Node2D
         return points[index];
     }
     // 依据位置创建Portal
+    int portalCount = 0;
     public void CreatePortal(Vector2 position)
     {
-        GD.Print("Creating portal at position: " + position);
+
+
         PackedScene portalScene = (PackedScene)ResourceLoader.Load("res://Scenes/CosmicMap/Portal/portal.tscn");
         if (portalScene != null)
         {
-            Node2D portalInstance = (Node2D)portalScene.Instantiate();
+            Portal portalInstance = (Portal)portalScene.Instantiate();
             portalInstance.Position = position;
+            portalInstance.partialId = portalCount++;
             AddChild(portalInstance);
             GD.Print("Portal created successfully.");
+            portalCount++;
         }
         else
         {
             GD.PrintErr("Failed to load portal scene.");
         }
+
     }
 
 

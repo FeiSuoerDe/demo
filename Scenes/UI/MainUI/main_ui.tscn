@@ -47,11 +47,13 @@ text = "退出"
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
-offset_left = 48.0
-offset_top = 248.0
-offset_right = 604.0
-offset_bottom = 415.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -278.0
+offset_right = 278.0
+offset_bottom = 167.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.352941, 1, 1)
 theme_override_constants/outline_size = 8

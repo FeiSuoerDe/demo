@@ -23,18 +23,7 @@ public partial class MainUi : Control
         // 这里可以添加开始游戏的逻辑
         //添加宇宙地图
         var CosmicMap = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["CosmicMap"]);
-        //添加相机
-        var cameraScene = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["MainCamera"]);
-        if (cameraScene != null)
-        {
-            var cameraInstance = cameraScene.Instantiate();
-            GetTree().Root.AddChild(cameraInstance);
-            GD.Print("相机场景已加载");
-        }
-        else
-        {
-            GD.PrintErr("无法加载相机场景");
-        }
+
         if (CosmicMap != null)
         {
             var galaxyInstance = CosmicMap.Instantiate();
@@ -46,6 +35,31 @@ public partial class MainUi : Control
         else
         {
             GD.PrintErr("无法加载星系场景");
+        }
+        // 添加res://Scenes/CosmicMap/MapContShip/map_cont_ship.tscn
+        var MapContShip = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["MapContShip"]);
+        var mapContShipInstance = MapContShip.Instantiate();
+        if (MapContShip != null)
+        {
+
+            GetTree().Root.AddChild(mapContShipInstance);
+            GD.Print("飞船控制场景已加载");
+        }
+        else
+        {
+            GD.PrintErr("无法加载飞船控制场景");
+        }
+        // 将相机添加到MapContShip下
+        var mainCamera = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["MainCamera"]);
+        if (mainCamera != null)
+        {
+            var mainCameraInstance = mainCamera.Instantiate();
+            mapContShipInstance.AddChild(mainCameraInstance);
+            GD.Print("主相机已添加到飞船控制场景");
+        }
+        else
+        {
+            GD.PrintErr("无法加载主相机场景");
         }
     }
     private void OnExitButtonPressed()
