@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using Godot;
 using GodotTask;
-using TO.Commons.Enums;
+using TO.Commons.Enums.Infrastructure;
 using TO.Repositories.Abstractions.Core.ResourceSystem;
 using TO.Repositories.Bases;
 using OS = Godot.OS;

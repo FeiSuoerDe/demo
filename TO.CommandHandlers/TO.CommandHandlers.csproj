@@ -10,10 +10,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TO.Commands\TO.Commands.csproj" />
-      <ProjectReference Include="..\TO.Apps.Events\TO.Apps.Events.csproj" />
-      <ProjectReference Include="..\TO.Apps.Services.Abstractions\TO.Apps.Services.Abstractions.csproj" />
-      <ProjectReference Include="..\TO.Infras.Writers.Abstractions\TO.Infras.Writers.Abstractions.csproj" />
-      <ProjectReference Include="..\TO.Infras.Writers\TO.Infras.Writers.csproj" />
       <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
       <ProjectReference Include="..\TO.Services.Abstractions\TO.Services.Abstractions.csproj" />
     </ItemGroup>
@@ -21,10 +17,6 @@
     <ItemGroup>
       <PackageReference Include="Autofac" Version="8.3.0" />
       <PackageReference Include="MediatR" Version="12.5.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Game\" />
     </ItemGroup>
 
 </Project>

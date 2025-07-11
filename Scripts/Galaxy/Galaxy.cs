@@ -12,7 +12,7 @@ public partial class Galaxy : Node2D
     // 随机种子
     private static readonly Random random = new Random();
 
-    string[] planetNames = new string[]
+    private readonly string[] planetNames = new string[]
     {
         "苍穹", "星辰", "皓月", "流光", "天枢", "紫微", "云霄", "星河", "霜华", "曜石",
         "天狼", "玄武", "青龙", "白虎", "朱雀", "麒麟", "银河", "天穹", "星耀", "曙光",

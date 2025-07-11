@@ -13,12 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TO.Infras.Writers\TO.Infras.Writers.csproj" />
       <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Core\" />
-    </ItemGroup>
 
 </Project>

@@ -1,6 +1,10 @@
 using Newtonsoft.Json;
 
+<<<<<<<< HEAD:TO.Repositories/Data/UserSettings.cs
 namespace TO.Repositories.Datas
+========
+namespace TO.Data.Serialization
+>>>>>>>> 1e9274e803fc65d1c768e408354f8cbf264dd2f8:TO.Data/Serialization/UserSettings.cs
 {
     /// <summary>
     /// 用户游戏设置数据结构

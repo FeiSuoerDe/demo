@@ -1,6 +1,7 @@
 using Godot;
 using GodotTask;
-using TO.Commons.Enums;
+using TO.Commons.Enums.Infrastructure;
+using TO.Commons.Enums.UI;
 using TO.Events.Core;
 using TO.Repositories.Abstractions.Core.EventBus;
 using TO.Repositories.Abstractions.Core.ResourceSystem;
