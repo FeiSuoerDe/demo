@@ -1,11 +1,10 @@
-// 文件名: MainMenuScreen.cs
-// 功能: 主菜单界面，包含开始游戏、设置和退出游戏按钮
+
 
 using System;
 using Contexts;
 using Godot;
-using inFras.Nodes.UI.Screens;
-using TO.Nodes.Abstractions.Nodes.UI.Screens;
+using TO.Nodes.Abstractions.UI.Screens;
+using TO.Services.UI.Screens;
 
 namespace demo.UI.Screens;
 
@@ -75,7 +74,7 @@ public partial class MainMenuScreen : Bases.UIScreen, IMainMenuScreen
 		if (ExitButton != null) ExitButton.Pressed += EmitExitButtonPressed;
 		
 		// 将当前节点注册到全局节点上下文中
-		NodeScope = NodeContexts.Instance.RegisterNode<IMainMenuScreen, NodeMainMenuScreenRepo>(this);
+		NodeScope = Contexts.Contexts.Instance.RegisterNode<IMainMenuScreen, NodeMainMenuScreenService>(this);
 	}
 
 	/// <summary>

@@ -1,8 +1,10 @@
-using Godot;
 using System;
 using System.Collections.Generic;
+using Godot;
 
 // 为快速原型
+namespace demo.Galaxy;
+
 public partial class Galaxy : Node2D
 {
     // 此类为一个星星系类，负责生成星球以及作为星系单位存储
@@ -11,13 +13,13 @@ public partial class Galaxy : Node2D
     private static readonly Random random = new Random();
 
     string[] planetNames = new string[]
-{
-    "苍穹", "星辰", "皓月", "流光", "天枢", "紫微", "云霄", "星河", "霜华", "曜石",
-    "天狼", "玄武", "青龙", "白虎", "朱雀", "麒麟", "银河", "天穹", "星耀", "曙光",
-    "晨曦", "暮霭", "星辉", "月影", "天际", "星域", "星空", "星环", "星云", "星海"
-};
+    {
+        "苍穹", "星辰", "皓月", "流光", "天枢", "紫微", "云霄", "星河", "霜华", "曜石",
+        "天狼", "玄武", "青龙", "白虎", "朱雀", "麒麟", "银河", "天穹", "星耀", "曙光",
+        "晨曦", "暮霭", "星辉", "月影", "天际", "星域", "星空", "星环", "星云", "星海"
+    };
     // 星球数组，下标为0是恒星
-    public List<Planet> Planets { get; private set; } = new List<Planet>();
+    public List<planet.Planet> Planets { get; private set; } = new List<planet.Planet>();
     // 星系名称
     public string Name { get; private set; }
     // 星系内的星球数量通常在7左右，数量越多生成下一个星球的概率越低，每个星球有20%概率拥有一个卫星，数量越多概率越低
@@ -30,7 +32,7 @@ public partial class Galaxy : Node2D
     private void GeneratePlanets()
     {
         // 生成恒星
-        Planet star = new Planet
+        planet.Planet star = new planet.Planet
         {
             Name = "恒星",
             Volume = 1.0f,
@@ -46,7 +48,7 @@ public partial class Galaxy : Node2D
         int planetCount = random.Next(5, 10); // 随机生成5到10个星球
         for (int i = 0; i < planetCount; i++)
         {
-            Planet planet = new Planet
+            planet.Planet planet = new planet.Planet
             {
                 Name = planetNames[random.Next(planetNames.Length)],
                 Volume = (float)random.NextDouble() * 100, // 随机体积
@@ -60,7 +62,7 @@ public partial class Galaxy : Node2D
             // 有20%的概率生成卫星
             if (random.NextDouble() < 0.4)
             {
-                Planet satellite = new Planet
+                planet.Planet satellite = new planet.Planet
                 {
                     Name = planet.Name + "卫星",
                     Volume = planet.Volume * 0.1f, // 卫星体积为母星的10%

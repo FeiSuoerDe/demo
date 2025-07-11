@@ -5,9 +5,9 @@ using System;
 using Autofac;
 using Contexts;
 using Godot;
-using inFras.Nodes.UI.Trigger;
 using TO.Commons.Enums;
-using TO.Nodes.Abstractions.Nodes.UI.Trigger;
+using TO.Nodes.Abstractions.UI.Trigger;
+using TO.Services.UI.Trigger;
 
 namespace demo.UI.Trigger;
 
@@ -39,6 +39,6 @@ public partial class ObservableSoundReactor : Node , IObservableSoundReactor
         Trigger ??= GetParent() as ObservableTrigger;
         if (Trigger == null) throw new Exception("TriggerNode is null");
         
-        NodeScope = NodeContexts.Instance.RegisterNode<IObservableSoundReactor, NodeObservableSoundReactorRepo>(this);
+        NodeScope = Contexts.Contexts.Instance.RegisterNode<IObservableSoundReactor, NodeObservableSoundReactorService>(this);
     }
 }

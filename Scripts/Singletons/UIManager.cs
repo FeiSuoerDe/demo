@@ -1,7 +1,7 @@
 using Autofac;
 using Godot;
-using TO.Nodes.Abstractions.Nodes.Singletons;
-using TO.Nodes.Abstractions.Nodes.UI.Bases;
+using TO.Nodes.Abstractions.Singletons;
+using TO.Nodes.Abstractions.UI.Bases;
 using UILayer = demo.UI.Bases.UILayer;
 
 namespace demo.Singletons;
@@ -16,7 +16,7 @@ public partial class UIManager : Control, IUIManager
 	
 	public override void _Ready()
 	{
-		Contexts.Contexts.Instance.RegisterNode<IUIManager>(this);
+		Contexts.Contexts.Instance.RegisterSingleNode<IUIManager>(this);
 	}
 	
 	public IUILayer InitializeUILayer(string name)

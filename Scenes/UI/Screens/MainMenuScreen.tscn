@@ -149,5 +149,4 @@ script = ExtResource("3_qscpb")
 ReactControl = NodePath("../..")
 FnName = "Popup"
 FnArgs = [0.5, Vector2(0, 0), Vector2(0, 680)]
-Trans = 6
 metadata/_custom_type_script = "uid://csdmi3sp1jsif"

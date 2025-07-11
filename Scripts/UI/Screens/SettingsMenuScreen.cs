@@ -4,8 +4,8 @@
 using System;
 using Contexts;
 using Godot;
-using inFras.Nodes.UI.Screens;
-using TO.Nodes.Abstractions.Nodes.UI.Screens;
+using TO.Nodes.Abstractions.UI.Screens;
+using TO.Services.UI.Screens;
 
 namespace demo.UI.Screens;
 
@@ -31,7 +31,7 @@ public partial class SettingsMenuScreen : Bases.UIScreen, ISettingsMenuScreen
         if (AudioButton != null) AudioButton.Pressed += EmitAudioButtonPressed;
          if (VideoButton != null) VideoButton.Pressed += EmitVideoButtonPressed;
          if (BackButton != null) BackButton.Pressed += EmitBackButtonPressed;
-        NodeScope = NodeContexts.Instance.RegisterNode<ISettingsMenuScreen, NodeSettingsMenuScreenRepo>(this);
+        NodeScope = Contexts.Contexts.Instance.RegisterNode<ISettingsMenuScreen, NodeSettingsMenuScreenService>(this);
     }
 
     public override void _ExitTree()

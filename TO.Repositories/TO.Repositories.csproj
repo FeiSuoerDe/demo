@@ -1,0 +1,38 @@
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>TO.Repositories</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="GDTask" Version="1.4.1" />
+    <PackageReference Include="R3" Version="1.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TO.Commons\TO.Commons.csproj" />
+    <ProjectReference Include="..\TO.Infras.Writers\TO.Infras.Writers.csproj" />
+    <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
+    <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\AudioSystem\AudioManagerRepo.cs.uid" />
+    <Content Include="Core\LogSystem\LoggerImpl.cs.uid" />
+    <Content Include="Core\LogSystem\LoggerRepo.cs.uid" />
+    <Content Include="Core\ResourceSystem\CacheManager.cs.uid" />
+    <Content Include="Core\ResourceSystem\IResourceLoader.cs.uid" />
+    <Content Include="Core\ResourceSystem\MemoryMonitor.cs.uid" />
+    <Content Include="Core\ResourceSystem\ReferenceTracker.cs.uid" />
+    <Content Include="Core\ResourceSystem\ResourceLoaderRepo.cs.uid" />
+    <Content Include="Core\ResourceSystem\ResourceManager.cs.uid" />
+    <Content Include="Core\ResourceSystem\SizeCalculator.cs.uid" />
+    <Content Include="Core\ResourceSystem\StatsCollector.cs.uid" />
+    <Content Include="Core\SceneSystem\TransitionSystem.cs.uid" />
+    <Content Include="Core\SerializationSystem\SaveDataReaderRepo.cs.uid" />
+    <Content Include="Core\SerializationSystem\SaveDataWriterRepo.cs.uid" />
+    <Content Include="Core\SerializationSystem\SaveManagerRepo.cs.uid" />
+  </ItemGroup>
+</Project>

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
-using TO.Nodes.Abstractions.Nodes.UI.Bases;
+using TO.Nodes.Abstractions.UI.Bases;
 
 namespace demo.UI.Bases;
 
