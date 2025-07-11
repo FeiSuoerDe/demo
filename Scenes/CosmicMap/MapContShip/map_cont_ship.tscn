@@ -8,6 +8,7 @@
 [node name="MapContShip" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_4dtd7")
+MaxSpeed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.226563, 0.226563)

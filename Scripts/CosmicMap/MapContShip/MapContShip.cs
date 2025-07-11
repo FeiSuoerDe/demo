@@ -4,34 +4,44 @@ using System;
 public partial class MapContShip : RigidBody2D
 {
     [Export]
-    public float Speed = 200.0f; // 飞船移动速度
+    public float ThrustForce = 1000.0f; // 推进力大小
+    [Export]
+    public float DampingFactor = 0.98f; // 阻尼系数，控制惯性衰减
+    [Export]
+    public float MaxSpeed = 500.0f; // 最大速度
 
     public override void _Ready()
     {
         // 初始化飞船位置
         Position = new Vector2(2500, 2500);
+
+        // 设置物理属性
+        LinearDamp = 1.0f; // 线性阻尼
+        Mass = 1.0f; // 质量
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
-        // 获取输入方向
-        Vector2 inputDir = Vector2.Zero;
+        // 获取鼠标位置
+        Vector2 mousePos = GetGlobalMousePosition();
 
-        if (Input.IsActionPressed("ui_up") || Input.IsKeyPressed(Key.W))
-            inputDir.Y -= 1;
-        if (Input.IsActionPressed("ui_down") || Input.IsKeyPressed(Key.S))
-            inputDir.Y += 1;
-        if (Input.IsActionPressed("ui_left") || Input.IsKeyPressed(Key.A))
-            inputDir.X -= 1;
-        if (Input.IsActionPressed("ui_right") || Input.IsKeyPressed(Key.D))
-            inputDir.X += 1;
+        // 计算朝向鼠标的方向向量
+        Vector2 direction = (mousePos - Position).Normalized();
 
-        // 如果有输入，移动飞船
-        if (inputDir != Vector2.Zero)
+        // 当按下鼠标左键时施加推力
+        if (Input.IsMouseButtonPressed(MouseButton.Left))
         {
-            // 归一化向量以使对角线移动速度一致
-            Vector2 movement = inputDir.Normalized() * Speed * (float)delta;
-            Position += movement;
+            // 施加推力
+            ApplyForce(direction * ThrustForce);
+        }
+
+        // 应用速度阻尼
+        LinearVelocity *= DampingFactor;
+
+        // 限制最大速度
+        if (LinearVelocity.Length() > MaxSpeed)
+        {
+            LinearVelocity = LinearVelocity.Normalized() * MaxSpeed;
         }
     }
 }
