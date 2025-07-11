@@ -6,8 +6,8 @@ using Autofac;
 using Contexts;
 using Godot;
 using Godot.Collections;
-using inFras.Nodes.UI.Trigger;
-using TO.Nodes.Abstractions.Nodes.UI.Trigger;
+using TO.Nodes.Abstractions.UI.Trigger;
+using TO.Services.UI.Trigger;
 
 namespace demo.UI.Trigger;
 
@@ -37,7 +37,7 @@ public partial class ObservableReactor : Node, IObservableReactor
 		if (ReactControl == null) throw new Exception("TriggerNode is null");
 		ReactControl ??= GetParent() as Control;
 		if (ReactControl == null) throw new Exception("TriggerControl is null");
-		NodeScope = NodeContexts.Instance.RegisterNode<IObservableReactor, NodeObservableReactorRepo>(this);
+		NodeScope = Contexts.Contexts.Instance.RegisterNode<IObservableReactor, NodeObservableReactorService>(this);
 	}
 
 }

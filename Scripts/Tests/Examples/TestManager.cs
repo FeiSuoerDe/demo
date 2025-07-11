@@ -10,6 +10,6 @@ public partial class TestManager : Node, ITestManager
     
     public override void _Ready()
     {
-        Contexts.Contexts.Instance.RegisterNode<ITestManager>(this);
+        // Contexts.Contexts.Instance.RegisterSingleNode<ITestManager>(this);
     }
 }
