@@ -1,5 +1,5 @@
 using Godot;
-using TO.Commons.Enums;
+using TO.Commons.Enums.System;
 using TO.Repositories.Abstractions.Core.LogSystem;
 using FileAccess = Godot.FileAccess;
 

@@ -9,7 +9,7 @@ namespace Contexts;
 
 public class Contexts : LazySingleton<Contexts>
 {
-    private IContainer Container { get; }
+    private IContainer Container { get; init; }
     
     private NodeRegister? _nodeRegister;
     

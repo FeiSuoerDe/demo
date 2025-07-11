@@ -1,4 +1,4 @@
-using TO.Commons.Enums;
+using TO.Commons.Enums.UI;
 using TO.Repositories.Abstractions.Core.EventBus;
 
 namespace TO.Events.Core;

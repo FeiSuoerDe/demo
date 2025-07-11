@@ -1,9 +1,9 @@
-﻿namespace TO.Commons;
+namespace TO.Commons;
 
 public class LazySingleton<T> :IDisposable where T : new()
 {
     private bool _disposed;
-    protected static T instance;
+    protected static T? instance;
 
     public static T Instance
     {

@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using Godot;
-using TO.Commons.Enums;
+using TO.Commons.Enums.Infrastructure;
 
 namespace TO.Repositories.Core.ResourceSystem
 {

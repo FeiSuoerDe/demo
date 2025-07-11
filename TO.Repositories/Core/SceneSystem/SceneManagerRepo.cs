@@ -1,6 +1,6 @@
 using Godot;
 using GodotTask;
-using TO.Commons.Enums;
+using TO.Commons.Enums.UI;
 using TO.Nodes.Abstractions.Singletons;
 using TO.Repositories.Abstractions.Core.SceneSystem;
 using TO.Repositories.Bases;

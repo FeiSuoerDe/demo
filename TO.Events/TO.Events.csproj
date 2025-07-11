@@ -17,8 +17,4 @@
       <ProjectReference Include="..\TO.Repositories\TO.Repositories.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Game\" />
-    </ItemGroup>
-
 </Project>
