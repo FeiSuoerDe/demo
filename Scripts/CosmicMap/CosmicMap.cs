@@ -3,9 +3,8 @@ using System;
 
 public partial class CosmicMap : Node2D
 {
-
     //此乃星系地图！
-    // 
+
     [Export]
     public int seed = 0;
     // 地图范围
@@ -17,6 +16,8 @@ public partial class CosmicMap : Node2D
 
     // 点坐标list
     public Vector2[] points;
+
+    private int portalCount = 0;
 
     // 地图生成器
     public override void _Ready()
@@ -30,8 +31,50 @@ public partial class CosmicMap : Node2D
             Vector2 position = GetGalaxyPosition(i);
             CreatePortal(position);
         }
-
     }
+
+    // 获取星系位置
+    public Vector2 GetGalaxyPosition(int index)
+    {
+        if (index < 0 || index >= points.Length)
+        {
+            GD.PrintErr("Index out of bounds: " + index);
+            return Vector2.Zero;
+        }
+        return points[index];
+    }
+
+    // 依据位置创建Portal
+    public void CreatePortal(Vector2 position)
+    {
+        PackedScene portalScene = (PackedScene)ResourceLoader.Load("res://Scenes/CosmicMap/Portal/portal.tscn");
+        if (portalScene != null)
+        {
+            // 创建传送门实例
+            Portal portalInstance = (Portal)portalScene.Instantiate();
+            portalInstance.Position = position;
+            portalInstance.partialId = portalCount;
+            AddChild(portalInstance);
+
+            // 创建星系
+            Galaxy galaxy = new Galaxy();
+            galaxy.GalaxyId = portalCount;
+            galaxy.GenerateStar();
+            galaxy.GeneratePlanets();
+
+            // 使用 Add 添加到列表末尾
+            GameManager.galaxies.Add(galaxy);
+
+            GD.Print($"Portal created successfully. ID: {portalCount}");
+
+            portalCount++;
+        }
+        else
+        {
+            GD.PrintErr("Failed to load portal scene.");
+        }
+    }
+
     // 生成星系地图
     private void GenerateCosmicMap()
     {
@@ -47,39 +90,4 @@ public partial class CosmicMap : Node2D
             GD.Print($"Galaxy {i}: Position = {points[i]}");
         }
     }
-    // 获取星系位置
-    public Vector2 GetGalaxyPosition(int index)
-    {
-        if (index < 0 || index >= points.Length)
-        {
-            GD.PrintErr("Index out of bounds: " + index);
-            return Vector2.Zero;
-        }
-        return points[index];
-    }
-    // 依据位置创建Portal
-    int portalCount = 0;
-    public void CreatePortal(Vector2 position)
-    {
-
-
-        PackedScene portalScene = (PackedScene)ResourceLoader.Load("res://Scenes/CosmicMap/Portal/portal.tscn");
-        if (portalScene != null)
-        {
-            Portal portalInstance = (Portal)portalScene.Instantiate();
-            portalInstance.Position = position;
-            portalInstance.partialId = portalCount++;
-            AddChild(portalInstance);
-            GD.Print("Portal created successfully.");
-            portalCount++;
-        }
-        else
-        {
-            GD.PrintErr("Failed to load portal scene.");
-        }
-
-    }
-
-
-
 }

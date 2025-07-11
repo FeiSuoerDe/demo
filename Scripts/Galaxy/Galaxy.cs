@@ -4,29 +4,23 @@ using System.Collections.Generic;
 
 public partial class Galaxy : Node2D
 {
- //1,星系有一颗恒星,恒星可以是红色,黄色,蓝色,白色,也可以是黑洞(使用枚举实现)
- // 2,星系有多个行星,行星可以是类地行星,气态巨行星,冰冻巨行星,岩石行星(使用枚举实现)
- // 3,行星可以有卫星,卫星可以是天然卫星(如月球),也可以是人工卫星(如空间站)(使用枚举实现)
- //4,行星有距离恒星距离,体积,质量,自传转速,公转周期等属性(使用类实现)
-    
- //行星list
- public List<Planet> Planets { get; set; } = new List<Planet>();
- 
- // 恒星对象
+    //1,星系有一颗恒星,恒星可以是红色,黄色,蓝色,白色,也可以是黑洞(使用枚举实现)
+    // 2,星系有多个行星,行星可以是类地行星,气态巨行星,冰冻巨行星,岩石行星(使用枚举实现)
+    // 3,行星可以有卫星,卫星可以是天然卫星(如月球),也可以是人工卫星(如空间站)(使用枚举实现)
+    //4,行星有距离恒星距离,体积,质量,自传转速,公转周期等属性(使用类实现)
+
+    //行星list
+    public List<Planet> Planets { get; set; } = new List<Planet>();
+
+    // 恒星对象
     public Star CentralStar { get; set; }
-  
-    
+
+
     //随机数对象
     private Random random = new Random();
+    // 星系id
+    public int GalaxyId { get; set; }
 
-
-    public override void _Ready()
-    {
-        GenerateStar();
-        GeneratePlanets();
-        PrintGalaxyInfo();
-        
-    }
 
     //生成恒星
     public void GenerateStar()
@@ -64,34 +58,14 @@ public partial class Galaxy : Node2D
                 RotationSpeed = (float)(random.NextDouble() * 1 + 10), // 自转转速范围1到101
                 RevolutionPeriod = (float)(random.NextDouble() * 365 + 1) // 公转周期范围1到366
             };
-            
-            // 有20%的概率生成卫星
-            // if (random.NextDouble() < 0.2)
-            // {
-            //     int satelliteCount = random.Next(1, 4); // 随机生成1到3颗卫星
-            //     for (int j = 0; j < satelliteCount; j++)
-            //     {
-            //         Planet satellite = new Planet
-            //         {
-            //             Name = "卫星" + (j + 1) + " of " + planet.Name,
-            //             Type = (Planet.PlanetType)random.Next(0, 4), // 随机选择卫星类型
-            //             DistanceFromStar = planet.DistanceFromStar + (float)(random.NextDouble() * 100 + 1), // 卫星距离恒星的距离
-            //             Volume = (float)(random.NextDouble() * 100 + 1), // 卫星体积范围1到101
-            //             Mass = (float)(random.NextDouble() * 5 + 1), // 卫星质量范围1到6
-            //             RotationSpeed = (float)(random.NextDouble() * 50 + 1), // 卫星自转转速范围1到51
-            //             RevolutionPeriod = (float)(random.NextDouble() * 30 + 1) // 卫星公转周期范围1到31
-            //         };
-            //         planet.Satellites.Add(satellite);
-            //     }
-            // }
-            
+
+
             Planets.Add(planet);
         }
-        CreatePlanets(); // 创建行星实体
-        
+
     }
-    
-    
+
+
     //依照列表,创建planet实体
     public void CreatePlanets()
     {
@@ -126,9 +100,9 @@ public partial class Galaxy : Node2D
             planetInstance.Rotation = 0; // 初始化行星自转角度
         }
     }
-    
-    
-    
+
+
+
     //打印整个星系信息
     public void PrintGalaxyInfo()
     {
@@ -147,8 +121,8 @@ public partial class Galaxy : Node2D
             }
         }
     }
-    
-    
+
+
 }
 // 恒星类
 public class Star

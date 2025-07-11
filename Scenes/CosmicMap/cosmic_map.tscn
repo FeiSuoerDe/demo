@@ -4,5 +4,5 @@
 
 [node name="CosmicMap" type="Node2D"]
 script = ExtResource("1_pr83u")
-mapSize = Vector2(5000, 5000)
-galaxyCount = 100
+mapSize = Vector2(7000, 7000)
+galaxyCount = 400

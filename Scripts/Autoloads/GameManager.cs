@@ -1,11 +1,14 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using TimelapseInvoices.Scripts.Autoloads;
 
 public partial class GameManager : Node
 {
+    
     public static NodeController NodeController = new NodeController();
     public static GameManager Instance;
+    public static List<Galaxy> galaxies = new List<Galaxy>();
     private VersionInfo versionInfo = new VersionInfo();
     public override void _Ready()
     {

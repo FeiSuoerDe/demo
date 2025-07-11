@@ -11,7 +11,8 @@ public partial class Portal : Node2D
     // area 进入时触发
     public void _on_area_2d_body_entered(Node body)
     {
-        GD.Print($"传送门 {partialId} 被 {body.Name} 进入");
+        GameManager.galaxies[partialId].PrintGalaxyInfo();
+
     }
 
 
