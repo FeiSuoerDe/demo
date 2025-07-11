@@ -1,7 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-*.user
 obj/
 bin/
+.idea/
+*.user
 *.suo
+/Documents

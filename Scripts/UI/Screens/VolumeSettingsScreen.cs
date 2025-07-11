@@ -2,8 +2,8 @@ using System;
 using Contexts;
 using demo.UI.Components;
 using Godot;
-using inFras.Nodes.UI.Screens;
-using TO.Nodes.Abstractions.Nodes.UI.Screens;
+using TO.Nodes.Abstractions.UI.Screens;
+using TO.Services.UI.Screens;
 
 namespace demo.UI.Screens
 {
@@ -91,7 +91,7 @@ namespace demo.UI.Screens
             if (AmbientSliderComponents != null) AmbientSliderComponents.ValueChanged += EmitOnAmbientVolumeChanged;
             if (MuteCheckBox != null) MuteCheckBox.Toggled += HandleMuteToggled;
              if (BackButton != null) BackButton.Pressed += HandleBackButtonPressed;
-            NodeScope = NodeContexts.Instance.RegisterNode<IVolumeSettingsScreen, NodeVolumeSettingsScreenRepo>(this);
+            NodeScope = Contexts.Contexts.Instance.RegisterNode<IVolumeSettingsScreen, NodeVolumeSettingsScreenService>(this);
 
         }
 
