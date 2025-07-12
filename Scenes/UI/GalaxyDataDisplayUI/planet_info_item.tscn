@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg6lj0movobba"]
+
+[ext_resource type="Script" uid="uid://copwk3eafh0ga" path="res://Scripts/UI/GalaxyDataDisplayUI/PlanetInfoItem.cs" id="1_ll0sn"]
+
+[node name="planetInfoItem" type="HBoxContainer" node_paths=PackedStringArray("planetNameLabel", "planetTypeLabel", "distanceFromStarLabel", "volumeLabel", "massLabel", "rotationSpeedLabel", "revolutionPeriodLabel")]
+offset_right = 94.0
+offset_bottom = 49.0
+script = ExtResource("1_ll0sn")
+planetNameLabel = NodePath("planetNameLabel")
+planetTypeLabel = NodePath("planetTypeLabel")
+distanceFromStarLabel = NodePath("distanceFromStarLabel")
+volumeLabel = NodePath("volumeLabel")
+massLabel = NodePath("massLabel")
+rotationSpeedLabel = NodePath("rotationSpeedLabel")
+revolutionPeriodLabel = NodePath("revolutionPeriodLabel")
+
+[node name="planetNameLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"
+
+[node name="planetTypeLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"
+
+[node name="distanceFromStarLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"
+
+[node name="volumeLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"
+
+[node name="massLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"
+
+[node name="rotationSpeedLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"
+
+[node name="revolutionPeriodLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "3
+"

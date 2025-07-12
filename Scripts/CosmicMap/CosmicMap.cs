@@ -65,7 +65,6 @@ public partial class CosmicMap : Node2D
             // 使用 Add 添加到列表末尾
             GameManager.galaxies.Add(galaxy);
 
-            GD.Print($"Portal created successfully. ID: {portalCount}");
 
             portalCount++;
         }

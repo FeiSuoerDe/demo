@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using TimelapseInvoices.Scripts.Autoloads;
 
 // 传送门！
 public partial class Portal : Node2D
@@ -12,6 +13,20 @@ public partial class Portal : Node2D
     public void _on_area_2d_body_entered(Node body)
     {
         GameManager.galaxies[partialId].PrintGalaxyInfo();
+        PackedScene GalaxyDataDisplayUI = (PackedScene)ResourceLoader.Load(NodeController.Instance.NodeDictionary["GalaxyDataDisplayUI"]);
+        if (GalaxyDataDisplayUI != null)
+        {
+            GalaxyDataDisplayUi galaxyDataDisplayUiInstance = (GalaxyDataDisplayUi)GalaxyDataDisplayUI.Instantiate();
+            galaxyDataDisplayUiInstance.DisplayGalaxyData(partialId);
+            GetTree().Root.AddChild(galaxyDataDisplayUiInstance);
+            galaxyDataDisplayUiInstance.Show();
+            GD.Print("星系数据展示UI已显示，ID: " + partialId);
+        }
+        else
+        {
+            GD.PrintErr("无法加载星系数据展示UI场景");
+        }
+
 
     }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class Planet : Node2D
 {
-    public string Name { get; set; } // 行星名称
+    public string PName { get; set; } // 行星名称
     public PlanetType Type { get; set; } // 行星类型
     public float DistanceFromStar { get; set; } // 距离恒星的距离
     public float Volume { get; set; } // 体积

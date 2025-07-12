@@ -31,7 +31,10 @@ public partial class NodeController : Node
         {"MainCamera","res://Scenes/Camera/main_camera_2d.tscn"} ,
         {"CosmicMap","res://Scenes/CosmicMap/cosmic_map.tscn" },
         { "Portal","res://Scenes/CosmicMap/Portal/portal.tscn"},
-        {"MapContShip","res://Scenes/CosmicMap/MapContShip/map_cont_ship.tscn" }
+        {"MapContShip","res://Scenes/CosmicMap/MapContShip/map_cont_ship.tscn" },{
+            "GalaxyDataDisplayUI", "res://Scenes/UI/GalaxyDataDisplayUI/galaxy_data_display_ui.tscn" },
+        {"PlanetInfoItem", "res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" },
+
     };
 
 

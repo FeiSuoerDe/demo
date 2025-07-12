@@ -110,7 +110,7 @@ public partial class Galaxy : Node2D
         GD.Print("行星信息:");
         foreach (var planet in Planets)
         {
-            GD.Print($"行星名称: {planet.Name}, 类型: {planet.Type}, 距离恒星: {planet.DistanceFromStar}, 体积: {planet.Volume}, 质量: {planet.Mass}, 自转转速: {planet.RotationSpeed}, 公转周期: {planet.RevolutionPeriod}");
+            GD.Print($"行星名称: {planet.PName}, 类型: {planet.Type}, 距离恒星: {planet.DistanceFromStar}, 体积: {planet.Volume}, 质量: {planet.Mass}, 自转转速: {planet.RotationSpeed}, 公转周期: {planet.RevolutionPeriod}");
             if (planet.Satellites.Count > 0)
             {
                 GD.Print("卫星信息:");

@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkq86wki3psmi"]
+
+[ext_resource type="Script" uid="uid://b65qnqonlfod1" path="res://Scripts/UI/GalaxyDataDisplayUI/GalaxyDataDisplayUi.cs" id="1_8rcn2"]
+[ext_resource type="PackedScene" uid="uid://dg6lj0movobba" path="res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" id="2_tpgqa"]
+
+[node name="GalaxyDataDisplayUI" type="Control" node_paths=PackedStringArray("closeButton", "galaxyNameLabel", "planetInfoContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rcn2")
+closeButton = NodePath("quit")
+galaxyNameLabel = NodePath("CanvasLayer/Panel/VBoxContainer/HBoxContainer/NameString")
+planetInfoContainer = NodePath("CanvasLayer/Panel/VBoxContainer2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 126.0
+offset_right = 104.0
+offset_bottom = 166.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NameString" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "qwrqerq"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 2
+offset_left = 61.0
+offset_top = 192.0
+offset_right = 155.0
+offset_bottom = 241.0
+
+[node name="planetInfoItem" parent="CanvasLayer/Panel/VBoxContainer2" instance=ExtResource("2_tpgqa")]
+layout_mode = 2
+alignment = 1
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 4.0
+theme_override_font_sizes/font_size = 50
+text = " X "
