@@ -15,7 +15,7 @@ public partial class LoadingScreen : UIScreen, ILoadingScreen
     public override void _Ready()
     {
         // NodeScope = NodeContexts.Instance.RegisterNode<ILoadingScreen, NodeLoadingScreenRepo>(this);
-        NodeScope = Contexts.Contexts.Instance.RegisterNode<ILoadingScreen, NodeLoadingScreenService>(this);
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<ILoadingScreen, NodeLoadingScreenService>(this);
     }
     
     public void SetProgressBar(double progress)

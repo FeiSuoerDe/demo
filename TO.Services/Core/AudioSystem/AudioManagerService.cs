@@ -287,19 +287,7 @@ public class AudioManagerService(
     }
 
     #region IDataAccess Implementation
-    public GDTask LoadAsync<T>(T target) where T : class?
-    {
-        if (target is not UserSettings.AudioSettings settings) return GDTask.CompletedTask;
-        // 应用设置到音频系统
-        SetVolume(AudioEnums.AudioType.Master, settings.MasterVolume);
-        SetVolume(AudioEnums.AudioType.Music, settings.MusicVolume);
-        SetVolume(AudioEnums.AudioType.SoundEffect, settings.SfxVolume);
-        SetVolume(AudioEnums.AudioType.Voice, settings.VoiceVolume);
-        SetVolume(AudioEnums.AudioType.Ambient, settings.AmbienceVolume);
-        SetMute(settings.Mute);
-        return GDTask.CompletedTask;
-    }
-
+    
     public async GDTask<T?> SaveAsync<T>() where T : class
     {
         var audioSettings = new UserSettings.AudioSettings
@@ -314,19 +302,6 @@ public class AudioManagerService(
         
         var result =  await GDTask.FromResult(audioSettings);
         return result as T;
-    }
-
-    public bool Exists(string dataKey)
-    {
-        return audioManagerRepo.AudioCache.ContainsKey(dataKey);
-    }
-
-    public void Delete(string dataKey)
-    {
-        if (audioManagerRepo.AudioCache.ContainsKey(dataKey))
-        {
-            audioManagerRepo.AudioCache.Remove(dataKey);
-        }
     }
     
     #endregion

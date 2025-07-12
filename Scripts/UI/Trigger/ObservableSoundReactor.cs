@@ -40,6 +40,6 @@ public partial class ObservableSoundReactor : Node , IObservableSoundReactor
         Trigger ??= GetParent() as ObservableTrigger;
         if (Trigger == null) throw new Exception("TriggerNode is null");
         
-        NodeScope = Contexts.Contexts.Instance.RegisterNode<IObservableSoundReactor, NodeObservableSoundReactorService>(this);
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IObservableSoundReactor, NodeObservableSoundReactorService>(this);
     }
 }

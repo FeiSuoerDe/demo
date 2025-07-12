@@ -91,7 +91,7 @@ namespace demo.UI.Screens
             if (AmbientSliderComponents != null) AmbientSliderComponents.ValueChanged += EmitOnAmbientVolumeChanged;
             if (MuteCheckBox != null) MuteCheckBox.Toggled += HandleMuteToggled;
              if (BackButton != null) BackButton.Pressed += HandleBackButtonPressed;
-            NodeScope = Contexts.Contexts.Instance.RegisterNode<IVolumeSettingsScreen, NodeVolumeSettingsScreenService>(this);
+            NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IVolumeSettingsScreen, NodeVolumeSettingsScreenService>(this);
 
         }
 

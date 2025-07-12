@@ -7,54 +7,32 @@ using TO.Services.Bases;
 
 namespace TO.Services.Core.SerializationSystem;
 
-public class SaveManagerService : BaseService,ISaveManagerService
+public class SaveManagerService(
+    ISaveManagerRepo saveManagerRepo,
+    ISaveDataReaderRepo saveDataReaderRepo,
+    ISaveDataWriterRepo saveDataWriterRepo)
+    : BaseService, ISaveManagerService
 {
-
-    private readonly ISaveManagerRepo _saveManagerRepo;
-    private readonly ISaveDataReaderRepo _saveDataReaderRepo;
-    private readonly ISaveDataWriterRepo _saveDataWriterRepo;
-
-    public SaveManagerService(
-        ISaveManagerRepo saveManagerRepo, ISaveDataReaderRepo saveDataReaderRepo,
-        ISaveDataWriterRepo saveDataWriterRepo)
-    {
-        
-        _saveManagerRepo = saveManagerRepo;
-        _saveDataReaderRepo = saveDataReaderRepo;
-        _saveDataWriterRepo = saveDataWriterRepo;
-        _saveManagerRepo.Ready += OnReady;
-        
-    }
-
-    private async void OnReady()
-    {
-        await LoadAutosaveAsync();
-    }
-
-    public async Task LoadAutosaveAsync()
+    
+    public async Task<UserSettings?> LoadUserSettingsAsync()
     {
         using var config = new SaveStorageConfig();
         config.CurrentPath = config.UserSettingsPath;
         config.CurrentFilename = config.UserSettingsFilename;
-        var userSettings = await _saveDataReaderRepo.ReadJsonFromPathAsync<UserSettings>(config);
+        return await saveDataReaderRepo.ReadJsonFromPathAsync<UserSettings>(config);
         
     }
+    
 
-    public async Task SaveAutosaveAsync()
+    public async Task SaveUserSettingsAsync(UserSettings userSettings)
     {
         using var config = new SaveStorageConfig();
         config.CurrentPath = config.UserSettingsPath;
         config.CurrentFilename = config.UserSettingsFilename;
         
-        var userSettings = new UserSettings();
-        
-
-        await _saveDataWriterRepo.WriteJsonToPathAsync(config,userSettings);
+        await saveDataWriterRepo.WriteJsonToPathAsync(config,userSettings);
         
     }
 
-    protected override void UnSubscriber()
-    {
-        _saveManagerRepo.Ready -= OnReady;
-    }
+  
 }

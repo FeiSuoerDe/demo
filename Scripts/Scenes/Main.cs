@@ -10,7 +10,7 @@ public partial class Main : Node, IMain
     public ILifetimeScope? NodeScope { get; set; }
     public override void _Ready()
     {
-        NodeScope = Contexts.Contexts.Instance.RegisterNode<IMain, NodeMainService>(this);
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IMain, NodeMainService>(this);
     }
 
 }

@@ -30,7 +30,7 @@ public partial class ObservableTrigger : Node,IObservableTrigger
 
 		TriggerControl ??= GetParent() as Control;
 		if (TriggerControl == null) throw new Exception("TriggerControl is null");
-		NodeScope = Contexts.Contexts.Instance.RegisterNode<IObservableTrigger, NodeObservableTriggerService>(this);
+		NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IObservableTrigger, NodeObservableTriggerService>(this);
 
 	}
 	

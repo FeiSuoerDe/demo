@@ -1,11 +1,13 @@
 using Autofac;
+using Contexts;
 using TO.Commons;
 using TO.Nodes.Abstractions.Bases;
 using TO.Repositories.Bases;
+using TO.Services.Abstractions.Core.SequenceSystem;
 using TO.Services.Abstractions.Core.UISystem;
 using TO.Services.Bases;
 
-namespace Contexts;
+namespace TO.Contexts;
 
 public class Contexts : LazySingleton<Contexts>
 {
@@ -28,6 +30,7 @@ public class Contexts : LazySingleton<Contexts>
         
         _nodeRegister = Container.Resolve<NodeRegister>();
         Container.Resolve<IUIManagerService>();
+        Container.Resolve<ISequenceManagerService>();
     }
     
     public ILifetimeScope RegisterNode<TNode, TRepo, TService>(TNode scene)

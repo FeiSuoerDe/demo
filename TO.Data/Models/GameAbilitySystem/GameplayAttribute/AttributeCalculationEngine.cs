@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TO.Commons.Enums.Game;
 
 namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute

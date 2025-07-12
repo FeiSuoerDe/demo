@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Godot.NET.Sdk/4.4.1">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
@@ -10,7 +10,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TO.Commands\TO.Commands.csproj" />
+      <ProjectReference Include="..\TO.Data\TO.Data.csproj" />
       <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
+      <ProjectReference Include="..\TO.Services\TO.Services.csproj" />
       <ProjectReference Include="..\TO.Services.Abstractions\TO.Services.Abstractions.csproj" />
     </ItemGroup>
 

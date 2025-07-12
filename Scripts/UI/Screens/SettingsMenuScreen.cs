@@ -31,7 +31,7 @@ public partial class SettingsMenuScreen : Bases.UIScreen, ISettingsMenuScreen
         if (AudioButton != null) AudioButton.Pressed += EmitAudioButtonPressed;
          if (VideoButton != null) VideoButton.Pressed += EmitVideoButtonPressed;
          if (BackButton != null) BackButton.Pressed += EmitBackButtonPressed;
-        NodeScope = Contexts.Contexts.Instance.RegisterNode<ISettingsMenuScreen, NodeSettingsMenuScreenService>(this);
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<ISettingsMenuScreen, NodeSettingsMenuScreenService>(this);
     }
 
     public override void _ExitTree()
