@@ -33,6 +33,8 @@ public partial class GalaxyDataDisplayUi : Control
         // 获取星系数据
         Galaxy galaxy = GameManager.galaxies[galaxyId];
         GD.Print("正在显示星系数据，ID: " + galaxyId);
+        // 设置星系名称
+        galaxyNameLabel.Text = galaxy.GalaxyName;
         foreach (Planet planet in galaxy.Planets)
         {
             PackedScene packedScene = (PackedScene)ResourceLoader.Load(NodeController.Instance.NodeDictionary["PlanetInfoItem"]);
@@ -44,7 +46,7 @@ public partial class GalaxyDataDisplayUi : Control
                 planetInfoContainer.AddChild(planetInfoItem);
                 // 设置星球信息
                 planetInfoItem.SetPlanetInfo(planet.PName, planet.Type.ToString(), planet.DistanceFromStar, planet.Mass, planet.RotationSpeed, planet.RevolutionPeriod, planet.Volume);
-                
+
 
             }
             else

@@ -25,6 +25,15 @@ public partial class CosmicMap : Node2D
         GD.Print("CosmicMap is ready.");
         GenerateCosmicMap();
         GD.Print("CosmicMap generation complete.");
+        // 读取星系名称文件使用逗号分隔,相对路径为Data\GalaxyName.txt
+        // string galaxyNamesPath = @"Data\GalaxyName.txt";
+
+        string galaxyNamesContent = System.IO.File.ReadAllText(@"Data\GalaxyName.txt");
+        galaxyNames = galaxyNamesContent.Split(',');
+        GD.Print("Galaxy names loaded: " + string.Join(", ", galaxyNames));
+
+
+
         // 创建所有星系的Portal
         for (int i = 0; i < galaxyCount; i++)
         {
@@ -43,7 +52,8 @@ public partial class CosmicMap : Node2D
         }
         return points[index];
     }
-
+    // 星系名称list
+    public string[] galaxyNames = new string[] { };
     // 依据位置创建Portal
     public void CreatePortal(Vector2 position)
     {
@@ -58,6 +68,16 @@ public partial class CosmicMap : Node2D
 
             // 创建星系
             Galaxy galaxy = new Galaxy();
+            //    获取星系名字使用全局随机数
+            if (galaxyNames.Length > 0)
+            {
+                int randomIndex = GameManager.GlobalRandom.Next(galaxyNames.Length);
+                galaxy.GalaxyName = galaxyNames[randomIndex].Trim();
+            }
+            else
+            {
+                galaxy.GalaxyName = "Galaxy_" + portalCount; // 默认名称
+            }
             galaxy.GalaxyId = portalCount;
             galaxy.GenerateStar();
             galaxy.GeneratePlanets();
@@ -78,13 +98,12 @@ public partial class CosmicMap : Node2D
     private void GenerateCosmicMap()
     {
         GD.Print("Generating cosmic map with seed: " + seed);
-        Random random = new Random(seed);
         points = new Vector2[galaxyCount];
 
         for (int i = 0; i < galaxyCount; i++)
         {
-            float x = (float)random.NextDouble() * mapSize.X;
-            float y = (float)random.NextDouble() * mapSize.Y;
+            float x = (float)GameManager.GlobalRandom.NextDouble() * mapSize.X;
+            float y = (float)GameManager.GlobalRandom.NextDouble() * mapSize.Y;
             points[i] = new Vector2(x, y);
             GD.Print($"Galaxy {i}: Position = {points[i]}");
         }

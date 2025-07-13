@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkq86wki3psmi"]
+[gd_scene load_steps=2 format=3 uid="uid://dkq86wki3psmi"]
 
 [ext_resource type="Script" uid="uid://b65qnqonlfod1" path="res://Scripts/UI/GalaxyDataDisplayUI/GalaxyDataDisplayUi.cs" id="1_8rcn2"]
-[ext_resource type="PackedScene" uid="uid://dg6lj0movobba" path="res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" id="2_tpgqa"]
 
 [node name="GalaxyDataDisplayUI" type="Control" node_paths=PackedStringArray("closeButton", "galaxyNameLabel", "planetInfoContainer")]
 layout_mode = 3
@@ -47,10 +46,6 @@ offset_left = 61.0
 offset_top = 192.0
 offset_right = 155.0
 offset_bottom = 241.0
-
-[node name="planetInfoItem" parent="CanvasLayer/Panel/VBoxContainer2" instance=ExtResource("2_tpgqa")]
-layout_mode = 2
-alignment = 1
 
 [node name="quit" type="Button" parent="."]
 layout_mode = 0

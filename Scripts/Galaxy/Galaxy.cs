@@ -17,10 +17,11 @@ public partial class Galaxy : Node2D
 
 
     //随机数对象
-    private Random random = new Random();
+    private Random random = GameManager.GlobalRandom;
     // 星系id
     public int GalaxyId { get; set; }
-
+    // 星系名称
+    public string GalaxyName { get; set; }
 
     //生成恒星
     public void GenerateStar()
@@ -50,7 +51,7 @@ public partial class Galaxy : Node2D
 
             Planet planet = new Planet
             {
-                Name = "行星" + (i + 1),
+                PName = GalaxyName + "-" + (i + 1),
                 Type = (Planet.PlanetType)random.Next(0, 4), // 随机选择行星类型
                 DistanceFromStar = distance, // 距离恒星递增
                 Volume = (float)(random.NextDouble() * 1000 + 1), // 体积范围1到1001

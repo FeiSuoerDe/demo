@@ -5,13 +5,16 @@ using TimelapseInvoices.Scripts.Autoloads;
 
 public partial class GameManager : Node
 {
-    
+
     public static NodeController NodeController = new NodeController();
     public static GameManager Instance;
     public static List<Galaxy> galaxies = new List<Galaxy>();
     private VersionInfo versionInfo = new VersionInfo();
+    // 全局随机数
+    public static Random GlobalRandom = new Random(0);
     public override void _Ready()
     {
+        // 给随机数设置种子
         if (Instance == null)
         {
             Instance = this;
