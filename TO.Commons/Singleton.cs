@@ -1,6 +1,6 @@
 namespace TO.Commons;
 
-public class LazySingleton<T> :IDisposable where T : new()
+public class LazySingleton<T> : IDisposable where T : new()
 {
     private bool _disposed;
     protected static T? instance;

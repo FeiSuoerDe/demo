@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TO.Commands\TO.Commands.csproj" />
     <ProjectReference Include="..\TO.Data\TO.Data.csproj" />
+    <ProjectReference Include="..\TO.Data.Abstractions\TO.Data.Abstractions.csproj" />
     <ProjectReference Include="..\TO.Events\TO.Events.csproj" />
     <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
     <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
@@ -14,5 +15,8 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\GameAbilitySystem\GameplayTasks\" />
   </ItemGroup>
 </Project>

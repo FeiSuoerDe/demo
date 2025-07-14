@@ -1,9 +1,9 @@
-using Autofac;
 using System.Reflection;
+using Autofac;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using MediatR.Extensions.Autofac.DependencyInjection.Builder;
 
-namespace Contexts;
+namespace TO.Contexts;
 
 public class MediatorModule : Autofac.Module
 {

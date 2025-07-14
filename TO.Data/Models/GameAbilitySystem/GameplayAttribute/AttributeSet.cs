@@ -1,4 +1,6 @@
+using Godot;
 using TO.Commons.Enums.Game;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
 
 namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
@@ -6,7 +8,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
     /// <summary>
     /// 属性集抽象基类
     /// </summary>
-    public abstract class AttributeSet
+    public abstract partial class AttributeSet : Resource
     {
         /// <summary>
         /// 属性集唯一标识
@@ -14,9 +16,9 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         public Guid Id { get; }
         
         /// <summary>
-        /// 属性字典
+        /// 属性列表 - 优化后移除冗余的AttributeType键
         /// </summary>
-        protected Dictionary<AttributeType, AttributeValue> Attributes { get; }
+        protected List<AttributeValue> Attributes { get; }
         
         /// <summary>
         /// 应用的效果列表
@@ -35,18 +37,50 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         protected AttributeSet(Guid id)
         {
             Id = id;
-            Attributes = new Dictionary<AttributeType, AttributeValue>();
+            Attributes = new List<AttributeValue>();
             AppliedEffects = new List<AttributeEffect?>();
         }
-        
+
+        public AttributeSet()
+        {
+        }
+
         /// <summary>
         /// 获取属性值
         /// </summary>
         /// <param name="type">属性类型</param>
         /// <returns>属性值，如果不存在则返回null</returns>
-        public AttributeValue? GetAttribute(AttributeType type)
+        public AttributeValue GetAttribute(AttributeType type)
         {
-            return Attributes.GetValueOrDefault(type);
+            return Attributes.FirstOrDefault(attr => attr.AttributeType == type);
+        }
+        
+        /// <summary>
+        /// 检查是否拥有指定属性
+        /// </summary>
+        /// <param name="type">属性类型</param>
+        /// <returns>是否拥有该属性</returns>
+        public bool HasAttribute(AttributeType type)
+        {
+            return Attributes.Any(attr => attr.AttributeType == type);
+        }
+        
+        /// <summary>
+        /// 获取所有属性类型
+        /// </summary>
+        /// <returns>属性类型集合</returns>
+        public IEnumerable<AttributeType> GetAllAttributeTypes()
+        {
+            return Attributes.Select(attr => attr.AttributeType);
+        }
+        
+        /// <summary>
+        /// 获取所有属性值
+        /// </summary>
+        /// <returns>属性值集合</returns>
+        public IEnumerable<AttributeValue> GetAllAttributeValues()
+        {
+            return Attributes;
         }
         
         /// <summary>
@@ -58,13 +92,14 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         {
             var oldValue = GetAttributeCurrentValue(type);
             
-            if (Attributes.TryGetValue(type, out var attribute))
+            var attribute = GetAttribute(type);
+            if (attribute != null)
             {
                 attribute.SetBaseValue(value);
             }
             else
             {
-                Attributes[type] = new AttributeValue(value);
+                Attributes.Add(new AttributeValue(type, value));
             }
             
             // 重新计算当前值
@@ -72,6 +107,24 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             
             var newValue = GetAttributeCurrentValue(type);
             OnAttributeChanged(type, oldValue, newValue);
+        }
+        
+        /// <summary>
+        /// 设置属性值范围
+        /// </summary>
+        /// <param name="type">属性类型</param>
+        /// <param name="minValue">最小值</param>
+        /// <param name="maxValue">最大值</param>
+        public void SetAttributeRange(AttributeType type, float minValue, float maxValue)
+        {
+            var attribute = GetAttribute(type);
+            if (attribute != null)
+            {
+                attribute.SetValueRange(minValue, maxValue);
+                
+                // 重新计算当前值以应用新的范围限制
+                RecalculateAttribute(type);
+            }
         }
         
         /// <summary>
@@ -101,11 +154,19 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="type">属性类型</param>
         /// <param name="baseValue">基础值</param>
-        protected void InitializeAttribute(AttributeType type, float baseValue)
+        /// <param name="minValue">最小值</param>
+        /// <param name="maxValue">最大值</param>
+        protected void InitializeAttribute(AttributeType type, float baseValue, float minValue = float.MinValue, float maxValue = float.MaxValue)
         {
-            if (!Attributes.ContainsKey(type))
+            var attribute = GetAttribute(type);
+            if (attribute == null)
             {
-                Attributes[type] = new AttributeValue(baseValue);
+                Attributes.Add(new AttributeValue(type, baseValue, minValue, maxValue));
+            }
+            else
+            {
+                attribute.SetValueRange(minValue, maxValue);
+                attribute.SetBaseValue(baseValue);
             }
         }
         
@@ -116,10 +177,11 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="value">新值</param>
         protected void UpdateAttribute(AttributeType type, float value)
         {
-            if (Attributes.ContainsKey(type))
+            var attribute = GetAttribute(type);
+            if (attribute != null)
             {
-                var oldValue = Attributes[type].CurrentValue;
-                Attributes[type].SetCurrentValue(value);
+                var oldValue = attribute.CurrentValue;
+                attribute.SetCurrentValue(value);
                 OnAttributeChanged(type, oldValue, value);
             }
         }
@@ -306,10 +368,19 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <summary>
         /// 获取所有属性的副本
         /// </summary>
-        /// <returns>属性字典的副本</returns>
-        public Dictionary<AttributeType, AttributeValue> GetAllAttributes()
+        /// <returns>属性列表的副本</returns>
+        public List<AttributeValue> GetAllAttributes()
         {
-            return new Dictionary<AttributeType, AttributeValue>(Attributes);
+            return new List<AttributeValue>(Attributes);
+        }
+        
+        /// <summary>
+        /// 获取所有属性的字典形式（为了兼容性）
+        /// </summary>
+        /// <returns>属性字典</returns>
+        public Dictionary<AttributeType, AttributeValue> GetAllAttributesAsDictionary()
+        {
+            return Attributes.ToDictionary(attr => attr.AttributeType, attr => attr);
         }
         
         /// <summary>
