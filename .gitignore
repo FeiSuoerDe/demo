@@ -7,3 +7,8 @@ bin/
 *.user
 *.suo
 /Documents
+
+.idea/
+.vscode/
+.trae/
+.taskmaster/

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Godot.NET.Sdk/4.4.1">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
@@ -7,11 +7,25 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="xunit" Version="2.4.2" />
+      <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TO.Commons\TO.Commons.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\GameAbilitySystem\GameplayAbility\" />
+      <Folder Include="Models\GameAbilitySystem\GameplayTasks\" />
     </ItemGroup>
 
 </Project>

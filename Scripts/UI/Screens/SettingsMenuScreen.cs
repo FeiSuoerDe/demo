@@ -2,7 +2,6 @@
 // 功能: 设置菜单界面，包含音频、视频设置和返回按钮
 
 using System;
-using Contexts;
 using Godot;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Services.UI.Screens;
@@ -31,7 +30,7 @@ public partial class SettingsMenuScreen : Bases.UIScreen, ISettingsMenuScreen
         if (AudioButton != null) AudioButton.Pressed += EmitAudioButtonPressed;
          if (VideoButton != null) VideoButton.Pressed += EmitVideoButtonPressed;
          if (BackButton != null) BackButton.Pressed += EmitBackButtonPressed;
-        NodeScope = Contexts.Contexts.Instance.RegisterNode<ISettingsMenuScreen, NodeSettingsMenuScreenService>(this);
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<ISettingsMenuScreen, NodeSettingsMenuScreenService>(this);
     }
 
     public override void _ExitTree()

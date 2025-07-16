@@ -17,7 +17,7 @@ public partial class SceneManager : Node, ISceneManager
     
     public override void _Ready()
     {
-        Contexts.Contexts.Instance.RegisterSingleNode<ISceneManager>(this);
+        TO.Contexts.Contexts.Instance.RegisterSingleNode<ISceneManager>(this);
     }
     
 }

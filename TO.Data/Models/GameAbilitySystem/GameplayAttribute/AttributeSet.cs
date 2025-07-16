@@ -1,12 +1,15 @@
+using Godot;
 using TO.Commons.Enums.Game;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
+using System.Text;
 
 
 namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
 {
     /// <summary>
-    /// 属性集抽象基类
+    /// 属性集
     /// </summary>
-    public abstract class AttributeSet
+    public class AttributeSet
     {
         /// <summary>
         /// 属性集唯一标识
@@ -14,31 +17,33 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         public Guid Id { get; }
         
         /// <summary>
-        /// 属性字典
+        /// 属性列表 - 优化后移除冗余的AttributeType键
         /// </summary>
-        protected Dictionary<AttributeType, AttributeValue> Attributes { get; }
+        public List<AttributeValue> Attributes { get; }
         
         /// <summary>
         /// 应用的效果列表
         /// </summary>
-        protected List<AttributeEffect?> AppliedEffects { get; }
+        public List<AttributeEffect?> AppliedEffects { get; }
         
         /// <summary>
         /// 属性变化事件
         /// </summary>
         public event Action<AttributeType, float, float> AttributeChanged;
-        
+
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="id">属性集ID</param>
-        protected AttributeSet(Guid id)
+        /// <param name="attributes"></param>
+        public AttributeSet(List<AttributeValue> attributes)
         {
-            Id = id;
-            Attributes = new Dictionary<AttributeType, AttributeValue>();
-            AppliedEffects = new List<AttributeEffect?>();
+            Id = Guid.NewGuid();
+            Attributes = attributes;
+            AppliedEffects = [];
+            AttributeChanged = delegate { };
         }
-        
+
+
         /// <summary>
         /// 获取属性值
         /// </summary>
@@ -46,7 +51,35 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <returns>属性值，如果不存在则返回null</returns>
         public AttributeValue? GetAttribute(AttributeType type)
         {
-            return Attributes.GetValueOrDefault(type);
+            return Attributes.FirstOrDefault(attr => attr.AttributeType == type);
+        }
+        
+        /// <summary>
+        /// 检查是否拥有指定属性
+        /// </summary>
+        /// <param name="type">属性类型</param>
+        /// <returns>是否拥有该属性</returns>
+        public bool HasAttribute(AttributeType type)
+        {
+            return Attributes.Any(attr => attr.AttributeType == type);
+        }
+        
+        /// <summary>
+        /// 获取所有属性类型
+        /// </summary>
+        /// <returns>属性类型集合</returns>
+        public IEnumerable<AttributeType> GetAllAttributeTypes()
+        {
+            return Attributes.Select(attr => attr.AttributeType);
+        }
+        
+        /// <summary>
+        /// 获取所有属性值
+        /// </summary>
+        /// <returns>属性值集合</returns>
+        public IEnumerable<AttributeValue?> GetAllAttributeValues()
+        {
+            return Attributes;
         }
         
         /// <summary>
@@ -58,13 +91,14 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         {
             var oldValue = GetAttributeCurrentValue(type);
             
-            if (Attributes.TryGetValue(type, out var attribute))
+            var attribute = GetAttribute(type);
+            if (attribute != null)
             {
                 attribute.SetBaseValue(value);
             }
             else
             {
-                Attributes[type] = new AttributeValue(value);
+                Attributes.Add(new AttributeValue(type, value));
             }
             
             // 重新计算当前值
@@ -72,6 +106,24 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             
             var newValue = GetAttributeCurrentValue(type);
             OnAttributeChanged(type, oldValue, newValue);
+        }
+        
+        /// <summary>
+        /// 设置属性值范围
+        /// </summary>
+        /// <param name="type">属性类型</param>
+        /// <param name="minValue">最小值</param>
+        /// <param name="maxValue">最大值</param>
+        public void SetAttributeRange(AttributeType type, float minValue, float maxValue)
+        {
+            var attribute = GetAttribute(type);
+            if (attribute != null)
+            {
+                attribute.SetValueRange(minValue, maxValue);
+                
+                // 重新计算当前值以应用新的范围限制
+                RecalculateAttribute(type);
+            }
         }
         
         /// <summary>
@@ -101,11 +153,19 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="type">属性类型</param>
         /// <param name="baseValue">基础值</param>
-        protected void InitializeAttribute(AttributeType type, float baseValue)
+        /// <param name="minValue">最小值</param>
+        /// <param name="maxValue">最大值</param>
+        protected void InitializeAttribute(AttributeType type, float baseValue, float minValue = float.MinValue, float maxValue = float.MaxValue)
         {
-            if (!Attributes.ContainsKey(type))
+            var attribute = GetAttribute(type);
+            if (attribute == null)
             {
-                Attributes[type] = new AttributeValue(baseValue);
+                Attributes.Add(new AttributeValue(type, baseValue, minValue, maxValue));
+            }
+            else
+            {
+                attribute.SetValueRange(minValue, maxValue);
+                attribute.SetBaseValue(baseValue);
             }
         }
         
@@ -116,10 +176,11 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="value">新值</param>
         protected void UpdateAttribute(AttributeType type, float value)
         {
-            if (Attributes.ContainsKey(type))
+            var attribute = GetAttribute(type);
+            if (attribute != null)
             {
-                var oldValue = Attributes[type].CurrentValue;
-                Attributes[type].SetCurrentValue(value);
+                var oldValue = attribute.CurrentValue;
+                attribute.SetCurrentValue(value);
                 OnAttributeChanged(type, oldValue, value);
             }
         }
@@ -129,7 +190,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="effect">要应用的效果</param>
         /// <returns>是否成功应用</returns>
-        public virtual bool ApplyEffect(AttributeEffect? effect)
+        public bool ApplyEffect(AttributeEffect? effect)
         {
             if (effect == null)
                 return false;
@@ -159,7 +220,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="effectId">效果ID</param>
         /// <returns>是否成功移除</returns>
-        public virtual bool RemoveEffect(Guid effectId)
+        public bool RemoveEffect(Guid effectId)
         {
             var effect = AppliedEffects.FirstOrDefault(e => e.Id == effectId);
             if (effect == null)
@@ -169,7 +230,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             
             // 重新计算受影响的属性
             var affectedAttributes = effect.Modifiers.Select(m => m.AttributeType).Distinct();
-            foreach (var attributeType in affectedAttributes)
+            foreach (AttributeType attributeType in affectedAttributes)
             {
                 RecalculateAttribute(attributeType);
             }
@@ -200,12 +261,12 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
                 RemoveEffect(expiredEffect.Id);
             }
         }
-        
+
         /// <summary>
         /// 重新计算指定属性的当前值
         /// </summary>
         /// <param name="attributeType">属性类型</param>
-        protected virtual void RecalculateAttribute(AttributeType attributeType)
+        protected void RecalculateAttribute(AttributeType attributeType)
         {
             var attribute = GetAttribute(attributeType);
             if (attribute == null)
@@ -214,10 +275,11 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             var baseValue = attribute.BaseValue;
             var currentValue = baseValue;
             
-            // 获取所有影响该属性的修饰器
+            // 获取所有影响该属性的修饰器，从活跃效果中
             var modifiers = AppliedEffects
+                .Where(e => !e.IsExpired && e.Status == EffectStatus.Active)  // 假设EffectStatus.Active是活跃状态
                 .SelectMany(e => e.Modifiers)
-                .Where(m => m.AttributeType == attributeType && !m.IsExpired)
+                .Where(m => m.AttributeType == attributeType)
                 .OrderBy(m => m.ExecutionOrder)
                 .ToList();
             
@@ -228,7 +290,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             var overrideModifiers = modifiers.Where(m => m.OperationType == ModifierOperationType.Override).ToList();
             
             // 如果有覆盖修饰器，使用最后一个
-            if (overrideModifiers.Any())
+            if (overrideModifiers.Count != 0)
             {
                 currentValue = overrideModifiers.Last().Value;
             }
@@ -268,7 +330,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="existingEffect">已存在的效果</param>
         /// <param name="newEffect">新效果</param>
         /// <returns>是否成功处理</returns>
-        protected virtual bool HandleExistingEffect(AttributeEffect existingEffect, AttributeEffect? newEffect)
+        protected bool HandleExistingEffect(AttributeEffect existingEffect, AttributeEffect? newEffect)
         {
             switch (existingEffect.StackingType)
             {
@@ -298,7 +360,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="attributeType">属性类型</param>
         /// <param name="oldValue">旧值</param>
         /// <param name="newValue">新值</param>
-        protected virtual void OnAttributeChanged(AttributeType attributeType, float oldValue, float newValue)
+        private void OnAttributeChanged(AttributeType attributeType, float oldValue, float newValue)
         {
             AttributeChanged?.Invoke(attributeType, oldValue, newValue);
         }
@@ -306,10 +368,19 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <summary>
         /// 获取所有属性的副本
         /// </summary>
-        /// <returns>属性字典的副本</returns>
-        public Dictionary<AttributeType, AttributeValue> GetAllAttributes()
+        /// <returns>属性列表的副本</returns>
+        public List<AttributeValue?> GetAllAttributes()
         {
-            return new Dictionary<AttributeType, AttributeValue>(Attributes);
+            return new List<AttributeValue?>(Attributes);
+        }
+        
+        /// <summary>
+        /// 获取所有属性的字典形式（为了兼容性）
+        /// </summary>
+        /// <returns>属性字典</returns>
+        public Dictionary<AttributeType, AttributeValue?> GetAllAttributesAsDictionary()
+        {
+            return Attributes.ToDictionary(attr => attr.AttributeType, attr => attr);
         }
         
         /// <summary>
@@ -319,6 +390,23 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         public List<AttributeEffect?> GetAppliedEffects()
         {
             return new List<AttributeEffect?>(AppliedEffects);
+        }
+        
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"AttributeSet Id: {Id}");
+            sb.AppendLine("Attributes:");
+            foreach (var attr in Attributes)
+            {
+                sb.AppendLine($"  {attr.AttributeType}: Base = {attr.BaseValue}, Current = {attr.CurrentValue}");
+            }
+            sb.AppendLine("Applied Effects:");
+            foreach (var effect in AppliedEffects)
+            {
+                sb.AppendLine($"  Effect Id: {effect?.Id ?? Guid.Empty}");
+            }
+            return sb.ToString();
         }
     }
 }

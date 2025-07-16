@@ -2,7 +2,7 @@ using System.Reflection;
 using Autofac;
 using Module = Autofac.Module;
 
-namespace Contexts;
+namespace TO.Contexts;
 
 public class SingleModule : Module
 {

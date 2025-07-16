@@ -1,7 +1,6 @@
 
 
 using System;
-using Contexts;
 using Godot;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Services.UI.Screens;
@@ -74,7 +73,7 @@ public partial class MainMenuScreen : Bases.UIScreen, IMainMenuScreen
 		if (ExitButton != null) ExitButton.Pressed += EmitExitButtonPressed;
 		
 		// 将当前节点注册到全局节点上下文中
-		NodeScope = Contexts.Contexts.Instance.RegisterNode<IMainMenuScreen, NodeMainMenuScreenService>(this);
+		NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IMainMenuScreen, NodeMainMenuScreenService>(this);
 	}
 
 	/// <summary>

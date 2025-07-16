@@ -1,23 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\TO.Commands\TO.Commands.csproj" />
-      <ProjectReference Include="..\TO.Data\TO.Data.csproj" />
-      <ProjectReference Include="..\TO.Events\TO.Events.csproj" />
-      <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
-      <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
-      <ProjectReference Include="..\TO.Services.Abstractions\TO.Services.Abstractions.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.5.0" />
-    </ItemGroup>
-    
-
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TO.Commands\TO.Commands.csproj" />
+    <ProjectReference Include="..\TO.Data\TO.Data.csproj" />
+    <ProjectReference Include="..\TO.Data.Abstractions\TO.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\TO.Events\TO.Events.csproj" />
+    <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
+    <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
+    <ProjectReference Include="..\TO.Services.Abstractions\TO.Services.Abstractions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\GameAbilitySystem\GameplayAbility\" />
+    <Folder Include="Core\GameAbilitySystem\GameplayTasks\" />
+  </ItemGroup>
 </Project>

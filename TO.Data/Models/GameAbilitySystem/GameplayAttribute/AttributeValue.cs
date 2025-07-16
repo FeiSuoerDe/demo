@@ -1,9 +1,11 @@
 using System;
+using TO.Commons.Enums.Game;
 
 namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
 {
     /// <summary>
-    /// 属性值类，包含基础值和当前值
+    /// 属性值类，包含基础值、当前值、最小值和最大值
+    /// 根据GAS设计文档要求，支持完整的属性数值结构
     /// </summary>
     public class AttributeValue
     {
@@ -18,13 +20,34 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         public float CurrentValue { get; private set; }
         
         /// <summary>
+        /// 最小值限制
+        /// </summary>
+        public float MinValue { get; private set; }
+        
+        /// <summary>
+        /// 最大值限制
+        /// </summary>
+        public float MaxValue { get; private set; }
+        
+        /// <summary>
+        /// 属性类型
+        /// </summary>
+        public AttributeType AttributeType { get; private set; }
+        
+        /// <summary>
         /// 构造函数
         /// </summary>
+        /// <param name="attributeType">属性类型</param>
         /// <param name="baseValue">基础值</param>
-        public AttributeValue(float baseValue)
+        /// <param name="minValue">最小值</param>
+        /// <param name="maxValue">最大值</param>
+        public AttributeValue(AttributeType attributeType, float baseValue, float minValue = float.MinValue, float maxValue = float.MaxValue)
         {
-            BaseValue = baseValue;
-            CurrentValue = baseValue;
+            AttributeType = attributeType;
+            MinValue = minValue;
+            MaxValue = maxValue;
+            BaseValue = ClampValue(baseValue);
+            CurrentValue = BaseValue;
         }
         
         /// <summary>
@@ -33,8 +56,8 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="value">新的基础值</param>
         public void SetBaseValue(float value)
         {
-            BaseValue = value;
-            RecalculateCurrentValue();
+            BaseValue = ClampValue(value);
+            // 当前值需要外部重新计算
         }
         
         /// <summary>
@@ -43,17 +66,57 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="value">新的当前值</param>
         public void SetCurrentValue(float value)
         {
-            CurrentValue = value;
+            CurrentValue = ClampValue(value);
         }
         
         /// <summary>
-        /// 重新计算当前值
+        /// 设置值范围限制
         /// </summary>
-        private void RecalculateCurrentValue()
+        /// <param name="minValue">最小值</param>
+        /// <param name="maxValue">最大值</param>
+        public void SetValueRange(float minValue, float maxValue)
         {
-            // 重新计算当前值的逻辑
-            // 在实际使用中，这里会应用所有修饰器的效果
-            CurrentValue = BaseValue;
+            if (minValue > maxValue)
+                throw new ArgumentException("最小值不能大于最大值");
+                
+            MinValue = minValue;
+            MaxValue = maxValue;
+            
+            // 重新应用限制
+            BaseValue = ClampValue(BaseValue);
+            CurrentValue = ClampValue(CurrentValue);
+        }
+        
+        /// <summary>
+        /// 限制值在有效范围内
+        /// </summary>
+        /// <param name="value">要限制的值</param>
+        /// <returns>限制后的值</returns>
+        private float ClampValue(float value)
+        {
+            return Math.Max(MinValue, Math.Min(MaxValue, value));
+        }
+        
+        /// <summary>
+        /// 检查值是否在有效范围内
+        /// </summary>
+        /// <param name="value">要检查的值</param>
+        /// <returns>是否在有效范围内</returns>
+        public bool IsValueInRange(float value)
+        {
+            return value >= MinValue && value <= MaxValue;
+        }
+        
+        /// <summary>
+        /// 获取值的百分比（相对于最大值）
+        /// </summary>
+        /// <returns>百分比值（0-1）</returns>
+        public float GetPercentage()
+        {
+            if (Math.Abs(MaxValue - MinValue) < float.Epsilon)
+                return 1.0f;
+                
+            return (CurrentValue - MinValue) / (MaxValue - MinValue);
         }
         
         /// <summary>
@@ -62,7 +125,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <returns>格式化的属性值字符串</returns>
         public override string ToString()
         {
-            return $"Base: {BaseValue}, Current: {CurrentValue}";
+            return $"{AttributeType}: Base={BaseValue:F2}, Current={CurrentValue:F2}, Range=[{MinValue:F2}, {MaxValue:F2}]";
         }
         
         /// <summary>
