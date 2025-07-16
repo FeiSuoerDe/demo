@@ -18,10 +18,7 @@ public class AbilitySystemComponentService : BaseService, IAbilitySystemComponen
     /// </summary>
     private readonly IAttributeManagerService _attributeManagerService;
     
-    /// <summary>
-    /// 属性计算服务
-    /// </summary>
-    private readonly IAttributeCalculationService _attributeCalculationService;
+    // Removed: private readonly IAttributeCalculationService _attributeCalculationService;
     
     private readonly IAbilitySystemComponent _abilitySystemComponent;
 
@@ -32,12 +29,10 @@ public class AbilitySystemComponentService : BaseService, IAbilitySystemComponen
     /// 提供ASC的核心业务逻辑
     /// </summary>
     public AbilitySystemComponentService(IAttributeManagerService attributeManagerService,
-        IAttributeCalculationService attributeCalculationService,
         IAbilitySystemComponent abilitySystemComponent, 
         IAttributeDatabaseReadService attributeDatabaseReadService)
     {
         _attributeManagerService = attributeManagerService;
-        _attributeCalculationService = attributeCalculationService;
         _abilitySystemComponent = abilitySystemComponent;
         _attributeDatabaseReadService = attributeDatabaseReadService;
 

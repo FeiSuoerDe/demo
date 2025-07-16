@@ -6,21 +6,15 @@ using TO.Repositories.Abstractions.Core.ReadTableSystem;
 
 namespace TO.Services.Core.ReadTableSystem;
 
-public class AttributeDatabaseReadService : IAttributeDatabaseReadService
+public class AttributeDatabaseReadService(IAttributeSetCacheRepo cache) : IAttributeDatabaseReadService
 {
-    private readonly IAttributeSetCacheRepo _cache;
-
-    public AttributeDatabaseReadService(IAttributeSetCacheRepo cache)
-    {
-        _cache = cache;
-    }
-
     public AttributeSet GetAttributeSetById(string id)
     {
-        var cachedSet = _cache.GetAttributeSet(id);
+        var cachedSet = cache.GetAttributeSet(id);
         if (cachedSet != null)
         {
-            return cachedSet;
+            var cachedAttributeSet = new AttributeSet(cachedSet.Attributes);
+            return cachedAttributeSet;
         }
 
         using var context = new AttributeDatabaseContext();
@@ -30,7 +24,7 @@ public class AttributeDatabaseReadService : IAttributeDatabaseReadService
 
         List<AttributeValue> attributes = [];
 
-        if (attributeSetEntity.Id.Contains("basic"))
+        if (attributeSetEntity.Id.Contains("player"))
         {
             var basicValues = context.BasicAttributeValues.Where(v => v.AttributeSetId == id).ToList();
             GD.Print(basicValues.Count);
@@ -45,7 +39,7 @@ public class AttributeDatabaseReadService : IAttributeDatabaseReadService
         }
 
         var attributeSet = new AttributeSet(attributes);
-        _cache.CacheAttributeSet(id,attributeSet);
+        cache.CacheAttributeSet(id,attributeSet);
         return attributeSet;
     }
 }

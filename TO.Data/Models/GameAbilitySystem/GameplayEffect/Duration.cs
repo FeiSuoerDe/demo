@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
+namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
 {
     /// <summary>
     /// 持续时间值对象
@@ -28,18 +25,17 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="isInfinite">是否无限</param>
         /// <param name="totalTime">总时间</param>
-        /// <param name="remainingTime">剩余时间</param>
-        private Duration(bool isInfinite, float totalTime, float remainingTime)
+        public Duration(bool isInfinite, float totalTime)
         {
             IsInfinite = isInfinite;
             TotalTime = totalTime;
-            RemainingTime = remainingTime;
+            RemainingTime = TotalTime;
         }
         
         /// <summary>
         /// 创建无限持续时间
         /// </summary>
-        public static Duration? Infinite => new Duration(true, 0, 0);
+        public static Duration? Infinite => new(true, 0);
         
         /// <summary>
         /// 创建有限持续时间
@@ -51,7 +47,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             if (seconds <= 0)
                 throw new ArgumentException("Duration must be positive", nameof(seconds));
                 
-            return new Duration(false, seconds, seconds);
+            return new Duration(false, seconds);
         }
         
         /// <summary>

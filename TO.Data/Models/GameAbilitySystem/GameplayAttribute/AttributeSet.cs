@@ -190,7 +190,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="effect">要应用的效果</param>
         /// <returns>是否成功应用</returns>
-        public virtual bool ApplyEffect(AttributeEffect? effect)
+        public bool ApplyEffect(AttributeEffect? effect)
         {
             if (effect == null)
                 return false;
@@ -220,7 +220,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// </summary>
         /// <param name="effectId">效果ID</param>
         /// <returns>是否成功移除</returns>
-        public virtual bool RemoveEffect(Guid effectId)
+        public bool RemoveEffect(Guid effectId)
         {
             var effect = AppliedEffects.FirstOrDefault(e => e.Id == effectId);
             if (effect == null)
@@ -266,7 +266,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// 重新计算指定属性的当前值
         /// </summary>
         /// <param name="attributeType">属性类型</param>
-        protected virtual void RecalculateAttribute(AttributeType attributeType)
+        protected void RecalculateAttribute(AttributeType attributeType)
         {
             var attribute = GetAttribute(attributeType);
             if (attribute == null)
@@ -275,10 +275,11 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             var baseValue = attribute.BaseValue;
             var currentValue = baseValue;
             
-            // 获取所有影响该属性的修饰器
+            // 获取所有影响该属性的修饰器，从活跃效果中
             var modifiers = AppliedEffects
+                .Where(e => !e.IsExpired && e.Status == EffectStatus.Active)  // 假设EffectStatus.Active是活跃状态
                 .SelectMany(e => e.Modifiers)
-                .Where(m => m.AttributeType == attributeType && !m.IsExpired)
+                .Where(m => m.AttributeType == attributeType)
                 .OrderBy(m => m.ExecutionOrder)
                 .ToList();
             
@@ -329,7 +330,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="existingEffect">已存在的效果</param>
         /// <param name="newEffect">新效果</param>
         /// <returns>是否成功处理</returns>
-        protected virtual bool HandleExistingEffect(AttributeEffect existingEffect, AttributeEffect? newEffect)
+        protected bool HandleExistingEffect(AttributeEffect existingEffect, AttributeEffect? newEffect)
         {
             switch (existingEffect.StackingType)
             {

@@ -205,10 +205,8 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayEffect
         /// <param name="tag">标签</param>
         /// <param name="target">目标属性集</param>
         /// <returns>移除的效果数量</returns>
-        public int RemoveEffectsByTag(string tag, AttributeSet target)
+        public int RemoveEffectsByTag(EffectTags tag, AttributeSet target)
         {
-            if (string.IsNullOrEmpty(tag) || target == null)
-                return 0;
             
             var targetId = target.Id.ToString();
             

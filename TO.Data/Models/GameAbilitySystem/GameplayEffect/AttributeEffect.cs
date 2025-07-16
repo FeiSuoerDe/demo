@@ -46,7 +46,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// <summary>
         /// 效果标签
         /// </summary>
-        public HashSet<string> Tags { get; private set; }
+        public HashSet<EffectTags> Tags { get; private set; }
         
         /// <summary>
         /// 堆叠类型
@@ -68,10 +68,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// </summary>
         public int Priority { get; private set; }
         
-        /// <summary>
-        /// 效果来源ID
-        /// </summary>
-        public Guid SourceId { get; private set; }
         
         /// <summary>
         /// 创建时间
@@ -106,25 +102,24 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// <param name="stackingType">堆叠类型</param>
         /// <param name="maxStacks">最大堆叠层数</param>
         /// <param name="priority">效果优先级</param>
-        /// <param name="sourceId">效果来源ID</param>
         /// <param name="isPassive">是否为被动效果</param>
-        public AttributeEffect(Guid id, string name, string description, List<AttributeModifier> modifiers, 
-                    Duration duration, EffectType effectType, HashSet<string> tags, 
+        public AttributeEffect(string name, string description, List<AttributeModifier> modifiers, 
+                    Duration duration, EffectType effectType, HashSet<EffectTags> tags, 
                     EffectStackingType stackingType = EffectStackingType.Replace, int maxStacks = 1,
-                    int priority = 0, Guid sourceId = default, bool isPassive = false)
+                    int priority = 0, bool isPassive = false)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Name = name ?? throw new ArgumentNullException(nameof(name));
-            Description = description ?? string.Empty;
-            Modifiers = modifiers ?? new List<AttributeModifier>();
-            Duration = duration ?? Duration.Infinite;
+            Description = description;
+            Modifiers = modifiers;
+            Duration = duration;
             EffectType = effectType;
-            Tags = tags ?? new HashSet<string>();
+            Tags = tags;
             StackingType = stackingType;
             MaxStacks = maxStacks;
             CurrentStacks = 1; // 初始为1层
             Priority = priority;
-            SourceId = sourceId == default ? Guid.NewGuid() : sourceId;
+        
             IsPassive = isPassive;
             Status = EffectStatus.Active;
             CreatedTime = DateTime.UtcNow;
@@ -168,11 +163,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
                 }
             }
             
-            // 同时更新所有修饰器的持续时间
-            foreach (var modifier in Modifiers.Where(m => m.IsTemporary))
-            {
-                modifier.UpdateDuration(deltaTime);
-            }
         }
         
         /// <summary>
@@ -294,26 +284,25 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
             Modifiers.Add(modifier);
             LastUpdatedTime = DateTime.UtcNow;
         }
-        
+
         /// <summary>
         /// 添加标签
         /// </summary>
         /// <param name="tag">要添加的标签</param>
-        public void AddTag(string tag)
+        public void AddTag(EffectTags tag)
         {
-            if (!string.IsNullOrEmpty(tag))
-            {
-                Tags.Add(tag);
-                LastUpdatedTime = DateTime.UtcNow;
-            }
+
+            Tags.Add(tag);
+            LastUpdatedTime = DateTime.UtcNow;
+
         }
-        
+
         /// <summary>
         /// 移除标签
         /// </summary>
         /// <param name="tag">要移除的标签</param>
         /// <returns>是否成功移除</returns>
-        public bool RemoveTag(string tag)
+        public bool RemoveTag(EffectTags tag)
         {
             if (Tags.Remove(tag))
             {
@@ -328,7 +317,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// </summary>
         /// <param name="tag">要检查的标签</param>
         /// <returns>是否包含该标签</returns>
-        public bool HasTag(string tag)
+        public bool HasTag(EffectTags tag)
         {
             return Tags.Contains(tag);
         }
@@ -338,7 +327,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// </summary>
         /// <param name="tags">要检查的标签集合</param>
         /// <returns>是否包含任意标签</returns>
-        public bool HasAnyTag(IEnumerable<string> tags)
+        public bool HasAnyTag(IEnumerable<EffectTags> tags)
         {
             return tags.Any(tag => Tags.Contains(tag));
         }
@@ -348,7 +337,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// </summary>
         /// <param name="tags">要检查的标签集合</param>
         /// <returns>是否包含所有标签</returns>
-        public bool HasAllTags(IEnumerable<string> tags)
+        public bool HasAllTags(IEnumerable<EffectTags> tags)
         {
             return tags.All(tag => Tags.Contains(tag));
         }
@@ -411,6 +400,12 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
             var stackInfo = MaxStacks > 1 ? $" ({CurrentStacks}/{MaxStacks})" : "";
             var durationInfo = Duration.IsInfinite ? "" : $" [{Duration}]";
             return $"{Name}{stackInfo}{durationInfo} - {Description}";
+        }
+
+        public AttributeEffect Clone()
+        {
+            return new AttributeEffect(Name, Description, Modifiers.Select(m => m.Clone()).ToList(), 
+                Duration, EffectType, Tags, StackingType, MaxStacks, Priority, IsPassive);
         }
     }
 }

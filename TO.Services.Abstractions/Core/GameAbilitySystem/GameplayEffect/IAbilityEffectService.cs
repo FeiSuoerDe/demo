@@ -63,7 +63,7 @@ namespace TO.Services.Abstractions.Core.GameAbilitySystem.GameplayEffect
         /// <param name="tag">效果标签</param>
         /// <param name="target">目标属性集</param>
         /// <returns>移除的效果数量</returns>
-        int RemoveEffectsByTag(string tag, AttributeSet target);
+        int RemoveEffectsByTag(EffectTags tag, AttributeSet target);
         
         /// <summary>
         /// 获取目标身上的活跃效果

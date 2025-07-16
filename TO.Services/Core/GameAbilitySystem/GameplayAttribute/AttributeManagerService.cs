@@ -19,7 +19,7 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayAttribute
     {
         private readonly IAttributeSetRepo _iAttributeSetRepo;
         private readonly IEffectRepo _iEffectRepo;
-        private readonly IAttributeCalculationService _calculationService;
+        // Removed: private readonly IAttributeCalculationService _calculationService;
 
         // 实现接口要求的事件
         public event Action<Guid, AttributeType, float, float> AttributeChanged;
@@ -29,16 +29,14 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayAttribute
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="calculationService">属性计算服务</param>
         /// <param name="iAttributeSetRepo">属性集仓储</param>
         /// <param name="iEffectRepo">效果仓储</param>
+        /// <param name="eventBusRepo"></param>
         public AttributeManagerService(
-            IAttributeCalculationService calculationService,
             IAttributeSetRepo iAttributeSetRepo,
             IEffectRepo iEffectRepo,
             IEventBusRepo eventBusRepo) : base(eventBusRepo)
         {
-            _calculationService = calculationService;
             _iAttributeSetRepo = iAttributeSetRepo;
             _iEffectRepo = iEffectRepo;
         }
@@ -494,11 +492,10 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayAttribute
         public IEnumerable<(Guid attributeSetId, AttributeEffect effect)> FindEffectsWithTag(EffectTags tag)
         {
             var results = new List<(Guid, AttributeEffect)>();
-            var tagString = tag.ToString();
             foreach (var attributeSet in _iAttributeSetRepo.GetAll())
             {
                 var effects = attributeSet.GetAppliedEffects()
-                    .Where(e => e != null && e.Tags.Contains(tagString));
+                    .Where(e => e != null && e.Tags.Contains(tag));
                 foreach (var effect in effects)
                 {
                     if (effect != null)

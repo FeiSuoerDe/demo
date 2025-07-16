@@ -31,8 +31,6 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     public override void _Ready()
     {
         base._Ready();
-        
-        
         // 注册到依赖注入容器
         NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, AbilitySystemComponentService>(this);
        
