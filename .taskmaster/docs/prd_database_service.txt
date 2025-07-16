@@ -1,0 +1,40 @@
+# 产品需求文档 (PRD) - 数据库读取服务和转换类
+
+## 概述
+
+### 项目名称
+游戏能力系统数据库读取服务
+
+### 项目描述
+在 `TO.Services.Core` 中创建服务，用于读取 `TO.Data.Tables` 中的数据库文件，并在 `TO.Data.Models.GameAbilitySystem` 中创建中间转换类，将数据库数据转换为对应的模型。
+
+## 核心功能
+
+### 1. 数据库读取服务
+- **位置**：`d:\GodotProjects\demo\TO.Services\Core`
+- **功能**：读取 `d:\GodotProjects\demo\TO.Data\Tables` 中的数据库文件（如 AttributeDatabase.db 和 GameplayEffectDatabase.db）
+- **接口**：提供查询、加载数据的服务方法
+- **技术**：使用 SQLite 或适当的数据库访问库
+
+### 2. 中间转换类
+- **位置**：`d:\GodotProjects\demo\TO.Data\Models\GameAbilitySystem`
+- **功能**：将数据库原始数据转换为 GameAbilitySystem 中的模型类
+- **示例**：如将 AttributeDatabase.db 中的数据转换为 AttributeSet、AttributeValue 等模型
+- **特性**：处理类型转换、数据验证、枚举映射
+
+### 3. 集成和测试
+- **集成**：确保服务能正确读取并转换数据
+- **测试**：单元测试覆盖读取和转换逻辑
+
+## 技术架构
+
+- **数据库**：SQLite
+- **语言**：C#
+- **框架**：Godot 相关服务架构
+
+## 开发路线图
+
+- 阶段1：设计服务接口和转换类
+- 阶段2：实现读取逻辑
+- 阶段3：实现转换逻辑
+- 阶段4：测试和集成

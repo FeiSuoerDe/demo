@@ -1,0 +1,588 @@
+# 产品需求文档 (PRD) - 数据库结构优化
+
+## 概述
+
+### 项目名称
+游戏能力系统数据库结构优化 - AttributeType字段类型转换
+
+### 项目描述
+对现有游戏能力系统的数据库结构进行优化，将AttributeValues表中的AttributeType字段从整数类型改为文本类型，使用枚举名称作为值，提高数据的可读性和维护性。这个改动将影响AttributeValues_BasicAttributes和AttributeValues_ShipAttributes两个表。
+
+## 核心功能
+
+### 1. 数据库结构优化
+- **字段类型转换**：将AttributeType字段从INTEGER类型改为TEXT类型
+- **枚举值映射**：使用GameAbilitySystemEnums.cs中的AttributeType枚举名称作为数据库值
+- **数据迁移**：安全地将现有整数值转换为对应的枚举名称
+- **向后兼容性**：确保现有代码能够正常工作
+
+### 2. 受影响的表结构
+- **AttributeValues_BasicAttributes**：角色基础属性表
+  - Health, Energy, Speed, Intelligence, Perception, Charisma, Will, Constitution, Agility
+  - LifeValue, MentalValue, MovementSpeed
+- **AttributeValues_ShipAttributes**：飞船属性表
+  - Thrust, Shield, Armor, Maneuverability, Sensors
+  - Mass, Length, Width, Height, CargoCapacity, FuelCapacity
+
+### 3. 数据一致性保证
+- **枚举值验证**：确保数据库中的值与枚举定义一致
+- **约束检查**：添加CHECK约束验证AttributeType值的有效性
+- **索引优化**：重新优化基于AttributeType字段的索引
+
+### 4. 代码适配
+- **ORM映射更新**：更新Entity Framework的模型映射
+- **查询语句调整**：修改相关的数据库查询代码
+- **类型转换处理**：添加枚举与字符串之间的转换逻辑
+
+## 用户体验
+
+### 目标用户
+- **主要用户**：游戏开发团队成员
+- **次要用户**：数据库管理员和系统维护人员
+- **技术水平**：具备数据库和游戏开发经验
+
+### 改进目标
+1. **提高可读性**：数据库中的AttributeType值将更加直观易读
+2. **简化调试**：开发过程中更容易理解和调试属性相关问题
+3. **降低维护成本**：减少因整数枚举值变更导致的数据不一致问题
+4. **增强扩展性**：新增属性类型时更加灵活和安全
+
+### 迁移体验
+1. **数据备份**：在迁移前自动备份现有数据
+2. **渐进式迁移**：分步骤进行数据转换，确保每步都可回滚
+3. **验证检查**：迁移完成后自动验证数据完整性
+4. **性能监控**：监控迁移过程对系统性能的影响
+
+### 开发体验改进
+- **代码可读性**：查询和操作代码更加直观
+- **类型安全**：减少因类型转换错误导致的bug
+- **调试友好**：日志和错误信息更加清晰
+- **文档一致性**：数据库结构与代码文档保持一致
+
+## 技术架构
+
+### 数据库结构变更
+
+#### 1. 当前结构分析
+```sql
+-- 当前AttributeValues表结构
+CREATE TABLE AttributeValues (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    AttributeSetId TEXT NOT NULL,
+    AttributeType INTEGER NOT NULL,  -- 当前为整数类型
+    BaseValue REAL NOT NULL DEFAULT 0.0,
+    CurrentValue REAL NOT NULL DEFAULT 0.0,
+    MinValue REAL NOT NULL DEFAULT -999999.0,
+    MaxValue REAL NOT NULL DEFAULT 999999.0,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (AttributeSetId) REFERENCES AttributeSets(Id) ON DELETE CASCADE,
+    UNIQUE(AttributeSetId, AttributeType)
+);
+```
+
+#### 2. 目标结构设计
+```sql
+-- 目标AttributeValues表结构
+CREATE TABLE AttributeValues (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    AttributeSetId TEXT NOT NULL,
+    AttributeType TEXT NOT NULL,     -- 改为文本类型
+    BaseValue REAL NOT NULL DEFAULT 0.0,
+    CurrentValue REAL NOT NULL DEFAULT 0.0,
+    MinValue REAL NOT NULL DEFAULT -999999.0,
+    MaxValue REAL NOT NULL DEFAULT 999999.0,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (AttributeSetId) REFERENCES AttributeSets(Id) ON DELETE CASCADE,
+    UNIQUE(AttributeSetId, AttributeType),
+    CHECK (AttributeType IN (
+        'Health', 'Energy', 'Speed', 'Intelligence', 'Perception',
+        'Charisma', 'Will', 'Constitution', 'Agility', 'LifeValue',
+        'MentalValue', 'MovementSpeed', 'Thrust', 'Shield', 'Armor',
+        'Maneuverability', 'Sensors', 'Mass', 'Length', 'Width',
+        'Height', 'CargoCapacity', 'FuelCapacity', 'CustomAttribute1',
+        'CustomAttribute2', 'CustomAttribute3'
+    ))
+);
+```
+
+#### 3. 枚举值映射表
+```csharp
+// 整数值到枚举名称的映射
+Dictionary<int, string> attributeTypeMapping = new()
+{
+    { 0, "Health" },
+    { 1, "Energy" },
+    { 2, "Speed" },
+    { 3, "Intelligence" },
+    { 4, "Perception" },
+    { 5, "Charisma" },
+    { 6, "Will" },
+    { 7, "Constitution" },
+    { 8, "Agility" },
+    { 9, "LifeValue" },
+    { 10, "MentalValue" },
+    { 11, "MovementSpeed" },
+    { 12, "Thrust" },
+    { 13, "Shield" },
+    { 14, "Armor" },
+    { 15, "Maneuverability" },
+    { 16, "Sensors" },
+    { 17, "Mass" },
+    { 18, "Length" },
+    { 19, "Width" },
+    { 20, "Height" },
+    { 21, "CargoCapacity" },
+    { 22, "FuelCapacity" },
+    { 23, "CustomAttribute1" },
+    { 24, "CustomAttribute2" },
+    { 25, "CustomAttribute3" }
+};
+```
+
+### 迁移策略
+
+#### 1. 数据迁移步骤
+1. **备份现有数据**：创建完整的数据库备份
+2. **创建临时表**：使用新结构创建临时表
+3. **数据转换**：将整数值转换为枚举名称
+4. **验证数据**：确保转换后的数据完整性
+5. **替换原表**：用新表替换原表
+6. **重建索引**：重新创建相关索引
+
+#### 2. 代码适配需求
+- **Entity Framework模型更新**：修改AttributeValue实体类
+- **查询语句调整**：更新所有相关的LINQ查询
+- **类型转换器**：添加枚举与字符串的转换逻辑
+- **验证逻辑**：更新属性类型验证规则
+
+### 风险控制
+
+#### 1. 数据安全
+- **自动备份**：迁移前自动创建数据备份
+- **回滚机制**：支持快速回滚到迁移前状态
+- **分步验证**：每个迁移步骤都进行数据验证
+
+#### 2. 性能影响
+- **索引优化**：重新优化基于AttributeType的索引
+- **查询性能**：监控文本类型对查询性能的影响
+- **存储空间**：评估文本类型对存储空间的影响
+
+## 开发路线图
+
+### 第一阶段：准备和分析 (1-2天)
+**目标**：分析现有数据结构，制定详细的迁移计划
+
+#### 里程碑 1.1：数据分析
+- 分析现有AttributeValues表的数据分布
+- 确认所有使用AttributeType字段的代码位置
+- 评估迁移对现有功能的影响
+- 制定详细的测试计划
+
+#### 里程碑 1.2：迁移方案设计
+- 设计数据转换脚本
+- 制定回滚策略
+- 准备数据验证逻辑
+- 设计性能监控方案
+
+### 第二阶段：代码准备 (2-3天)
+**目标**：准备所有必要的代码变更
+
+#### 里程碑 2.1：Entity Framework模型更新
+- 修改AttributeValue实体类定义
+- 更新DbContext配置
+- 创建新的数据库迁移
+- 添加枚举转换器
+
+#### 里程碑 2.2：业务逻辑适配
+- 更新所有相关的查询代码
+- 修改属性类型验证逻辑
+- 更新单元测试
+- 添加集成测试
+
+### 第三阶段：数据迁移 (1-2天)
+**目标**：安全地执行数据库结构变更
+
+#### 里程碑 3.1：迁移执行
+- 创建数据库备份
+- 执行数据结构迁移
+- 运行数据转换脚本
+- 验证数据完整性
+
+#### 里程碑 3.2：索引和约束优化
+- 重建相关索引
+- 添加CHECK约束
+- 优化查询性能
+- 更新数据库统计信息
+
+### 第四阶段：测试和验证 (2-3天)
+**目标**：全面测试迁移结果
+
+#### 里程碑 4.1：功能测试
+- 执行所有相关的单元测试
+- 运行集成测试套件
+- 测试游戏能力系统功能
+- 验证数据查询和更新操作
+
+#### 里程碑 4.2：性能测试
+- 监控查询性能变化
+- 评估存储空间影响
+- 测试大数据量场景
+- 优化发现的性能问题
+
+### 第五阶段：部署和监控 (1天)
+**目标**：部署变更并监控系统稳定性
+
+#### 里程碑 5.1：部署和监控
+- 部署到测试环境
+- 监控系统性能指标
+- 验证所有功能正常
+- 准备生产环境部署
+
+#### 里程碑 5.2：文档和总结
+- 更新技术文档
+- 记录迁移过程和经验
+- 更新开发指南
+- 完成项目总结报告
+
+## 逻辑依赖链
+
+### 基础分析阶段
+这些任务必须首先完成，为后续工作提供基础：
+
+1. **现有数据结构分析** → 了解当前系统状态
+   - 数据库表结构分析
+   - 现有数据分布统计
+   - 代码依赖关系梳理
+   - 影响范围评估
+
+2. **枚举映射关系确定** → 建立转换规则
+   - 整数值与枚举名称的对应关系
+   - 数据完整性验证规则
+   - 异常情况处理策略
+
+### 代码准备阶段
+这些任务依赖于分析结果，为迁移做准备：
+
+3. **Entity Framework模型更新** → 依赖：数据结构分析
+   - 实体类定义修改
+   - DbContext配置更新
+   - 类型转换器实现
+   - 迁移脚本生成
+
+4. **业务逻辑代码适配** → 依赖：模型更新、枚举映射
+   - 查询语句修改
+   - 验证逻辑更新
+   - 类型转换处理
+   - 错误处理增强
+
+5. **测试用例准备** → 依赖：代码适配
+   - 单元测试更新
+   - 集成测试编写
+   - 数据验证测试
+   - 性能测试准备
+
+### 迁移执行阶段
+这些任务依赖于代码准备，执行实际的数据迁移：
+
+6. **数据库备份** → 依赖：无（独立任务）
+   - 完整数据库备份
+   - 备份验证
+   - 回滚方案准备
+
+7. **数据结构迁移** → 依赖：备份完成、代码准备
+   - 表结构修改
+   - 约束添加
+   - 索引重建
+   - 触发器更新
+
+8. **数据转换执行** → 依赖：结构迁移、枚举映射
+   - 整数值转换为枚举名称
+   - 数据完整性验证
+   - 异常数据处理
+   - 转换结果确认
+
+### 验证和优化阶段
+这些任务依赖于迁移完成，确保系统正常运行：
+
+9. **功能测试执行** → 依赖：数据转换完成、测试用例准备
+   - 所有相关功能测试
+   - 数据查询验证
+   - 业务逻辑确认
+   - 错误处理测试
+
+10. **性能评估和优化** → 依赖：功能测试通过
+    - 查询性能监控
+    - 索引效果评估
+    - 存储空间分析
+    - 性能优化实施
+
+11. **文档更新和部署** → 依赖：所有测试通过
+    - 技术文档更新
+    - 部署指南编写
+    - 监控方案实施
+    - 项目总结完成
+
+### 关键依赖关系
+
+- **数据转换** ← 结构迁移、枚举映射、代码适配
+- **功能测试** ← 数据转换、测试用例准备
+- **性能优化** ← 功能测试、迁移完成
+- **部署上线** ← 所有验证通过
+- **回滚能力** ← 数据备份、回滚方案
+
+## 风险和缓解措施
+
+### 数据迁移风险
+
+#### 风险：数据丢失或损坏
+- **描述**：在迁移过程中可能发生数据丢失或数据完整性破坏
+- **影响**：高 - 可能导致游戏数据永久丢失
+- **概率**：低
+- **缓解措施**：
+  - 迁移前创建完整的数据库备份
+  - 实施分步骤迁移，每步都可回滚
+  - 在测试环境中完整验证迁移过程
+  - 建立数据完整性验证机制
+  - 准备紧急回滚方案
+
+#### 风险：枚举值映射错误
+- **描述**：整数值与枚举名称的映射关系可能存在错误
+- **影响**：中等 - 可能导致属性类型错误
+- **概率**：中等
+- **缓解措施**：
+  - 仔细核对枚举定义与现有数据
+  - 建立映射关系验证测试
+  - 实施数据转换后的完整性检查
+  - 保留原始数据作为对比参考
+
+#### 风险：迁移过程中系统不可用
+- **描述**：迁移过程可能需要较长时间，影响系统可用性
+- **影响**：中等 - 可能影响开发进度
+- **概率**：低
+- **缓解措施**：
+  - 在维护窗口期间执行迁移
+  - 优化迁移脚本性能
+  - 实施增量迁移策略
+  - 准备快速回滚机制
+
+### 技术实施风险
+
+#### 风险：Entity Framework配置问题
+- **描述**：ORM配置变更可能导致运行时错误
+- **影响**：中等 - 可能影响数据访问功能
+- **概率**：中等
+- **缓解措施**：
+  - 在测试环境中充分验证配置变更
+  - 建立全面的集成测试
+  - 实施渐进式部署
+  - 准备配置回滚方案
+
+#### 风险：查询性能下降
+- **描述**：文本类型字段可能影响查询性能
+- **影响**：中等 - 可能影响系统响应速度
+- **概率**：中等
+- **缓解措施**：
+  - 优化相关索引设计
+  - 实施查询性能监控
+  - 准备性能优化方案
+  - 考虑使用查询缓存
+
+#### 风险：代码兼容性问题
+- **描述**：现有代码可能与新的数据类型不兼容
+- **影响**：高 - 可能导致功能异常
+- **概率**：中等
+- **缓解措施**：
+  - 全面梳理相关代码依赖
+  - 建立完整的回归测试套件
+  - 实施分阶段代码更新
+  - 建立代码审查流程
+
+### 项目管理风险
+
+#### 风险：时间估算不准确
+- **描述**：迁移工作的复杂度可能超出预期
+- **影响**：中等 - 可能影响项目进度
+- **概率**：中等
+- **缓解措施**：
+  - 基于类似项目经验进行估算
+  - 预留20%的缓冲时间
+  - 实施敏捷开发方法
+  - 定期评估和调整计划
+
+#### 风险：测试覆盖不足
+- **描述**：可能遗漏某些边界情况的测试
+- **影响**：中等 - 可能导致生产环境问题
+- **概率**：中等
+- **缓解措施**：
+  - 建立详细的测试检查清单
+  - 实施自动化测试
+  - 进行同行代码审查
+  - 建立用户验收测试
+
+### 业务连续性风险
+
+#### 风险：开发环境影响
+- **描述**：迁移可能影响其他开发人员的工作
+- **影响**：低 - 可能造成短期开发中断
+- **概率**：中等
+- **缓解措施**：
+  - 提前通知团队成员
+  - 协调开发时间安排
+  - 提供迁移指导文档
+  - 建立技术支持机制
+
+#### 风险：文档更新滞后
+- **描述**：技术文档可能未及时更新
+- **影响**：低 - 可能影响后续开发效率
+- **概率**：中等
+- **缓解措施**：
+  - 将文档更新纳入迁移计划
+  - 建立文档审查流程
+  - 实施文档版本控制
+  - 定期进行文档同步检查
+
+## 附录
+
+### 技术规格
+
+#### 数据库变更规格
+```sql
+-- 当前表结构
+CREATE TABLE AttributeValues (
+    AttributeType INTEGER NOT NULL  -- 当前类型
+);
+
+-- 目标表结构
+CREATE TABLE AttributeValues (
+    AttributeType TEXT NOT NULL     -- 目标类型
+);
+
+-- 约束定义
+CHECK (AttributeType IN (
+    'Health', 'Energy', 'Speed', 'Intelligence', 'Perception',
+    'Charisma', 'Will', 'Constitution', 'Agility', 'LifeValue',
+    'MentalValue', 'MovementSpeed', 'Thrust', 'Shield', 'Armor',
+    'Maneuverability', 'Sensors', 'Mass', 'Length', 'Width',
+    'Height', 'CargoCapacity', 'FuelCapacity', 'CustomAttribute1',
+    'CustomAttribute2', 'CustomAttribute3'
+))
+```
+
+#### 枚举映射规格
+```csharp
+// C#枚举定义
+public enum AttributeType
+{
+    Health = 0,           // "Health"
+    Energy = 1,           // "Energy"
+    Speed = 2,            // "Speed"
+    Intelligence = 3,     // "Intelligence"
+    Perception = 4,       // "Perception"
+    Charisma = 5,         // "Charisma"
+    Will = 6,             // "Will"
+    Constitution = 7,     // "Constitution"
+    Agility = 8,          // "Agility"
+    LifeValue = 9,        // "LifeValue"
+    MentalValue = 10,     // "MentalValue"
+    MovementSpeed = 11,   // "MovementSpeed"
+    Thrust = 12,          // "Thrust"
+    Shield = 13,          // "Shield"
+    Armor = 14,           // "Armor"
+    Maneuverability = 15, // "Maneuverability"
+    Sensors = 16,         // "Sensors"
+    Mass = 17,            // "Mass"
+    Length = 18,          // "Length"
+    Width = 19,           // "Width"
+    Height = 20,          // "Height"
+    CargoCapacity = 21,   // "CargoCapacity"
+    FuelCapacity = 22,    // "FuelCapacity"
+    CustomAttribute1 = 23, // "CustomAttribute1"
+    CustomAttribute2 = 24, // "CustomAttribute2"
+    CustomAttribute3 = 25  // "CustomAttribute3"
+}
+```
+
+#### 迁移脚本规格
+```sql
+-- 数据转换脚本示例
+UPDATE AttributeValues 
+SET AttributeType = CASE 
+    WHEN AttributeType = 0 THEN 'Health'
+    WHEN AttributeType = 1 THEN 'Energy'
+    WHEN AttributeType = 2 THEN 'Speed'
+    -- ... 其他映射关系
+    ELSE 'Unknown'
+END
+WHERE typeof(AttributeType) = 'integer';
+```
+
+### 实施指南
+
+#### 迁移前检查清单
+- [ ] 确认所有相关代码位置
+- [ ] 验证枚举值映射关系
+- [ ] 准备完整的数据备份
+- [ ] 测试迁移脚本
+- [ ] 准备回滚方案
+- [ ] 通知相关开发人员
+
+#### 迁移后验证清单
+- [ ] 数据完整性检查
+- [ ] 功能测试验证
+- [ ] 性能基准对比
+- [ ] 错误日志检查
+- [ ] 索引效果验证
+- [ ] 约束规则测试
+
+#### Entity Framework配置示例
+```csharp
+// 更新后的实体配置
+public class AttributeValue
+{
+    public int Id { get; set; }
+    public string AttributeSetId { get; set; }
+    public string AttributeType { get; set; }  // 改为string类型
+    public double BaseValue { get; set; }
+    public double CurrentValue { get; set; }
+    // ... 其他属性
+}
+
+// DbContext配置
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<AttributeValue>()
+        .Property(e => e.AttributeType)
+        .HasConversion(
+            v => v,  // 存储为字符串
+            v => v   // 读取为字符串
+        );
+}
+```
+
+### 术语表
+
+- **AttributeType**：属性类型，定义了游戏中各种属性的分类
+- **枚举映射**：整数枚举值与字符串名称之间的对应关系
+- **数据迁移**：将数据从一种格式转换为另一种格式的过程
+- **CHECK约束**：数据库约束，用于验证字段值的有效性
+- **ORM映射**：对象关系映射，定义对象与数据库表之间的对应关系
+- **回滚方案**：在迁移失败时恢复到原始状态的计划
+- **数据完整性**：确保数据准确、一致和有效的特性
+- **索引优化**：改进数据库查询性能的技术手段
+
+### 相关文件路径
+
+- **枚举定义文件**：`d:\GodotProjects\demo\TO.Commons\Enums\Game\GameAbilitySystemEnums.cs`
+- **数据库文件**：`d:\GodotProjects\demo\TO.Data\Tables\PlayerAttributeDatabase.db`
+- **Entity Framework配置**：`d:\GodotProjects\demo\TO.Data\Database\AttributeDbContext.cs`
+- **数据模型目录**：`d:\GodotProjects\demo\TO.Data\Models\GameAbilitySystem\`
+
+### 预期收益
+
+1. **可读性提升**：数据库中的属性类型将更加直观
+2. **维护性改善**：减少因枚举值变更导致的问题
+3. **调试便利**：开发过程中更容易理解数据内容
+4. **扩展性增强**：新增属性类型时更加灵活
+5. **一致性保证**：代码与数据库结构保持一致

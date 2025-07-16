@@ -8,7 +8,6 @@ using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Core.GameAbilitySystem;
-using TO.Services.Core.GameAbilitySystem.GameplayAbility;
 
 namespace demo.Core.GameAbilitySystem;
 
@@ -21,35 +20,22 @@ namespace demo.Core.GameAbilitySystem;
 public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
 {
     
-    /// <summary>
-    /// 组件唯一标识
-    /// </summary>
-    public Guid ComponentId { get; private set; }
-    
-    /// <summary>
-    /// 当前属性集
-    /// </summary>
     [Export]
-    public AttributeSet? CurrentAttributeSet { get; private set; }
+    public string AttributeSetId{get; set;}
     
     /// <summary>
     /// 依赖注入容器作用域
     /// </summary>
     public ILifetimeScope? NodeScope { get; set; }
     
-
-    
     public override void _Ready()
     {
         base._Ready();
         
-        // 生成唯一ID
-        ComponentId = Guid.NewGuid();
         
         // 注册到依赖注入容器
         NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, AbilitySystemComponentService>(this);
-        
-        GD.Print($"[ASC] AbilitySystemComponent {ComponentId} initialized");
+       
     }
     
     public override void _ExitTree()

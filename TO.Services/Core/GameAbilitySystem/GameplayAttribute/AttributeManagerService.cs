@@ -65,6 +65,7 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayAttribute
                 // 订阅属性变化事件
                 attributeSet.AttributeChanged += (attrType, oldValue, newValue) =>
                 {
+                    AttributeChanged?.Invoke(attributeSet.Id, attrType, oldValue, newValue);
                     PublishEvent(new AttributeChanged(attributeSet.Id, attrType, oldValue, newValue));
                 };
             });
@@ -438,11 +439,13 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayAttribute
             await Task.Run(() => UpdateEffectDurations(deltaTime));
         }
 
+     
+
         /// <summary>
-        /// 获取属性值
+        /// 获取属性值（枚举重载，保持向后兼容）
         /// </summary>
         /// <param name="attributeSetId">属性集ID</param>
-        /// <param name="attributeType">属性类型</param>
+        /// <param name="attributeType">属性类型枚举</param>
         /// <returns>属性值，如果不存在返回null</returns>
         public AttributeValue? GetAttributeValue(Guid attributeSetId, AttributeType attributeType)
         {
@@ -470,6 +473,7 @@ namespace TO.Services.Core.GameAbilitySystem.GameplayAttribute
                 return true;
             });
         }
+
 
         /// <summary>
         /// 查找具有指定效果的属性集

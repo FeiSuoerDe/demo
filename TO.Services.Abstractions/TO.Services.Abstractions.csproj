@@ -13,7 +13,6 @@
 
     <ItemGroup>
     <ProjectReference Include="..\TO.Data\TO.Data.csproj" />
-    <ProjectReference Include="..\TO.Data.Abstractions\TO.Data.Abstractions.csproj" />
     <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
   </ItemGroup>
 

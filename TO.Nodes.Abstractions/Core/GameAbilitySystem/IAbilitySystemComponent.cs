@@ -14,13 +14,7 @@ namespace TO.Nodes.Abstractions.Core.GameAbilitySystem;
 /// </summary>
 public interface IAbilitySystemComponent : INode
 {
-    /// <summary>
-    /// 组件唯一标识
-    /// </summary>
-    Guid ComponentId { get; }
     
-    /// <summary>
-    /// 当前属性集
-    /// </summary>
-    AttributeSet? CurrentAttributeSet { get; }
+    string AttributeSetId{get; set;}
+
 }

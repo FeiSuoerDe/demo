@@ -107,21 +107,22 @@ public interface IAttributeManagerService
     /// <returns>异步任务</returns>
     Task UpdateEffectDurationsAsync(float deltaTime);
     
+    
     /// <summary>
-    /// 获取属性值
+    /// 获取属性值（枚举重载，保持向后兼容）
     /// </summary>
     /// <param name="attributeSetId">属性集ID</param>
-    /// <param name="attributeType">属性类型</param>
-    /// <returns>属性值，如果不存在返回null</returns>
+    /// <param name="attributeType">属性类型枚举</param>
+    /// <returns>属性值，如果不存在则返回null</returns>
     AttributeValue? GetAttributeValue(Guid attributeSetId, AttributeType attributeType);
     
     /// <summary>
-    /// 设置属性值
+    /// 设置属性值（枚举重载，保持向后兼容）
     /// </summary>
     /// <param name="attributeSetId">属性集ID</param>
-    /// <param name="attributeType">属性类型</param>
-    /// <param name="value">新值</param>
-    /// <returns>是否成功设置</returns>
+    /// <param name="attributeType">属性类型枚举</param>
+    /// <param name="value">新的属性值</param>
+    /// <returns>是否设置成功</returns>
     bool SetAttributeValue(Guid attributeSetId, AttributeType attributeType, float value);
     
     /// <summary>

@@ -15,5 +15,8 @@
     <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
     <ProjectReference Include="..\TO.Repositories.Abstractions\TO.Repositories.Abstractions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\ReadTableSystem\" />
+  </ItemGroup>
   
 </Project>
