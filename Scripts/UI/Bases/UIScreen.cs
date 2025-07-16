@@ -2,7 +2,7 @@ using System;
 using Autofac;
 using Godot;
 using R3;
-using TO.Commons.Enums;
+using TO.Commons.Enums.UI;
 using TO.Nodes.Abstractions.UI.Bases;
 
 namespace demo.UI.Bases;

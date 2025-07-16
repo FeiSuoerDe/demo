@@ -1,5 +1,6 @@
 using Autofac.Features.Indexed;
-using TO.Commons.Enums;
+using TO.Commons.Enums.UI;
+using TO.Commons.Enums.System;
 using TO.Events.Core;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Repositories.Abstractions.Core.AudioSystem;

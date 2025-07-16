@@ -3,7 +3,6 @@
 
 using System;
 using Autofac;
-using Contexts;
 using Godot;
 using Godot.Collections;
 using TO.Nodes.Abstractions.UI.Trigger;
@@ -37,7 +36,7 @@ public partial class ObservableReactor : Node, IObservableReactor
 		if (ReactControl == null) throw new Exception("TriggerNode is null");
 		ReactControl ??= GetParent() as Control;
 		if (ReactControl == null) throw new Exception("TriggerControl is null");
-		NodeScope = Contexts.Contexts.Instance.RegisterNode<IObservableReactor, NodeObservableReactorService>(this);
+		NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IObservableReactor, NodeObservableReactorService>(this);
 	}
 
 }

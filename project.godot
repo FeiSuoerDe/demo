@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="demo"
+config/name="FTLInvoice"
 run/main_scene="uid://86ejuaw6buf5"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -25,7 +25,6 @@ SaveManager="*res://Scripts/Singletons/SaveManager.cs"
 SceneManager="*res://Scripts/Singletons/SceneManager.cs"
 SequenceManager="*res://Scripts/Singletons/SequenceManager.cs"
 UiManager="*res://Scripts/Singletons/UIManager.cs"
-TestManager="*res://Scripts/Tests/Examples/TestManager.cs"
 
 [display]
 

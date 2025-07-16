@@ -7,7 +7,7 @@ namespace TO.Repositories.Core.ResourceSystem
         private readonly ConcurrentDictionary<string, int> _referenceCounts = new();
         private readonly object _refCountLock = new();
 
-        public event Action<string> OnReferenceReleased;
+        public event Action<string>? OnReferenceReleased;
 
         public int GetReferenceCount(string path)
         {

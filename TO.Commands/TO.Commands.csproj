@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Godot.NET.Sdk/4.4.1">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Apps.Commands</RootNamespace>
+        
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,12 +14,5 @@
     <ItemGroup>
       <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Game\" />
-      <Folder Include="Tests\Examples\" />
-    </ItemGroup>
-
-    
 
 </Project>

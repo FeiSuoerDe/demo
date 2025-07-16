@@ -9,7 +9,7 @@ public partial class SaveManager : Node,ISaveManager
     public ILifetimeScope? NodeScope { get; set; }
     public override void _Ready()
     {
-        Contexts.Contexts.Instance.RegisterSingleNode<ISaveManager>(this);
+        TO.Contexts.Contexts.Instance.RegisterSingleNode<ISaveManager>(this);
     }
 
 }

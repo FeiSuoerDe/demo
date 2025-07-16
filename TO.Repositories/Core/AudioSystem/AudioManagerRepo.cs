@@ -1,5 +1,5 @@
 using Godot;
-using TO.Commons.Enums;
+using TO.Commons.Enums.System;
 using TO.Nodes.Abstractions.Singletons;
 using TO.Repositories.Abstractions.Core.AudioSystem;
 using TO.Repositories.Bases;

@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cja4cqqj2p0dm"]
+[gd_scene load_steps=3 format=3 uid="uid://cja4cqqj2p0dm"]
 
 [ext_resource type="Script" uid="uid://mkki6ig655b7" path="res://Scripts/Scenes/Main.cs" id="1_r150o"]
+[ext_resource type="Script" uid="uid://3tty3bip7lrr" path="res://Scripts/Core/GameAbilitySystem/AbilitySystemComponent.cs" id="2_idj7w"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_r150o")
+
+[node name="AbilitySystemComponent" type="Node" parent="."]
+script = ExtResource("2_idj7w")
+AttributeSetId = "player_basic_001"
+metadata/_custom_type_script = "uid://3tty3bip7lrr"

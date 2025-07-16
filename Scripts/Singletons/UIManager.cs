@@ -16,7 +16,7 @@ public partial class UIManager : Control, IUIManager
 	
 	public override void _Ready()
 	{
-		Contexts.Contexts.Instance.RegisterSingleNode<IUIManager>(this);
+		TO.Contexts.Contexts.Instance.RegisterSingleNode<IUIManager>(this);
 	}
 	
 	public IUILayer InitializeUILayer(string name)

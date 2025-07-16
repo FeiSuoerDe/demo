@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Apps.Commands.Core;
+namespace TO.Commands.Core;
 
 public record StartGameCommand : IRequest;
 

@@ -1,11 +1,11 @@
-using Apps.Commands.Core;
 using Godot;
 using MediatR;
+using TO.Commands.Core;
 using TO.Services.Abstractions.Core.SerializationSystem;
 
 namespace Apps.Core.GameProgress;
 
-public class QuitGameCommandHandler (ISaveManagerService iSaveManagerCommand) 
+public class QuitGameCommandHandler (ISaveManagerService saveManagerService, IMediator mediator) 
     : IRequestHandler<QuitGameCommand>
 {
     public async Task Handle(QuitGameCommand request, CancellationToken cancellationToken)
@@ -13,7 +13,8 @@ public class QuitGameCommandHandler (ISaveManagerService iSaveManagerCommand)
         try
         {
             GD.Print("Quitting game....");
-            await iSaveManagerCommand.SaveAutosaveAsync();
+            // await saveManagerService.SaveUserSettingsAsync();
+            await mediator.Send(new SaveUserSettingsCommand(), cancellationToken);
             var sceneTree = Engine.GetMainLoop() as SceneTree;
             sceneTree?.Quit();
         }

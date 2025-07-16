@@ -1,24 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Godot.NET.Sdk/4.4.1">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>TO.Repositories.Abstractions</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="GDTask" Version="1.4.1" />
-      <PackageReference Include="GodotSharp" Version="4.4.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TO.Infras.Writers\TO.Infras.Writers.csproj" />
+      <ProjectReference Include="..\TO.Commons\TO.Commons.csproj" />
+      <ProjectReference Include="..\TO.Data\TO.Data.csproj" />
       <ProjectReference Include="..\TO.Nodes.Abstractions\TO.Nodes.Abstractions.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Core\" />
-    </ItemGroup>
 
 </Project>
