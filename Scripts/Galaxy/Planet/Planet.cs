@@ -20,6 +20,14 @@ public partial class Planet : Node2D
         IceGiant, // 冰冻巨行星
         RockyPlanet // 岩石行星
     }
+    // 对应翻译表
+    public static Dictionary<PlanetType, string> PlanetTypeTranslations = new Dictionary<PlanetType, string>
+    {
+        { PlanetType.Terrestrial, "类地行星" },
+        { PlanetType.GasGiant, "气态巨行星" },
+        { PlanetType.IceGiant, "冰冻巨行星" },
+        { PlanetType.RockyPlanet, "岩石行星" }
+    };
     private float revolutionTime = 0f; // 用于累计公转时间
 
     public override void _Ready()

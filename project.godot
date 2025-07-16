@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Time-lapseInvoices"
 
+[editor]
+
+movie_writer/movie_file="E:/360MoveData/Users/lxl/Desktop/ship (2)/001.avi"
+
 [gui]
 
 theme/custom="uid://b3kq74llqlv3x"

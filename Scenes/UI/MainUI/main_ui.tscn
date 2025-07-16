@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c67siooh605qb"]
+[gd_scene load_steps=4 format=3 uid="uid://c67siooh605qb"]
 
 [ext_resource type="Script" uid="uid://4t34r4diq7nm" path="res://Scripts/UI/MainUI/MainUi.cs" id="1_ln6rs"]
 [ext_resource type="Script" uid="uid://bviljfkh3f0ug" path="res://Scripts/UI/MainUI/Background.gd" id="2_68cjw"]
+[ext_resource type="Texture2D" uid="uid://ds0fk6xcsrv10" path="res://Assets/贴图/背景/SBS - Seamless Space Backgrounds - Large 1024x1024/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="3_v8rnc"]
 
 [node name="MainUI" type="Control" node_paths=PackedStringArray("StartButton", "ExitButton")]
 layout_mode = 3
@@ -25,15 +26,25 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_68cjw")
 BackgroundSpritesPath = "res://Assets/贴图/UI/BackgroundSprites"
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v8rnc")
+stretch_mode = 1
+
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -214.0
-offset_right = 325.0
-offset_bottom = -148.0
+offset_left = 64.0
+offset_top = -374.0
+offset_right = 339.0
+offset_bottom = -308.0
 grow_vertical = 0
 
 [node name="Start" type="Button" parent="Buttons"]
@@ -50,9 +61,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -278.0
-offset_right = 278.0
-offset_bottom = 167.0
+offset_left = -896.0
+offset_top = 512.0
+offset_right = -340.0
+offset_bottom = 679.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.352941, 1, 1)

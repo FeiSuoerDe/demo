@@ -15,21 +15,28 @@ public partial class GalaxyDataDisplayUi : Control
     public VBoxContainer planetInfoContainer;
     // 展示星系id
     public Label galaxyIdLabel;
+    //    星系id
+    public int galaxyId;
 
     public override void _Ready()
     {
         // 连接关闭按钮的信号
         closeButton.Pressed += OnCloseButtonPressed;
+        DisplayGalaxyData(galaxyId);
     }
     // 按钮关闭
     public void OnCloseButtonPressed()
     {
-        // 关闭UI
-        Hide();
+        // 恢复游戏
+        GetTree().Paused = false;
+        // 关闭当前UI
+        QueueFree();
     }
     // 查询星系数据
     public void DisplayGalaxyData(int galaxyId)
     {
+        // 暂停游戏
+        GetTree().Paused = true;
         // 获取星系数据
         Galaxy galaxy = GameManager.galaxies[galaxyId];
         GD.Print("正在显示星系数据，ID: " + galaxyId);
@@ -45,7 +52,7 @@ public partial class GalaxyDataDisplayUi : Control
                 // 将星球信息项添加到容器中
                 planetInfoContainer.AddChild(planetInfoItem);
                 // 设置星球信息
-                planetInfoItem.SetPlanetInfo(planet.PName, planet.Type.ToString(), planet.DistanceFromStar, planet.Mass, planet.RotationSpeed, planet.RevolutionPeriod, planet.Volume);
+                planetInfoItem.SetPlanetInfo(planet.PName, Planet.PlanetTypeTranslations[planet.Type], planet.DistanceFromStar, planet.Mass, planet.RotationSpeed, planet.RevolutionPeriod, planet.Volume);
 
 
             }

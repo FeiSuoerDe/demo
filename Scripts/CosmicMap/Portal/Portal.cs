@@ -17,7 +17,7 @@ public partial class Portal : Node2D
         if (GalaxyDataDisplayUI != null)
         {
             GalaxyDataDisplayUi galaxyDataDisplayUiInstance = (GalaxyDataDisplayUi)GalaxyDataDisplayUI.Instantiate();
-            galaxyDataDisplayUiInstance.DisplayGalaxyData(partialId);
+            galaxyDataDisplayUiInstance.galaxyId = partialId; // 设置星系ID
             GetTree().Root.AddChild(galaxyDataDisplayUiInstance);
             galaxyDataDisplayUiInstance.Show();
             GD.Print("星系数据展示UI已显示，ID: " + partialId);
