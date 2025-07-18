@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://chb6n5xsexgxh"]
+[gd_scene load_steps=3 format=3 uid="uid://chb6n5xsexgxh"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
 [ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_tqu3k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4688"]
-
-[node name="SpaceshipPhysics" type="RigidBody2D"]
+[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("EngineMount", "WeaponHardpoint")]
+gravity_scale = 0.0
 script = ExtResource("1_5j5wk")
+EngineMount = NodePath("Engine Mount")
+WeaponHardpoint = NodePath("Weapon Hardpoint")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tqu3k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f4688")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-74, -110, -68, -117, -41, -112, -39, -79, -1, -96, 37, -79, 39, -113, 64, -115, 70, -111, 68, -41, 90, -14, 25, 115, 15, 116, 12, 99, 8, 100, 3, 65, -4, 65, -7, 99, -12, 99, -15, 114, -25, 115, -91, -17, -68, -39)
+
+[node name="Engine Mount" type="Node" parent="."]
+
+[node name="Weapon Hardpoint" type="Node" parent="."]

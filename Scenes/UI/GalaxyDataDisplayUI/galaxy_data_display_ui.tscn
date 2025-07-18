@@ -49,6 +49,7 @@ offset_right = 155.0
 offset_bottom = 241.0
 
 [node name="quit" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_right = 128.0
 offset_bottom = 73.0
 theme_override_font_sizes/font_size = 50

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jgc1jfu6snbr"]
+[gd_scene load_steps=7 format=3 uid="uid://jgc1jfu6snbr"]
 
 [ext_resource type="Script" uid="uid://7gtlrr3yh4om" path="res://Scripts/UI/WorldMapPlayerUI/WorldMapPlayerUi.cs" id="1_r4es3"]
 [ext_resource type="Texture2D" uid="uid://cgakw8jsi5rj8" path="res://Assets/贴图/驾驶员贴图/驾驶员_128px_女.png" id="2_4shg8"]
@@ -9,7 +9,9 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j2w2i"]
 
-[node name="WorldMapPlayerUI" type="Control"]
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_4shg8"]
+
+[node name="WorldMapPlayerUI" type="Control" node_paths=PackedStringArray("musicPlayer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r4es3")
+musicPlayer = NodePath("AudioStreamPlayer")
 
 [node name="Center" type="Panel" parent="."]
 layout_mode = 1
@@ -311,3 +314,6 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Right/VBoxContainer"]
 layout_mode = 2
 text = "任务列表 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMP3_4shg8")

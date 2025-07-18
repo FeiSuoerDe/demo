@@ -4,13 +4,68 @@ using System;
 public partial class SpaceshipPhysics : RigidBody2D
 {
     // 
-    public float Speed = 200f; // 飞船速度
-    public float RotationSpeed = 5f; // 飞船旋转速度
+    [Export]
+    public float MaxSpeed = 200f; // 飞船速度
+    [Export]
+    public float Acceleration = 100f; // 飞船加速度
+    [Export]
+    public float Deceleration = 50f; // 飞船减速度
+    [Export]
+    public float RotationSpeed = 500f; // 飞船旋转速度
+    [Export]
+    public float RotationAcceleration = 200f; // 飞船旋转加速度
+    [Export]
+    // 最大辐能值
+    public float MaxEnergy = 100f; // 最大辐能值
+                                   // 常态耗散
+    [Export]
+    public float EnergyDissipation = 0.1f; // 常态耗散
     public override void _Ready()
     {
         // 初始化飞船
         GD.Print("Spaceship is ready.");
     }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        var force = Vector2.Zero;
+        var torque = 0f;
+
+        // W/S 控制前进后退
+        if (Input.IsKeyPressed(Key.W)) // W
+        {
+            force -= Transform.Y * Acceleration;
+        }
+        if (Input.IsKeyPressed(Key.S)) // S
+        {
+            force += Transform.Y * Acceleration;
+        }
+
+        // Q/E 控制左右旋转
+        if (Input.IsKeyPressed(Key.Q))
+        {
+            torque -= RotationAcceleration * 10;
+        }
+        if (Input.IsKeyPressed(Key.E))
+        {
+            torque += RotationAcceleration * 10;
+        }
+
+        ApplyCentralForce(force);
+        ApplyTorque(torque);
+
+        // 限制最大速度
+        if (LinearVelocity.Length() > MaxSpeed)
+        {
+            LinearVelocity = LinearVelocity.Normalized() * MaxSpeed;
+        }
+        // 限制最大角速度
+        if (Mathf.Abs(AngularVelocity) > RotationSpeed)
+        {
+            AngularVelocity = Mathf.Sign(AngularVelocity) * RotationSpeed;
+        }
+    }
+
     [Export]
     // 引擎槽位节点
     public Node EngineMount; // 引擎槽位节点
