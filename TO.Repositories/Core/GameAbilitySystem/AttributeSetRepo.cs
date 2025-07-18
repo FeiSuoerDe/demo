@@ -11,7 +11,7 @@ namespace TO.Repositories.Core.GameAbilitySystem;
 public class AttributeSetRepo : BaseRepo, IAttributeSetRepo
 {
     private readonly Dictionary<Guid, AttributeSet> _attributeSets;
-    private readonly object _lock = new object();
+    private readonly Lock _lock = new Lock();
     
     public AttributeSetRepo()
     {
@@ -89,21 +89,6 @@ public class AttributeSetRepo : BaseRepo, IAttributeSetRepo
     /// 获取属性集数量
     /// </summary>
     public int Count => _attributeSets.Count;
-    
-    /// <summary>
-    /// 查找具有指定效果的属性集
-    /// </summary>
-    /// <param name="effectId">效果ID</param>
-    /// <returns>具有该效果的属性集列表</returns>
-    public IEnumerable<AttributeSet> FindWithEffect(Guid effectId)
-    {
-        lock (_lock)
-        {
-            return _attributeSets.Values
-                .Where(attributeSet => attributeSet.GetAppliedEffects().Any(effect => effect?.Id == effectId))
-                .ToList();
-        }
-    }
     
     /// <summary>
     /// 清空所有属性集

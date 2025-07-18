@@ -1,6 +1,5 @@
 using Godot;
 using TO.Commons.Enums.Game;
-using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using System.Text;
 
 
@@ -22,11 +21,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         public List<AttributeValue> Attributes { get; }
         
         /// <summary>
-        /// 应用的效果列表
-        /// </summary>
-        public List<AttributeEffect?> AppliedEffects { get; }
-        
-        /// <summary>
         /// 属性变化事件
         /// </summary>
         public event Action<AttributeType, float, float> AttributeChanged;
@@ -39,7 +33,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         {
             Id = Guid.NewGuid();
             Attributes = attributes;
-            AppliedEffects = [];
             AttributeChanged = delegate { };
         }
 
@@ -101,9 +94,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
                 Attributes.Add(new AttributeValue(type, value));
             }
             
-            // 重新计算当前值
-            RecalculateAttribute(type);
-            
             var newValue = GetAttributeCurrentValue(type);
             OnAttributeChanged(type, oldValue, newValue);
         }
@@ -120,9 +110,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             if (attribute != null)
             {
                 attribute.SetValueRange(minValue, maxValue);
-                
-                // 重新计算当前值以应用新的范围限制
-                RecalculateAttribute(type);
             }
         }
         
@@ -186,175 +173,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         }
         
         /// <summary>
-        /// 应用效果
-        /// </summary>
-        /// <param name="effect">要应用的效果</param>
-        /// <returns>是否成功应用</returns>
-        public bool ApplyEffect(AttributeEffect? effect)
-        {
-            if (effect == null)
-                return false;
-                
-            // 检查是否已存在相同效果
-            var existingEffect = AppliedEffects.FirstOrDefault(e => e.Id == effect.Id);
-            if (existingEffect != null)
-            {
-                return HandleExistingEffect(existingEffect, effect);
-            }
-            
-            // 添加新效果
-            AppliedEffects.Add(effect);
-            
-            // 重新计算受影响的属性
-            var affectedAttributes = effect.Modifiers.Select(m => m.AttributeType).Distinct();
-            foreach (var attributeType in affectedAttributes)
-            {
-                RecalculateAttribute(attributeType);
-            }
-            
-            return true;
-        }
-        
-        /// <summary>
-        /// 移除效果
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <returns>是否成功移除</returns>
-        public bool RemoveEffect(Guid effectId)
-        {
-            var effect = AppliedEffects.FirstOrDefault(e => e.Id == effectId);
-            if (effect == null)
-                return false;
-                
-            AppliedEffects.Remove(effect);
-            
-            // 重新计算受影响的属性
-            var affectedAttributes = effect.Modifiers.Select(m => m.AttributeType).Distinct();
-            foreach (AttributeType attributeType in affectedAttributes)
-            {
-                RecalculateAttribute(attributeType);
-            }
-            
-            return true;
-        }
-        
-        /// <summary>
-        /// 更新所有效果的持续时间
-        /// </summary>
-        /// <param name="deltaTime">时间增量</param>
-        public void UpdateEffects(float deltaTime)
-        {
-            var expiredEffects = new List<AttributeEffect?>();
-            
-            foreach (var effect in AppliedEffects)
-            {
-                effect?.UpdateDuration(deltaTime);
-                if (effect is { IsExpired: true })
-                {
-                    expiredEffects.Add(effect);
-                }
-            }
-            
-            // 移除过期效果
-            foreach (var expiredEffect in expiredEffects.OfType<AttributeEffect>())
-            {
-                RemoveEffect(expiredEffect.Id);
-            }
-        }
-
-        /// <summary>
-        /// 重新计算指定属性的当前值
-        /// </summary>
-        /// <param name="attributeType">属性类型</param>
-        protected void RecalculateAttribute(AttributeType attributeType)
-        {
-            var attribute = GetAttribute(attributeType);
-            if (attribute == null)
-                return;
-                
-            var baseValue = attribute.BaseValue;
-            var currentValue = baseValue;
-            
-            // 获取所有影响该属性的修饰器，从活跃效果中
-            var modifiers = AppliedEffects
-                .Where(e => !e.IsExpired && e.Status == EffectStatus.Active)  // 假设EffectStatus.Active是活跃状态
-                .SelectMany(e => e.Modifiers)
-                .Where(m => m.AttributeType == attributeType)
-                .OrderBy(m => m.ExecutionOrder)
-                .ToList();
-            
-            // 按操作类型分组应用修饰器
-            var addModifiers = modifiers.Where(m => m.OperationType == ModifierOperationType.Add).ToList();
-            var multiplyModifiers = modifiers.Where(m => m.OperationType == ModifierOperationType.Multiply).ToList();
-            var percentageModifiers = modifiers.Where(m => m.OperationType == ModifierOperationType.Percentage).ToList();
-            var overrideModifiers = modifiers.Where(m => m.OperationType == ModifierOperationType.Override).ToList();
-            
-            // 如果有覆盖修饰器，使用最后一个
-            if (overrideModifiers.Count != 0)
-            {
-                currentValue = overrideModifiers.Last().Value;
-            }
-            else
-            {
-                // 先应用加法修饰器
-                foreach (var modifier in addModifiers)
-                {
-                    currentValue += modifier.Value;
-                }
-                
-                // 再应用乘法修饰器
-                foreach (var modifier in multiplyModifiers)
-                {
-                    currentValue *= modifier.Value;
-                }
-                
-                // 最后应用百分比修饰器
-                foreach (var modifier in percentageModifiers)
-                {
-                    currentValue *= (1 + modifier.Value / 100);
-                }
-            }
-            
-            var oldValue = attribute.CurrentValue;
-            attribute.SetCurrentValue(currentValue);
-            
-            if (Math.Abs(oldValue - currentValue) > float.Epsilon)
-            {
-                OnAttributeChanged(attributeType, oldValue, currentValue);
-            }
-        }
-        
-        /// <summary>
-        /// 处理已存在的效果
-        /// </summary>
-        /// <param name="existingEffect">已存在的效果</param>
-        /// <param name="newEffect">新效果</param>
-        /// <returns>是否成功处理</returns>
-        protected bool HandleExistingEffect(AttributeEffect existingEffect, AttributeEffect? newEffect)
-        {
-            switch (existingEffect.StackingType)
-            {
-                case EffectStackingType.NoStack:
-                    return false; // 不允许堆叠
-                    
-                case EffectStackingType.Stack:
-                    return existingEffect.AddStack(); // 增加层数
-                    
-                case EffectStackingType.Replace:
-                    RemoveEffect(existingEffect.Id);
-                    AppliedEffects.Add(newEffect);
-                    return true;
-                    
-                case EffectStackingType.Duration:
-                    existingEffect.RefreshDuration();
-                    return true;
-                    
-                default:
-                    return false;
-            }
-        }
-        
-        /// <summary>
         /// 属性变化时的回调
         /// </summary>
         /// <param name="attributeType">属性类型</param>
@@ -383,15 +201,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             return Attributes.ToDictionary(attr => attr.AttributeType, attr => attr);
         }
         
-        /// <summary>
-        /// 获取所有应用的效果
-        /// </summary>
-        /// <returns>效果列表的副本</returns>
-        public List<AttributeEffect?> GetAppliedEffects()
-        {
-            return new List<AttributeEffect?>(AppliedEffects);
-        }
-        
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -400,11 +209,6 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             foreach (var attr in Attributes)
             {
                 sb.AppendLine($"  {attr.AttributeType}: Base = {attr.BaseValue}, Current = {attr.CurrentValue}");
-            }
-            sb.AppendLine("Applied Effects:");
-            foreach (var effect in AppliedEffects)
-            {
-                sb.AppendLine($"  Effect Id: {effect?.Id ?? Guid.Empty}");
             }
             return sb.ToString();
         }

@@ -90,6 +90,16 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         public EffectStatus Status { get; private set; }
         
         /// <summary>
+        /// 是否为周期性效果
+        /// </summary>
+        public bool IsPeriodic { get; private set; }
+        
+        /// <summary>
+        /// 周期执行间隔（秒）
+        /// </summary>
+        public double IntervalSeconds { get; private set; }
+        
+        /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="id">效果ID</param>
@@ -103,10 +113,12 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// <param name="maxStacks">最大堆叠层数</param>
         /// <param name="priority">效果优先级</param>
         /// <param name="isPassive">是否为被动效果</param>
+        /// <param name="isPeriodic">是否为周期性效果</param>
+        /// <param name="intervalSeconds">周期执行间隔（秒）</param>
         public AttributeEffect(string name, string description, List<AttributeModifier> modifiers, 
                     Duration duration, EffectType effectType, HashSet<EffectTags> tags, 
                     EffectStackingType stackingType = EffectStackingType.Replace, int maxStacks = 1,
-                    int priority = 0, bool isPassive = false)
+                    int priority = 0, bool isPassive = false, bool isPeriodic = false, double intervalSeconds = 1.0)
         {
             Id = Guid.NewGuid();
             Name = name ?? throw new ArgumentNullException(nameof(name));
@@ -121,6 +133,8 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
             Priority = priority;
         
             IsPassive = isPassive;
+            IsPeriodic = isPeriodic;
+            IntervalSeconds = intervalSeconds;
             Status = EffectStatus.Active;
             CreatedTime = DateTime.UtcNow;
             LastUpdatedTime = CreatedTime;

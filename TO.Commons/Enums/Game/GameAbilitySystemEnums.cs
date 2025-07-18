@@ -62,6 +62,7 @@ public enum SourceType
 public enum ModifierOperationType
 {
     Add,           // 加法修饰
+    Subtract,      // 减法修饰
     Multiply,      // 乘法修饰
     Override,      // 覆盖修饰
     Percentage     // 百分比修饰
@@ -72,9 +73,9 @@ public enum ModifierOperationType
 /// </summary>
 public enum EffectType
 {
-    Buff,       // 正面效果
-    Debuff,     // 负面效果
-    Neutral     // 中性效果
+    Instant,    // 即时效果：立即应用并完成的效果
+    Duration,   // 持续效果：在指定时间内持续作用的效果
+    Infinite    // 无限效果：永久作用直到被移除的效果
 }
 
 /// <summary>

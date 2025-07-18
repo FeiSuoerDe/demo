@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TO.Data.Enities.GameAbilitySystem.GameplayAttribute;
-using TO.Data.Models.GameAbilitySystem.Converters;
 using TO.Commons.Configs;
 using Godot;
+using TO.Data.Converters;
 
 namespace TO.Data.Database
 {

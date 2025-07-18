@@ -17,6 +17,8 @@ namespace TO.Data.Enities.GameAbilitySystem.GameplayEffect
         public int MaxStacks { get; set; }
         public bool IsPassive { get; set; }
         public int Priority { get; set; }
+        public bool IsPeriodic { get; set; }
+        public double IntervalSeconds { get; set; }
 
     }
 }

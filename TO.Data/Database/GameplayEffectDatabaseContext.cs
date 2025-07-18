@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TO.Data.Enities.GameAbilitySystem.GameplayEffect;
-using TO.Data.Models.GameAbilitySystem.Converters;
 using TO.Commons.Configs;
 using Godot;
+using TO.Data.Converters;
 
 namespace TO.Data.Database
 {
@@ -24,6 +24,9 @@ namespace TO.Data.Database
 
             modelBuilder.Entity<AttributeModifierEntity>().Property(e => e.AttributeType)
                 .HasConversion(new AttributeTypeConverter());
+
+            modelBuilder.Entity<AttributeModifierEntity>().Property(e => e.OperationType)
+                .HasConversion(new ModifierOperationTypeConverter());
 
             modelBuilder.Entity<AttributeEffectEntity>().Property(e => e.EffectType)
                 .HasConversion(new EffectTypeConverter());

@@ -8,6 +8,7 @@ using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Core.GameAbilitySystem;
+using TO.Services.Core.GameAbilitySystem.Components;
 
 namespace demo.Core.GameAbilitySystem;
 
@@ -32,7 +33,7 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     {
         base._Ready();
         // 注册到依赖注入容器
-        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, AbilitySystemComponentService>(this);
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, NodeINodeAbilitySystemComponentService>(this);
        
     }
     

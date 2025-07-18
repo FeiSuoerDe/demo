@@ -1,7 +1,6 @@
 using TO.Commons.Enums;
 using TO.Commons.Enums.System;
 
-
 namespace TO.Commons.Configs;
 
 public static class AudioConfigs

@@ -1,24 +1,21 @@
-using Godot;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAttribute;
 using TO.Services.Abstractions.Core.ReadTableSystem;
 using TO.Services.Bases;
 
-namespace TO.Services.Core.GameAbilitySystem;
+namespace TO.Services.Core.GameAbilitySystem.Components;
 
 /// <summary>
 /// Ability System Component 服务实现
 /// 提供ASC的核心业务逻辑
 /// </summary>
-public class AbilitySystemComponentService : BaseService, IAbilitySystemComponentService
+public class NodeINodeAbilitySystemComponentService : BaseService, INodeAbilitySystemComponentService
 {
     /// <summary>
     /// 属性管理器服务
     /// </summary>
     private readonly IAttributeManagerService _attributeManagerService;
-    
-    // Removed: private readonly IAttributeCalculationService _attributeCalculationService;
     
     private readonly IAbilitySystemComponent _abilitySystemComponent;
 
@@ -28,16 +25,18 @@ public class AbilitySystemComponentService : BaseService, IAbilitySystemComponen
     /// Ability System Component 服务实现
     /// 提供ASC的核心业务逻辑
     /// </summary>
-    public AbilitySystemComponentService(IAttributeManagerService attributeManagerService,
+    public NodeINodeAbilitySystemComponentService(IAttributeManagerService attributeManagerService,
         IAbilitySystemComponent abilitySystemComponent, 
         IAttributeDatabaseReadService attributeDatabaseReadService)
     {
         _attributeManagerService = attributeManagerService;
         _abilitySystemComponent = abilitySystemComponent;
         _attributeDatabaseReadService = attributeDatabaseReadService;
+        
 
         var attributeSets = _attributeDatabaseReadService.GetAttributeSetById(_abilitySystemComponent.AttributeSetId);
-        GD.Print(attributeSets.ToString());
+        _attributeManagerService.RegisterAttributeSet(attributeSets);
+        
     }
 
    

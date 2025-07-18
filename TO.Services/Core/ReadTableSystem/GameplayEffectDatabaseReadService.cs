@@ -8,14 +8,9 @@ using System.Collections.Generic;
 
 namespace TO.Services.Core.ReadTableSystem
 {
-    public class GameplayEffectDatabaseReadService : IGameplayEffectDatabaseReadService
+    public class GameplayEffectDatabaseReadService(IAttributeEffectCacheRepo cache) : IGameplayEffectDatabaseReadService
     {
-        private readonly IAttributeEffectCacheRepo _cache;
-
-        public GameplayEffectDatabaseReadService(IAttributeEffectCacheRepo cache)
-        {
-            _cache = cache;
-        }
+        private readonly IAttributeEffectCacheRepo _cache = cache;
 
         public AttributeEffect GetEffectByAttributeSetId(string id)
         {
@@ -38,7 +33,7 @@ namespace TO.Services.Core.ReadTableSystem
             var effect = new AttributeEffect(effectEntity.Name, effectEntity.Description,modelModifiers, 
                 new Duration(effectEntity.IsInfinite,effectEntity.DurationSeconds),effectEntity.EffectType,
                  effectEntity.Tags, effectEntity.StackingType,effectEntity.MaxStacks, effectEntity.Priority,
-                effectEntity.IsPassive);
+                effectEntity.IsPassive, effectEntity.IsPeriodic, effectEntity.IntervalSeconds);
             
 
 
