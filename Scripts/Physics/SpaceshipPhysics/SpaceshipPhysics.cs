@@ -77,22 +77,7 @@ public partial class SpaceshipPhysics : RigidBody2D
 
 
 }
-// 引擎类
-public partial class Engine : Node2D
-{
-    // 引擎喷口方向type（上下左右）
-    public enum EngineDirection
-    {
-        Up, // 向上
-        Down, // 向下
-        Left, // 向左
-        Right // 向右
-    }
-    public EngineDirection Direction; // 引擎喷口方向
 
-
-
-}
 // 武器槽位
 public partial class WeaponHardpoint : Node2D
 {

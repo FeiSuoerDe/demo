@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr0l34kaxxxmv"]
+
+[ext_resource type="Script" uid="uid://deplx6ednsou1" path="res://Scripts/Physics/SpaceshipPhysics/Engine.cs" id="1_06hvw"]
+
+[sub_resource type="Gradient" id="Gradient_kwprv"]
+offsets = PackedFloat32Array(0, 0.719697, 1)
+colors = PackedColorArray(0.501961, 0.72549, 1, 1, 0.419608, 1, 0, 1, 0.54902, 0.54902, 0.54902, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_06hvw"]
+gradient = SubResource("Gradient_kwprv")
+
+[sub_resource type="Curve" id="Curve_uf8l6"]
+_data = [Vector2(0.139241, 1), 0.0, 0.0, 0, 0, Vector2(0.620253, 0.910112), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_00vvj"]
+curve = SubResource("Curve_uf8l6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qktw7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.12
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 100.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_00vvj")
+color = Color(1, 1, 1, 0.105882)
+color_ramp = SubResource("GradientTexture1D_06hvw")
+
+[node name="Engine" type="GPUParticles2D" node_paths=PackedStringArray("stateLabel")]
+position = Vector2(483, 148)
+scale = Vector2(10, 10)
+amount = 1500
+lifetime = 0.8
+visibility_rect = Rect2(-4, 0, 8, 20)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qktw7")
+script = ExtResource("1_06hvw")
+stateLabel = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -12.6
+offset_right = -7.99999
+offset_bottom = 10.4
+text = "待机"
