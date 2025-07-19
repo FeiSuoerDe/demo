@@ -29,13 +29,13 @@ public class AttributeDatabaseReadService(IAttributeSetCacheRepo cache) : IAttri
             var basicValues = context.BasicAttributeValues.Where(v => v.AttributeSetId == id).ToList();
             GD.Print(basicValues.Count);
             attributes.AddRange(basicValues.Select(val =>
-                new AttributeValue(val.AttributeType, val.BaseValue, val.MinValue, val.MaxValue)));
+                new AttributeValue(val.AttributeType, val.MaxValue, val.MinValue, val.MaxValue)));
         }
         else if (attributeSetEntity.Id.Contains("ship"))
         {
             var shipValues = context.ShipAttributeValues.Where(v => v.AttributeSetId == id).ToList();
             attributes.AddRange(shipValues.Select(val =>
-                new AttributeValue(val.AttributeType, val.BaseValue, val.MinValue, val.MaxValue)));
+                new AttributeValue(val.AttributeType, val.MaxValue, val.MinValue, val.MaxValue)));
         }
 
         var attributeSet = new AttributeSet(attributes);

@@ -77,8 +77,6 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
                         : ProcessInfiniteEffect(effect, target, source, sourceAbilityId),
                     _ => false
                 };
-                
-               
             }
             catch (Exception ex)
             {
@@ -360,7 +358,7 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
                     {
                         if (innerDict != null)
                         {
-                            var effectKey = $"{expiredEffect.Effect.Name}_{expiredEffect.Effect}";
+                            var effectKey = $"{expiredEffect.Effect.Name}_{expiredEffect.Effect.EffectType}";
                             if (innerDict.TryGetValue(effectKey, out var stack))
                             {
                                 stack.CurrentStacks = Math.Max(0, stack.CurrentStacks - 1);
@@ -426,7 +424,7 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
             foreach (var expiredEffect in expiredEffects)
             {
                 effects.Remove(expiredEffect);
-                GD.Print($"[AbilityEffectService] 周期效果过期移除: EffectId={expiredEffect.Effect}, Target={targetId}");
+                GD.Print($"[AbilityEffectService] 周期效果过期移除: EffectId={expiredEffect.Effect.Id}, Target={targetId}");
             }
             
             var readyEffects = effects.Where(e => e.NextExecutionTime <= now && e.ExpiryTime > now).ToList();
@@ -444,7 +442,7 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
                     periodicEffect.NextExecutionTime = now.AddSeconds(periodicEffect.IntervalSeconds);
                     
                     PublishEvent(new EffectApplied(targetId, periodicEffect.Effect, target));
-                    GD.Print($"[AbilityEffectService] 周期效果执行: EffectId={periodicEffect.Effect}, Target={targetId}, ExecutionCount={periodicEffect.ExecutionCount}");
+                    GD.Print($"[AbilityEffectService] 周期效果执行: EffectId={periodicEffect.Effect.Id}, Target={targetId}, ExecutionCount={periodicEffect.ExecutionCount}");
                     
                     executedCount++;
                 }
@@ -846,8 +844,8 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
                 }
 
                 // 应用新值
-                attribute.SetCurrentValue(newValue);
-                
+                // attribute.SetCurrentValue(newValue);
+                target.SetAttributeCurrentValue(attribute.AttributeType, newValue);
                 // 记录修改器应用日志
                 GD.Print($"[AbilityEffectService] 修饰器已应用: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, OperationType={modifier.OperationType}, ModifierValue={modifier.Value}, OldValue={currentValue}, NewValue={newValue}");
             }

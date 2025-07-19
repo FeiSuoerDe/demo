@@ -65,6 +65,10 @@ public class AttributeManagerService : BaseGameAbilityService, IAttributeManager
             {
                 PublishEvent(new AttributeChanged(attributeSet.Id, attrType, oldValue, newValue));
             };
+            attributeSet.AttributeRangeChanged += (attrType, minValue, maxValue) =>
+            {
+                PublishEvent(new AttributeRangeChanged(attributeSet.Id, attrType, minValue, maxValue));
+            };
         });
     }
 
@@ -118,7 +122,7 @@ public class AttributeManagerService : BaseGameAbilityService, IAttributeManager
     /// <param name="attributeSetId">属性集ID</param>
     /// <param name="effect">效果</param>
     /// <returns>是否成功应用</returns>
-    public bool ApplyEffect(Guid attributeSetId, Data.Models.GameAbilitySystem.GameplayEffect.AttributeEffect? effect)
+    public bool ApplyEffect(Guid attributeSetId, AttributeEffect? effect)
     {
         if (attributeSetId == Guid.Empty || effect == null)
             return false;
@@ -210,7 +214,7 @@ public class AttributeManagerService : BaseGameAbilityService, IAttributeManager
             if (attributeSet == null) return false;
                 
             var oldValue = attributeSet.GetAttribute(attributeType)?.CurrentValue ?? 0f;
-            attributeSet.SetAttribute(attributeType, value);
+            attributeSet.SetAttributeBaseValue(attributeType, value);
                 
             PublishEvent(new AttributeChanged(attributeSet.Id, attributeType, oldValue, value));
             return true;
@@ -233,9 +237,9 @@ public class AttributeManagerService : BaseGameAbilityService, IAttributeManager
     /// </summary>
     /// <param name="tag">效果标签</param>
     /// <returns>具有该标签的效果列表</returns>
-    public IEnumerable<(Guid attributeSetId, Data.Models.GameAbilitySystem.GameplayEffect.AttributeEffect effect)> FindEffectsWithTag(EffectTags tag)
+    public IEnumerable<(Guid attributeSetId, AttributeEffect effect)> FindEffectsWithTag(EffectTags tag)
     {
-        var results = new List<(Guid, Data.Models.GameAbilitySystem.GameplayEffect.AttributeEffect)>();
+        var results = new List<(Guid, AttributeEffect)>();
         foreach (var attributeSet in _iAttributeSetRepo.GetAll())
         {
             var effects = _abilityEffectService.GetActiveEffects(attributeSet)

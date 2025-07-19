@@ -67,21 +67,25 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         public void SetCurrentValue(float value)
         {
             CurrentValue = ClampValue(value);
+            
         }
         
-        /// <summary>
-        /// 设置值范围限制
-        /// </summary>
-        /// <param name="minValue">最小值</param>
-        /// <param name="maxValue">最大值</param>
-        public void SetValueRange(float minValue, float maxValue)
+
+        public void SetMaxValue(float maxValue)
         {
-            if (minValue > maxValue)
+            if (MinValue > maxValue)
                 throw new ArgumentException("最小值不能大于最大值");
-                
-            MinValue = minValue;
             MaxValue = maxValue;
-            
+            // 重新应用限制
+            BaseValue = ClampValue(BaseValue);
+            CurrentValue = ClampValue(CurrentValue);
+        }
+        
+        public void SetMinValue(float minValue)
+        {
+            if (minValue > MaxValue)
+                throw new ArgumentException("最小值不能大于最大值");
+            MinValue = minValue;
             // 重新应用限制
             BaseValue = ClampValue(BaseValue);
             CurrentValue = ClampValue(CurrentValue);

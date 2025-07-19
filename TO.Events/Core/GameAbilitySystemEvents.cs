@@ -15,4 +15,5 @@ public record EffectExpired(Guid TargetId, AttributeEffect Effect, AttributeSet 
 
 // 属性管理相关事件
 public record AttributeChanged(Guid AttributeSetId, AttributeType AttributeType, float OldValue, float NewValue) : IEvent;
+public record AttributeRangeChanged(Guid AttributeSetId, AttributeType AttributeType, float MinValue, float MaxValue) : IEvent;
 

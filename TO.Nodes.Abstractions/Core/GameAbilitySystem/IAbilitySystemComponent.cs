@@ -14,7 +14,7 @@ namespace TO.Nodes.Abstractions.Core.GameAbilitySystem;
 /// </summary>
 public interface IAbilitySystemComponent : INode
 {
-    
     string AttributeSetId{get; set;}
-
+    
+    event Action<Action<Guid>>? OnGetAttributeSetId;
 }

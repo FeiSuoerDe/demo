@@ -11,5 +11,12 @@ public partial class SaveManager : Node,ISaveManager
     {
         TO.Contexts.Contexts.Instance.RegisterSingleNode<ISaveManager>(this);
     }
-
+    
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        
+        // 释放依赖注入容器
+        NodeScope?.Dispose();
+    }
 }

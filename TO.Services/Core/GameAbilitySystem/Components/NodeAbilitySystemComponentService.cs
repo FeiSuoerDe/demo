@@ -10,7 +10,7 @@ namespace TO.Services.Core.GameAbilitySystem.Components;
 /// Ability System Component 服务实现
 /// 提供ASC的核心业务逻辑
 /// </summary>
-public class NodeINodeAbilitySystemComponentService : BaseService, INodeAbilitySystemComponentService
+public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystemComponentService
 {
     /// <summary>
     /// 属性管理器服务
@@ -21,11 +21,13 @@ public class NodeINodeAbilitySystemComponentService : BaseService, INodeAbilityS
 
     private readonly IAttributeDatabaseReadService _attributeDatabaseReadService;
     
+    private Guid _currentAttributeSetId;
+    
     /// <summary>
     /// Ability System Component 服务实现
     /// 提供ASC的核心业务逻辑
     /// </summary>
-    public NodeINodeAbilitySystemComponentService(IAttributeManagerService attributeManagerService,
+    public NodeAbilitySystemComponentService(IAttributeManagerService attributeManagerService,
         IAbilitySystemComponent abilitySystemComponent, 
         IAttributeDatabaseReadService attributeDatabaseReadService)
     {
@@ -36,8 +38,18 @@ public class NodeINodeAbilitySystemComponentService : BaseService, INodeAbilityS
 
         var attributeSets = _attributeDatabaseReadService.GetAttributeSetById(_abilitySystemComponent.AttributeSetId);
         _attributeManagerService.RegisterAttributeSet(attributeSets);
-        
+        _currentAttributeSetId = attributeSets.Id;
+        _abilitySystemComponent.OnGetAttributeSetId += OnGetAttributeSetId;
     }
 
-   
+    private void OnGetAttributeSetId(Action<Guid> callback)
+    {
+        callback(_currentAttributeSetId);
+    }
+
+    protected override void UnSubscriber()
+    {
+        base.UnSubscriber();
+        _abilitySystemComponent.OnGetAttributeSetId -= OnGetAttributeSetId;
+    }
 }

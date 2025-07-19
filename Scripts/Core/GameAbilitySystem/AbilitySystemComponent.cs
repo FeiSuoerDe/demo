@@ -1,13 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Autofac;
 using Godot;
-using TO.Commons.Enums.Game;
-using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
-using TO.Services.Abstractions.Core.GameAbilitySystem;
-using TO.Services.Core.GameAbilitySystem;
 using TO.Services.Core.GameAbilitySystem.Components;
 
 namespace demo.Core.GameAbilitySystem;
@@ -29,12 +23,18 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     /// </summary>
     public ILifetimeScope? NodeScope { get; set; }
     
+    public event Action<Action<Guid>>? OnGetAttributeSetId;
+    
     public override void _Ready()
     {
         base._Ready();
         // 注册到依赖注入容器
-        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, NodeINodeAbilitySystemComponentService>(this);
-       
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, NodeAbilitySystemComponentService>(this);
+    }
+    
+    public void GetAttributeSetId(Action<Guid> callback)
+    {
+        OnGetAttributeSetId?.Invoke(callback);
     }
     
     public override void _ExitTree()

@@ -24,6 +24,8 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// 属性变化事件
         /// </summary>
         public event Action<AttributeType, float, float> AttributeChanged;
+        
+        public event Action<AttributeType, float, float> AttributeRangeChanged;
 
         /// <summary>
         /// 构造函数
@@ -75,12 +77,30 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             return Attributes;
         }
         
+        public void SetAttributeCurrentValue(AttributeType type, float value)
+        {
+            var oldValue = GetAttributeCurrentValue(type);
+            
+            var attribute = GetAttribute(type);
+            if (attribute != null)
+            {
+                attribute.SetCurrentValue(value);
+            }
+            else
+            {
+                Attributes.Add(new AttributeValue(type, value));
+            }
+            
+            var newValue = GetAttributeCurrentValue(type);
+            OnAttributeChanged(type, oldValue, newValue);
+        }
+        
         /// <summary>
         /// 设置属性基础值
         /// </summary>
         /// <param name="type">属性类型</param>
         /// <param name="value">基础值</param>
-        public void SetAttribute(AttributeType type, float value)
+        public void SetAttributeBaseValue(AttributeType type, float value)
         {
             var oldValue = GetAttributeCurrentValue(type);
             
@@ -94,9 +114,11 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
                 Attributes.Add(new AttributeValue(type, value));
             }
             
-            var newValue = GetAttributeCurrentValue(type);
+            var newValue = GetAttributeBaseValue(type);
             OnAttributeChanged(type, oldValue, newValue);
         }
+        
+        
         
         /// <summary>
         /// 设置属性值范围
@@ -104,13 +126,20 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
         /// <param name="type">属性类型</param>
         /// <param name="minValue">最小值</param>
         /// <param name="maxValue">最大值</param>
-        public void SetAttributeRange(AttributeType type, float minValue, float maxValue)
+        public void SetAttributeMinValue(AttributeType type, float minValue)
         {
             var attribute = GetAttribute(type);
-            if (attribute != null)
-            {
-                attribute.SetValueRange(minValue, maxValue);
-            }
+            if (attribute == null) return;
+            attribute.SetMinValue(minValue);
+            OnAttributeRangeChanged(type, minValue, attribute.MaxValue);
+        }
+        
+        public void SetAttributeMaxValue(AttributeType type,float maxValue)
+        {
+            var attribute = GetAttribute(type);
+            if (attribute == null) return;
+            attribute.SetMaxValue(maxValue);
+            OnAttributeRangeChanged(type, attribute.MinValue, maxValue);
         }
         
         /// <summary>
@@ -151,26 +180,12 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             }
             else
             {
-                attribute.SetValueRange(minValue, maxValue);
+                attribute.SetMaxValue(maxValue);
+                attribute.SetMinValue(minValue);
                 attribute.SetBaseValue(baseValue);
             }
         }
         
-        /// <summary>
-        /// 更新属性值（内部使用）
-        /// </summary>
-        /// <param name="type">属性类型</param>
-        /// <param name="value">新值</param>
-        protected void UpdateAttribute(AttributeType type, float value)
-        {
-            var attribute = GetAttribute(type);
-            if (attribute != null)
-            {
-                var oldValue = attribute.CurrentValue;
-                attribute.SetCurrentValue(value);
-                OnAttributeChanged(type, oldValue, value);
-            }
-        }
         
         /// <summary>
         /// 属性变化时的回调
@@ -183,20 +198,25 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute
             AttributeChanged?.Invoke(attributeType, oldValue, newValue);
         }
         
+        private void OnAttributeRangeChanged(AttributeType attributeType, float minValue, float maxValue)
+        {
+            AttributeRangeChanged?.Invoke(attributeType, minValue, maxValue);
+        }
+        
         /// <summary>
         /// 获取所有属性的副本
         /// </summary>
         /// <returns>属性列表的副本</returns>
         public List<AttributeValue?> GetAllAttributes()
         {
-            return new List<AttributeValue?>(Attributes);
+            return [..Attributes];
         }
         
         /// <summary>
         /// 获取所有属性的字典形式（为了兼容性）
         /// </summary>
         /// <returns>属性字典</returns>
-        public Dictionary<AttributeType, AttributeValue?> GetAllAttributesAsDictionary()
+        public Dictionary<AttributeType, AttributeValue> GetAllAttributesAsDictionary()
         {
             return Attributes.ToDictionary(attr => attr.AttributeType, attr => attr);
         }
