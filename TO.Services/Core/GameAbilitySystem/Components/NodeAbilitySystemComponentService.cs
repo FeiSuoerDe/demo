@@ -1,3 +1,4 @@
+using TO.Commons.Enums.Game;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAttribute;
@@ -20,6 +21,7 @@ public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystem
     private readonly IAbilitySystemComponent _abilitySystemComponent;
 
     private readonly IAttributeDatabaseReadService _attributeDatabaseReadService;
+    private readonly IGameplayEffectDatabaseReadService _gameplayEffectDatabaseReadService;
     
     private Guid _currentAttributeSetId;
     
@@ -29,27 +31,43 @@ public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystem
     /// </summary>
     public NodeAbilitySystemComponentService(IAttributeManagerService attributeManagerService,
         IAbilitySystemComponent abilitySystemComponent, 
-        IAttributeDatabaseReadService attributeDatabaseReadService)
+        IAttributeDatabaseReadService attributeDatabaseReadService, 
+        IGameplayEffectDatabaseReadService gameplayEffectDatabaseReadService)
     {
         _attributeManagerService = attributeManagerService;
         _abilitySystemComponent = abilitySystemComponent;
         _attributeDatabaseReadService = attributeDatabaseReadService;
-        
+        _gameplayEffectDatabaseReadService = gameplayEffectDatabaseReadService;
+
 
         var attributeSets = _attributeDatabaseReadService.GetAttributeSetById(_abilitySystemComponent.AttributeSetId);
         _attributeManagerService.RegisterAttributeSet(attributeSets);
         _currentAttributeSetId = attributeSets.Id;
         _abilitySystemComponent.OnGetAttributeSetId += OnGetAttributeSetId;
+        _abilitySystemComponent.OnGetAttributeValue += OnGetAttributeValue;
+        _abilitySystemComponent.OnApplyEffect += OnApplyEffect;
     }
 
     private void OnGetAttributeSetId(Action<Guid> callback)
     {
         callback(_currentAttributeSetId);
     }
+    
+    private void OnGetAttributeValue(AttributeType attributeType,Action<float> callback)
+    {
+        callback(_attributeManagerService.GetAttributeValue(_currentAttributeSetId, attributeType)!.CurrentValue);
+    }
+    
+    private void OnApplyEffect(string effectId)
+    {
+        var effect = _gameplayEffectDatabaseReadService.GetEffectByAttributeSetId(effectId);
+        _attributeManagerService.ApplyEffect(_currentAttributeSetId, effect);
+    }
 
     protected override void UnSubscriber()
     {
         base.UnSubscriber();
         _abilitySystemComponent.OnGetAttributeSetId -= OnGetAttributeSetId;
+        _abilitySystemComponent.OnApplyEffect -= OnApplyEffect;
     }
 }

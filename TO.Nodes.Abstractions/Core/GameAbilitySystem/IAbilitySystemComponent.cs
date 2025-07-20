@@ -17,4 +17,8 @@ public interface IAbilitySystemComponent : INode
     string AttributeSetId{get; set;}
     
     event Action<Action<Guid>>? OnGetAttributeSetId;
+    
+    public event Action<AttributeType,Action<float>>? OnGetAttributeValue;
+    
+    event Action<string> OnApplyEffect; 
 }

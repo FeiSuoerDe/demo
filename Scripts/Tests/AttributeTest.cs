@@ -2,10 +2,9 @@ using Godot;
 using System;
 using Autofac;
 using demo.Core.GameAbilitySystem;
-using TO.Nodes.Abstractions.Tests;
-using TO.Services.Tests;
 
-public partial class AttributeTest : Node, IAttributeTest
+
+public partial class AttributeTest : Node
 {
     [Export]
     public AbilitySystemComponent AbilitySystemComponent { get; set; }
@@ -21,18 +20,13 @@ public partial class AttributeTest : Node, IAttributeTest
     public Guid AttributeSetId { get; set; }
     public ILifetimeScope? NodeScope { get; set; }
     
-    
-    public event Action? OnHurt;
-    public event Action? OnHeal;
-    
     public override void _Ready()
     {
         AbilitySystemComponent.GetAttributeSetId(guid => AttributeSetId = guid);
         TestBarHud.Bind(AttributeSetId);
-        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAttributeTest, NodeAttributeTestService>(this);
         
-        hurtButton.Pressed += () => OnHurt?.Invoke();
-        healButton.Pressed += () => OnHeal?.Invoke();
+        hurtButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_damage");
+        healButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_heal");
     }
     
     public override void _ExitTree()

@@ -1,6 +1,7 @@
 using System;
 using Autofac;
 using Godot;
+using TO.Commons.Enums.Game;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Core.GameAbilitySystem.Components;
 
@@ -25,6 +26,11 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     
     public event Action<Action<Guid>>? OnGetAttributeSetId;
     
+    public event Action<AttributeType,Action<float>>? OnGetAttributeValue;
+    
+
+    public event Action<string>? OnApplyEffect; 
+    
     public override void _Ready()
     {
         base._Ready();
@@ -37,6 +43,16 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
         OnGetAttributeSetId?.Invoke(callback);
     }
     
+    public void GetAttributeValue(AttributeType attributeType,Action<float> callback)
+    {
+        OnGetAttributeValue?.Invoke(attributeType,callback);
+    }
+    
+    public void ApplyEffect(string effectId)
+    {
+        OnApplyEffect?.Invoke(effectId);
+    }
+   
     public override void _ExitTree()
     {
         base._ExitTree();
