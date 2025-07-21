@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chb6n5xsexgxh"]
+[gd_scene load_steps=4 format=3 uid="uid://chb6n5xsexgxh"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
 [ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_tqu3k"]
+[ext_resource type="PackedScene" uid="uid://cr0l34kaxxxmv" path="res://Scenes/Physics/SpaceshipPhysics/engine.tscn" id="3_kxofk"]
 
 [node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("EngineMount", "WeaponHardpoint")]
 gravity_scale = 0.0
@@ -13,8 +14,41 @@ WeaponHardpoint = NodePath("Weapon Hardpoint")
 texture = ExtResource("2_tqu3k")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-74, -110, -68, -117, -41, -112, -39, -79, -1, -96, 37, -79, 39, -113, 64, -115, 70, -111, 68, -41, 90, -14, 25, 115, 15, 116, 12, 99, 8, 100, 3, 65, -4, 65, -7, 99, -12, 99, -15, 114, -25, 115, -91, -17, -68, -39)
 
-[node name="Engine Mount" type="Node" parent="."]
+[node name="Engine Mount" type="Node2D" parent="."]
 
-[node name="Weapon Hardpoint" type="Node" parent="."]
+[node name="Engine" parent="Engine Mount" instance=ExtResource("3_kxofk")]
+z_index = -1
+position = Vector2(-47, 64)
+scale = Vector2(2, 2)
+
+[node name="Engine2" parent="Engine Mount" instance=ExtResource("3_kxofk")]
+z_index = -1
+position = Vector2(-34, 90)
+scale = Vector2(2, 2)
+
+[node name="Engine3" parent="Engine Mount" instance=ExtResource("3_kxofk")]
+z_index = -1
+position = Vector2(-20, 115)
+scale = Vector2(2, 2)
+
+[node name="Engine4" parent="Engine Mount" instance=ExtResource("3_kxofk")]
+z_index = -1
+position = Vector2(20, 117)
+scale = Vector2(2, 2)
+
+[node name="Engine5" parent="Engine Mount" instance=ExtResource("3_kxofk")]
+z_index = -1
+position = Vector2(34, 90)
+scale = Vector2(2, 2)
+
+[node name="Engine6" parent="Engine Mount" instance=ExtResource("3_kxofk")]
+z_index = -1
+position = Vector2(47, 64)
+scale = Vector2(2, 2)
+
+[node name="Weapon Hardpoint" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]

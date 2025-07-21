@@ -3,9 +3,6 @@ using System;
 
 public partial class Engine : GpuParticles2D
 {
-    // 状态label
-    [Export]
-    public Label stateLabel;
     // 四个状态待机熄灭开启加速枚举
     public enum EngineState
     {
@@ -22,23 +19,7 @@ public partial class Engine : GpuParticles2D
         if (@event is InputEventKey keyEvent && keyEvent.IsPressed() && keyEvent.Keycode == Key.Space)
         {
             currentState = (EngineState)(((int)currentState + 1) % Enum.GetValues(typeof(EngineState)).Length);
-            // 更新状态标签（中文）
-            switch (currentState)
-            {
-                case EngineState.Idle:
-                    stateLabel.Text = "待机";
-                    break;
-                case EngineState.Off:
-                    stateLabel.Text = "熄灭";
-                    break;
-                case EngineState.On:
-                    stateLabel.Text = "开启";
-                    break;
-                case EngineState.Boosting:
-                    stateLabel.Text = "加速";
-                    break;
-            }
-            GD.Print($"Engine state changed to: {currentState}");
+
         }
     }
     public override void _Ready()
