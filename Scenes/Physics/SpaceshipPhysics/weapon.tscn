@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b08gtgkn7hgj4"]
+
+[ext_resource type="Script" uid="uid://cqk3ug6esnlmf" path="res://Scripts/Physics/SpaceshipPhysics/Weapon.cs" id="1_m3y60"]
+
+[node name="Weapon" type="Node2D" node_paths=PackedStringArray("ReloadTimer")]
+script = ExtResource("1_m3y60")
+FireRate = 0.1
+ReloadTimer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
