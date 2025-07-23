@@ -1,6 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://b08gtgkn7hgj4"]
+[gd_scene load_steps=7 format=3 uid="uid://b08gtgkn7hgj4"]
 
 [ext_resource type="Script" uid="uid://cqk3ug6esnlmf" path="res://Scripts/Physics/SpaceshipPhysics/Weapon.cs" id="1_m3y60"]
+[ext_resource type="Texture2D" uid="uid://bv06paatiwacb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_1.png" id="2_0y2fb"]
+[ext_resource type="Texture2D" uid="uid://b1w5bctkhd5tb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_0.png" id="3_wer43"]
+
+[sub_resource type="Animation" id="Animation_2nstm"]
+resource_name = "射击"
+length = 1.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/蜂刺1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 1.16667),
+"transitions": PackedFloat32Array(1, 2.63902),
+"update": 0,
+"values": [Vector2(0, -1), Vector2(0, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_tun4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/蜂刺1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wj4fi"]
+_data = {
+&"RESET": SubResource("Animation_tun4x"),
+&"射击": SubResource("Animation_2nstm")
+}
 
 [node name="Weapon" type="Node2D" node_paths=PackedStringArray("ReloadTimer")]
 script = ExtResource("1_m3y60")
@@ -8,6 +48,21 @@ FireRate = 0.1
 ReloadTimer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_wer43")
+
+[node name="蜂刺1" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(0, -1)
+texture = ExtResource("2_0y2fb")
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wj4fi")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)

@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using TimelapseInvoices.Scripts.Autoloads;
 
+// 
+// GameManager.cs
+// 游戏管理器，负责全局状态和资源管理
 public partial class GameManager : Node
 {
 

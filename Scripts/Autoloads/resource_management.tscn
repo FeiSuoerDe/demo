@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://do0asfjawolkj"]
+
+[ext_resource type="Script" uid="uid://ceo31sxlfehr5" path="res://Scripts/Autoloads/ResourceManagement.cs" id="1_abbj3"]
+
+[node name="ResourceManagement" type="Node"]
+script = ExtResource("1_abbj3")

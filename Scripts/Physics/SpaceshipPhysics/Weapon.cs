@@ -37,6 +37,14 @@ public partial class Weapon : Node2D
     [Export]
     public float Range = 1000.0f;
 
+    // 武器转向速度
+    [Export]
+    public float RotationSpeed = 5.0f;
+
+    // 是否为自动武器
+    [Export]
+    public bool IsAutomatic = false; // false：朝向鼠标所在方向
+
     // 伤害属性
     // 武器伤害
     [Export]
@@ -117,12 +125,43 @@ public partial class Weapon : Node2D
         }
     }
 
-    // 处理函数，用于连续开火
+    // 处理函数，用于连续开火和武器旋转
     public override void _Process(double delta)
     {
         if (Input.IsMouseButtonPressed(MouseButton.Left))
         {
             Fire();
+        }
+
+        // 如果不是自动武器，处理朝向鼠标方向的旋转
+        if (!IsAutomatic)
+        {
+            // 获取鼠标位置
+            Vector2 mousePosition = GetGlobalMousePosition();
+
+            // 计算当前朝向与目标朝向
+            float targetRotation = (mousePosition - GlobalPosition).Angle();
+            float currentRotation = Rotation;
+
+            // 使用平滑旋转
+            float rotationStep = RotationSpeed * (float)delta;
+            float angleDiff = Mathf.AngleDifference(currentRotation, targetRotation);
+            float newRotation = currentRotation;
+
+            if (Mathf.Abs(angleDiff) > rotationStep)
+            {
+                newRotation = currentRotation + (angleDiff > 0 ? rotationStep : -rotationStep);
+            }
+            else
+            {
+                newRotation = targetRotation;
+            }
+
+            // 设置旋转
+            Rotation = newRotation;
+
+            // 另一种方法是直接使用LookAt，但需要注意Godot中2D的LookAt会立即设置旋转
+            // LookAt(mousePosition);
         }
     }
 
