@@ -1,12 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://chb6n5xsexgxh"]
+[gd_scene load_steps=7 format=3 uid="uid://chb6n5xsexgxh"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
+[ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_hbgdg"]
 [ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_tqu3k"]
 [ext_resource type="PackedScene" uid="uid://cr0l34kaxxxmv" path="res://Scenes/Physics/SpaceshipPhysics/engine.tscn" id="3_kxofk"]
+[ext_resource type="PackedScene" uid="uid://b08gtgkn7hgj4" path="res://Scenes/Physics/SpaceshipPhysics/weapon.tscn" id="5_gwfeb"]
 
-[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("EngineMount", "WeaponHardpoint")]
+[sub_resource type="Resource" id="Resource_gwfeb"]
+script = ExtResource("2_hbgdg")
+DEFAULT_SHIP_TYPE = 3
+DEFAULT_HEALTH = 100.0
+DEFAULT_RARITY = 1
+DEFAULT_RADIATION_DISSIPATION_RATE = 1.0
+DEFAULT_CURRENT_RADIATION = 0.0
+DEFAULT_MAX_RADIATION = 100.0
+DEFAULT_CURRENT_SPEED = 0.0
+ShipId = ""
+ShipName = ""
+Type = 0
+Rarity = 0
+BasePrice = 0
+Acceleration = 10.0
+MaxSpeed = 200.0
+CurrentSpeed = 20.0
+TurningAcceleration = 20.0
+MaxTurningSpeed = 70.0
+BaseShield = 0.0
+BaseArmor = 0.0
+BaseHealth = 0.0
+RadiationDissipationRate = 0.0
+CurrentRadiation = 0.0
+MaxRadiation = 0.0
+metadata/_custom_type_script = "uid://cmuqgxd0j234w"
+
+[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("SpeedLabel", "EngineMount", "WeaponHardpoint")]
 gravity_scale = 0.0
 script = ExtResource("1_5j5wk")
+ShipData = SubResource("Resource_gwfeb")
+SpeedLabel = NodePath("Label")
 EngineMount = NodePath("Engine Mount")
 WeaponHardpoint = NodePath("Weapon Hardpoint")
 
@@ -51,4 +82,16 @@ scale = Vector2(2, 2)
 
 [node name="Weapon Hardpoint" type="Node2D" parent="."]
 
+[node name="Weapon" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+position = Vector2(4, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 4.0
+offset_right = 148.0
+offset_bottom = 27.0
+text = "航速："
+
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

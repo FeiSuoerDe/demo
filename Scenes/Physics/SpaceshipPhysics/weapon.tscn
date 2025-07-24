@@ -4,6 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://bv06paatiwacb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_1.png" id="2_0y2fb"]
 [ext_resource type="Texture2D" uid="uid://b1w5bctkhd5tb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_0.png" id="3_wer43"]
 
+[sub_resource type="Animation" id="Animation_tun4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/蜂刺1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+
 [sub_resource type="Animation" id="Animation_2nstm"]
 resource_name = "射击"
 length = 1.3
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 2.63902),
 "update": 0,
 "values": [Vector2(0, -1), Vector2(0, 15)]
-}
-
-[sub_resource type="Animation" id="Animation_tun4x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/蜂刺1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wj4fi"]
@@ -63,6 +63,3 @@ process_callback = 0
 libraries = {
 &"": SubResource("AnimationLibrary_wj4fi")
 }
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)

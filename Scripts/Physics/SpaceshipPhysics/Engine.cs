@@ -14,14 +14,14 @@ public partial class Engine : GpuParticles2D
 
     private EngineState currentState = EngineState.Idle;
     // 按下空格键轮流切换四个词条
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventKey keyEvent && keyEvent.IsPressed() && keyEvent.Keycode == Key.Space)
-        {
-            currentState = (EngineState)(((int)currentState + 1) % Enum.GetValues(typeof(EngineState)).Length);
+    // public override void _Input(InputEvent @event)
+    // {
+    //     if (@event is InputEventKey keyEvent && keyEvent.IsPressed() && keyEvent.Keycode == Key.Space)
+    //     {
+    //         currentState = (EngineState)(((int)currentState + 1) % Enum.GetValues(typeof(EngineState)).Length);
 
-        }
-    }
+    //     }
+    // }
     public override void _Ready()
     {
         // 初始化引擎
