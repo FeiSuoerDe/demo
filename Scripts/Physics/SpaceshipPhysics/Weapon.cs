@@ -1,93 +1,25 @@
 using Godot;
 using System;
+using TimelapseInvoices.Scripts.Autoloads;
 
 public partial class Weapon : Node2D
 {
-    // 武器类型枚举
-    public enum WeaponType
-    {
-        ParticleCannon,
-        Missile,
-        Bullet,
-        Beam
-    }
-
-    // 对应的中文名称数组
-    public static readonly string[] WeaponTypeNames = {
-        "粒子炮",
-        "导弹",
-        "实弹",
-        "光束"
-    };
-
-    // 基本属性
-    // 武器名称
+    // 武器数据
     [Export]
-    public string WeaponName = "DefaultWeapon";
-
-    // 当前武器类型
-    [Export]
-    public WeaponType CurrentWeaponType = WeaponType.ParticleCannon;
-
-    // 武器射速
-    [Export]
-    public float FireRate = 1.0f; // 每秒射击次数
-
-    // 武器射程
-    [Export]
-    public float Range = 1000.0f;
-
-    // 武器转向速度
-    [Export]
-    public float RotationSpeed = 5.0f;
-
-    // 是否为自动武器
-    [Export]
-    public bool IsAutomatic = false; // false：朝向鼠标所在方向
-
-    // 伤害属性
-    // 武器伤害
-    [Export]
-    public int Damage = 10;
-
-    // 对盾伤害倍率
-    [Export]
-    public float ShieldDamageMultiplier = 0.5f;
-
-    // 对护甲伤害倍率
-    [Export]
-    public float ArmorDamageMultiplier = 1.0f;
-
-    // 对生命值伤害倍率
-    [Export]
-    public float HealthDamageMultiplier = 1.0f;
-
-    // 弹药相关
-    // 载弹量
-    [Export]
-    public int AmmoCapacity = 100;
-
-    // 当前弹药量
-    [Export]
-    public int CurrentAmmo = 100;
-
-    // 换弹时间（秒）
-    [Export]
-    public float ReloadTime = 2.0f;
+    public WeaponData Data { get; set; } = new WeaponData();
 
     // 计时器节点，用于处理换弹逻辑
     [Export]
     public Timer ReloadTimer;
 
-    // 贴图地址
-    [Export]
-    public string TexturePath = "res://Textures/Weapons/DefaultWeapon.png";
-
     // 开火冷却跟踪
     private float _lastFireTime = 0f;
-    private float _fireInterval => FireRate; // 计算射击间隔时间
+    private float _fireInterval => Data.FireRate; // 计算射击间隔时间
     private bool _isReloading = false;
 
+    // 发射点
+    [Export]
+    public Node2D FirePoint;
     // 准备完成
     public override void _Ready()
     {
@@ -99,9 +31,12 @@ public partial class Weapon : Node2D
         }
 
         ReloadTimer.OneShot = true;
-        ReloadTimer.WaitTime = ReloadTime;
+        ReloadTimer.WaitTime = Data.ReloadTime;
         ReloadTimer.Timeout += OnReloadComplete;
+
     }
+    // 子弹
+    Projectile _bulletPrefab;
 
     // 输入处理
     public override void _Input(InputEvent @event)
@@ -119,7 +54,7 @@ public partial class Weapon : Node2D
             keyEvent.Keycode == Key.R &&
             keyEvent.Pressed &&
             !_isReloading &&
-            CurrentAmmo < AmmoCapacity)
+            Data.CurrentAmmo < Data.AmmoCapacity)
         {
             StartReload();
         }
@@ -134,7 +69,7 @@ public partial class Weapon : Node2D
         }
 
         // 如果不是自动武器，处理朝向鼠标方向的旋转
-        if (!IsAutomatic)
+        if (!Data.IsAutomatic)
         {
             // 获取鼠标位置
             Vector2 mousePosition = GetGlobalMousePosition();
@@ -144,7 +79,7 @@ public partial class Weapon : Node2D
             float currentRotation = Rotation;
 
             // 使用平滑旋转
-            float rotationStep = RotationSpeed * (float)delta;
+            float rotationStep = Data.RotationSpeed * (float)delta;
             float angleDiff = Mathf.AngleDifference(currentRotation, targetRotation);
             float newRotation = currentRotation;
 
@@ -171,13 +106,13 @@ public partial class Weapon : Node2D
         // 检查是否能开火
         if (_isReloading)
         {
-            GD.Print($"{WeaponName}正在换弹中...");
+            GD.Print($"{Data.WeaponName}正在换弹中...");
             return;
         }
 
-        if (CurrentAmmo <= 0)
+        if (Data.CurrentAmmo <= 0)
         {
-            GD.Print($"{WeaponName}弹药已耗尽!");
+            GD.Print($"{Data.WeaponName}弹药已耗尽!");
             // 弹药耗尽时自动换弹
             StartReload();
             return;
@@ -192,32 +127,45 @@ public partial class Weapon : Node2D
 
         // 执行开火
         _lastFireTime = currentTime;
-        CurrentAmmo--;
+        Data.CurrentAmmo--;
+        // 实例化子弹
+        _bulletPrefab = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["Projectile"]).Instantiate<Projectile>();
+        if (_bulletPrefab == null)
+        {
+            GD.PrintErr("无法加载子弹预制体");
+            return;
+        }
+        // 设置子弹位置和方向
+        _bulletPrefab.GlobalPosition = FirePoint.GlobalPosition;
+        _bulletPrefab.Rotation = Rotation; // 使用当前武器的旋转角度
+                                           // 将子弹添加到场景中
+        GetTree().Root.AddChild(_bulletPrefab);
 
-        GD.Print($"{WeaponName}开火! 剩余弹药: {CurrentAmmo}/{AmmoCapacity}");
+
+        GD.Print($"{Data.WeaponName}开火! 剩余弹药: {Data.CurrentAmmo}/{Data.AmmoCapacity}");
 
         // 这里可以添加具体的开火效果代码，如生成子弹、粒子效果等
         // 根据武器类型执行不同的开火逻辑
-        switch (CurrentWeaponType)
+        switch (Data.CurrentWeaponType)
         {
-            case WeaponType.ParticleCannon:
+            case WeaponData.WeaponType.ParticleCannon:
                 // 粒子炮开火逻辑
                 break;
-            case WeaponType.Missile:
+            case WeaponData.WeaponType.Missile:
                 // 导弹开火逻辑
                 break;
-            case WeaponType.Bullet:
+            case WeaponData.WeaponType.Bullet:
                 // 实弹开火逻辑
                 break;
-            case WeaponType.Beam:
+            case WeaponData.WeaponType.Beam:
                 // 光束开火逻辑
                 break;
         }
 
         // 当前弹药用完后自动换弹
-        if (CurrentAmmo == 0)
+        if (Data.CurrentAmmo == 0)
         {
-            GD.Print($"{WeaponName}弹药已用尽，开始自动换弹...");
+            GD.Print($"{Data.WeaponName}弹药已用尽，开始自动换弹...");
             StartReload();
         }
     }
@@ -225,21 +173,21 @@ public partial class Weapon : Node2D
     // 开始换弹
     public void StartReload()
     {
-        if (_isReloading || CurrentAmmo == AmmoCapacity)
+        if (_isReloading || Data.CurrentAmmo == Data.AmmoCapacity)
         {
             return;
         }
 
         _isReloading = true;
-        GD.Print($"{WeaponName}开始换弹，需要{ReloadTime}秒...");
+        GD.Print($"{Data.WeaponName}开始换弹，需要{Data.ReloadTime}秒...");
         ReloadTimer.Start();
     }
 
     // 换弹完成的回调
     private void OnReloadComplete()
     {
-        CurrentAmmo = AmmoCapacity;
+        Data.CurrentAmmo = Data.AmmoCapacity;
         _isReloading = false;
-        GD.Print($"{WeaponName}换弹完成! 弹药: {CurrentAmmo}/{AmmoCapacity}");
+        GD.Print($"{Data.WeaponName}换弹完成! 弹药: {Data.CurrentAmmo}/{Data.AmmoCapacity}");
     }
 }

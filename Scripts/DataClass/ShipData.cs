@@ -1,5 +1,5 @@
 using Godot;
-
+using System;
 /// <summary>
 /// 船只类型枚举 - 定义了游戏中所有可用的船只类型
 /// </summary>

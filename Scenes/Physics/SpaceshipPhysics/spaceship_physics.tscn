@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chb6n5xsexgxh"]
+[gd_scene load_steps=9 format=3 uid="uid://chb6n5xsexgxh"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
 [ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_hbgdg"]
 [ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_tqu3k"]
 [ext_resource type="PackedScene" uid="uid://cr0l34kaxxxmv" path="res://Scenes/Physics/SpaceshipPhysics/engine.tscn" id="3_kxofk"]
 [ext_resource type="PackedScene" uid="uid://b08gtgkn7hgj4" path="res://Scenes/Physics/SpaceshipPhysics/weapon.tscn" id="5_gwfeb"]
+[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="6_1xp41"]
 
 [sub_resource type="Resource" id="Resource_gwfeb"]
 script = ExtResource("2_hbgdg")
@@ -33,7 +34,27 @@ CurrentRadiation = 0.0
 MaxRadiation = 0.0
 metadata/_custom_type_script = "uid://cmuqgxd0j234w"
 
+[sub_resource type="Resource" id="Resource_xfnat"]
+script = ExtResource("6_1xp41")
+WeaponName = "DefaultWeapon"
+CurrentWeaponType = 0
+FireRate = 0.05
+Range = 1000.0
+RotationSpeed = 5.0
+IsAutomatic = false
+Damage = 10
+ShieldDamageMultiplier = 0.5
+ArmorDamageMultiplier = 1.0
+HealthDamageMultiplier = 1.0
+AmmoCapacity = 100
+CurrentAmmo = 100
+ReloadTime = 2.0
+TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
+metadata/_custom_type_script = "uid://csfjf8h7uujn3"
+
 [node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("SpeedLabel", "EngineMount", "WeaponHardpoint")]
+collision_layer = 0
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_5j5wk")
 ShipData = SubResource("Resource_gwfeb")
@@ -84,6 +105,15 @@ scale = Vector2(2, 2)
 
 [node name="Weapon" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
 position = Vector2(4, 0)
+Data = SubResource("Resource_xfnat")
+
+[node name="Weapon2" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+position = Vector2(60, 1)
+Data = SubResource("Resource_xfnat")
+
+[node name="Weapon3" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+position = Vector2(-56, 2)
+Data = SubResource("Resource_xfnat")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 100.0
@@ -93,5 +123,3 @@ offset_bottom = 27.0
 text = "航速："
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true

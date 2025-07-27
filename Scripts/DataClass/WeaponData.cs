@@ -1,0 +1,122 @@
+using System;
+using Godot;
+[GlobalClass]
+/// <summary>
+/// 武器数据资源类，存储武器的所有属性和状态
+/// </summary>
+public partial class WeaponData : Resource
+{
+    // 武器类型枚举
+    /// <summary>
+    /// 武器类型枚举，定义了游戏中所有可用的武器类型
+    /// </summary>
+    public enum WeaponType
+    {
+        /// <summary>粒子炮武器类型</summary>
+        ParticleCannon,
+        /// <summary>导弹武器类型</summary>
+        Missile,
+        /// <summary>实弹武器类型</summary>
+        Bullet,
+        /// <summary>光束武器类型</summary>
+        Beam
+    }
+
+    /// <summary>
+    /// 武器类型对应的中文名称数组，索引与WeaponType枚举值对应
+    /// </summary>
+    public static readonly string[] WeaponTypeNames = {
+        "粒子炮",
+        "导弹",
+        "实弹",
+        "光束"
+    };
+
+    // 基本属性
+    // 武器名称
+    /// <summary>
+    /// 武器的名称
+    /// </summary>
+    [Export]
+    public string WeaponName = "DefaultWeapon";
+
+    /// <summary>
+    /// 当前武器的类型
+    /// </summary>
+    [Export]
+    public WeaponType CurrentWeaponType = WeaponType.ParticleCannon;
+
+    /// <summary>
+    /// 武器射速，表示每秒射击次数
+    /// </summary>
+    [Export]
+    public float FireRate = 1.0f; // 每秒射击次数
+
+    /// <summary>
+    /// 武器射程，武器能够打击到的最大距离
+    /// </summary>
+    [Export]
+    public float Range = 1000.0f;
+
+    /// <summary>
+    /// 武器转向速度，影响武器瞄准目标的速度
+    /// </summary>
+    [Export]
+    public float RotationSpeed = 5.0f;
+
+    /// <summary>
+    /// 是否为自动武器，false表示朝向鼠标所在方向
+    /// </summary>
+    [Export]
+    public bool IsAutomatic = false; // false：朝向鼠标所在方向
+
+    // 伤害属性
+    /// <summary>
+    /// 武器基础伤害值
+    /// </summary>
+    [Export]
+    public int Damage = 10;
+
+    /// <summary>
+    /// 对护盾伤害的倍率调整
+    /// </summary>
+    [Export]
+    public float ShieldDamageMultiplier = 0.5f;
+
+    /// <summary>
+    /// 对护甲伤害的倍率调整
+    /// </summary>
+    [Export]
+    public float ArmorDamageMultiplier = 1.0f;
+
+    /// <summary>
+    /// 对生命值伤害的倍率调整
+    /// </summary>
+    [Export]
+    public float HealthDamageMultiplier = 1.0f;
+
+    // 弹药相关
+    /// <summary>
+    /// 武器最大载弹量
+    /// </summary>
+    [Export]
+    public int AmmoCapacity = 100;
+
+    /// <summary>
+    /// 武器当前弹药量
+    /// </summary>
+    [Export]
+    public int CurrentAmmo = 100;
+
+    /// <summary>
+    /// 武器换弹所需时间，以秒为单位
+    /// </summary>
+    [Export]
+    public float ReloadTime = 2.0f;
+
+    /// <summary>
+    /// 武器贴图资源路径
+    /// </summary>
+    [Export]
+    public string TexturePath = "res://Textures/Weapons/DefaultWeapon.png";
+}
