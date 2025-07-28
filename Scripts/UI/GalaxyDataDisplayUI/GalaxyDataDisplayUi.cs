@@ -44,7 +44,7 @@ public partial class GalaxyDataDisplayUi : Control
         galaxyNameLabel.Text = galaxy.GalaxyName;
         foreach (Planet planet in galaxy.Planets)
         {
-            PackedScene packedScene = (PackedScene)ResourceLoader.Load(NodeController.Instance.NodeDictionary["PlanetInfoItem"]);
+            PackedScene packedScene = (PackedScene)ResourceLoader.Load(NodeController.NodeDictionary["PlanetInfoItem"]);
             if (packedScene != null)
             {
                 // 实例化星球信息项

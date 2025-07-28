@@ -119,4 +119,29 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export]
     public string TexturePath = "res://Textures/Weapons/DefaultWeapon.png";
+
+    // 散布相关属性
+    /// <summary>
+    /// 武器基础散布角度（度），影响射击精准度
+    /// </summary>
+    [Export(PropertyHint.Range, "0,30,0.1")]
+    public float BaseSpreadAngle = 1.0f;
+
+    /// <summary>
+    /// 每次射击增加的散布角度（度）
+    /// </summary>
+    [Export(PropertyHint.Range, "0,10,0.1")]
+    public float SpreadIncreasePerShot = 0.5f;
+
+    /// <summary>
+    /// 最大散布角度（度）
+    /// </summary>
+    [Export(PropertyHint.Range, "0,45,0.5")]
+    public float MaxSpreadAngle = 15.0f;
+
+    /// <summary>
+    /// 散布恢复速率（度/秒）
+    /// </summary>
+    [Export(PropertyHint.Range, "0,20,0.1")]
+    public float SpreadRecoveryRate = 2.0f;
 }

@@ -13,7 +13,7 @@ public partial class Portal : Node2D
     public void _on_area_2d_body_entered(Node body)
     {
         GameManager.galaxies[partialId].PrintGalaxyInfo();
-        PackedScene GalaxyDataDisplayUI = (PackedScene)ResourceLoader.Load(NodeController.Instance.NodeDictionary["GalaxyDataDisplayUI"]);
+        PackedScene GalaxyDataDisplayUI = (PackedScene)ResourceLoader.Load(NodeController.NodeDictionary["GalaxyDataDisplayUI"]);
         if (GalaxyDataDisplayUI != null)
         {
             GalaxyDataDisplayUi galaxyDataDisplayUiInstance = (GalaxyDataDisplayUi)GalaxyDataDisplayUI.Instantiate();

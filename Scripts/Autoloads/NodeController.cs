@@ -23,7 +23,7 @@ public partial class NodeController : Node
         }
     }
     //字典
-    public Dictionary<string, string> NodeDictionary { get; private set; } = new Dictionary<string, string>()
+    public static Dictionary<string, string> NodeDictionary { get; private set; } = new Dictionary<string, string>()
     {
         { "GameManager", "GameManager" },
         { "Galaxy", "res://Scenes/Galaxy/galaxy.tscn" },

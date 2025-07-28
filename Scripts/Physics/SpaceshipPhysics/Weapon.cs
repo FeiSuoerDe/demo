@@ -20,6 +20,15 @@ public partial class Weapon : Node2D
     // 发射点
     [Export]
     public Node2D FirePoint;
+
+    // 散布相关
+    private float _currentSpreadAngle = 0f; // 当前散布角度
+    private float _lastShotTime = 0f; // 上次射击时间，用于计算散布恢复
+    private readonly float _degToRad = (float)Math.PI / 180f; // 度转弧度的常量
+
+    // 预加载的子弹场景
+    private PackedScene _bulletScene;
+
     // 准备完成
     public override void _Ready()
     {
@@ -34,7 +43,21 @@ public partial class Weapon : Node2D
         ReloadTimer.WaitTime = Data.ReloadTime;
         ReloadTimer.Timeout += OnReloadComplete;
 
+        // 预加载子弹预制体以优化性能
+        try
+        {
+
+            _bulletScene = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["Projectile"]);
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"无法加载子弹资源: {ex.Message}");
+        }
+
+        // 初始化散布角度
+        _currentSpreadAngle = Data.BaseSpreadAngle;
     }
+
     // 子弹
     Projectile _bulletPrefab;
 
@@ -98,6 +121,14 @@ public partial class Weapon : Node2D
             // 另一种方法是直接使用LookAt，但需要注意Godot中2D的LookAt会立即设置旋转
             // LookAt(mousePosition);
         }
+
+        // 处理散布恢复
+        float currentTime = (float)Time.GetTicksMsec() / 1000f;
+        if (currentTime - _lastShotTime > _fireInterval && _currentSpreadAngle > Data.BaseSpreadAngle)
+        {
+            _currentSpreadAngle -= Data.SpreadRecoveryRate * (float)delta;
+            _currentSpreadAngle = Mathf.Max(_currentSpreadAngle, Data.BaseSpreadAngle);
+        }
     }
 
     // 开火方法
@@ -127,20 +158,35 @@ public partial class Weapon : Node2D
 
         // 执行开火
         _lastFireTime = currentTime;
+        _lastShotTime = _lastFireTime; // 记录最后射击时间用于散布恢复
         Data.CurrentAmmo--;
+
+        // 应用散布
+        _currentSpreadAngle = Mathf.Min(_currentSpreadAngle + Data.SpreadIncreasePerShot, Data.MaxSpreadAngle);
+        float randomSpread = (float)GD.RandRange(-_currentSpreadAngle, _currentSpreadAngle) * _degToRad;
+
         // 实例化子弹
-        _bulletPrefab = ResourceLoader.Load<PackedScene>(NodeController.Instance.NodeDictionary["Projectile"]).Instantiate<Projectile>();
+        if (_bulletScene != null)
+        {
+            _bulletPrefab = _bulletScene.Instantiate<Projectile>();
+        }
+        else
+        {
+            _bulletPrefab = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["Projectile"]).Instantiate<Projectile>();
+        }
+
         if (_bulletPrefab == null)
         {
             GD.PrintErr("无法加载子弹预制体");
             return;
         }
-        // 设置子弹位置和方向
-        _bulletPrefab.GlobalPosition = FirePoint.GlobalPosition;
-        _bulletPrefab.Rotation = Rotation; // 使用当前武器的旋转角度
-                                           // 将子弹添加到场景中
-        GetTree().Root.AddChild(_bulletPrefab);
 
+        // 设置子弹位置和方向（应用散布）
+        _bulletPrefab.GlobalPosition = FirePoint.GlobalPosition;
+        _bulletPrefab.Rotation = Rotation + randomSpread; // 使用当前武器的旋转角度加上随机散布
+
+        // 将子弹添加到场景中
+        GetTree().Root.AddChild(_bulletPrefab);
 
         GD.Print($"{Data.WeaponName}开火! 剩余弹药: {Data.CurrentAmmo}/{Data.AmmoCapacity}");
 
