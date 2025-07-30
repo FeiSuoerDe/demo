@@ -35,6 +35,7 @@ public partial class GalaxyDataDisplayUi : Control
     // 查询星系数据
     public void DisplayGalaxyData(int galaxyId)
     {
+        
         // 暂停游戏
         GetTree().Paused = true;
         // 获取星系数据

@@ -13,21 +13,18 @@ public partial class Weapon : Node2D
     public Timer ReloadTimer;
 
     // 开火冷却跟踪
-    private float _lastFireTime = 0f;
-    private float _fireInterval => Data.FireRate; // 计算射击间隔时间
-    private bool _isReloading = false;
+    protected float _lastFireTime = 0f;
+    protected float _fireInterval => Data.FireRate; // 计算射击间隔时间
+    protected bool _isReloading = false;
 
     // 发射点
     [Export]
     public Node2D FirePoint;
 
     // 散布相关
-    private float _currentSpreadAngle = 0f; // 当前散布角度
-    private float _lastShotTime = 0f; // 上次射击时间，用于计算散布恢复
-    private readonly float _degToRad = (float)Math.PI / 180f; // 度转弧度的常量
-
-    // 预加载的子弹场景
-    private PackedScene _bulletScene;
+    protected float _currentSpreadAngle = 0f; // 当前散布角度
+    protected float _lastShotTime = 0f; // 上次射击时间，用于计算散布恢复
+    protected readonly float _degToRad = (float)Math.PI / 180f; // 度转弧度的常量
 
     // 准备完成
     public override void _Ready()
@@ -43,23 +40,18 @@ public partial class Weapon : Node2D
         ReloadTimer.WaitTime = Data.ReloadTime;
         ReloadTimer.Timeout += OnReloadComplete;
 
-        // 预加载子弹预制体以优化性能
-        try
-        {
-
-            _bulletScene = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["Projectile"]);
-        }
-        catch (Exception ex)
-        {
-            GD.PrintErr($"无法加载子弹资源: {ex.Message}");
-        }
-
         // 初始化散布角度
         _currentSpreadAngle = Data.BaseSpreadAngle;
+        
+        // 调用子类初始化方法
+        OnWeaponReady();
     }
-
-    // 子弹
-    Projectile _bulletPrefab;
+    
+    // 子类可重写的初始化方法
+    protected virtual void OnWeaponReady()
+    {
+        // 子类中实现特定初始化逻辑
+    }
 
     // 输入处理
     public override void _Input(InputEvent @event)
@@ -117,9 +109,6 @@ public partial class Weapon : Node2D
 
             // 设置旋转
             Rotation = newRotation;
-
-            // 另一种方法是直接使用LookAt，但需要注意Godot中2D的LookAt会立即设置旋转
-            // LookAt(mousePosition);
         }
 
         // 处理散布恢复
@@ -132,7 +121,7 @@ public partial class Weapon : Node2D
     }
 
     // 开火方法
-    public void Fire()
+    public virtual void Fire()
     {
         // 检查是否能开火
         if (_isReloading)
@@ -164,49 +153,11 @@ public partial class Weapon : Node2D
         // 应用散布
         _currentSpreadAngle = Mathf.Min(_currentSpreadAngle + Data.SpreadIncreasePerShot, Data.MaxSpreadAngle);
         float randomSpread = (float)GD.RandRange(-_currentSpreadAngle, _currentSpreadAngle) * _degToRad;
-
-        // 实例化子弹
-        if (_bulletScene != null)
-        {
-            _bulletPrefab = _bulletScene.Instantiate<Projectile>();
-        }
-        else
-        {
-            _bulletPrefab = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["Projectile"]).Instantiate<Projectile>();
-        }
-
-        if (_bulletPrefab == null)
-        {
-            GD.PrintErr("无法加载子弹预制体");
-            return;
-        }
-
-        // 设置子弹位置和方向（应用散布）
-        _bulletPrefab.GlobalPosition = FirePoint.GlobalPosition;
-        _bulletPrefab.Rotation = Rotation + randomSpread; // 使用当前武器的旋转角度加上随机散布
-
-        // 将子弹添加到场景中
-        GetTree().Root.AddChild(_bulletPrefab);
+        
+        // 调用子类实现的具体发射逻辑
+        OnWeaponFire(randomSpread);
 
         GD.Print($"{Data.WeaponName}开火! 剩余弹药: {Data.CurrentAmmo}/{Data.AmmoCapacity}");
-
-        // 这里可以添加具体的开火效果代码，如生成子弹、粒子效果等
-        // 根据武器类型执行不同的开火逻辑
-        switch (Data.CurrentWeaponType)
-        {
-            case WeaponData.WeaponType.ParticleCannon:
-                // 粒子炮开火逻辑
-                break;
-            case WeaponData.WeaponType.Missile:
-                // 导弹开火逻辑
-                break;
-            case WeaponData.WeaponType.Bullet:
-                // 实弹开火逻辑
-                break;
-            case WeaponData.WeaponType.Beam:
-                // 光束开火逻辑
-                break;
-        }
 
         // 当前弹药用完后自动换弹
         if (Data.CurrentAmmo == 0)
@@ -215,9 +166,15 @@ public partial class Weapon : Node2D
             StartReload();
         }
     }
+    
+    // 子类需要实现的具体发射逻辑
+    protected virtual void OnWeaponFire(float spreadAngle)
+    {
+        // 子类中实现具体武器类型的发射逻辑
+    }
 
     // 开始换弹
-    public void StartReload()
+    public virtual void StartReload()
     {
         if (_isReloading || Data.CurrentAmmo == Data.AmmoCapacity)
         {
@@ -230,7 +187,7 @@ public partial class Weapon : Node2D
     }
 
     // 换弹完成的回调
-    private void OnReloadComplete()
+    protected virtual void OnReloadComplete()
     {
         Data.CurrentAmmo = Data.AmmoCapacity;
         _isReloading = false;
