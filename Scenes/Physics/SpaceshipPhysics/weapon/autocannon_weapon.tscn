@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ngaaks8caymq"]
+
+[ext_resource type="Script" uid="uid://s3r00djjiqq3" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/AutocannonWeapon.cs" id="1_eiaj1"]
+
+[node name="AutocannonWeapon" type="Node2D"]
+script = ExtResource("1_eiaj1")
