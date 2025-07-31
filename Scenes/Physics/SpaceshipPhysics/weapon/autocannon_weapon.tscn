@@ -8,10 +8,9 @@
 [sub_resource type="Resource" id="Resource_p8tth"]
 script = ExtResource("2_yfe82")
 WeaponName = "DefaultWeapon"
-CurrentWeaponType = 0
-FireRate = 1.0
+CurrentWeaponType = 2
+FireRate = 200.0
 Range = 1000.0
-RotationSpeed = 5.0
 IsAutomatic = false
 Damage = 10
 ShieldDamageMultiplier = 0.5
@@ -23,13 +22,12 @@ ReloadTime = 2.0
 TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
 BaseSpreadAngle = 1.0
 SpreadIncreasePerShot = 0.5
-MaxSpreadAngle = 15.0
+MaxSpreadAngle = 5.0
 SpreadRecoveryRate = 2.0
 
-[node name="AutocannonWeapon" type="Node2D" node_paths=PackedStringArray("ReloadTimer", "FirePoint")]
+[node name="AutocannonWeapon" type="Node2D" node_paths=PackedStringArray("FirePoint")]
 script = ExtResource("1_eiaj1")
 Data = SubResource("Resource_p8tth")
-ReloadTimer = NodePath("Timer")
 FirePoint = NodePath("Marker2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

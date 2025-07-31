@@ -1,12 +1,14 @@
 using System;
 using Godot;
+
 [GlobalClass]
 /// <summary>
 /// 武器数据资源类，存储武器的所有属性和状态
 /// </summary>
 public partial class WeaponData : Resource
 {
-    // 武器类型枚举
+    #region 武器类型定义
+
     /// <summary>
     /// 武器类型枚举，定义了游戏中所有可用的武器类型
     /// </summary>
@@ -31,9 +33,11 @@ public partial class WeaponData : Resource
         "实弹",
         "光束"
     };
+    
+    #endregion
 
-    // 基本属性
-    // 武器名称
+    #region 基本属性
+    
     /// <summary>
     /// 武器的名称
     /// </summary>
@@ -59,18 +63,15 @@ public partial class WeaponData : Resource
     public float Range = 1000.0f;
 
     /// <summary>
-    /// 武器转向速度，影响武器瞄准目标的速度
-    /// </summary>
-    [Export]
-    public float RotationSpeed = 5.0f;
-
-    /// <summary>
     /// 是否为自动武器，false表示朝向鼠标所在方向
     /// </summary>
     [Export]
     public bool IsAutomatic = false; // false：朝向鼠标所在方向
+    
+    #endregion
 
-    // 伤害属性
+    #region 伤害属性
+    
     /// <summary>
     /// 武器基础伤害值
     /// </summary>
@@ -94,8 +95,11 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export]
     public float HealthDamageMultiplier = 1.0f;
+    
+    #endregion
 
-    // 弹药相关
+    #region 弹药相关
+    
     /// <summary>
     /// 武器最大载弹量
     /// </summary>
@@ -119,8 +123,11 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export]
     public string TexturePath = "res://Textures/Weapons/DefaultWeapon.png";
+    
+    #endregion
 
-    // 散布相关属性
+    #region 散布相关属性
+    
     /// <summary>
     /// 武器基础散布角度（度），影响射击精准度
     /// </summary>
@@ -144,4 +151,6 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export(PropertyHint.Range, "0,20,0.1")]
     public float SpreadRecoveryRate = 2.0f;
+    
+    #endregion
 }

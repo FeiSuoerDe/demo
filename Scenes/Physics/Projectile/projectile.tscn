@@ -20,5 +20,6 @@ Speed = 2000.0
 shape = SubResource("CircleShape2D_5k0ww")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(1, 1, 1, 0.545098)
 scale = Vector2(5, 5)
 texture = SubResource("CanvasTexture_p3m2a")
