@@ -33,16 +33,16 @@ public partial class WeaponData : Resource
         "实弹",
         "光束"
     };
-    
+
     #endregion
 
     #region 基本属性
-    
+
     /// <summary>
     /// 武器的名称
     /// </summary>
     [Export]
-    public string WeaponName = "DefaultWeapon";
+    public string WeaponName = "夯";
 
     /// <summary>
     /// 当前武器的类型
@@ -67,11 +67,11 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export]
     public bool IsAutomatic = false; // false：朝向鼠标所在方向
-    
+
     #endregion
 
     #region 伤害属性
-    
+
     /// <summary>
     /// 武器基础伤害值
     /// </summary>
@@ -95,11 +95,11 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export]
     public float HealthDamageMultiplier = 1.0f;
-    
+
     #endregion
 
     #region 弹药相关
-    
+
     /// <summary>
     /// 武器最大载弹量
     /// </summary>
@@ -123,11 +123,11 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export]
     public string TexturePath = "res://Textures/Weapons/DefaultWeapon.png";
-    
+
     #endregion
 
     #region 散布相关属性
-    
+
     /// <summary>
     /// 武器基础散布角度（度），影响射击精准度
     /// </summary>
@@ -151,6 +151,6 @@ public partial class WeaponData : Resource
     /// </summary>
     [Export(PropertyHint.Range, "0,20,0.1")]
     public float SpreadRecoveryRate = 2.0f;
-    
+
     #endregion
 }

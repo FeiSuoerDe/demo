@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_p8tth"]
 script = ExtResource("2_yfe82")
-WeaponName = "DefaultWeapon"
+WeaponName = "夯"
 CurrentWeaponType = 2
 FireRate = 200.0
 Range = 1000.0

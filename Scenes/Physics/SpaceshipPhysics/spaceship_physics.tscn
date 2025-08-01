@@ -23,8 +23,8 @@ BasePrice = 0
 Acceleration = 50.0
 MaxSpeed = 200.0
 CurrentSpeed = 20.0
-TurningAcceleration = 20.0
-MaxTurningSpeed = 70.0
+TurningAcceleration = 50.0
+MaxTurningSpeed = 200.0
 BaseShield = 0.0
 BaseArmor = 0.0
 BaseHealth = 0.0
@@ -33,13 +33,16 @@ CurrentRadiation = 0.0
 MaxRadiation = 0.0
 metadata/_custom_type_script = "uid://cmuqgxd0j234w"
 
-[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("SpeedLabel", "EngineMount", "WeaponHardpoint")]
+[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("SpeedLabel", "AngularSpeedLabel", "AngleLabel", "WeaponStatusLabel", "EngineMount", "WeaponHardpoint")]
 collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_5j5wk")
 ShipData = SubResource("Resource_gwfeb")
-SpeedLabel = NodePath("Control/CanvasLayer/Label")
+SpeedLabel = NodePath("Control/CanvasLayer/VBoxContainer/Label")
+AngularSpeedLabel = NodePath("Control/CanvasLayer/VBoxContainer/Label2")
+AngleLabel = NodePath("Control/CanvasLayer/VBoxContainer/Label4")
+WeaponStatusLabel = NodePath("Control/CanvasLayer/VBoxContainer/Label3")
 EngineMount = NodePath("Engine Mount")
 WeaponHardpoint = NodePath("Weapon Hardpoint")
 
@@ -96,7 +99,30 @@ offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
 
-[node name="Label" type="Label" parent="Control/CanvasLayer"]
-offset_right = 48.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "航速："
+
+[node name="Label2" type="Label" parent="Control/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "航速："
+
+[node name="Label4" type="Label" parent="Control/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "航速："
+
+[node name="Label3" type="Label" parent="Control/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "航速："

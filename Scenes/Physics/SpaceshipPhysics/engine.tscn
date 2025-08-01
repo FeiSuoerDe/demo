@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr0l34kaxxxmv"]
+[gd_scene load_steps=9 format=3 uid="uid://cr0l34kaxxxmv"]
 
 [ext_resource type="Script" uid="uid://deplx6ednsou1" path="res://Scripts/Physics/SpaceshipPhysics/Engine.cs" id="1_06hvw"]
 
@@ -31,11 +31,24 @@ scale_curve = SubResource("CurveTexture_00vvj")
 color = Color(1, 1, 1, 0.105882)
 color_ramp = SubResource("GradientTexture1D_06hvw")
 
+[sub_resource type="Gradient" id="Gradient_06hvw"]
+colors = PackedColorArray(0, 1, 0, 0.278431, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uf8l6"]
+gradient = SubResource("Gradient_06hvw")
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Engine" type="GPUParticles2D"]
 amount = 1500
 lifetime = 0.2
 randomness = 1.0
 visibility_rect = Rect2(-4, 0, 8, 20)
 local_coords = true
+trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_qktw7")
 script = ExtResource("1_06hvw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(1.01, 1.01)
+texture = SubResource("GradientTexture2D_uf8l6")
