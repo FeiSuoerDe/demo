@@ -1,8 +1,9 @@
-using Godot;
 using System;
 using Autofac;
 using demo.Core.GameAbilitySystem;
+using Godot;
 
+namespace demo.Tests;
 
 public partial class AttributeTest : Node
 {
@@ -10,12 +11,15 @@ public partial class AttributeTest : Node
     public AbilitySystemComponent AbilitySystemComponent { get; set; }
     
     [Export]
-    public TestBarHud TestBarHud { get; set; }
+    public UI.HUD.TestBarHud TestBarHud { get; set; }
     
     [Export]
     private Button hurtButton { get; set; }
     [Export]
     private Button healButton { get; set; }
+    
+    [Export]
+    private Button levelUpButton { get; set; }
 
     public Guid AttributeSetId { get; set; }
     public ILifetimeScope? NodeScope { get; set; }
@@ -27,6 +31,7 @@ public partial class AttributeTest : Node
         
         hurtButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_damage");
         healButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_heal");
+        levelUpButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_constitution_boost");
     }
     
     public override void _ExitTree()

@@ -1,4 +1,4 @@
-using TO.Commons.Enums.Game;
+using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAttribute;
@@ -53,7 +53,7 @@ public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystem
         callback(_currentAttributeSetId);
     }
     
-    private void OnGetAttributeValue(AttributeType attributeType,Action<float> callback)
+    private void OnGetAttributeValue(AttributeDefinition attributeType,Action<float> callback)
     {
         callback(_attributeManagerService.GetAttributeValue(_currentAttributeSetId, attributeType)!.CurrentValue);
     }

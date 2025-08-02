@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using Autofac;
-using TO.Commons.Enums.Game;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Nodes.Abstractions.Bases;
 
@@ -18,7 +14,7 @@ public interface IAbilitySystemComponent : INode
     
     event Action<Action<Guid>>? OnGetAttributeSetId;
     
-    public event Action<AttributeType,Action<float>>? OnGetAttributeValue;
+    public event Action<AttributeDefinition,Action<float>>? OnGetAttributeValue;
     
     event Action<string> OnApplyEffect; 
 }

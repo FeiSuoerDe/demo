@@ -1,8 +1,7 @@
-using Godot;
-using System;
 using demo.Core.GameAbilitySystem;
-using demo.Tests;
-using TO.Commons.Enums.Game;
+using Godot;
+
+namespace demo.Tests;
 
 public partial class ShipTest_2 : Sprite2D
 {
@@ -12,11 +11,10 @@ public partial class ShipTest_2 : Sprite2D
     private AbilitySystemComponent _abilitySystemComponent;
     
     [Export]
-    private TestBarHud _testBarHud;
+    private UI.HUD.TestBarHud _testBarHud;
    
     public override void _Ready()
     {
-        // _area2D.BodyEntered += OnAreaEntered;
         _area2D.AreaEntered += OnAreaEntered;
         _abilitySystemComponent.GetAttributeSetId(guid => _testBarHud.Bind(guid));
         

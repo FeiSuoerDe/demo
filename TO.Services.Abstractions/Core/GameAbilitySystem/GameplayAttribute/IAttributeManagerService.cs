@@ -1,4 +1,3 @@
-using TO.Commons.Enums.Game;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
@@ -10,10 +9,10 @@ public interface IAttributeManagerService
     void UnregisterAttributeSet(Guid attributeSetId);
     AttributeSet? GetAttributeSet(Guid attributeSetId);
     IEnumerable<AttributeSet> GetAllAttributeSets();
-    bool ApplyEffect(Guid attributeSetId, Data.Models.GameAbilitySystem.GameplayEffect.AttributeEffect? effect);
+    bool ApplyEffect(Guid attributeSetId, AttributeEffect? effect);
     bool RemoveEffect(Guid attributeSetId, Guid effectId);
     
-    AttributeValue? GetAttributeValue(Guid attributeSetId, AttributeType attributeType);
-    bool SetAttributeValue(Guid attributeSetId, AttributeType attributeType, float value);
+    AttributeValue? GetAttributeValue(Guid attributeSetId, AttributeDefinition attributeType);
+ 
     void UpdateEffectDurations(float deltaTime);
 }

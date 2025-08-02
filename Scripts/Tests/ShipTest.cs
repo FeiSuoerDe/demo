@@ -1,8 +1,8 @@
-using Godot;
-using System;
 using demo.Core.GameAbilitySystem;
-using demo.Tests;
-using TO.Commons.Enums.Game;
+using Godot;
+using TO.Data.Attributes;
+
+namespace demo.Tests;
 
 public partial class ShipTest : Sprite2D
 {
@@ -19,30 +19,30 @@ public partial class ShipTest : Sprite2D
     {
         if (Input.IsKeyPressed(Key.W))
         {
-            _abilitySystemComponent.GetAttributeValue(AttributeType.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
             {
-                Position += new Vector2(0, -1) * speed * Position * (float)delta;
+                Position += new Vector2(0, -1) * speed * (float)delta;
             });
         }
         if (Input.IsKeyPressed(Key.A))
         {
-            _abilitySystemComponent.GetAttributeValue(AttributeType.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
             {
-                Position += new Vector2(-1, 0) * speed * Position * (float)delta;
+                Position += new Vector2(-1, 0) * speed * (float)delta;
             });
         }
         if (Input.IsKeyPressed(Key.D))
         {
-            _abilitySystemComponent.GetAttributeValue(AttributeType.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
             {
-                Position += new Vector2(1, 0) * speed * Position * (float)delta;
+                Position += new Vector2(1, 0) * speed * (float)delta;
             });
         }
         if (Input.IsKeyPressed(Key.S))
         {
-            _abilitySystemComponent.GetAttributeValue(AttributeType.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
             {
-                Position += new Vector2(0, 1) * speed * Position * (float)delta;
+                Position += new Vector2(0, 1) * speed * (float)delta;
             });
         }
     }

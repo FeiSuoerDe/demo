@@ -1,7 +1,6 @@
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Repositories.Abstractions.Core.EventBus;
-using TO.Commons.Enums.Game;
 
 namespace TO.Events.Core;
 
@@ -14,6 +13,5 @@ public record EffectRefreshed(Guid TargetId, AttributeEffect Effect, AttributeSe
 public record EffectExpired(Guid TargetId, AttributeEffect Effect, AttributeSet Target) : IEvent;
 
 // 属性管理相关事件
-public record AttributeChanged(Guid AttributeSetId, AttributeType AttributeType, float OldValue, float NewValue) : IEvent;
-public record AttributeRangeChanged(Guid AttributeSetId, AttributeType AttributeType, float MinValue, float MaxValue) : IEvent;
-
+public record AttributeChanged(Guid AttributeSetId, AttributeDefinition AttributeType, float OldValue, float NewValue) : IEvent;
+public record AttributeRangeChanged(Guid AttributeSetId, AttributeDefinition AttributeType, float MinValue, float MaxValue) : IEvent;

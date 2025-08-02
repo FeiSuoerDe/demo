@@ -1,6 +1,7 @@
 using Godot;
-
 using TO.Nodes.Abstractions.Bases;
+
+namespace TO.Nodes.Abstractions.UI.HUD;
 
 public interface ITestBarHud : INode
 {

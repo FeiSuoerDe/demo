@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://dwebcfkn7adi2" path="res://Scripts/Tests/AttributeTest.cs" id="1_llkfd"]
 [ext_resource type="PackedScene" uid="uid://d2j4dasckbiya" path="res://Scenes/UI/HUD/TestBarHUD.tscn" id="3_28rnf"]
 
-[node name="AttributeTest" type="Node" node_paths=PackedStringArray("AbilitySystemComponent", "TestBarHud", "hurtButton", "healButton")]
+[node name="AttributeTest" type="Node" node_paths=PackedStringArray("AbilitySystemComponent", "TestBarHud", "hurtButton", "healButton", "levelUpButton")]
 script = ExtResource("1_llkfd")
 AbilitySystemComponent = NodePath("AbilitySystemComponent")
 TestBarHud = NodePath("TestBarHud")
 hurtButton = NodePath("Button")
 healButton = NodePath("Button2")
+levelUpButton = NodePath("Button3")
 
 [node name="AbilitySystemComponent" type="Node" parent="."]
 script = ExtResource("1_kw7p2")
@@ -31,3 +32,10 @@ offset_top = 470.0
 offset_right = 1020.0
 offset_bottom = 531.0
 text = "治疗"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 547.0
+offset_top = 609.0
+offset_right = 743.0
+offset_bottom = 700.0
+text = "增加体质"

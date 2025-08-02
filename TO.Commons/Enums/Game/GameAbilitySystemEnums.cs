@@ -3,10 +3,12 @@ namespace TO.Commons.Enums.Game;
 /// <summary>
 /// 属性类型枚举
 /// </summary>
+[Obsolete("AttributeType is obsolete. Use the static classes in TO.Commons.Attributes instead.", false)]
 public enum AttributeType
 {
     // 通用属性
     Health,
+    MaxHealth,
     Energy,
     Speed,
         

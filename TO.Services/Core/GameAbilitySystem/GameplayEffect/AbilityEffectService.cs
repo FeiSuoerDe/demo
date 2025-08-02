@@ -811,41 +811,12 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
 
                 // 根据修饰器操作类型应用修改
                 var currentValue = attribute.CurrentValue;
-                float newValue;
-
-                switch (modifier.OperationType)
-                {
-                    case ModifierOperationType.Add:
-                        newValue = currentValue + modifier.Value;
-                        break;
-                        
-                    case ModifierOperationType.Subtract:
-                        newValue = currentValue - modifier.Value;
-                        break;
-                        
-                    case ModifierOperationType.Multiply:
-                        newValue = currentValue * modifier.Value;
-                        break;
-                        
-                    case ModifierOperationType.Percentage:
-                        // 百分比修改：当前值 * (1 + 百分比/100)
-                        newValue = currentValue * (1 + modifier.Value / 100f);
-                        break;
-                        
-                    case ModifierOperationType.Override:
-                        // 覆盖：直接设置为修饰器的值
-                        newValue = modifier.Value;
-                        break;
-                        
-                    default:
-                        // 未知操作类型，跳过
-                        GD.Print($"[AbilityEffectService] 未知操作类型，跳过修饰器: OperationType={modifier.OperationType}, EffectId={effect.Id}");
-                        continue;
-                }
-
+                
+                var newValue = modifier.ExecuteModifier(attribute.CurrentValue);
+                
                 // 应用新值
-                // attribute.SetCurrentValue(newValue);
-                target.SetAttributeCurrentValue(attribute.AttributeType, newValue);
+                // attribute.CustomCompute(newValue);
+                target.SetAttributeCurrentValue(attribute.AttributeType, modifier);
                 // 记录修改器应用日志
                 GD.Print($"[AbilityEffectService] 修饰器已应用: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, OperationType={modifier.OperationType}, ModifierValue={modifier.Value}, OldValue={currentValue}, NewValue={newValue}");
             }
@@ -874,60 +845,11 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
 
                 // 根据修饰器操作类型撤销修改
                 var currentValue = attribute.CurrentValue;
-                var newValue = currentValue;
-
-                switch (modifier.OperationType)
-                {
-                    case ModifierOperationType.Add:
-                        // 撤销加法：减去修饰器的值
-                        newValue = currentValue - modifier.Value;
-                        break;
-                        
-                    case ModifierOperationType.Subtract:
-                        // 撤销减法：加上修饰器的值
-                        newValue = currentValue + modifier.Value;
-                        break;
-                        
-                    case ModifierOperationType.Multiply:
-                        // 撤销乘法：除以修饰器的值（避免除零）
-                        if (Math.Abs(modifier.Value) > float.Epsilon)
-                        {
-                            newValue = currentValue / modifier.Value;
-                        }
-                        else
-                        {
-                            GD.Print($"[AbilityEffectService] 撤销乘法时除零错误，保持原值: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, ModifierValue={modifier.Value}");
-                        }
-                        break;
-                        
-                    case ModifierOperationType.Percentage:
-                        // 撤销百分比修改：当前值 / (1 + 百分比/100)
-                        var percentageFactor = 1 + modifier.Value / 100f;
-                        if (Math.Abs(percentageFactor) > float.Epsilon)
-                        {
-                            newValue = currentValue / percentageFactor;
-                        }
-                        else
-                        {
-                            GD.Print($"[AbilityEffectService] 撤销百分比时除零错误，保持原值: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, PercentageFactor={percentageFactor}");
-                        }
-                        break;
-                        
-                    case ModifierOperationType.Override:
-                        // 覆盖类型无法简单撤销，需要重新计算基础值
-                        // 这里暂时恢复到基础值，实际应用中可能需要更复杂的逻辑
-                        newValue = attribute.BaseValue;
-                        GD.Print($"[AbilityEffectService] 撤销覆盖类型，恢复到基础值: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, BaseValue={attribute.BaseValue}");
-                        break;
-                        
-                    default:
-                        // 未知操作类型，跳过
-                        GD.Print($"[AbilityEffectService] 撤销时未知操作类型，跳过修饰器: OperationType={modifier.OperationType}, EffectId={effect.Id}");
-                        continue;
-                }
-
+                var newValue = modifier.RevertModifier(attribute.CurrentValue);
+                
+                //TODO: 撤销修改器逻辑需要重写
                 // 应用新值
-                attribute.SetCurrentValue(newValue);
+                target.SetAttributeCurrentValue(attribute.AttributeType, modifier);
                 
                 // 记录修改器撤销日志
                 GD.Print($"[AbilityEffectService] 修饰器已撤销: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, OperationType={modifier.OperationType}, ModifierValue={modifier.Value}, OldValue={currentValue}, NewValue={newValue}");

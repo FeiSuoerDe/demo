@@ -1,7 +1,10 @@
-using Godot;
 using System;
 using demo.UI.Bases;
+using Godot;
+using TO.Nodes.Abstractions.UI.HUD;
 using TO.Services.UI.HUD;
+
+namespace demo.UI.HUD;
 
 public partial class TestBarHud : UIScreen,ITestBarHud
 {

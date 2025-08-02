@@ -1,10 +1,7 @@
-using Godot;
 using TO.Data.Database;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Services.Abstractions.Core.ReadTableSystem;
 using TO.Repositories.Abstractions.Core.ReadTableSystem;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace TO.Services.Core.ReadTableSystem
 {
@@ -26,7 +23,7 @@ namespace TO.Services.Core.ReadTableSystem
             if (effectEntity == null) return null!;
 
             var modifiers = context.AttributeModifiers.Where(m => m.EffectId == id).ToList();
-            var modelModifiers = modifiers.Select(m =>
+            List<AttributeModifier?> modelModifiers = modifiers.Select(m =>
                     new AttributeModifier(m.AttributeType, m.OperationType, m.Value, m.SourceType,m.ExecutionOrder ))
                 .ToList();
 

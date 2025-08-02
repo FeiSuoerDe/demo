@@ -1,11 +1,8 @@
-using Godot;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
-
 using TO.Repositories.Abstractions.Core.GameAbilitySystem;
 using TO.Commons.Enums.Game;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAttribute;
-using TO.Services.Bases;
 using TO.Services.Core.GameAbilitySystem.Base;
 using TO.Events.Core;
 using TO.Repositories.Abstractions.Core.EventBus;
@@ -191,45 +188,12 @@ public class AttributeManagerService : BaseGameAbilityService, IAttributeManager
     /// 获取属性值（枚举重载，保持向后兼容）
     /// </summary>
     /// <param name="attributeSetId">属性集ID</param>
-    /// <param name="attributeType">属性类型枚举</param>
+    /// <param name="attributeType">属性类型</param>
     /// <returns>属性值，如果不存在返回null</returns>
-    public AttributeValue? GetAttributeValue(Guid attributeSetId, AttributeType attributeType)
+    public AttributeValue? GetAttributeValue(Guid attributeSetId, AttributeDefinition attributeType)
     {
         var attributeSet = _iAttributeSetRepo.GetById(attributeSetId);
         return attributeSet?.GetAttribute(attributeType);
-    }
-
-    /// <summary>
-    /// 设置属性值
-    /// </summary>
-    /// <param name="attributeSetId">属性集ID</param>
-    /// <param name="attributeType">属性类型</param>
-    /// <param name="value">新值</param>
-    /// <returns>是否成功设置</returns>
-    public bool SetAttributeValue(Guid attributeSetId, AttributeType attributeType, float value)
-    {
-        return ExecuteWithLock(() =>
-        {
-            var attributeSet = _iAttributeSetRepo.GetById(attributeSetId);
-            if (attributeSet == null) return false;
-                
-            var oldValue = attributeSet.GetAttribute(attributeType)?.CurrentValue ?? 0f;
-            attributeSet.SetAttributeBaseValue(attributeType, value);
-                
-            PublishEvent(new AttributeChanged(attributeSet.Id, attributeType, oldValue, value));
-            return true;
-        });
-    }
-
-    /// <summary>
-    /// 查找具有指定效果的属性集
-    /// </summary>
-    /// <param name="effectId">效果ID</param>
-    /// <returns>具有该效果的属性集列表</returns>
-    public IEnumerable<AttributeSet> FindAttributeSetsWithEffect(Guid effectId)
-    {
-        return _iAttributeSetRepo.GetAll()
-            .Where(set => _abilityEffectService.HasEffect(effectId.ToString(), set));
     }
 
     /// <summary>
@@ -268,10 +232,10 @@ public class AttributeManagerService : BaseGameAbilityService, IAttributeManager
             // 移除所有效果
             _abilityEffectService.ClearAllEffects(attributeSet);
 
-            // 重置所有属性到基础值
+            // 重置所有属性
             foreach (var attr in attributeSet.GetAllAttributeValues())
             {
-                attr.SetCurrentValue(attr.BaseValue);
+                attr?.Reset();
             }
 
             return true;

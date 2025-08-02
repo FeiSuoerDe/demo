@@ -1,6 +1,5 @@
 using TO.Repositories.Abstractions.Core.EventBus;
 using TO.Services.Bases;
-using TO.Events.Core;
 
 namespace TO.Services.Core.GameAbilitySystem.Base;
 

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
+using TO.Commons.Attributes;
 using TO.Data; // Assume DbContext
 using TO.Data.Models.GameAbilitySystem;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
@@ -66,7 +67,7 @@ namespace TO.UniTest.Core.GameAbilitySystem
                 );
                 
                 INSERT INTO AttributeValues (Id, SetId, AttributeType, BaseValue, MinValue, MaxValue)
-                VALUES (1, '11111111-1111-1111-1111-111111111111', 'Health', 100.0, 0.0, 200.0);
+                VALUES (1, '11111111-1111-1111-1111-111111111111', 'Character.Health', 100.0, 0.0, 200.0);
             ");
         }
 
@@ -79,9 +80,9 @@ namespace TO.UniTest.Core.GameAbilitySystem
             // Assert
             Assert.NotNull(attributes);
             Assert.Single(attributes);
-            Assert.Equal(1, attributes[0].Id);
-            Assert.Equal("Health", attributes[0].Name);
-            Assert.Equal("Character health points", attributes[0].Description);
+            Assert.Equal(1, attributes.Id);
+            Assert.Equal("Health", attributes.Name);
+            Assert.Equal("Character health points", attributes.Description);
         }
 
         [Fact]
@@ -97,10 +98,10 @@ namespace TO.UniTest.Core.GameAbilitySystem
             Assert.NotNull(attributeSet);
             Assert.Equal(setId, attributeSet.SetId);
             Assert.Single(attributeSet.AttributeValues);
-            Assert.Equal(AttributeType.Health, attributeSet.AttributeValues[0].Type);
-            Assert.Equal(100.0f, attributeSet.AttributeValues[0].BaseValue);
-            Assert.Equal(0.0f, attributeSet.AttributeValues[0].MinValue);
-            Assert.Equal(200.0f, attributeSet.AttributeValues[0].MaxValue);
+            Assert.Equal(GameAttributes.Health, attributeSet.AttributeValues.Type);
+            Assert.Equal(100.0f, attributeSet.AttributeValues.BaseValue);
+            Assert.Equal(0.0f, attributeSet.AttributeValues.MinValue);
+            Assert.Equal(200.0f, attributeSet.AttributeValues.MaxValue);
         }
 
         public void Dispose()

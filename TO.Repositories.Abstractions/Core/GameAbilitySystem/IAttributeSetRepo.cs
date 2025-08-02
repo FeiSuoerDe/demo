@@ -1,5 +1,4 @@
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
-using TO.Commons.Enums.Game;
 
 namespace TO.Repositories.Abstractions.Core.GameAbilitySystem;
 

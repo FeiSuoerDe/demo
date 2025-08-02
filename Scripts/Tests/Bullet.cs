@@ -1,7 +1,7 @@
-using Godot;
-using System;
 using demo.Core.GameAbilitySystem;
-using demo.Tests;
+using Godot;
+
+namespace demo.Tests;
 
 public partial class Bullet : Node2D, IBullet
 {
