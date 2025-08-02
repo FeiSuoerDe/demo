@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://chb6n5xsexgxh"]
+[gd_scene load_steps=10 format=3 uid="uid://chb6n5xsexgxh"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
 [ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_hbgdg"]
 [ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_tqu3k"]
 [ext_resource type="PackedScene" uid="uid://cr0l34kaxxxmv" path="res://Scenes/Physics/SpaceshipPhysics/engine.tscn" id="3_kxofk"]
-[ext_resource type="PackedScene" uid="uid://ngaaks8caymq" path="res://Scenes/Physics/SpaceshipPhysics/weapon/autocannon_weapon.tscn" id="5_gwfeb"]
+[ext_resource type="PackedScene" uid="uid://bpwliu4o0e4wv" path="res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpoint/weapon_hardpoint.tscn" id="5_gwfeb"]
+[ext_resource type="PackedScene" uid="uid://ngaaks8caymq" path="res://Scenes/Physics/SpaceshipPhysics/weapon/autocannon_weapon.tscn" id="6_1xp41"]
+[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="7_xfnat"]
 
 [sub_resource type="Resource" id="Resource_gwfeb"]
 script = ExtResource("2_hbgdg")
@@ -32,6 +34,28 @@ RadiationDissipationRate = 0.0
 CurrentRadiation = 0.0
 MaxRadiation = 0.0
 metadata/_custom_type_script = "uid://cmuqgxd0j234w"
+
+[sub_resource type="Resource" id="Resource_uoxec"]
+script = ExtResource("7_xfnat")
+WeaponName = "夯"
+Size = 2
+SpecificWeaponType = 2
+FireRate = 1.0
+Range = 1000.0
+IsAutomatic = false
+Damage = 10
+ShieldDamageMultiplier = 0.5
+ArmorDamageMultiplier = 1.0
+HealthDamageMultiplier = 1.0
+AmmoCapacity = 100
+CurrentAmmo = 100
+ReloadTime = 2.0
+TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
+BaseSpreadAngle = 1.0
+SpreadIncreasePerShot = 0.5
+MaxSpreadAngle = 15.0
+SpreadRecoveryRate = 2.0
+metadata/_custom_type_script = "uid://csfjf8h7uujn3"
 
 [node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("SpeedLabel", "AngularSpeedLabel", "AngleLabel", "WeaponStatusLabel", "EngineMount", "WeaponHardpoint")]
 collision_layer = 0
@@ -87,7 +111,21 @@ scale = Vector2(2, 2)
 
 [node name="Weapon Hardpoint" type="Node2D" parent="."]
 
-[node name="AutocannonWeapon" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+[node name="WeaponHardpoint" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+position = Vector2(0, 1)
+Type = 2
+Size = 2
+
+[node name="AutocannonWeapon" parent="Weapon Hardpoint/WeaponHardpoint" instance=ExtResource("6_1xp41")]
+Data = SubResource("Resource_uoxec")
+
+[node name="WeaponHardpoint2" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+position = Vector2(-56, 1)
+Type = 2
+
+[node name="WeaponHardpoint3" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
+position = Vector2(57, 2)
+Type = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

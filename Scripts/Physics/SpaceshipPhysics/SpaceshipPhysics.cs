@@ -58,13 +58,14 @@ public partial class SpaceshipPhysics : RigidBody2D
 
     public override void _Ready()
     {
-        // 初始化飞船
-        GD.Print("Spaceship is ready.");
+
         // 确保引擎初始状态正确
         UpdateEngines();
         // 获取所有武器和引擎
         GetWeapons();
         GetEngines();
+        // 初始化飞船
+        GD.Print("动力-子系统上线,引擎子系统上线,指挥权限移交.");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -272,9 +273,28 @@ public partial class SpaceshipPhysics : RigidBody2D
             Weapons.Clear();
             foreach (Node child in WeaponHardpoint.GetChildren())
             {
-                if (child is Weapon weapon)
+                // 先检查子节点是否有自己的子节点
+                if (child.GetChildCount() > 0)
                 {
-                    Weapons.Add(weapon);
+                    var weapon = child.GetChild<Weapon>(0);
+                    if (weapon != null)
+                    {
+                        Weapons.Add(weapon);
+                        GD.Print($"找到武器: {weapon.Data.WeaponName}");
+                    }
+                }
+                else
+                {
+                    // 检查当前节点是否为武器类型
+                    if (child is Weapon weapon)
+                    {
+                        Weapons.Add(weapon);
+                        GD.Print($"找到直接武器: {weapon.Data.WeaponName}");
+                    }
+                    else
+                    {
+                        GD.Print($"武器挂载点 '{child.Name}' 下没有武器节点。");
+                    }
                 }
             }
         }
@@ -352,24 +372,4 @@ public partial class SpaceshipPhysics : RigidBody2D
     }
 }
 
-// 武器槽位
-public partial class WeaponHardpoint : Node2D
-{
-    // 类型分为（能量，导弹，动能）
-    public enum WeaponType
-    {
-        Energy, // 能量武器
-        Missile, // 导弹武器
-        Kinetic // 动能武器
-    }
-    public WeaponType Type; // 武器类型
-                            // 槽位大小（分为大中小特）
-    public enum HardpointSize
-    {
-        Small, // 小型槽位
-        Medium, // 中型槽位
-        Large, // 大型槽位
-        ExtraLarge // 特大型槽位
-    }
-}
 

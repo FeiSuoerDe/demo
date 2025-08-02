@@ -22,8 +22,8 @@ public partial class AutocannonWeapon : Weapon
     {
         base._Ready();
 
-        // 设置武器类型
-        Data.CurrentWeaponType = WeaponData.WeaponType.Bullet;
+        // 设置武器类型 (修正枚举引用)
+        Data.SpecificWeaponType = WeaponData.HardpointType.Kinetic; // 设置为动能武器
 
         // 加载子弹场景
         try

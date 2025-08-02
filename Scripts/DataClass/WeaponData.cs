@@ -10,22 +10,40 @@ public partial class WeaponData : Resource
     #region 武器类型定义
 
     /// <summary>
-    /// 武器类型枚举，定义了游戏中所有可用的武器类型
+    /// 武器槽位类型枚举，定义了武器可以安装在哪种类型的槽位上
     /// </summary>
-    public enum WeaponType
+    public enum HardpointType
     {
-        /// <summary>粒子炮武器类型</summary>
-        ParticleCannon,
-        /// <summary>导弹武器类型</summary>
+        /// <summary>能量武器槽位</summary>
+        Energy,
+        /// <summary>导弹武器槽位</summary>
         Missile,
-        /// <summary>实弹武器类型</summary>
-        Bullet,
-        /// <summary>光束武器类型</summary>
-        Beam
+        /// <summary>动能武器槽位</summary>
+        Kinetic
     }
 
     /// <summary>
-    /// 武器类型对应的中文名称数组，索引与WeaponType枚举值对应
+    /// 武器尺寸枚举
+    /// </summary>
+    public enum WeaponSize
+    {
+        /// <summary>小型</summary>
+        Small,
+        /// <summary>中型</summary>
+        Medium,
+        /// <summary>大型</summary>
+        Large,
+        /// <summary>特大型</summary>
+        ExtraLarge
+    }
+
+    /// <summary>
+    /// 具体武器类型枚举，定义了游戏中所有可用的武器类型
+    /// </summary>
+
+
+    /// <summary>
+    /// 具体武器类型对应的中文名称数组，索引与SpecificWeaponType枚举值对应
     /// </summary>
     public static readonly string[] WeaponTypeNames = {
         "粒子炮",
@@ -45,11 +63,18 @@ public partial class WeaponData : Resource
     public string WeaponName = "夯";
 
     /// <summary>
-    /// 当前武器的类型
+    /// 武器尺寸
     /// </summary>
     [Export]
-    public WeaponType CurrentWeaponType = WeaponType.ParticleCannon;
+    public WeaponSize Size = WeaponSize.Small;
 
+
+
+    /// <summary>
+    /// 当前武器的具体类型枚举
+    /// </summary>
+    [Export]
+    public HardpointType SpecificWeaponType = HardpointType.Energy;
     /// <summary>
     /// 武器射速，表示每秒射击次数
     /// </summary>

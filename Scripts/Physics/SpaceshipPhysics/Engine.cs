@@ -25,7 +25,7 @@ public partial class Engine : GpuParticles2D
     public override void _Ready()
     {
         // 初始化引擎
-        GD.Print("Engine is ready.");
+        GD.Print("引擎开机");
         // 设置初始状态为待机
         SetEngineState(EngineState.Idle);
     }

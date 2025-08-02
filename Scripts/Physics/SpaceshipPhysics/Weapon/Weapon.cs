@@ -9,7 +9,7 @@ public partial class Weapon : Node2D
 {
     // 武器数据
     [Export]
-    public WeaponData Data { get; set; } = new WeaponData();
+    public WeaponData Data;
 
     // 发射点
     [Export]
