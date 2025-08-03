@@ -14,7 +14,15 @@ public partial class AutocannonWeapon : Weapon
     private PackedScene _bulletScene;
     private double _nextFireTime = 0; // 下次可发射时间
     private bool _isFiring;
-
+    [Export]
+    // 瞄准线
+    public Line2D _aimLine;
+    [Export]
+    // 左散步线
+    public Line2D _leftSpreadLine;
+    [Export]
+    // 右散步线
+    public Line2D _rightSpreadLine;
     /// <summary>
     /// 初始化武器
     /// </summary>
@@ -34,7 +42,32 @@ public partial class AutocannonWeapon : Weapon
         {
             GD.PrintErr($"无法加载子弹资源: {ex.Message}");
         }
+        // 初始化瞄准线长度等于射程
+        if (_aimLine != null)
+        {
+            _aimLine.Width = 3; // 设置瞄准线宽度
+                                // 其实位置为00
+            _aimLine.AddPoint(new Vector2(0, 0)); // 添加第一个点为原点
+            // 设置瞄准线长度为射程
+            _aimLine.AddPoint(new Vector2(Data.Range, 0)); // 添加第二个点为射程长度
+            GD.Print($"瞄准线初始化完成，长度为: {Data.Range}");
+            // 
+        }
+        // // 初始化散布线
+        if (_leftSpreadLine != null && _rightSpreadLine != null)
+        {
+            _leftSpreadLine.Width = 2; // 设置左散布线宽度
+            _rightSpreadLine.Width = 2; // 设置右散布线宽度
+            // 添加点
+            _leftSpreadLine.AddPoint(new Vector2(0, 0)); // 左散布线起点
+            _rightSpreadLine.AddPoint(new Vector2(0, 0)); // 右散布线起点
+                                                          // 长度为射程
+            _leftSpreadLine.AddPoint(new Vector2(Data.Range, 0)); // 左散布线终点
+            _rightSpreadLine.AddPoint(new Vector2(Data.Range, 0)); // 右散布线终点
+            GD.Print("散布线初始化完成");
+        }
     }
+
 
     /// <summary>
     /// 处理武器更新逻辑
@@ -46,7 +79,18 @@ public partial class AutocannonWeapon : Weapon
         HandleWeaponRotation(delta);
         HandleWeaponFiring();
         HandleWeaponReload();
+        IncreaseSpreadLeft(); // 更新散布线的角度
+
     }
+    // 散布效果应用到左右散布线
+    private void IncreaseSpreadLeft()
+    {
+        _leftSpreadLine.Rotation = -(float)(_currentSpread * (Mathf.Pi / 180.0));
+        _rightSpreadLine.Rotation = +(float)(_currentSpread * (Mathf.Pi / 180.0));
+    }
+
+
+
 
     /// <summary>
     /// 处理武器旋转，跟随鼠标位置

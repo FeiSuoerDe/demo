@@ -26,8 +26,11 @@ SpreadIncreasePerShot = 0.5
 MaxSpreadAngle = 5.0
 SpreadRecoveryRate = 2.0
 
-[node name="AutocannonWeapon" type="Node2D" node_paths=PackedStringArray("FirePoint")]
+[node name="AutocannonWeapon" type="Node2D" node_paths=PackedStringArray("_aimLine", "_leftSpreadLine", "_rightSpreadLine", "FirePoint")]
 script = ExtResource("1_eiaj1")
+_aimLine = NodePath("Marker2D/Line2D")
+_leftSpreadLine = NodePath("Marker2D/Left")
+_rightSpreadLine = NodePath("Marker2D/Right")
 Data = SubResource("Resource_p8tth")
 FirePoint = NodePath("Marker2D")
 
@@ -45,3 +48,20 @@ process_callback = 0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(20, 0)
+
+[node name="Line2D" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+antialiased = true
+
+[node name="Left" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+default_color = Color(1, 0.980392, 0, 0.243137)
+antialiased = true
+
+[node name="Right" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+default_color = Color(1, 0.980392, 0, 0.243137)
+antialiased = true

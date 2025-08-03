@@ -25,7 +25,7 @@ public partial class Weapon : Node2D
     protected bool _isReloading = false;
 
     // 当前散布角度
-    protected float _currentSpread = 0f;
+    public float _currentSpread = 0f;
 
     // 开火冷却跟踪
     private float _fireInterval => 1.0f / Data.FireRate; // 计算射击间隔时间
@@ -118,7 +118,7 @@ public partial class Weapon : Node2D
     /// 计算散布后的旋转角度
     /// </summary>
     /// <returns>散布后的旋转偏移量（弧度）</returns>
-    protected float GetSpreadRotation()
+    public float GetSpreadRotation()
     {
         return (float)(GD.RandRange(-_currentSpread, _currentSpread) * (Mathf.Pi / 180.0));
     }
