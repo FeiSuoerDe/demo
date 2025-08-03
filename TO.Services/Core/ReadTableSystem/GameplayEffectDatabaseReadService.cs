@@ -1,3 +1,4 @@
+using TO.Commons.Enums.Game;
 using TO.Data.Database;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Services.Abstractions.Core.ReadTableSystem;
@@ -22,16 +23,16 @@ namespace TO.Services.Core.ReadTableSystem
             var effectEntity = context.AttributeEffects.FirstOrDefault(e => e.Id == id);
             if (effectEntity == null) return null!;
 
-            var modifiers = context.AttributeModifiers.Where(m => m.EffectId == id).ToList();
-            List<AttributeModifier?> modelModifiers = modifiers.Select(m =>
-                    new AttributeModifier(m.AttributeType, m.OperationType, m.Value, m.SourceType,m.ExecutionOrder ))
+            var modelModifiers = context.AttributeModifiers.Where(m => m.EffectId == id).ToList()
+                .Select(m => new AttributeModifier(m.AttributeType, m.OperationType, m.Value, m.ExecutionOrder))
                 .ToList();
 
-            var effect = new AttributeEffect(effectEntity.Name, effectEntity.Description,modelModifiers, 
-                new Duration(effectEntity.IsInfinite,effectEntity.DurationSeconds),effectEntity.EffectType,
-                 effectEntity.Tags, effectEntity.StackingType,effectEntity.MaxStacks, effectEntity.Priority,
+            var effect = new AttributeEffect(effectEntity.Name, effectEntity.Description, modelModifiers,
+                new Duration(effectEntity.IsInfinite, effectEntity.DurationSeconds), effectEntity.EffectType,
+                 effectEntity.Tags, new GameplayEffectSource(SourceType.System, null, Godot.Vector3.Zero, null),
+                 effectEntity.StackingType, effectEntity.MaxStacks, effectEntity.Priority,
                 effectEntity.IsPassive, effectEntity.IsPeriodic, effectEntity.IntervalSeconds);
-            
+
 
 
             _cache.CacheEffect(id, effect);

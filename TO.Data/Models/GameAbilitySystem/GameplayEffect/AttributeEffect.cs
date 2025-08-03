@@ -94,6 +94,11 @@ public class AttributeEffect
     /// 周期执行间隔（秒）
     /// </summary>
     public double IntervalSeconds { get; private set; }
+
+    /// <summary>
+    /// 效果来源
+    /// </summary>
+    public GameplayEffectSource Source { get; private set; }
         
     /// <summary>
     /// 构造函数
@@ -112,7 +117,7 @@ public class AttributeEffect
     /// <param name="isPeriodic">是否为周期性效果</param>
     /// <param name="intervalSeconds">周期执行间隔（秒）</param>
     public AttributeEffect(string name, string description, List<AttributeModifier?> modifiers, 
-        Duration duration, EffectType effectType, HashSet<EffectTags> tags, 
+        Duration duration, EffectType effectType, HashSet<EffectTags> tags, GameplayEffectSource source,
         EffectStackingType stackingType = EffectStackingType.Replace, int maxStacks = 1,
         int priority = 0, bool isPassive = false, bool isPeriodic = false, double intervalSeconds = 1.0)
     {
@@ -127,6 +132,7 @@ public class AttributeEffect
         MaxStacks = maxStacks;
         CurrentStacks = 1; // 初始为1层
         Priority = priority;
+        Source = source;
         
         IsPassive = isPassive;
         IsPeriodic = isPeriodic;
@@ -415,6 +421,6 @@ public class AttributeEffect
     public AttributeEffect Clone()
     {
         return new AttributeEffect(Name, Description, Modifiers.Select(m => m.Clone()).ToList(), 
-            Duration, EffectType, Tags, StackingType, MaxStacks, Priority, IsPassive);
+            Duration, EffectType, Tags, Source, StackingType, MaxStacks, Priority, IsPassive);
     }
 }

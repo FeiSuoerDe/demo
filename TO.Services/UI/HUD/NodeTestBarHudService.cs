@@ -13,6 +13,8 @@ public class NodeTestBarHudService : BaseService
 {
     private Slider _hSlider;
     private Label _hLabel;
+
+    private Label _conLabel;
     
     private readonly ITestBarHud _testBarHud;
     private readonly IEventBusRepo _eventBusRepo;
@@ -27,6 +29,7 @@ public class NodeTestBarHudService : BaseService
         _attributeManagerService = attributeManagerService;
         _hSlider = _testBarHud.HSlider;
         _hLabel = _testBarHud.HLabel;
+        _conLabel = testBarHud.ConLabel;
         _testBarHud.BindModel += BindModel;
     }
 
@@ -34,12 +37,18 @@ public class NodeTestBarHudService : BaseService
     {
         _modelId = id;
         _eventBusRepo.Subscribe<AttributeChanged>(OnAttributeChanged).AddTo(CancellationTokenSource.Token);
-        
+
         var health = _attributeManagerService.GetAttributeValue(_modelId, GameAttributes.Health);
         var maxHealth = _attributeManagerService.GetAttributeValue(_modelId, GameAttributes.MaxHealth);
+        var constitution = _attributeManagerService.GetAttributeValue(_modelId, GameAttributes.Constitution);
         if (health == null || maxHealth == null) return;
         _hLabel.Text = $"{health.CurrentValue}/ {maxHealth.CurrentValue}";
         _hSlider.Value = health.CurrentValue / maxHealth.CurrentValue;
+        if (constitution != null)
+        {
+            _conLabel.Text = $"Constitution: {constitution.CurrentValue}";
+        }
+    
     }
 
     private void OnAttributeChanged(AttributeChanged @event)
@@ -47,10 +56,15 @@ public class NodeTestBarHudService : BaseService
         if (@event.AttributeSetId != _modelId) return;
         var health = _attributeManagerService.GetAttributeValue(_modelId, GameAttributes.Health);
         var maxHealth = _attributeManagerService.GetAttributeValue(_modelId, GameAttributes.MaxHealth);
+        var constitution = _attributeManagerService.GetAttributeValue(_modelId, GameAttributes.Constitution);
         if (health == null || maxHealth == null) return;
         GD.Print($"health: {health.CurrentValue}, maxHealth: {maxHealth.CurrentValue}");
         _hLabel.Text = $"{health.CurrentValue}/ {maxHealth.CurrentValue}";
         _hSlider.Value = health.CurrentValue / maxHealth.CurrentValue;
+        if (constitution != null)
+        {
+            _conLabel.Text = $"Constitution: {constitution.CurrentValue}";
+        }
 
     }
     

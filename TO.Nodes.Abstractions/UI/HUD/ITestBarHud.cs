@@ -7,6 +7,7 @@ public interface ITestBarHud : INode
 {
     Slider HSlider { get; set; }
     Label HLabel { get; set; }
+    Label ConLabel { get; set; }
 
     event Action<Guid>? BindModel;
 

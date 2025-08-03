@@ -80,7 +80,7 @@ public class AttributeValue
     public virtual void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier)
     {
         var computeResult = CustomCompute(attributes);
-        CurrentValue = modifier?.ExecuteModifier(computeResult) ?? computeResult;
+        SetCurrentValue(modifier?.ExecuteModifier(computeResult) ?? computeResult);
     }
         
     /// <summary>

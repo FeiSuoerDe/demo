@@ -45,7 +45,7 @@ public class HealthAttributeValue(AttributeDefinition attributeType, float baseV
         var modifiedValue = modifier?.ExecuteModifier(computedValue) ?? computedValue;
 
         // 3. 确保值在有效范围内并转换为整数
-        CurrentValue = (int)Math.Clamp(modifiedValue, 0, currentMaxHealth);
+        SetCurrentValue((int)Math.Clamp(modifiedValue, 0, currentMaxHealth));
         
         // 4. 更新上一次的最大生命值以备下次计算
         _previousMaxHealth = currentMaxHealth;

@@ -13,18 +13,16 @@ public class AttributeModifier
     public AttributeDefinition AttributeType { get; }
     public ModifierOperationType OperationType { get; }
     public float Value { get; private set; }
-    public SourceType Source { get; }
     public int ExecutionOrder { get; }
     public int Priority { get; }
     
     public AttributeModifier(AttributeDefinition attributeType, ModifierOperationType operationType, 
-        float value, SourceType source, int executionOrder = 0, int priority = 0)
+        float value, int executionOrder = 0, int priority = 0)
     {
         Id = Guid.NewGuid();
         AttributeType = attributeType;
         OperationType = operationType;
         Value = value;
-        Source = source;
         ExecutionOrder = executionOrder;
         Priority = priority;
     
@@ -64,7 +62,7 @@ public class AttributeModifier
     
     public AttributeModifier Clone()
     {
-        return new AttributeModifier(AttributeType, OperationType, Value, Source, ExecutionOrder, Priority);
+        return new AttributeModifier(AttributeType, OperationType, Value, ExecutionOrder, Priority);
     }
     
     public override bool Equals(object? obj)
