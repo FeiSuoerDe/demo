@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu2jds77dklld"
-path="res://.godot/imported/goat_gloomy_s_t.png-23447c540b2a7f55a40352a51e5f6138.ctex"
+path="res://.godot/imported/火花.png-81785e6e9c5ace76cd5b1b4e203f57f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/贴图/飞船贴图/武器/goat_gloomy_s_t.png"
-dest_files=["res://.godot/imported/goat_gloomy_s_t.png-23447c540b2a7f55a40352a51e5f6138.ctex"]
+source_file="res://Assets/贴图/飞船贴图/武器/火花.png"
+dest_files=["res://.godot/imported/火花.png-81785e6e9c5ace76cd5b1b4e203f57f2.ctex"]
 
 [params]
 

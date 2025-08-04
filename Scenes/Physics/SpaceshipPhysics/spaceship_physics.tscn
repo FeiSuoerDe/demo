@@ -118,6 +118,7 @@ Type = 2
 Size = 2
 
 [node name="AutocannonWeapon" parent="Weapon Hardpoint/WeaponHardpoint" instance=ExtResource("6_1xp41")]
+TurnSpeed = 1.0
 Data = SubResource("Resource_uoxec")
 
 [node name="WeaponHardpoint2" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
@@ -126,6 +127,7 @@ Type = 2
 Size = 2
 
 [node name="AutocannonWeapon" parent="Weapon Hardpoint/WeaponHardpoint2" instance=ExtResource("6_1xp41")]
+TurnSpeed = 1.0
 Data = SubResource("Resource_uoxec")
 
 [node name="WeaponHardpoint3" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]

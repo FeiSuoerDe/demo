@@ -8,7 +8,8 @@ using TimelapseInvoices.Scripts.Autoloads;
 public partial class AutocannonWeapon : Weapon
 {
     // 转向角速度
-    private const float TurnSpeed = 5.0f; // 转向速度，单位为弧度/秒
+    [Export]
+    public float TurnSpeed = 5.0f; // 转向速度，单位为弧度/秒
 
     // 子弹场景
     private PackedScene _bulletScene;
