@@ -36,8 +36,6 @@ public class GameplayEffectDatabaseContext : DbContext
 
         modelBuilder.Entity<AttributeEffectDTO>().Property(e => e.Tags)
             .HasConversion(new TagsConverter());
-
-        modelBuilder.Entity<AttributeEffectDTO>().Property(e => e.SourceType)
-            .HasConversion(new SourceTypeConverter());
+        
     }
 }

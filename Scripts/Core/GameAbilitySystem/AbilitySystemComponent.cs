@@ -2,6 +2,7 @@ using System;
 using Autofac;
 using Godot;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Core.GameAbilitySystem.Components;
 
@@ -28,7 +29,7 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     public event Action<AttributeDefinition,Action<float>>? OnGetAttributeValue;
     
 
-    public event Action<string>? OnApplyEffect; 
+    public event Action<string, GameplayEffectSource?>? OnApplyEffect; 
     
     public override void _Ready()
     {
@@ -47,9 +48,9 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
         OnGetAttributeValue?.Invoke(attributeType,callback);
     }
     
-    public void ApplyEffect(string effectId)
+    public void ApplyEffect(string effectId, GameplayEffectSource? effectSource)
     {
-        OnApplyEffect?.Invoke(effectId);
+        OnApplyEffect?.Invoke(effectId,effectSource);
     }
    
     public override void _ExitTree()

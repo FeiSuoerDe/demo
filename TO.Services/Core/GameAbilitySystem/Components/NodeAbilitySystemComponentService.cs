@@ -1,4 +1,5 @@
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAttribute;
@@ -58,9 +59,10 @@ public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystem
         callback(_attributeManagerService.GetAttributeValue(_currentAttributeSetId, attributeType)!.CurrentValue);
     }
     
-    private void OnApplyEffect(string effectId)
+    private void OnApplyEffect(string effectId, GameplayEffectSource effectSource)
     {
         var effect = _gameplayEffectDatabaseReadService.GetEffectByAttributeSetId(effectId);
+        effect.SetSource(effectSource);
         _attributeManagerService.ApplyEffect(_currentAttributeSetId, effect);
     }
 

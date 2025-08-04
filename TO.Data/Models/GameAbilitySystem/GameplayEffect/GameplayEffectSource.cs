@@ -29,9 +29,9 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// <summary>
         /// 来源的属性集
         /// </summary>
-        public List<AttributeValue> Attributes { get; }
+        public Dictionary<AttributeDefinition, float> Attributes { get; }
 
-        public GameplayEffectSource(SourceType sourceType, object sourceObject, Vector3 sourceLocation, List<AttributeValue> attributes)
+        public GameplayEffectSource(SourceType sourceType, object sourceObject, Vector3 sourceLocation, Dictionary<AttributeDefinition, float> attributes)
         {
             SourceType = sourceType;
             SourceObject = sourceObject;

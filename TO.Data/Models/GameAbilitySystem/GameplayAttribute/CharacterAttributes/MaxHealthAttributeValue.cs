@@ -53,7 +53,7 @@ public class MaxHealthAttributeValue : AttributeValue
     /// </summary>
     /// <param name="attributes">当前属性集中的所有属性值，用于查找依赖项。</param>
     /// <param name="modifier">要应用的属性修改器。</param>
-    public override void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier)
+    public override void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier, Dictionary<AttributeDefinition, float>? effectSource = null)
     {
         // 1. 从依赖属性（体质）计算新的基础值
         var constitution = attributes.FirstOrDefault(a => a?.AttributeType == GameAttributes.Constitution);

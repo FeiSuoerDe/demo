@@ -10,7 +10,6 @@ public class AttributeEffectDTO
     public EffectType EffectType { get; set; }
     public EffectStackingType StackingType { get; set; }
     public HashSet<EffectTags> Tags { get; set; }
-    public SourceType SourceType { get; set; }
 
     public float DurationSeconds { get; set; }
     public bool IsInfinite { get; set; }

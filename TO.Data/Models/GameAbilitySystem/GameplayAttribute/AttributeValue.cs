@@ -77,7 +77,7 @@ public class AttributeValue
         return CurrentValue;
     }
 
-    public virtual void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier)
+    public virtual void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier,Dictionary<AttributeDefinition, float>? effectSource = null)
     {
         var computeResult = CustomCompute(attributes);
         SetCurrentValue(modifier?.ExecuteModifier(computeResult) ?? computeResult);

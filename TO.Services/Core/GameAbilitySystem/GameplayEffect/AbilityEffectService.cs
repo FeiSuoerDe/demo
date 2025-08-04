@@ -801,24 +801,17 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
             foreach (var modifier in effect.Modifiers)
             {
                 // 获取目标属性
+                if (modifier == null) continue;
                 var attribute = target.GetAttribute(modifier.AttributeType);
                 if (attribute == null)
                 {
                     // 如果属性不存在，跳过此修饰器
-                    GD.Print($"[AbilityEffectService] 属性不存在，跳过修饰器: AttributeType={modifier.AttributeType}, EffectId={effect.Id}");
+                    GD.PushError(
+                        $"[AbilityEffectService] 属性不存在，跳过修饰器: AttributeType={modifier.AttributeType}, EffectId={effect.Id}");
                     continue;
                 }
 
-                // 根据修饰器操作类型应用修改
-                var currentValue = attribute.CurrentValue;
-                
-                var newValue = modifier.ExecuteModifier(attribute.CurrentValue);
-                
-                // 应用新值
-                // attribute.CustomCompute(newValue);
-                target.SetAttributeCurrentValue(attribute.AttributeType, modifier);
-                // 记录修改器应用日志
-                GD.Print($"[AbilityEffectService] 修饰器已应用: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, OperationType={modifier.OperationType}, ModifierValue={modifier.Value}, OldValue={currentValue}, NewValue={newValue}");
+                target.SetAttributeCurrentValue(attribute.AttributeType, modifier,effect.Source);
             }
         }
         catch (Exception)
@@ -849,7 +842,7 @@ public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectServic
                 
                 //TODO: 撤销修改器逻辑需要重写
                 // 应用新值
-                target.SetAttributeCurrentValue(attribute.AttributeType, modifier);
+                target.SetAttributeCurrentValue(attribute.AttributeType, modifier,effect.Source);
                 
                 // 记录修改器撤销日志
                 GD.Print($"[AbilityEffectService] 修饰器已撤销: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, OperationType={modifier.OperationType}, ModifierValue={modifier.Value}, OldValue={currentValue}, NewValue={newValue}");

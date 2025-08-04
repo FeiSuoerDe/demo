@@ -109,7 +109,8 @@ public class AttributeModifier
             _ => baseValue
         };
     }
-        
+    
+    
     /// <summary>
     /// 撤销应用修饰器，根据修饰器类型对已修饰的值进行反向计算
     /// 覆盖类型无法简单撤销，需要重新计算基础值

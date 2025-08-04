@@ -8,11 +8,9 @@ namespace TO.Services.Core.ReadTableSystem
 {
     public class GameplayEffectDatabaseReadService(IAttributeEffectCacheRepo cache) : IGameplayEffectDatabaseReadService
     {
-        private readonly IAttributeEffectCacheRepo _cache = cache;
-
         public AttributeEffect GetEffectByAttributeSetId(string id)
         {
-            var cachedEffect = _cache.GetEffect(id);
+            var cachedEffect = cache.GetEffect(id);
             if (cachedEffect != null)
             {
                 return cachedEffect.Clone();
@@ -29,13 +27,13 @@ namespace TO.Services.Core.ReadTableSystem
 
             var effect = new AttributeEffect(effectEntity.Name, effectEntity.Description, modelModifiers,
                 new Duration(effectEntity.IsInfinite, effectEntity.DurationSeconds), effectEntity.EffectType,
-                 effectEntity.Tags, new GameplayEffectSource(SourceType.System, null, Godot.Vector3.Zero, null),
+                 effectEntity.Tags,
                  effectEntity.StackingType, effectEntity.MaxStacks, effectEntity.Priority,
                 effectEntity.IsPassive, effectEntity.IsPeriodic, effectEntity.IntervalSeconds);
 
 
 
-            _cache.CacheEffect(id, effect);
+            cache.CacheEffect(id, effect);
             return effect;
         }
     }

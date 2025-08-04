@@ -32,10 +32,10 @@ public partial class AttributeTest : Node
         AbilitySystemComponent.GetAttributeSetId(guid => AttributeSetId = guid);
         TestBarHud.Bind(AttributeSetId);
 
-        hurtButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_damage");
-        healButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_heal");
-        levelUpButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_constitution_boost");
-        subButton.Pressed += () => AbilitySystemComponent.ApplyEffect("d5ea8291-344b-4c23-aacc-a907a849b3c8");
+        hurtButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_damage",null);
+        healButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_heal",null);
+        levelUpButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_constitution_boost",null);
+        subButton.Pressed += () => AbilitySystemComponent.ApplyEffect("d5ea8291-344b-4c23-aacc-a907a849b3c8",null);
     }
     
     public override void _ExitTree()

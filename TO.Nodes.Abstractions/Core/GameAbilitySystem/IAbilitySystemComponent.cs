@@ -1,4 +1,5 @@
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Nodes.Abstractions.Bases;
 
 namespace TO.Nodes.Abstractions.Core.GameAbilitySystem;
@@ -16,5 +17,5 @@ public interface IAbilitySystemComponent : INode
     
     public event Action<AttributeDefinition,Action<float>>? OnGetAttributeValue;
     
-    event Action<string> OnApplyEffect; 
+    event Action<string,GameplayEffectSource>? OnApplyEffect; 
 }

@@ -90,14 +90,14 @@ public class AttributeSet
         return Attributes.Where(attr => types.Contains(attr.AttributeType));
     }
         
-    public void SetAttributeCurrentValue(AttributeDefinition type, AttributeModifier? modifier)
+    public void SetAttributeCurrentValue(AttributeDefinition type, AttributeModifier? modifier, GameplayEffectSource? effectSource)
     {
         var oldValue = GetAttributeCurrentValue(type);
             
         var attribute = GetAttribute(type);
         if (attribute != null)
         {
-            attribute.ComputeValue(GetAllAttributeValues(attribute.GetDependentAttributes()), modifier);
+            attribute.ComputeValue(GetAllAttributeValues(attribute.GetDependentAttributes()), modifier,effectSource?.Attributes);
         }
         else
         {
@@ -108,7 +108,7 @@ public class AttributeSet
         {
             foreach (var derivedAttr in derivedList)
             {
-                SetAttributeCurrentValue(derivedAttr.AttributeType, null);
+                SetAttributeCurrentValue(derivedAttr.AttributeType, null,effectSource);
             }
         }
             
@@ -254,7 +254,7 @@ public class AttributeSet
         foreach (var attribute in Attributes)
         {
             // attribute.ComputeValue(GetAllAttributeValues(attribute.GetDependentAttributes()), null);
-            SetAttributeCurrentValue(attribute.AttributeType, null);
+            SetAttributeCurrentValue(attribute.AttributeType, null,null);
         }
             
     }

@@ -33,7 +33,7 @@ public class HealthAttributeValue(AttributeDefinition attributeType, float baseV
         return CurrentValue;
     }
 
-    public override void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier)
+    public override void ComputeValue(IEnumerable<AttributeValue?> attributes, AttributeModifier? modifier,Dictionary<AttributeDefinition, float>? effectSourc = null)
     {
         var maxHealthAttr = attributes.FirstOrDefault(a => a?.AttributeType == GameAttributes.MaxHealth);
         var currentMaxHealth = maxHealthAttr?.CurrentValue ?? CurrentValue;

@@ -35,7 +35,7 @@ public partial class Bullet : Node2D, IBullet
     
     public void Hit(AbilitySystemComponent asc)
     {
-        asc.ApplyEffect(_effectID);
+        asc.ApplyEffect(_effectID,null);
     }
 
     public void Destroy()
