@@ -24,14 +24,14 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayEffect
         /// <summary>
         /// 来源位置
         /// </summary>
-        public Vector3 SourceLocation { get; }
+        public Vector2 SourceLocation { get; }
 
         /// <summary>
         /// 来源的属性集
         /// </summary>
         public Dictionary<AttributeDefinition, float> Attributes { get; }
 
-        public GameplayEffectSource(SourceType sourceType, object sourceObject, Vector3 sourceLocation, Dictionary<AttributeDefinition, float> attributes)
+        public GameplayEffectSource(SourceType sourceType, object sourceObject, Vector2 sourceLocation, Dictionary<AttributeDefinition, float> attributes)
         {
             SourceType = sourceType;
             SourceObject = sourceObject;

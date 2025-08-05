@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TO.Data.Attributes;
+using TO.Data.Factories;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
 namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute.CharacterAttributes;
@@ -9,6 +10,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute.CharacterAttributes
 /// 代表最大生命值属性。
 /// 该值受“体质”(Constitution)属性影响。
 /// </summary>
+[AttributeValueProvider(GameAttributes.MaxHealthKey)]
 public class MaxHealthAttributeValue : AttributeValue
 {
     /// <summary>

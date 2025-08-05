@@ -1,5 +1,10 @@
+using System.Collections.Generic;
 using demo.Core.GameAbilitySystem;
 using Godot;
+using TO.Commons.Enums.Game;
+using TO.Data.Attributes;
+using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
 namespace demo.Tests;
 
@@ -10,19 +15,21 @@ public partial class Bullet : Node2D, IBullet
     
     [Export]
     private Area2D _area;
+    
+    [Export]
+    private AbilitySystemComponent _abilitySystemComponent;
 
     private Vector2 _direction;
 
+    private Dictionary<AttributeDefinition, float> _attributes;
+
     private float lifeTime = 5f;
-    public void Init(Vector2 direction)
+    public void Init(Vector2 direction,Dictionary<AttributeDefinition, float> attributes)
     {
         _direction = direction;
-        ProcessMode = ProcessModeEnum.Always;
+        _attributes = attributes;
     }
-    public override void _Ready()
-    {
-        ProcessMode = ProcessModeEnum.Disabled;
-    }
+    
     public override void _Process(double delta)
     {
         Position += (float)delta * _direction * Position;
@@ -35,7 +42,10 @@ public partial class Bullet : Node2D, IBullet
     
     public void Hit(AbilitySystemComponent asc)
     {
-        asc.ApplyEffect(_effectID,null);
+        float value = 0;
+        _abilitySystemComponent.GetAttributeValue(GameAttributes.DamageMultiplierVsHull,v=>value=v);
+        _attributes[GameAttributes.DamageMultiplierVsHull] = value;
+        asc.ApplyEffect(_effectID,new GameplayEffectSource(SourceType.Equipment,this,Position,_attributes));
     }
 
     public void Destroy()

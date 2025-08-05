@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using demo.Core.GameAbilitySystem;
 using Godot;
 using TO.Data.Attributes;
+using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 
 namespace demo.Tests;
 
@@ -8,6 +10,9 @@ public partial class ShipTest : Sprite2D
 {
     [Export]
     private AbilitySystemComponent _abilitySystemComponent;
+
+    [Export]
+    private AbilitySystemComponent _weaponAbilitySystemComponent;
     
     [Export]
     private PackedScene _bulletPrefab;
@@ -19,28 +24,28 @@ public partial class ShipTest : Sprite2D
     {
         if (Input.IsKeyPressed(Key.W))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
             {
                 Position += new Vector2(0, -1) * speed * (float)delta;
             });
         }
         if (Input.IsKeyPressed(Key.A))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
             {
                 Position += new Vector2(-1, 0) * speed * (float)delta;
             });
         }
         if (Input.IsKeyPressed(Key.D))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
             {
                 Position += new Vector2(1, 0) * speed * (float)delta;
             });
         }
         if (Input.IsKeyPressed(Key.S))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Speed, speed =>
+            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
             {
                 Position += new Vector2(0, 1) * speed * (float)delta;
             });
@@ -56,8 +61,13 @@ public partial class ShipTest : Sprite2D
                 var bullet = _bulletPrefab.Instantiate<Bullet>();
                 bullet.Position = Position;
                 _scene.AddChild(bullet);
-                
-                bullet.Init((mouseButton.GlobalPosition - Position).Normalized());
+
+                float value = 0;
+                _weaponAbilitySystemComponent.GetAttributeValue(GameAttributes.WeaponDamage,v => value = v);
+
+                var dic = new Dictionary<AttributeDefinition, float>();
+                dic[GameAttributes.WeaponDamage] = value;
+                bullet.Init((mouseButton.GlobalPosition - Position).Normalized(),dic);
                 GD.Print("Bullet fired!");
             }
         }

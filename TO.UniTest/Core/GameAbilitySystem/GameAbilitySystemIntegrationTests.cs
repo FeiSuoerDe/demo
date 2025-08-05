@@ -68,6 +68,19 @@ namespace TO.UniTest.Core.GameAbilitySystem
                 
                 INSERT INTO AttributeValues (Id, SetId, AttributeType, BaseValue, MinValue, MaxValue)
                 VALUES (1, '11111111-1111-1111-1111-111111111111', 'Character.Health', 100.0, 0.0, 200.0);
+
+                CREATE TABLE AttributeValues_WeaponDamage (
+                    Id INTEGER PRIMARY KEY,
+                    SetId TEXT NOT NULL,
+                    AttributeType TEXT NOT NULL,
+                    BaseValue REAL NOT NULL,
+                    MinValue REAL NOT NULL,
+                    MaxValue REAL NOT NULL,
+                    FOREIGN KEY (SetId) REFERENCES AttributeSets(SetId)
+                );
+
+                INSERT INTO AttributeValues_WeaponDamage (Id, SetId, AttributeType, BaseValue, MinValue, MaxValue)
+                VALUES (1, '11111111-1111-1111-1111-111111111111', 'Ship.Weapon.Damage', 50.0, 0.0, 1000.0);
             ");
         }
 

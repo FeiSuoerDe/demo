@@ -1,6 +1,9 @@
-using TO.Data.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Godot;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
-using TO.Data.Models.GameAbilitySystem.GameplayAttribute.CharacterAttributes;
 
 namespace TO.Data.Factories;
 
@@ -9,6 +12,33 @@ namespace TO.Data.Factories;
 /// </summary>
 public static class AttributeValueFactory
 {
+    private static readonly Dictionary<string, Type> _attributeValueProviders = new();
+
+    static AttributeValueFactory()
+    {
+        Initialize();
+    }
+
+    /// <summary>
+    /// 初始化工厂，扫描程序集以查找属性值提供程序
+    /// </summary>
+    public static void Initialize()
+    {
+        _attributeValueProviders.Clear();
+        var types = typeof(AttributeValueFactory).Assembly.GetTypes()
+            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(AttributeValue)));
+
+        foreach (var type in types)
+        {
+            var attribute = type.GetCustomAttribute<AttributeValueProviderAttribute>();
+            if (attribute != null)
+            {
+                _attributeValueProviders[attribute.AttributeKey] = type;
+                GD.Print(attribute.AttributeKey);
+            }
+        }
+    }
+
     /// <summary>
     /// 根据属性类型创建属性值实例
     /// </summary>
@@ -19,15 +49,12 @@ public static class AttributeValueFactory
     /// <returns>创建的属性值实例</returns>
     public static AttributeValue Create(AttributeDefinition attributeType, float baseValue, float minValue = float.MinValue, float maxValue = float.MaxValue)
     {
-        if (attributeType == GameAttributes.Health)
+        if (_attributeValueProviders.TryGetValue(attributeType.Key, out var providerType))
         {
-            return new HealthAttributeValue(attributeType, baseValue, minValue, maxValue);
+            var instance = Activator.CreateInstance(providerType, attributeType, baseValue, minValue, maxValue);
+            return instance as AttributeValue ?? throw new InvalidOperationException($"Failed to create or cast instance of type {providerType.FullName} for attribute key {attributeType.Key}.");
         }
-        if (attributeType == GameAttributes.MaxHealth)
-        {
-            return new MaxHealthAttributeValue(attributeType, baseValue, minValue, maxValue);
-        }
-        // 在这里可以为其他属性类型添加更多的if语句
+        
         return new AttributeValue(attributeType, baseValue, minValue, maxValue);
     }
 }

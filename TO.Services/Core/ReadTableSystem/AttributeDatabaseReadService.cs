@@ -4,6 +4,11 @@ using TO.Data.Factories;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Services.Abstractions.Core.ReadTableSystem;
 using TO.Repositories.Abstractions.Core.ReadTableSystem;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using TO.Data.DTO.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Registries;
 
 namespace TO.Services.Core.ReadTableSystem;
 
@@ -14,33 +19,39 @@ public class AttributeDatabaseReadService(IAttributeSetCacheRepo cache) : IAttri
         var cachedSet = cache.GetAttributeSet(id);
         if (cachedSet != null)
         {
-            var cachedAttributeSet = new AttributeSet(cachedSet.Attributes);
-            return cachedAttributeSet;
+            return new AttributeSet(cachedSet.Attributes);
         }
 
         using var context = new AttributeDatabaseContext();
-       
-        var attributeSetEntity = context.AttributeSets.FirstOrDefault(a => a.Id == id);
-        if (attributeSetEntity == null) return null!;
 
-        List<AttributeValue> attributes = [];
+        // Per user feedback, we are now abandoning the relational query on AttributeSets
+        // and instead querying AttributeValues directly. This gives us more control and
+        // bypasses the part of EF Core that was failing.
+        var valueDtos = context.AttributeValues
+            .Include(v => v.AttributeDefinition) // A simpler, more direct include.
+            .Where(v => v.AttributeSetId == id)
+            .ToList();
 
-        if (attributeSetEntity.Id.Contains("player"))
+        if (valueDtos.Count == 0)
         {
-            var basicValues = context.BasicAttributeValues.Where(v => v.AttributeSetId == id).ToList();
-            GD.Print(basicValues.Count);
-            attributes.AddRange(basicValues.Select(val =>
-                AttributeValueFactory.Create(val.AttributeType, val.BaseValue, val.MinValue, val.MaxValue)));   
+            // Per user instruction, the AttributeSets table is for design-time only.
+            // If no values are found for a given id, we can treat the set as non-existent for runtime.
+            return null!;
         }
-        else if (attributeSetEntity.Id.Contains("ship"))
+
+        var attributes = new List<AttributeValue>();
+        foreach (var valueDto in valueDtos)
         {
-            var shipValues = context.ShipAttributeValues.Where(v => v.AttributeSetId == id).ToList();
-            attributes.AddRange(shipValues.Select(val =>
-                AttributeValueFactory.Create(val.AttributeType, val.MaxValue, val.MinValue, val.MaxValue)));
+            if (valueDto.AttributeDefinition == null) continue; // Skip if the definition wasn't loaded.
+
+            var definition = AttributeRegistry.Get(valueDto.AttributeDefinition.Id);
+            if (definition == null) continue;
+            
+            attributes.Add(AttributeValueFactory.Create(definition, valueDto.BaseValue, valueDto.MinValue, valueDto.MaxValue));
         }
 
         var attributeSet = new AttributeSet(attributes);
-        cache.CacheAttributeSet(id,attributeSet);
+        cache.CacheAttributeSet(id, attributeSet);
         return attributeSet;
     }
 }

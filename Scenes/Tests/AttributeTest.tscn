@@ -19,6 +19,8 @@ AttributeSetId = "player_basic_001"
 metadata/_custom_type_script = "uid://3tty3bip7lrr"
 
 [node name="TestBarHud" parent="." instance=ExtResource("3_28rnf")]
+gameAttributes = "Character.Health"
+gameAttributes_2 = "Character.MaxHealth"
 
 [node name="Button" type="Button" parent="."]
 offset_left = 253.0

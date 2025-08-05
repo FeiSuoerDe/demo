@@ -29,12 +29,12 @@ public static partial class GameAttributes
     /// <summary>
     /// 船身结构值
     /// </summary>
-    public static readonly AttributeDefinition Hull = new(17, "Ship.Core.Hull", "Ship.Core");
+    public static readonly AttributeDefinition Hull = new(17, HullKey, "Ship.Core");
     
     /// <summary>
     /// 最大船身结构值
     /// </summary>
-    public static readonly AttributeDefinition MaxHull = new(18, "Ship.Core.MaxHull", "Ship.Core");
+    public static readonly AttributeDefinition MaxHull = new(18, MaxHullKey, "Ship.Core");
     
     /// <summary>
     /// 推进力
@@ -66,5 +66,5 @@ public static partial class GameAttributes
     /// <summary>
     /// 对船体倍率值
     /// </summary>
-    public static readonly AttributeDefinition DamageMultiplierVsHull = new(24, "Ship.Weapon.DamageMultiplierVsHull", "Ship.Weapon");
+    public static readonly AttributeDefinition DamageMultiplierVsHull = new(24, DamageMultiplierVsHullKey, "Ship.Weapon");
 }

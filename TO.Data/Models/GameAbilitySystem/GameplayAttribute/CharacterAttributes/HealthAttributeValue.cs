@@ -1,4 +1,5 @@
 using TO.Data.Attributes;
+using TO.Data.Factories;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
 namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute.CharacterAttributes;
@@ -6,6 +7,7 @@ namespace TO.Data.Models.GameAbilitySystem.GameplayAttribute.CharacterAttributes
 /// <summary>
 /// 代表生命值属性，继承自AttributeValue，并提供特定的行为。
 /// </summary>
+[AttributeValueProvider(GameAttributes.HealthKey)]
 public class HealthAttributeValue(AttributeDefinition attributeType, float baseValue, float minValue, float maxValue)
     : AttributeValue(attributeType, baseValue, minValue, maxValue)
 {

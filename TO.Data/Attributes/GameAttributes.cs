@@ -6,5 +6,13 @@ namespace TO.Data.Attributes;
 /// </summary>
 public static partial class GameAttributes
 {
-    // This file can remain empty or hold common documentation.
+    public const string HealthKey = "Character.Core.Health";
+    public const string MaxHealthKey = "Character.Core.MaxHealth";
+    
+    public const string HullKey = "Ship.Core.Hull";
+    public const string MaxHullKey = "Ship.Core.MaxHull";
+    public const string ArmorKey = "Ship.Core.Armor";
+    public const string WeaponsKey = "Ship.Core.Weapons";
+    
+    public const string DamageMultiplierVsHullKey = "Ship.Weapon.DamageMultiplierVsHull";
 }
