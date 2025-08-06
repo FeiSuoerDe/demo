@@ -1,3 +1,4 @@
+using Godot;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
@@ -23,9 +24,9 @@ public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystem
 
     private readonly IAttributeDatabaseReadService _attributeDatabaseReadService;
     private readonly IGameplayEffectDatabaseReadService _gameplayEffectDatabaseReadService;
-    
-    private Guid _currentAttributeSetId;
-    
+
+    public Guid CurrentAttributeSetId { get; }
+
     /// <summary>
     /// Ability System Component 服务实现
     /// 提供ASC的核心业务逻辑
@@ -43,33 +44,23 @@ public class NodeAbilitySystemComponentService : BaseService, INodeAbilitySystem
 
         var attributeSets = _attributeDatabaseReadService.GetAttributeSetById(_abilitySystemComponent.AttributeSetId);
         _attributeManagerService.RegisterAttributeSet(attributeSets);
-        _currentAttributeSetId = attributeSets.Id;
-        _abilitySystemComponent.OnGetAttributeSetId += OnGetAttributeSetId;
-        _abilitySystemComponent.OnGetAttributeValue += OnGetAttributeValue;
-        _abilitySystemComponent.OnApplyEffect += OnApplyEffect;
+        CurrentAttributeSetId = attributeSets.Id;
+        
     }
+    
 
-    private void OnGetAttributeSetId(Action<Guid> callback)
+    public float OnGetAttributeValue(AttributeDefinition attributeType)
     {
-        callback(_currentAttributeSetId);
+        return _attributeManagerService.GetAttributeValue(CurrentAttributeSetId, attributeType)!.CurrentValue;
     }
     
-    private void OnGetAttributeValue(AttributeDefinition attributeType,Action<float> callback)
-    {
-        callback(_attributeManagerService.GetAttributeValue(_currentAttributeSetId, attributeType)!.CurrentValue);
-    }
-    
-    private void OnApplyEffect(string effectId, GameplayEffectSource effectSource)
+    public void OnApplyEffect(string effectId, GameplayEffectSource? effectSource)
     {
         var effect = _gameplayEffectDatabaseReadService.GetEffectByAttributeSetId(effectId);
         effect.SetSource(effectSource);
-        _attributeManagerService.ApplyEffect(_currentAttributeSetId, effect);
+        _attributeManagerService.ApplyEffect(CurrentAttributeSetId, effect);
+        GD.Print("Effect has been applied");
     }
 
-    protected override void UnSubscriber()
-    {
-        base.UnSubscriber();
-        _abilitySystemComponent.OnGetAttributeSetId -= OnGetAttributeSetId;
-        _abilitySystemComponent.OnApplyEffect -= OnApplyEffect;
-    }
+
 }

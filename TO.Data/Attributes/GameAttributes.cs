@@ -6,8 +6,8 @@ namespace TO.Data.Attributes;
 /// </summary>
 public static partial class GameAttributes
 {
-    public const string HealthKey = "Character.Core.Health";
-    public const string MaxHealthKey = "Character.Core.MaxHealth";
+    public const string HealthKey = "Character.Health";
+    public const string MaxHealthKey = "Character.MaxHealth";
     
     public const string HullKey = "Ship.Core.Hull";
     public const string MaxHullKey = "Ship.Core.MaxHull";

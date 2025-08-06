@@ -287,7 +287,7 @@ public class AttributeEffect
         }
     }
 
-    public void SetSource(GameplayEffectSource source)
+    public void SetSource(GameplayEffectSource? source)
     {
         Source = source;
     }

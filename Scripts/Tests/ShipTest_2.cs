@@ -16,7 +16,7 @@ public partial class ShipTest_2 : Sprite2D
     public override void _Ready()
     {
         _area2D.AreaEntered += OnAreaEntered;
-        _abilitySystemComponent.GetAttributeSetId(guid => _testBarHud.Bind(guid));
+        _testBarHud.Bind(_abilitySystemComponent.GetAttributeSetId());
         
     }
     

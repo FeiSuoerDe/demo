@@ -4,6 +4,7 @@ using Godot;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
+using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 using TO.Services.Core.GameAbilitySystem.Components;
 
 namespace demo.Core.GameAbilitySystem;
@@ -24,33 +25,39 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     /// </summary>
     public ILifetimeScope? NodeScope { get; set; }
     
+    // 【新增】用于简化通信和暴露清晰的API
+    public INodeAbilitySystemComponentService Service { get; private set; }
+
+    
     public event Action<Action<Guid>>? OnGetAttributeSetId;
     
     public event Action<AttributeDefinition,Action<float>>? OnGetAttributeValue;
     
-
-    public event Action<string, GameplayEffectSource?>? OnApplyEffect; 
+    
     
     public override void _Ready()
     {
         base._Ready();
         // 注册到依赖注入容器
         NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, NodeAbilitySystemComponentService>(this);
+        // 从该 Scope 中解析出服务实例，并持有引用以便直接调用
+        Service = NodeScope.Resolve<INodeAbilitySystemComponentService>();
+
     }
     
-    public void GetAttributeSetId(Action<Guid> callback)
+    public Guid GetAttributeSetId()
     {
-        OnGetAttributeSetId?.Invoke(callback);
+        return Service.CurrentAttributeSetId;
     }
     
-    public void GetAttributeValue(AttributeDefinition attributeType,Action<float> callback)
+    public float GetAttributeValue(AttributeDefinition attributeType)
     {
-        OnGetAttributeValue?.Invoke(attributeType,callback);
+        return Service.OnGetAttributeValue(attributeType);
     }
     
     public void ApplyEffect(string effectId, GameplayEffectSource? effectSource)
     {
-        OnApplyEffect?.Invoke(effectId,effectSource);
+        Service.OnApplyEffect(effectId,effectSource);
     }
    
     public override void _ExitTree()

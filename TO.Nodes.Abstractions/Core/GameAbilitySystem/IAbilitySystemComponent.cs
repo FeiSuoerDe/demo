@@ -17,5 +17,4 @@ public interface IAbilitySystemComponent : INode
     
     public event Action<AttributeDefinition,Action<float>>? OnGetAttributeValue;
     
-    event Action<string,GameplayEffectSource>? OnApplyEffect; 
 }

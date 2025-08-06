@@ -5,8 +5,8 @@ namespace TO.Data.Attributes;
 public static partial class GameAttributes
 {
     // Character Attributes
-    public static readonly AttributeDefinition Health = new(0, "Character.Health", "Character");
-    public static readonly AttributeDefinition MaxHealth = new(1, "Character.MaxHealth", "Character");
+    public static readonly AttributeDefinition Health = new(0, HealthKey, "Character");
+    public static readonly AttributeDefinition MaxHealth = new(1, MaxHealthKey, "Character");
     public static readonly AttributeDefinition Energy = new(2, "Character.Energy", "Character");
     public static readonly AttributeDefinition Speed = new(3, "Character.Speed", "Character");
         

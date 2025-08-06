@@ -42,8 +42,7 @@ public partial class Bullet : Node2D, IBullet
     
     public void Hit(AbilitySystemComponent asc)
     {
-        float value = 0;
-        _abilitySystemComponent.GetAttributeValue(GameAttributes.DamageMultiplierVsHull,v=>value=v);
+        var value = _abilitySystemComponent.GetAttributeValue(GameAttributes.DamageMultiplierVsHull);
         _attributes[GameAttributes.DamageMultiplierVsHull] = value;
         asc.ApplyEffect(_effectID,new GameplayEffectSource(SourceType.Equipment,this,Position,_attributes));
     }

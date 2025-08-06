@@ -18,37 +18,38 @@ public partial class ShipTest : Sprite2D
     private PackedScene _bulletPrefab;
 
     [Export] private Node _scene;
-   
+
+    
+    
 
     public override void _Process(double delta)
     {
+        var speed = _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust);
         if (Input.IsKeyPressed(Key.W))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
-            {
-                Position += new Vector2(0, -1) * speed * (float)delta;
-            });
+
+            Position += new Vector2(0, -1) * speed * (float)delta;
+
         }
+
         if (Input.IsKeyPressed(Key.A))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
-            {
-                Position += new Vector2(-1, 0) * speed * (float)delta;
-            });
+
+            Position += new Vector2(-1, 0) * speed * (float)delta;
+
         }
+
         if (Input.IsKeyPressed(Key.D))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
-            {
-                Position += new Vector2(1, 0) * speed * (float)delta;
-            });
+
+            Position += new Vector2(1, 0) * speed * (float)delta;
         }
+
         if (Input.IsKeyPressed(Key.S))
         {
-            _abilitySystemComponent.GetAttributeValue(GameAttributes.Thrust, speed =>
-            {
-                Position += new Vector2(0, 1) * speed * (float)delta;
-            });
+
+            Position += new Vector2(0, 1) * speed * (float)delta;
+
         }
     }
 
@@ -62,11 +63,12 @@ public partial class ShipTest : Sprite2D
                 bullet.Position = Position;
                 _scene.AddChild(bullet);
 
-                float value = 0;
-                _weaponAbilitySystemComponent.GetAttributeValue(GameAttributes.WeaponDamage,v => value = v);
+                var value = _weaponAbilitySystemComponent.GetAttributeValue(GameAttributes.WeaponDamage);
 
-                var dic = new Dictionary<AttributeDefinition, float>();
-                dic[GameAttributes.WeaponDamage] = value;
+                var dic = new Dictionary<AttributeDefinition, float>
+                {
+                    [GameAttributes.WeaponDamage] = value
+                };
                 bullet.Init((mouseButton.GlobalPosition - Position).Normalized(),dic);
                 GD.Print("Bullet fired!");
             }

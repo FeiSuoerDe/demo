@@ -29,7 +29,7 @@ public partial class AttributeTest : Node
 
     public override void _Ready()
     {
-        AbilitySystemComponent.GetAttributeSetId(guid => AttributeSetId = guid);
+        AttributeSetId = AbilitySystemComponent.GetAttributeSetId();
         TestBarHud.Bind(AttributeSetId);
 
         hurtButton.Pressed += () => AbilitySystemComponent.ApplyEffect("effect_damage",null);

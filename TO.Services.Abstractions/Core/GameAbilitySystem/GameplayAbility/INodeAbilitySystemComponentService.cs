@@ -1,3 +1,6 @@
+using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
+
 namespace TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 
 /// <summary>
@@ -6,5 +9,8 @@ namespace TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 /// </summary>
 public interface INodeAbilitySystemComponentService
 {
-   
+    Guid CurrentAttributeSetId { get; }
+    void OnApplyEffect(string effectId, GameplayEffectSource? effectSource);
+
+    float OnGetAttributeValue(AttributeDefinition attributeType);
 }
