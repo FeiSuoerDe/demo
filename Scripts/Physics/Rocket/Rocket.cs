@@ -11,11 +11,6 @@ public partial class Rocket : RigidBody2D
     // 速度
     [Export]
     public float Speed = 500.0f; // 火箭速度，单位为像素/秒
-    // 新增加速度和最大速度属性
-    [Export]
-    public float Acceleration = 100.0f; // 加速度，单位为像素/秒²
-    [Export]
-    public float MaxSpeed = 800.0f; // 最大速度，单位为像素/秒
     [Export]
     // 追踪半径
     public float TrackingRadius = 500.0f; // 追踪半径，单位为像素
@@ -31,15 +26,23 @@ public partial class Rocket : RigidBody2D
 
     // 惯性控制参数
     [Export]
-    public float TurnRate = 15.0f; // 转向速率，较小的值会产生更大的惯性
+    public float TurnRate = 100.0f; // 转向速率，较小的值会产生更大的惯性
     [Export]
     public float MaxTurnAngle = 2; // 每秒最大转向角度
     [Export]
     public float AccelerationRate = 1.5f; // 加速率
 
+    // 延迟追踪参数
+    [Export]
+    public float TrackingDelay = 0.5f; // 延迟追踪时间，单位为秒
+
     // 当前速度向量和当前方向
     private Vector2 _currentVelocity = Vector2.Zero;
     private Vector2 _currentDirection = Vector2.Right;
+
+    // 追踪延迟计时器
+    private float _trackingTimer = 0.0f;
+    private bool _canTrack = false;
 
     // 初始化
     public override void _Ready()
@@ -68,15 +71,9 @@ public partial class Rocket : RigidBody2D
         // 平滑过渡到目标方向（考虑惯性）
         _currentDirection = _currentDirection.Lerp(targetDirection, TurnRate * delta).Normalized();
 
-        // 计算加速度并应用
-        Vector2 acceleration = _currentDirection * Acceleration;
-        _currentVelocity += acceleration * delta;
-        
-        // 限制速度不超过最大速度
-        if (_currentVelocity.Length() > MaxSpeed)
-        {
-            _currentVelocity = _currentVelocity.Normalized() * MaxSpeed;
-        }
+        // 平滑加速到目标速度
+        float targetSpeed = Speed;
+        _currentVelocity = _currentVelocity.Lerp(_currentDirection * targetSpeed, AccelerationRate * delta);
 
         // 应用速度
         LinearVelocity = _currentVelocity;
@@ -101,15 +98,9 @@ public partial class Rocket : RigidBody2D
         // 平滑过渡到目标方向（考虑惯性）
         _currentDirection = _currentDirection.Lerp(targetDirection, TurnRate * delta).Normalized();
 
-        // 计算加速度并应用
-        Vector2 acceleration = _currentDirection * Acceleration;
-        _currentVelocity += acceleration * delta;
-        
-        // 限制速度不超过最大速度
-        if (_currentVelocity.Length() > MaxSpeed)
-        {
-            _currentVelocity = _currentVelocity.Normalized() * MaxSpeed;
-        }
+        // 平滑加速到目标速度
+        float targetSpeed = Speed;
+        _currentVelocity = _currentVelocity.Lerp(_currentDirection * targetSpeed, AccelerationRate * delta);
 
         // 应用速度
         LinearVelocity = _currentVelocity;
@@ -127,7 +118,16 @@ public partial class Rocket : RigidBody2D
         // 不调用基类的物理处理，因为我们自己处理移动
         // base._PhysicsProcess(delta);
 
-        if (Target != null)
+        // 更新追踪计时器
+        _trackingTimer += (float)delta;
+
+        // 检查是否可以开始追踪
+        if (!_trackingTimer.Equals(TrackingDelay) && _trackingTimer > TrackingDelay)
+        {
+            _canTrack = true;
+        }
+
+        if (Target != null && _canTrack)
         {
             TrackTarget((float)delta);
         }
