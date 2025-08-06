@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
 namespace TO.Services.Abstractions.Core.ReadTableSystem

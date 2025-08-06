@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cms0pk74ml0mt"]
+
+[ext_resource type="Script" uid="uid://3tty3bip7lrr" path="res://Scripts/Core/GameAbilitySystem/AbilitySystemComponent.cs" id="1_kw7p2"]
+[ext_resource type="Script" uid="uid://dwebcfkn7adi2" path="res://Scripts/Tests/AttributeTest.cs" id="1_llkfd"]
+[ext_resource type="PackedScene" uid="uid://d2j4dasckbiya" path="res://Scenes/UI/HUD/TestBarHUD.tscn" id="3_28rnf"]
+
+[node name="AttributeTest" type="Node" node_paths=PackedStringArray("AbilitySystemComponent", "TestBarHud", "hurtButton", "healButton", "levelUpButton", "subButton")]
+script = ExtResource("1_llkfd")
+AbilitySystemComponent = NodePath("AbilitySystemComponent")
+TestBarHud = NodePath("TestBarHud")
+hurtButton = NodePath("Button")
+healButton = NodePath("Button2")
+levelUpButton = NodePath("Button3")
+subButton = NodePath("Button4")
+
+[node name="AbilitySystemComponent" type="Node" parent="."]
+script = ExtResource("1_kw7p2")
+AttributeSetId = "player_basic_001"
+metadata/_custom_type_script = "uid://3tty3bip7lrr"
+
+[node name="TestBarHud" parent="." instance=ExtResource("3_28rnf")]
+gameAttributes = "Character.Health"
+gameAttributes_2 = "Character.MaxHealth"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 253.0
+offset_top = 482.0
+offset_right = 404.0
+offset_bottom = 538.0
+text = "伤害"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 868.0
+offset_top = 470.0
+offset_right = 1020.0
+offset_bottom = 531.0
+text = "治疗"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 366.0
+offset_top = 622.0
+offset_right = 562.0
+offset_bottom = 713.0
+text = "增加体质"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 675.0
+offset_top = 624.0
+offset_right = 871.0
+offset_bottom = 715.0
+text = "减少体质"

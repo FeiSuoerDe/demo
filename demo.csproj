@@ -20,4 +20,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.3.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\UI\HUD\" />
+  </ItemGroup>
 </Project>

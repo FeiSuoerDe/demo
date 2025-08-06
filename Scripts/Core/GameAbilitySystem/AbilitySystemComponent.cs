@@ -1,13 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Autofac;
 using Godot;
-using TO.Commons.Enums.Game;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
+using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Nodes.Abstractions.Core.GameAbilitySystem;
-using TO.Services.Abstractions.Core.GameAbilitySystem;
-using TO.Services.Core.GameAbilitySystem;
+using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
+using TO.Services.Core.GameAbilitySystem.Components;
 
 namespace demo.Core.GameAbilitySystem;
 
@@ -19,7 +17,6 @@ namespace demo.Core.GameAbilitySystem;
 [GlobalClass]
 public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
 {
-    
     [Export]
     public string AttributeSetId{get; set;}
     
@@ -28,14 +25,41 @@ public partial class AbilitySystemComponent : Node, IAbilitySystemComponent
     /// </summary>
     public ILifetimeScope? NodeScope { get; set; }
     
+    // 【新增】用于简化通信和暴露清晰的API
+    public INodeAbilitySystemComponentService Service { get; private set; }
+
+    
+    public event Action<Action<Guid>>? OnGetAttributeSetId;
+    
+    public event Action<AttributeDefinition,Action<float>>? OnGetAttributeValue;
+    
+    
+    
     public override void _Ready()
     {
         base._Ready();
         // 注册到依赖注入容器
-        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, AbilitySystemComponentService>(this);
-       
+        NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IAbilitySystemComponent, NodeAbilitySystemComponentService>(this);
+        // 从该 Scope 中解析出服务实例，并持有引用以便直接调用
+        Service = NodeScope.Resolve<INodeAbilitySystemComponentService>();
+
     }
     
+    public Guid GetAttributeSetId()
+    {
+        return Service.CurrentAttributeSetId;
+    }
+    
+    public float GetAttributeValue(AttributeDefinition attributeType)
+    {
+        return Service.OnGetAttributeValue(attributeType);
+    }
+    
+    public void ApplyEffect(string effectId, GameplayEffectSource? effectSource)
+    {
+        Service.OnApplyEffect(effectId,effectSource);
+    }
+   
     public override void _ExitTree()
     {
         base._ExitTree();

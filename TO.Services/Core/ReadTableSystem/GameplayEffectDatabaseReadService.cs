@@ -1,25 +1,16 @@
-using Godot;
+using TO.Commons.Enums.Game;
 using TO.Data.Database;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Services.Abstractions.Core.ReadTableSystem;
 using TO.Repositories.Abstractions.Core.ReadTableSystem;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace TO.Services.Core.ReadTableSystem
 {
-    public class GameplayEffectDatabaseReadService : IGameplayEffectDatabaseReadService
+    public class GameplayEffectDatabaseReadService(IAttributeEffectCacheRepo cache) : IGameplayEffectDatabaseReadService
     {
-        private readonly IAttributeEffectCacheRepo _cache;
-
-        public GameplayEffectDatabaseReadService(IAttributeEffectCacheRepo cache)
-        {
-            _cache = cache;
-        }
-
         public AttributeEffect GetEffectByAttributeSetId(string id)
         {
-            var cachedEffect = _cache.GetEffect(id);
+            var cachedEffect = cache.GetEffect(id);
             if (cachedEffect != null)
             {
                 return cachedEffect.Clone();
@@ -30,19 +21,19 @@ namespace TO.Services.Core.ReadTableSystem
             var effectEntity = context.AttributeEffects.FirstOrDefault(e => e.Id == id);
             if (effectEntity == null) return null!;
 
-            var modifiers = context.AttributeModifiers.Where(m => m.EffectId == id).ToList();
-            var modelModifiers = modifiers.Select(m =>
-                    new AttributeModifier(m.AttributeType, m.OperationType, m.Value, m.SourceType,m.ExecutionOrder ))
+            var modelModifiers = context.AttributeModifiers.Where(m => m.EffectId == id).ToList()
+                .Select(m => new AttributeModifier(m.AttributeType, m.OperationType, m.Value, m.ExecutionOrder))
                 .ToList();
 
-            var effect = new AttributeEffect(effectEntity.Name, effectEntity.Description,modelModifiers, 
-                new Duration(effectEntity.IsInfinite,effectEntity.DurationSeconds),effectEntity.EffectType,
-                 effectEntity.Tags, effectEntity.StackingType,effectEntity.MaxStacks, effectEntity.Priority,
-                effectEntity.IsPassive);
-            
+            var effect = new AttributeEffect(effectEntity.Name, effectEntity.Description, modelModifiers,
+                new Duration(effectEntity.IsInfinite, effectEntity.DurationSeconds), effectEntity.EffectType,
+                 effectEntity.Tags,
+                 effectEntity.StackingType, effectEntity.MaxStacks, effectEntity.Priority,
+                effectEntity.IsPassive, effectEntity.IsPeriodic, effectEntity.IntervalSeconds);
 
 
-            _cache.CacheEffect(id, effect);
+
+            cache.CacheEffect(id, effect);
             return effect;
         }
     }

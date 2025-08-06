@@ -20,4 +20,12 @@ public partial class SceneManager : Node, ISceneManager
         TO.Contexts.Contexts.Instance.RegisterSingleNode<ISceneManager>(this);
     }
     
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        
+        // 释放依赖注入容器
+        NodeScope?.Dispose();
+    }
+    
 }

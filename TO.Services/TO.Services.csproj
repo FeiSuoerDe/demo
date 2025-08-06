@@ -19,5 +19,6 @@
   <ItemGroup>
     <Folder Include="Core\GameAbilitySystem\GameplayAbility\" />
     <Folder Include="Core\GameAbilitySystem\GameplayTasks\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
 </Project>

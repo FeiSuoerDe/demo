@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Repositories.Abstractions.Core.ReadTableSystem;
 

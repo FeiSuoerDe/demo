@@ -1,4 +1,5 @@
 
+using Godot;
 using TO.Commons.Enums.Game;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
@@ -8,887 +9,961 @@ using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayEffect;
 using TO.Services.Core.GameAbilitySystem.Base;
 
 
-namespace TO.Services.Core.GameAbilitySystem.GameplayEffect
+namespace TO.Services.Core.GameAbilitySystem.GameplayEffect;
+
+/// <summary>
+/// 重构后的技能效果管理服务
+/// 使用基础类和帮助类来减少冗余代码
+/// </summary>
+public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectService
 {
+    
+    private readonly Dictionary<Guid, List<ActiveEffect>> _activeEffects;
+    private readonly Dictionary<Guid, Dictionary<string, EffectStack>> _stackableEffects;
+    private readonly Dictionary<Guid, DateTime> _nextExpiryTimes;
+    private readonly Dictionary<Guid, List<PeriodicEffect>> _periodicEffects;
+    private readonly Dictionary<Guid, DateTime> _nextPeriodicTimes;
+    
     /// <summary>
-    /// 重构后的技能效果管理服务
-    /// 使用基础类和帮助类来减少冗余代码
+    /// 构造函数
     /// </summary>
-    public class AbilityEffectService : BaseGameAbilityService, IAbilityEffectService
+    /// <param name="eventBusRepo">事件总线仓储</param>
+    public AbilityEffectService(IEventBusRepo eventBusRepo) : base(eventBusRepo)
     {
-        private readonly Dictionary<string, List<ActiveEffect>> _activeEffects;
-        private readonly Dictionary<string, EffectStack> _stackableEffects;
-        private readonly Dictionary<string, DateTime> _immunities;
+        _activeEffects = new Dictionary<Guid, List<ActiveEffect>>();
+        _stackableEffects = new Dictionary<Guid, Dictionary<string, EffectStack>>();
+        _nextExpiryTimes = new Dictionary<Guid, DateTime>();
+        _periodicEffects = new Dictionary<Guid, List<PeriodicEffect>>();
+        _nextPeriodicTimes = new Dictionary<Guid, DateTime>();
+    }
         
-        // 事件定义
-        public event Action<string, AttributeEffect, AttributeSet>? EffectApplied;
-        public event Action<string, AttributeEffect, AttributeSet>? EffectRemoved;
-        public event Action<string, AttributeEffect, AttributeSet>? EffectRefreshed;
-        public event Action<string, AttributeEffect, AttributeSet>? EffectExpired;
-        
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="eventBusRepo">事件总线仓储</param>
-        public AbilityEffectService(IEventBusRepo eventBusRepo) : base(eventBusRepo)
+    /// <summary>
+    /// 应用效果到目标
+    /// </summary>
+    /// <param name="effect">游戏效果</param>
+    /// <param name="target">目标属性集</param>
+    /// <param name="source">源属性集</param>
+    /// <param name="sourceAbilityId">源技能ID</param>
+    /// <returns>是否成功应用</returns>
+    public bool ApplyEffect(AttributeEffect effect, AttributeSet target, 
+        AttributeSet? source = null, string? sourceAbilityId = null)
+    {
+        if (effect == null || target == null)
+            return false;
+            
+        return ExecuteWithLock(() =>
         {
-            _activeEffects = new Dictionary<string, List<ActiveEffect>>();
-            _stackableEffects = new Dictionary<string, EffectStack>();
-            _immunities = new Dictionary<string, DateTime>();
-        }
-        
-        /// <summary>
-        /// 应用效果到目标
-        /// </summary>
-        /// <param name="effect">游戏效果</param>
-        /// <param name="target">目标属性集</param>
-        /// <param name="source">源属性集</param>
-        /// <param name="sourceAbilityId">源技能ID</param>
-        /// <returns>是否成功应用</returns>
-        public async Task<bool> ApplyEffectAsync(AttributeEffect effect, AttributeSet target, 
-            AttributeSet? source = null, string? sourceAbilityId = null)
-        {
-            if (effect == null || target == null)
+            // 检查是否可以应用
+            if (!CanApplyEffect(effect, target, source))
                 return false;
+                
+            try
+            {
+                // 新数据流设计：基于 EffectType + IsPeriodic 组合
+                // 1. Instant + Non-Periodic: 立即执行
+                // 2. Duration + Non-Periodic: 持续效果（有过期时间）
+                // 3. Duration + Periodic: 周期持续效果（有过期时间 + 周期执行）
+                // 4. Infinite + Non-Periodic: 无限效果（无过期时间）
+                // 5. Infinite + Periodic: 无限周期效果（无过期时间 + 周期执行）
+
+                return effect.EffectType switch
+                {
+                    EffectType.Instant => ProcessInstantEffect(effect, target, source, sourceAbilityId),
+                    EffectType.Duration => effect.IsPeriodic 
+                        ? ProcessDurationPeriodicEffect(effect, target, source, sourceAbilityId)
+                        : ProcessDurationEffect(effect, target, source, sourceAbilityId),
+                    EffectType.Infinite => effect.IsPeriodic 
+                        ? ProcessInfinitePeriodicEffect(effect, target, source, sourceAbilityId)
+                        : ProcessInfiniteEffect(effect, target, source, sourceAbilityId),
+                    _ => false
+                };
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"[AbilityEffectService] 应用效果时发生错误: {ex.Message}");
+                return false;
+            }
+        });
+    }
+
+
+    /// <summary>
+    /// 移除效果
+    /// </summary>
+    /// <param name="effectId">效果ID</param>
+    /// <param name="target">目标属性集</param>
+    /// <returns>是否成功移除</returns>
+    public bool RemoveEffect(string effectIdStr, AttributeSet target)
+    {
+        if (!Guid.TryParse(effectIdStr, out Guid effectId))
+            return false;
             
-            var targetId = target.Id.ToString();
+        var targetId = target.Id;
             
-            // 检查免疫
-            if (IsImmune(targetId, effect.Id.ToString()))
+        return ExecuteWithLock(() =>
+        {
+            if (!_activeEffects.ContainsKey(targetId))
+                return false;
+                
+            var effects = _activeEffects[targetId];
+            var effectToRemove = effects.FirstOrDefault(e => e.Effect.Id == effectId);
+                
+            if (effectToRemove == null)
+                return false;
+                
+            try
+            {
+                // 移除效果的影响
+                UnapplyEffectModifications(effectToRemove.Effect, target);
+                    
+                effects.Remove(effectToRemove);
+                    
+                if (effects.Count == 0) {
+                    _activeEffects.Remove(targetId);
+                    _nextExpiryTimes.Remove(targetId);
+                } else {
+                    _nextExpiryTimes[targetId] = effects.Min(e => e.ExpiryTime);
+                }
+                    
+                // 处理可叠加效果
+                if (effectToRemove.Effect.StackingType != EffectStackingType.NoStack)
+                {
+                    var effectKey = $"{effectToRemove.Effect.Name}_{effectToRemove.Effect.EffectType}";
+                    if (_stackableEffects.TryGetValue(targetId, out var innerDict) && innerDict.TryGetValue(effectKey, out var stack))
+                    {
+                        stack.CurrentStacks = Math.Max(0, stack.CurrentStacks - 1);
+                        if (stack.CurrentStacks == 0)
+                            innerDict.Remove(effectKey);
+                        if (innerDict.Count == 0)
+                            _stackableEffects.Remove(targetId);
+                    }
+                }
+                    
+                PublishEvent(new EffectRemoved(targetId, effectToRemove.Effect, target));
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-            
-            return await ExecuteWithLockAsync(() =>
-            {
-                // 检查是否可以应用
-                if (!CanApplyEffect(effect, target, source))
-                {
-                    return false;
-                }
-                
-                try
-                {
-                    bool result;
-                    
-                    // 处理可叠加效果
-                    if (effect.StackingType != EffectStackingType.NoStack)
-                    {
-                        result = ApplyStackableEffect(effect, target, source, sourceAbilityId);
-                    }
-                    else
-                    {
-                        // 处理普通效果
-                        result = ApplyNormalEffect(effect, target, source, sourceAbilityId);
-                    }
-                    
-                    return result;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            });
-        }
+        });
+    }
+    
         
-        /// <summary>
-        /// 移除效果
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="target">目标属性集</param>
-        /// <returns>是否成功移除</returns>
-        public bool RemoveEffect(string effectId, AttributeSet target)
-        {
-            if (string.IsNullOrEmpty(effectId) || target == null)
-                return false;
+    /// <summary>
+    /// 清除目标的所有效果
+    /// </summary>
+    /// <param name="target">目标属性集</param>
+    /// <returns>清除的效果数量</returns>
+    public int ClearAllEffects(AttributeSet target)
+    {
+        if (target == null)
+            return 0;
             
-            var targetId = target.Id.ToString();
+        var targetId = target.Id;
             
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                {
-                    return false;
-                }
-                
-                var effects = _activeEffects[targetId];
-                var effectToRemove = effects.FirstOrDefault(e => e.Effect.Id.ToString() == effectId);
-                
-                if (effectToRemove == null)
-                {
-                    return false;
-                }
-                
-                try
-                {
-                    // 移除效果的影响
-                    UnapplyEffectModifications(effectToRemove.Effect, target);
-                    
-                    effects.Remove(effectToRemove);
-                    
-                    if (effects.Count == 0)
-                        _activeEffects.Remove(targetId);
-                    
-                    // 处理可叠加效果
-                    if (effectToRemove.Effect.StackingType != EffectStackingType.NoStack)
-                    {
-                        var stackKey = $"{targetId}_{effectId}";
-                        if (_stackableEffects.ContainsKey(stackKey))
-                        {
-                            var stack = _stackableEffects[stackKey];
-                            stack.CurrentStacks = Math.Max(0, stack.CurrentStacks - 1);
-                            
-                            if (stack.CurrentStacks == 0)
-                                _stackableEffects.Remove(stackKey);
-                        }
-                    }
-                    
-                    PublishEvent(new EffectRemoved(targetId, effectToRemove.Effect, target));
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 移除指定类型的所有效果
-        /// </summary>
-        /// <param name="effectType">效果类型</param>
-        /// <param name="target">目标属性集</param>
-        /// <returns>移除的效果数量</returns>
-        public int RemoveEffectsByType(EffectType effectType, AttributeSet target)
+        return ExecuteWithLock(() =>
         {
-            if (target == null)
+            if (!_activeEffects.ContainsKey(targetId))
                 return 0;
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
+                
+            var effects = _activeEffects[targetId];
+            var removedCount = effects.Count;
+                
+            try
             {
-                if (!_activeEffects.ContainsKey(targetId))
+                foreach (var effect in effects.ToList())
                 {
-                    return 0;
+                    UnapplyEffectModifications(effect.Effect, target);
+                    PublishEvent(new EffectRemoved(targetId, effect.Effect, target));
                 }
-                
-                var effects = _activeEffects[targetId];
-                var effectsToRemove = effects.Where(e => e.Effect.EffectType == effectType).ToList();
-                var removedCount = 0;
-                
-                try
-                {
-                    foreach (var effect in effectsToRemove)
-                    {
-                        UnapplyEffectModifications(effect.Effect, target);
-                        effects.Remove(effect);
-                        PublishEvent(new EffectRemoved(targetId, effect.Effect, target));
-                        removedCount++;
-                    }
                     
-                    if (effects.Count == 0)
-                        _activeEffects.Remove(targetId);
+                _activeEffects.Remove(targetId);
+                _stackableEffects.Remove(targetId);
+                _nextExpiryTimes.Remove(targetId);
                     
-                    return removedCount;
-                }
-                catch (Exception)
-                {
-                    return removedCount;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 移除指定标签的所有效果
-        /// </summary>
-        /// <param name="tag">标签</param>
-        /// <param name="target">目标属性集</param>
-        /// <returns>移除的效果数量</returns>
-        public int RemoveEffectsByTag(EffectTags tag, AttributeSet target)
-        {
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
+                return removedCount;
+            }
+            catch (Exception)
             {
-                if (!_activeEffects.ContainsKey(targetId))
-                {
-                    return 0;
-                }
-                
-                var effects = _activeEffects[targetId];
-                var effectsToRemove = effects.Where(e => e.Effect.Tags.Contains(tag)).ToList();
-                var removedCount = 0;
-                
-                try
-                {
-                    foreach (var effect in effectsToRemove)
-                    {
-                        UnapplyEffectModifications(effect.Effect, target);
-                        effects.Remove(effect);
-                        PublishEvent(new EffectRemoved(targetId, effect.Effect, target));
-                        removedCount++;
-                    }
-                    
-                    if (effects.Count == 0)
-                        _activeEffects.Remove(targetId);
-                    
-                    return removedCount;
-                }
-                catch (Exception)
-                {
-                    return removedCount;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 清除目标的所有效果
-        /// </summary>
-        /// <param name="target">目标属性集</param>
-        /// <returns>清除的效果数量</returns>
-        public int ClearAllEffects(AttributeSet target)
-        {
-            if (target == null)
                 return 0;
+            }
+        });
+    }
+
+    /// <summary>
+    /// 移除目标的所有周期效果
+    /// </summary>
+    /// <param name="target">目标属性集</param>
+    /// <returns>移除的周期效果数量</returns>
+    public int RemoveAllPeriodicEffects(AttributeSet target)
+    {
+        if (target == null)
+            return 0;
             
-            var targetId = target.Id.ToString();
+        var targetId = target.Id;
             
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                {
-                    return 0;
-                }
-                
-                var effects = _activeEffects[targetId];
-                var removedCount = effects.Count;
-                
-                try
-                {
-                    foreach (var effect in effects.ToList())
-                    {
-                        UnapplyEffectModifications(effect.Effect, target);
-                        PublishEvent(new EffectRemoved(targetId, effect.Effect, target));
-                    }
-                    
-                    _activeEffects.Remove(targetId);
-                    
-                    // 清除叠加效果
-                    var stackKeysToRemove = _stackableEffects.Keys
-                        .Where(key => key.StartsWith($"{targetId}_"))
-                        .ToList();
-                    
-                    foreach (var key in stackKeysToRemove)
-                    {
-                        _stackableEffects.Remove(key);
-                    }
-                    
-                    return removedCount;
-                }
-                catch (Exception)
-                {
-                    return 0;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 检查目标是否有指定效果
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="target">目标属性集</param>
-        /// <returns>是否有该效果</returns>
-        public bool HasEffect(string effectId, AttributeSet target)
+        return ExecuteWithLock(() =>
         {
-            if (string.IsNullOrEmpty(effectId) || target == null)
+            if (!_periodicEffects.ContainsKey(targetId))
+                return 0;
+                
+            var effects = _periodicEffects[targetId];
+            var removedCount = effects.Count;
+                
+            try
+            {
+                foreach (var periodicEffect in effects.ToList())
+                {
+                    PublishEvent(new EffectRemoved(targetId, periodicEffect.Effect, target));
+                    GD.Print($"[AbilityEffectService] 周期效果已移除: EffectId={periodicEffect.Effect.Id}, Target={targetId}");
+                }
+                    
+                _periodicEffects.Remove(targetId);
+                _nextPeriodicTimes.Remove(targetId);
+                    
+                return removedCount;
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"[AbilityEffectService] 移除周期效果错误: {ex.Message}");
+                return 0;
+            }
+        });
+    }
+
+    /// <summary>
+    /// 移除指定的周期效果
+    /// </summary>
+    /// <param name="effectId">效果ID</param>
+    /// <param name="target">目标属性集</param>
+    /// <returns>是否成功移除</returns>
+    public bool RemovePeriodicEffect(string effectId, AttributeSet target)
+    {
+        if (string.IsNullOrEmpty(effectId) || target == null)
+            return false;
+            
+        var targetId = target.Id;
+            
+        return ExecuteWithLock(() =>
+        {
+            if (!_periodicEffects.ContainsKey(targetId))
                 return false;
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
+                
+            var effects = _periodicEffects[targetId];
+            var effectToRemove = effects.FirstOrDefault(e => e.Effect.Id.ToString() == effectId);
+                
+            if (effectToRemove == null)
+                return false;
+                
+            try
             {
-                return _activeEffects.ContainsKey(targetId) && 
-                       _activeEffects[targetId].Any(e => e.Effect.Id.ToString() == effectId);
-            });
-        }
+                effects.Remove(effectToRemove);
+                PublishEvent(new EffectRemoved(targetId, effectToRemove.Effect, target));
+                GD.Print($"[AbilityEffectService] 周期效果已移除: EffectId={effectId}, Target={targetId}");
+                
+                // 更新下次执行时间
+                if (effects.Count > 0)
+                {
+                    var nextTime = effects.Min(e => e.NextExecutionTime);
+                    _nextPeriodicTimes[targetId] = nextTime;
+                }
+                else
+                {
+                    _periodicEffects.Remove(targetId);
+                    _nextPeriodicTimes.Remove(targetId);
+                }
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"[AbilityEffectService] 移除周期效果错误: {ex.Message}");
+                return false;
+            }
+        });
+    }
         
-        /// <summary>
-        /// 获取目标的所有活跃效果
-        /// </summary>
-        /// <param name="target">目标属性集</param>
-        /// <returns>活跃效果列表</returns>
-        public IEnumerable<AttributeEffect> GetActiveEffects(AttributeSet target)
+    /// <summary>
+    /// 检查目标是否有指定效果
+    /// </summary>
+    /// <param name="effectId">效果ID</param>
+    /// <param name="target">目标属性集</param>
+    /// <returns>是否有该效果</returns>
+    public bool HasEffect(string effectId, AttributeSet target)
+    {
+        if (string.IsNullOrEmpty(effectId) || target == null)
+            return false;
+            
+        var targetId = target.Id;
+            
+        return ExecuteWithLock(() =>
         {
-            if (target == null)
+            return _activeEffects.ContainsKey(targetId) && 
+                   _activeEffects[targetId].Any(e => e.Effect.Id.ToString() == effectId);
+        });
+    }
+        
+    /// <summary>
+    /// 获取目标的所有活跃效果
+    /// </summary>
+    /// <param name="target">目标属性集</param>
+    /// <returns>活跃效果列表</returns>
+    public IEnumerable<AttributeEffect> GetActiveEffects(AttributeSet target)
+    {
+        var targetId = target.Id;
+            
+        return ExecuteWithLock(() =>
+        {
+            if (!_activeEffects.ContainsKey(targetId))
                 return new List<AttributeEffect>();
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                    return new List<AttributeEffect>();
                 
-                return _activeEffects[targetId].Select(ae => ae.Effect).ToList();
-            });
-        }
-        
-        /// <summary>
-        /// 获取目标的所有活跃效果详细信息
-        /// </summary>
-        /// <param name="target">目标属性集</param>
-        /// <returns>活跃效果详细信息列表</returns>
-        public List<EffectDetails> GetActiveEffectDetails(AttributeSet target)
+            return _activeEffects[targetId].Select(ae => ae.Effect).ToList();
+        });
+    }
+    
+    /// <summary>
+    /// 更新效果（移除过期效果）
+    /// </summary>
+    /// <param name="target">目标属性集</param>
+    /// <returns>移除的过期效果数量</returns>
+    public int UpdateEffects(AttributeSet target)
+    {
+        if (target == null)
+            return 0;
+            
+        var targetId = target.Id;
+            
+        return ExecuteWithLock(() =>
         {
-            if (target == null)
-                return new List<EffectDetails>();
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                    return new List<EffectDetails>();
-                
-                var now = DateTime.UtcNow;
-                var result = new List<EffectDetails>();
-                
-                foreach (var activeEffect in _activeEffects[targetId])
-                {
-                    var stackKey = $"{targetId}_{activeEffect.Effect.Id}";
-                    var currentStacks = _stackableEffects.TryGetValue(stackKey, out var stack) ? stack.CurrentStacks : 1;
-                    
-                    result.Add(new EffectDetails
-                    {
-                        Effect = activeEffect.Effect,
-                        AppliedTime = activeEffect.AppliedTime,
-                        RemainingTime = activeEffect.ExpiryTime - now,
-                        Source = activeEffect.Source,
-                        SourceAbilityId = activeEffect.SourceAbilityId,
-                        CurrentStacks = currentStacks
-                    });
-                }
-                
-                return result;
-            });
-        }
-        
-        /// <summary>
-        /// 获取效果的剩余时间
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="target">目标属性集</param>
-        /// <returns>剩余时间</returns>
-        public TimeSpan GetEffectRemainingTime(string effectId, AttributeSet target)
-        {
-            if (string.IsNullOrEmpty(effectId) || target == null)
-                return TimeSpan.Zero;
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                    return TimeSpan.Zero;
-                
-                var activeEffect = _activeEffects[targetId].FirstOrDefault(e => e.Effect.Id.ToString() == effectId);
-                if (activeEffect == null)
-                    return TimeSpan.Zero;
-                
-                var remainingTime = activeEffect.ExpiryTime - DateTime.UtcNow;
-                return remainingTime > TimeSpan.Zero ? remainingTime : TimeSpan.Zero;
-            });
-        }
-        
-        /// <summary>
-        /// 刷新效果持续时间
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="target">目标属性集</param>
-        /// <param name="newDuration">新的持续时间</param>
-        /// <returns>是否成功刷新</returns>
-        public bool RefreshEffect(string effectId, AttributeSet target, TimeSpan newDuration)
-        {
-            if (string.IsNullOrEmpty(effectId) || target == null)
-                return false;
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                {
-                    return false;
-                }
-                
-                var effect = _activeEffects[targetId].FirstOrDefault(e => e.Effect.Id.ToString() == effectId);
-                if (effect == null)
-                {
-                    return false;
-                }
-                
-                try
-                {
-                    effect.ExpiryTime = DateTime.UtcNow.Add(newDuration);
-                    PublishEvent(new EffectRefreshed(targetId, effect.Effect, target));
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 更新效果（移除过期效果）
-        /// </summary>
-        /// <param name="target">目标属性集</param>
-        /// <returns>移除的过期效果数量</returns>
-        public int UpdateEffects(AttributeSet target)
-        {
-            if (target == null)
+            if (!_activeEffects.ContainsKey(targetId))
                 return 0;
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
+                
+            var effects = _activeEffects[targetId];
+            var now = DateTime.UtcNow;
+            if (_nextExpiryTimes.TryGetValue(targetId, out var nextExpiry) && now < nextExpiry) return 0;
+            var expiredEffects = effects.Where(e => e.ExpiryTime <= now).ToList();
+            var removedCount = 0;
+            var innerDict = _stackableEffects.GetValueOrDefault(targetId);
+                
+            try
             {
-                if (!_activeEffects.ContainsKey(targetId))
-                    return 0;
-                
-                var effects = _activeEffects[targetId];
-                var now = DateTime.UtcNow;
-                var expiredEffects = effects.Where(e => e.ExpiryTime <= now).ToList();
-                var removedCount = 0;
-                
-                try
+                foreach (var expiredEffect in expiredEffects)
                 {
-                    foreach (var expiredEffect in expiredEffects)
-                    {
-                        UnapplyEffectModifications(expiredEffect.Effect, target);
-                        effects.Remove(expiredEffect);
+                    UnapplyEffectModifications(expiredEffect.Effect, target);
+                    effects.Remove(expiredEffect);
                         
-                        // 处理可叠加效果
-                        if (expiredEffect.Effect.StackingType != EffectStackingType.NoStack)
+                    // 处理可叠加效果
+                    if (expiredEffect.Effect.StackingType != EffectStackingType.NoStack)
+                    {
+                        if (innerDict != null)
                         {
-                            var stackKey = $"{targetId}_{expiredEffect.Effect.Id}";
-                            if (_stackableEffects.ContainsKey(stackKey))
+                            var effectKey = $"{expiredEffect.Effect.Name}_{expiredEffect.Effect.EffectType}";
+                            if (innerDict.TryGetValue(effectKey, out var stack))
                             {
-                                var stack = _stackableEffects[stackKey];
                                 stack.CurrentStacks = Math.Max(0, stack.CurrentStacks - 1);
-                                
+                                 
                                 if (stack.CurrentStacks == 0)
-                                    _stackableEffects.Remove(stackKey);
+                                    innerDict.Remove(effectKey);
                             }
                         }
+                    }
                         
-                        PublishEvent(new EffectExpired(targetId, expiredEffect.Effect, target));
-                        removedCount++;
-                    }
+                    PublishEvent(new EffectExpired(targetId, expiredEffect.Effect, target));
+                    removedCount++;
+                }
                     
-                    if (effects.Count == 0)
-                        _activeEffects.Remove(targetId);
-                    
-                    return removedCount;
-                }
-                catch (Exception)
-                {
-                    return removedCount;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 设置目标对指定效果的免疫
-        /// </summary>
-        /// <param name="targetId">目标ID</param>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="duration">免疫持续时间</param>
-        public void SetImmunity(string targetId, string effectId, TimeSpan duration)
-        {
-            if (string.IsNullOrEmpty(targetId) || string.IsNullOrEmpty(effectId))
-                return;
-            
-            ExecuteWithLock(() =>
-            {
-                var immunityKey = $"{targetId}_{effectId}";
-                _immunities[immunityKey] = DateTime.UtcNow.Add(duration);
-            });
-        }
-        
-        /// <summary>
-        /// 检查目标是否对指定效果免疫
-        /// </summary>
-        /// <param name="targetId">目标ID</param>
-        /// <param name="effectId">效果ID</param>
-        /// <returns>是否免疫</returns>
-        public bool IsImmune(string targetId, string effectId)
-        {
-            if (string.IsNullOrEmpty(targetId) || string.IsNullOrEmpty(effectId))
-                return false;
-            
-            return ExecuteWithLock(() =>
-            {
-                var immunityKey = $"{targetId}_{effectId}";
-                if (!_immunities.ContainsKey(immunityKey))
-                    return false;
-                
-                if (_immunities[immunityKey] <= DateTime.UtcNow)
-                {
-                    _immunities.Remove(immunityKey);
-                    return false;
-                }
-                
-                return true;
-            });
-        }
-        
-        /// <summary>
-        /// 获取效果的当前叠加数
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="target">目标属性集</param>
-        /// <returns>当前叠加数</returns>
-        public int GetEffectStacks(string effectId, AttributeSet target)
-        {
-            if (string.IsNullOrEmpty(effectId) || target == null)
-                return 0;
-            
-            var targetId = target.Id.ToString();
-            
-            var stackKey = $"{targetId}_{effectId}";
-            
-            return ExecuteWithLock(() =>
-            {
-                return _stackableEffects.TryGetValue(stackKey, out var stack) ? stack.CurrentStacks : 0;
-            });
-        }
-        
-        #region 私有方法
-        
-        private bool CanApplyEffect(AttributeEffect effect, AttributeSet target, AttributeSet? source)
-        {
-            // 检查目标是否已经有相同效果（非叠加效果）
-            if (effect.StackingType == EffectStackingType.NoStack && HasEffect(effect.Id.ToString(), target))
-            {
-                return false;
-            }
-            
-            // 检查互斥效果 - 暂时注释掉，因为 AttributeEffect 可能没有 MutuallyExclusiveWith 属性
-            // if (effect.MutuallyExclusiveWith?.Any(exclusiveId => HasEffect(exclusiveId, target)) == true)
-            // {
-            //     return false;
-            // }
-            
-            // 检查前置条件 - 暂时注释掉，因为 AttributeEffect 可能没有 Prerequisites 属性
-            // if (effect.Prerequisites?.Any(prereq => !HasEffect(prereq, target)) == true)
-            // {
-            //     return false;
-            // }
-            
-            return true;
-        }
-        
-        private bool ApplyStackableEffect(AttributeEffect effect, AttributeSet target, 
-            AttributeSet? source, string? sourceAbilityId)
-        {
-            var targetId = target.Id.ToString();
-            var stackKey = $"{targetId}_{effect.Id}";
-            
-            if (!_stackableEffects.ContainsKey(stackKey))
-            {
-                _stackableEffects[stackKey] = new EffectStack
-                {
-                    EffectId = effect.Id.ToString(),
-                    MaxStacks = effect.MaxStacks,
-                    CurrentStacks = 0
-                };
-            }
-            
-            var stack = _stackableEffects[stackKey];
-            if (stack.CurrentStacks >= stack.MaxStacks)
-            {
-                // 刷新持续时间
-                RefreshEffect(effect.Id.ToString(), target, TimeSpan.FromSeconds(effect.Duration.TotalTime));
-                return true;
-            }
-            
-            stack.CurrentStacks++;
-            
-            var activeEffect = new ActiveEffect
-            {
-                Effect = effect,
-                AppliedTime = DateTime.UtcNow,
-                ExpiryTime = effect.Duration.IsInfinite ? DateTime.MaxValue : DateTime.UtcNow.AddSeconds(effect.Duration.TotalTime),
-                Source = source,
-                SourceAbilityId = sourceAbilityId
-            };
-            
-            if (!_activeEffects.ContainsKey(targetId))
-                _activeEffects[targetId] = new List<ActiveEffect>();
-            
-            _activeEffects[targetId].Add(activeEffect);
-            
-            // 应用效果修改
-            ApplyEffectModifications(effect, target);
-            
-            PublishEvent(new EffectApplied(targetId, effect, target));
-            return true;
-        }
-        
-        private bool ApplyNormalEffect(AttributeEffect effect, AttributeSet target, 
-            AttributeSet? source, string? sourceAbilityId)
-        {
-            var targetId = target.Id.ToString();
-            
-            var activeEffect = new ActiveEffect
-            {
-                Effect = effect,
-                AppliedTime = DateTime.UtcNow,
-                ExpiryTime = effect.Duration.IsInfinite ? DateTime.MaxValue : DateTime.UtcNow.AddSeconds(effect.Duration.TotalTime),
-                Source = source,
-                SourceAbilityId = sourceAbilityId
-            };
-            
-            if (!_activeEffects.ContainsKey(targetId))
-                _activeEffects[targetId] = new List<ActiveEffect>();
-            
-            _activeEffects[targetId].Add(activeEffect);
-            
-            // 应用效果修改
-            ApplyEffectModifications(effect, target);
-            
-            PublishEvent(new EffectApplied(targetId, effect, target));
-            return true;
-        }
-        
-        private void ApplyEffectModifications(AttributeEffect effect, AttributeSet target)
-        {
-            try
-            {
-                // 效果的修饰器会在 AttributeSet.ApplyEffect 中自动应用
-                // 这里不需要额外的操作，因为 RecalculateAttribute 会处理所有修饰器
-            }
-            catch (Exception)
-            {
-                // 忽略异常
-            }
-        }
-        
-        private void UnapplyEffectModifications(AttributeEffect effect, AttributeSet target)
-        {
-            try
-            {
-                // 效果的修饰器会在 AttributeSet.RemoveEffect 中自动移除
-                // 这里不需要额外的操作，因为 RecalculateAttribute 会重新计算属性值
-            }
-            catch (Exception)
-            {
-                // 忽略异常
-            }
-        }
-        
-        /// <summary>
-        /// 异步执行带锁的操作
-        /// </summary>
-        /// <typeparam name="T">返回类型</typeparam>
-        /// <param name="action">要执行的操作</param>
-        /// <returns>操作结果</returns>
-        private async Task<T> ExecuteWithLockAsync<T>(Func<T> action)
-        {
-            return await Task.Run(() =>
-            {
-                lock (_lock)
-                {
-                    return action();
-                }
-            });
-        }
-        
-        #endregion
-        
-        #region 嵌套类
-        
-        /// <summary>
-        /// 活跃效果
-        /// </summary>
-        public class ActiveEffect
-        {
-            public AttributeEffect Effect { get; set; } = null!;
-            public DateTime AppliedTime { get; set; }
-            public DateTime ExpiryTime { get; set; }
-            public AttributeSet? Source { get; set; }
-            public string? SourceAbilityId { get; set; }
-        }
-        
-        /// <summary>
-        /// 效果叠加信息
-        /// </summary>
-        public class EffectStack
-        {
-            public string EffectId { get; set; } = string.Empty;
-            public int MaxStacks { get; set; }
-            public int CurrentStacks { get; set; }
-        }
-        
-        /// <summary>
-        /// 效果详细信息
-        /// </summary>
-        public class EffectDetails
-        {
-            public AttributeEffect? Effect { get; set; }
-            public DateTime AppliedTime { get; set; }
-            public TimeSpan RemainingTime { get; set; }
-            public AttributeSet? Source { get; set; }
-            public string? SourceAbilityId { get; set; }
-            public int CurrentStacks { get; set; }
-        }
-        
-        #endregion
-        
-        /// <summary>
-        /// 刷新效果持续时间
-        /// </summary>
-        /// <param name="effectId">效果ID</param>
-        /// <param name="target">目标属性集</param>
-        /// <param name="newDuration">新的持续时间（可选）</param>
-        /// <returns>是否成功刷新</returns>
-        public bool RefreshEffect(string effectId, AttributeSet target, TimeSpan? newDuration = null)
-        {
-            if (string.IsNullOrEmpty(effectId) || target == null)
-                return false;
-            
-            var targetId = target.Id.ToString();
-            
-            return ExecuteWithLock(() =>
-            {
-                if (!_activeEffects.ContainsKey(targetId))
-                    return false;
-                
-                var effects = _activeEffects[targetId];
-                var effect = effects.FirstOrDefault(e => e.Effect.Id.ToString() == effectId);
-                
-                if (effect == null)
-                    return false;
-                
-                try
-                {
-                    if (newDuration.HasValue)
-                    {
-                        effect.ExpiryTime = DateTime.UtcNow.Add(newDuration.Value);
-                    }
-                    else
-                    {
-                        effect.ExpiryTime = effect.Effect.Duration.IsInfinite ? DateTime.MaxValue : DateTime.UtcNow.AddSeconds(effect.Effect.Duration.TotalTime);
-                    }
-                    
-                    PublishEvent(new EffectRefreshed(targetId, effect.Effect, target));
-                    EffectRefreshed?.Invoke(targetId, effect.Effect, target);
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            });
-        }
-        
-        /// <summary>
-        /// 清理过期效果
-        /// </summary>
-        /// <returns>清理的效果数量</returns>
-        public int CleanupExpiredEffects()
-        {
-            return ExecuteWithLock(() =>
-            {
-                int cleanedCount = 0;
-                var currentTime = DateTime.UtcNow;
-                var targetsToRemove = new List<string>();
-                
-                foreach (var kvp in _activeEffects.ToList())
-                {
-                    var targetId = kvp.Key;
-                    var effects = kvp.Value;
-                    var expiredEffects = effects.Where(e => e.ExpiryTime <= currentTime).ToList();
-                    
-                    foreach (var expiredEffect in expiredEffects)
-                    {
-                        try
-                        {
-                            // 移除效果的影响
-                            // 过期效果会在下次 UpdateEffects 调用时自动清理
-                             // 这里只需要从内存中移除即可
-                            
-                            effects.Remove(expiredEffect);
-                            cleanedCount++;
-                            
-                            // 注意：这里没有 target 实例，所以暂时传 null
-                            // 在实际使用中，可能需要从其他地方获取 AttributeSet 实例
-                            PublishEvent(new EffectExpired(targetId, expiredEffect.Effect, null));
-                            EffectExpired?.Invoke(targetId, expiredEffect.Effect, null);
-                        }
-                        catch (Exception)
-                        {
-                            // 忽略异常
-                        }
-                    }
-                    
-                    if (effects.Count == 0)
-                        targetsToRemove.Add(targetId);
-                }
-                
-                foreach (var targetId in targetsToRemove)
+                if (effects.Count == 0)
                 {
                     _activeEffects.Remove(targetId);
+                    _nextExpiryTimes.Remove(targetId);
+                }
+                else
+                {
+                    // 更新下次过期时间
+                    var nextExpiryTime = effects.Min(e => e.ExpiryTime);
+                    _nextExpiryTimes[targetId] = nextExpiryTime;
+                }
+                    
+                if (innerDict != null && innerDict.Count == 0)
+                    _stackableEffects.Remove(targetId);
+                    
+                return removedCount;
+            }
+            catch (Exception)
+            {
+                return removedCount;
+            }
+        });
+    }
+
+    /// <summary>
+    /// 更新周期效果（执行到期的周期效果）
+    /// </summary>
+    /// <param name="target">目标属性集</param>
+    /// <returns>执行的周期效果数量</returns>
+    public int UpdatePeriodicEffects(AttributeSet target)
+    {
+        if (target == null)
+            return 0;
+            
+        var targetId = target.Id;
+            
+        return ExecuteWithLock(() =>
+        {
+            if (!_periodicEffects.ContainsKey(targetId))
+                return 0;
+                
+            var effects = _periodicEffects[targetId];
+            var now = DateTime.UtcNow;
+            if (_nextPeriodicTimes.TryGetValue(targetId, out var nextExecution) && now < nextExecution) 
+                return 0;
+                
+            // 移除过期的周期效果
+            var expiredEffects = effects.Where(e => e.ExpiryTime <= now).ToList();
+            foreach (var expiredEffect in expiredEffects)
+            {
+                effects.Remove(expiredEffect);
+                GD.Print($"[AbilityEffectService] 周期效果过期移除: EffectId={expiredEffect.Effect.Id}, Target={targetId}");
+            }
+            
+            var readyEffects = effects.Where(e => e.NextExecutionTime <= now && e.ExpiryTime > now).ToList();
+            var executedCount = 0;
+                
+            try
+            {
+                foreach (var periodicEffect in readyEffects)
+                {
+                    // 执行周期效果
+                    ApplyEffectModifications(periodicEffect.Effect, target);
+                    periodicEffect.ExecutionCount++;
+                    
+                    // 设置下次执行时间
+                    periodicEffect.NextExecutionTime = now.AddSeconds(periodicEffect.IntervalSeconds);
+                    
+                    PublishEvent(new EffectApplied(targetId, periodicEffect.Effect, target));
+                    GD.Print($"[AbilityEffectService] 周期效果执行: EffectId={periodicEffect.Effect.Id}, Target={targetId}, ExecutionCount={periodicEffect.ExecutionCount}");
+                    
+                    executedCount++;
                 }
                 
-                return cleanedCount;
-            });
-        }
-        
-        /// <summary>
-        /// 获取效果统计信息
-        /// </summary>
-        /// <returns>统计信息字典</returns>
-        public Dictionary<string, object> GetEffectStatistics()
-        {
-            return ExecuteWithLock(() =>
-            {
-                var stats = new Dictionary<string, object>
+                // 更新下次执行时间
+                if (effects.Count > 0)
                 {
-                    ["TotalTargets"] = _activeEffects.Count,
-                    ["TotalActiveEffects"] = _activeEffects.Values.Sum(effects => effects.Count),
-                    ["TotalStackableEffects"] = _stackableEffects.Count,
-                    ["TotalImmunities"] = _immunities.Count,
-                    ["ExpiredEffects"] = _activeEffects.Values.SelectMany(effects => effects)
-                        .Count(e => e.ExpiryTime <= DateTime.UtcNow)
-                };
+                    var nextTime = effects.Min(e => e.NextExecutionTime);
+                    _nextPeriodicTimes[targetId] = nextTime;
+                }
+                else
+                {
+                    _nextPeriodicTimes.Remove(targetId);
+                }
                 
-                return stats;
-            });
+                return executedCount;
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"[AbilityEffectService] 周期效果更新错误: {ex.Message}");
+                return executedCount;
+            }
+        });
+    }
+    
+        
+    #region 私有方法
+        
+    //TODO: 检查互斥效果,检查前置条件
+    private bool CanApplyEffect(AttributeEffect effect, AttributeSet target, AttributeSet? source)
+    {
+            
+        return true;
+    }
+        
+    // 旧的Apply方法已被新的Process方法和辅助方法替代，以实现更清晰的数据流
+    
+    /// <summary>
+    /// 根据效果类型获取过期时间
+    /// </summary>
+    private DateTime GetExpiryTimeByEffectType(AttributeEffect effect)
+    {
+        return effect.EffectType switch
+        {
+            EffectType.Duration => DateTime.UtcNow.AddSeconds(effect.Duration.TotalTime),
+            EffectType.Infinite => DateTime.MaxValue,
+            _ => DateTime.UtcNow.AddSeconds(effect.Duration.TotalTime)
+        };
+    }
+
+    /// <summary>
+    /// 处理即时效果：立即应用修改 -> 发布事件 -> 完成
+    /// </summary>
+    private bool ProcessInstantEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        // 即时效果：立即应用修改，不存储到活动效果中
+        ApplyEffectModifications(effect, target);
+        
+        var targetId = target.Id;
+        PublishEvent(new EffectApplied(targetId, effect, target));
+        
+        GD.Print($"[AbilityEffectService] 即时效果已应用: EffectId={effect.Id}, Target={targetId}");
+        return true;
+    }
+
+    /// <summary>
+    /// 处理持续效果：应用修改 -> 存储到ActiveEffects -> 设置过期时间 -> 发布事件
+    /// </summary>
+    private bool ProcessDurationEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        // 应用修改
+        ApplyEffectModifications(effect, target);
+        
+        // 存储效果
+        if (effect.StackingType == EffectStackingType.NoStack)
+        {
+            StoreActiveEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StoreStackableEffect(effect, target, source, sourceAbilityId);
         }
         
-        /// <summary>
-        /// 清理所有效果
-        /// </summary>
-        public void ClearAllEffects()
+        // 发布事件
+        PublishEvent(new EffectApplied(target.Id, effect, target));
+        return true;
+    }
+
+    /// <summary>
+    /// 存储普通活跃效果
+    /// </summary>
+    private void StoreActiveEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        var targetId = target.Id;
+        var activeEffect = new ActiveEffect
         {
-            ExecuteWithLock(() =>
-            {
-                try
-                {
-                    _activeEffects.Clear();
-                    _stackableEffects.Clear();
-                    _immunities.Clear();
-                }
-                catch (Exception)
-                {
-                    // 忽略异常
-                }
-            });
+            Effect = effect,
+            AppliedTime = DateTime.UtcNow,
+            ExpiryTime = GetExpiryTimeByEffectType(effect),
+            Source = source,
+            SourceAbilityId = sourceAbilityId
+        };
+        
+        if (!_activeEffects.ContainsKey(targetId))
+            _activeEffects[targetId] = new List<ActiveEffect>();
+            
+        _activeEffects[targetId].Add(activeEffect);
+        
+        if (effect.EffectType == EffectType.Duration)
+        {
+            UpdateExpiryTime(targetId, activeEffect.ExpiryTime);
         }
+    }
+    
+    /// <summary>
+    /// 存储可堆叠活跃效果
+    /// </summary>
+    private void StoreStackableEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        var targetId = target.Id;
+        var effectKey = $"{effect.Name}_{effect.EffectType}";
+        
+        if (!_stackableEffects.ContainsKey(targetId))
+            _stackableEffects[targetId] = new Dictionary<string, EffectStack>();
+            
+        if (_stackableEffects[targetId].TryGetValue(effectKey, out var stack))
+        {
+            stack.CurrentStacks = Math.Min(stack.CurrentStacks + 1, effect.MaxStacks);
+        }
+        else
+        {
+            _stackableEffects[targetId][effectKey] = new EffectStack
+            {
+                EffectKey = effectKey,
+                MaxStacks = effect.MaxStacks,
+                CurrentStacks = 1
+            };
+        }
+        
+        StoreActiveEffect(effect, target, source, sourceAbilityId);
+    }
+    
+    /// <summary>
+    /// 存储周期效果
+    /// </summary>
+    private void StorePeriodicEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        var targetId = target.Id;
+        var intervalSeconds = effect.IntervalSeconds > 0 ? effect.IntervalSeconds : 1.0;
+        
+        // 根据效果类型设置过期时间
+        var expiryTime = effect.EffectType == EffectType.Duration 
+            ? DateTime.UtcNow.AddSeconds(effect.Duration.TotalTime)
+            : DateTime.MaxValue;
+        
+        var periodicEffect = new PeriodicEffect
+        {
+            Effect = effect,
+            AppliedTime = DateTime.UtcNow,
+            ExpiryTime = expiryTime,
+            NextExecutionTime = DateTime.UtcNow.AddSeconds(intervalSeconds),
+            IntervalSeconds = intervalSeconds,
+            Source = source,
+            SourceAbilityId = sourceAbilityId,
+            ExecutionCount = 0
+        };
+        
+        if (!_periodicEffects.ContainsKey(targetId))
+            _periodicEffects[targetId] = new List<PeriodicEffect>();
+        
+        _periodicEffects[targetId].Add(periodicEffect);
+        UpdatePeriodicTime(targetId, periodicEffect.NextExecutionTime);
+    }
+    
+    /// <summary>
+    /// 存储可堆叠周期效果
+    /// </summary>
+    private void StoreStackablePeriodicEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        var targetId = target.Id;
+        var effectKey = $"{effect.Name}_{effect.EffectType}";
+        
+        if (!_stackableEffects.ContainsKey(targetId))
+            _stackableEffects[targetId] = new Dictionary<string, EffectStack>();
+            
+        if (_stackableEffects[targetId].ContainsKey(effectKey))
+        {
+            var stack = _stackableEffects[targetId][effectKey];
+            stack.CurrentStacks = Math.Min(stack.CurrentStacks + 1, effect.MaxStacks);
+        }
+        else
+        {
+            _stackableEffects[targetId][effectKey] = new EffectStack
+            {
+                EffectKey = effectKey,
+                MaxStacks = effect.MaxStacks,
+                CurrentStacks = 1
+            };
+        }
+        
+        StorePeriodicEffect(effect, target, source, sourceAbilityId);
+    }
+    
+    /// <summary>
+    /// 更新过期时间
+    /// </summary>
+    private void UpdateExpiryTime(Guid targetId, DateTime expiryTime)
+    {
+        if (!_nextExpiryTimes.ContainsKey(targetId) || _nextExpiryTimes[targetId] > expiryTime)
+            _nextExpiryTimes[targetId] = expiryTime;
+    }
+    
+    /// <summary>
+    /// 更新周期执行时间
+    /// </summary>
+    private void UpdatePeriodicTime(Guid targetId, DateTime nextExecutionTime)
+    {
+        if (!_nextPeriodicTimes.ContainsKey(targetId) || _nextPeriodicTimes[targetId] > nextExecutionTime)
+            _nextPeriodicTimes[targetId] = nextExecutionTime;
+    }
+
+    /// <summary>
+    /// 处理无限效果：应用修改 -> 存储到ActiveEffects -> 无过期时间 -> 发布事件
+    /// </summary>
+    private bool ProcessInfiniteEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        // 应用修改
+        ApplyEffectModifications(effect, target);
+        
+        // 存储效果
+        if (effect.StackingType != EffectStackingType.NoStack)
+        {
+            StoreStackableEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StoreActiveEffect(effect, target, source, sourceAbilityId);
+        }
+        
+        // 发布事件
+        PublishEvent(new EffectApplied(target.Id, effect, target));
+        return true;
+    }
+
+    /// <summary>
+    /// 处理周期效果：存储到PeriodicEffects -> 设置执行间隔 -> 发布事件（修改在UpdatePeriodicEffects中应用）
+    /// </summary>
+    private bool ProcessPeriodicEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        // 存储周期效果
+        if (effect.StackingType != EffectStackingType.NoStack)
+        {
+            StoreStackablePeriodicEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StorePeriodicEffect(effect, target, source, sourceAbilityId);
+        }
+        
+        // 发布事件
+        PublishEvent(new EffectApplied(target.Id, effect, target));
+        return true;
+    }
+
+    /// <summary>
+    /// 处理持续周期效果：应用修改 -> 存储到ActiveEffects -> 设置过期时间 -> 存储到PeriodicEffects -> 设置周期执行 -> 发布事件
+    /// </summary>
+    private bool ProcessDurationPeriodicEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        // 应用修改
+        ApplyEffectModifications(effect, target);
+        
+        // 存储到ActiveEffects
+        if (effect.StackingType == EffectStackingType.NoStack)
+        {
+            StoreActiveEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StoreStackableEffect(effect, target, source, sourceAbilityId);
+        }
+        
+        // 设置过期时间
+        var expiryTime = Time.GetUnixTimeFromSystem() + effect.Duration.TotalTime;
+        UpdateExpiryTime(target.Id, DateTime.FromBinary((long)expiryTime));
+        
+        // 存储到PeriodicEffects
+        if (effect.StackingType == EffectStackingType.NoStack)
+        {
+            StorePeriodicEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StoreStackablePeriodicEffect(effect, target, source, sourceAbilityId);
+        }
+        
+        // 设置周期执行时间
+        UpdatePeriodicTime(target.Id, DateTime.UtcNow.AddSeconds(effect.IntervalSeconds));
+        
+        // 发布事件
+        PublishEvent(new EffectApplied(target.Id, effect, target));
+        return true;
+    }
+
+    /// <summary>
+    /// 处理无限周期效果：应用修改 -> 存储到ActiveEffects -> 存储到PeriodicEffects -> 设置周期执行 -> 发布事件
+    /// </summary>
+    private bool ProcessInfinitePeriodicEffect(AttributeEffect effect, AttributeSet target,
+        AttributeSet? source, string? sourceAbilityId)
+    {
+        // 应用修改
+        ApplyEffectModifications(effect, target);
+        
+        // 存储到ActiveEffects
+        if (effect.StackingType == EffectStackingType.NoStack)
+        {
+            StoreActiveEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StoreStackableEffect(effect, target, source, sourceAbilityId);
+        }
+        
+        // 存储到PeriodicEffects
+        if (effect.StackingType == EffectStackingType.NoStack)
+        {
+            StorePeriodicEffect(effect, target, source, sourceAbilityId);
+        }
+        else
+        {
+            StoreStackablePeriodicEffect(effect, target, source, sourceAbilityId);
+        }
+        
+        // 设置周期执行时间
+        UpdatePeriodicTime(target.Id, DateTime.UtcNow.AddSeconds(effect.IntervalSeconds));
+        
+        // 发布事件
+        PublishEvent(new EffectApplied(target.Id, effect, target));
+        return true;
+    }
+
+    private void ApplyEffectModifications(AttributeEffect effect, AttributeSet target)
+    {
+        try
+        {
+            // 遍历效果的所有修饰器
+            foreach (var modifier in effect.Modifiers)
+            {
+                // 获取目标属性
+                if (modifier == null) continue;
+                var attribute = target.GetAttribute(modifier.AttributeType);
+                if (attribute == null)
+                {
+                    // 如果属性不存在，跳过此修饰器
+                    GD.PushError(
+                        $"[AbilityEffectService] 属性不存在，跳过修饰器: AttributeType={modifier.AttributeType}, EffectId={effect.Id}");
+                    continue;
+                }
+
+                target.SetAttributeCurrentValue(attribute.AttributeType, modifier,effect.Source);
+            }
+        }
+        catch (Exception)
+        {
+            // 忽略异常
+        }
+    }
+        
+    private void UnapplyEffectModifications(AttributeEffect effect, AttributeSet target)
+    {
+        try
+        {
+            // 遍历效果的所有修饰器，以相反的方式撤销修改
+            foreach (var modifier in effect.Modifiers)
+            {
+                // 获取目标属性
+                var attribute = target.GetAttribute(modifier.AttributeType);
+                if (attribute == null)
+                {
+                    // 如果属性不存在，跳过此修饰器
+                    GD.Print($"[AbilityEffectService] 撤销时属性不存在，跳过修饰器: AttributeType={modifier.AttributeType}, EffectId={effect.Id}");
+                    continue;
+                }
+
+                // 根据修饰器操作类型撤销修改
+                var currentValue = attribute.CurrentValue;
+                var newValue = modifier.RevertModifier(attribute.CurrentValue);
+                
+                //TODO: 撤销修改器逻辑需要重写
+                // 应用新值
+                target.SetAttributeCurrentValue(attribute.AttributeType, modifier,effect.Source);
+                
+                // 记录修改器撤销日志
+                GD.Print($"[AbilityEffectService] 修饰器已撤销: EffectId={effect.Id}, AttributeType={modifier.AttributeType}, OperationType={modifier.OperationType}, ModifierValue={modifier.Value}, OldValue={currentValue}, NewValue={newValue}");
+            }
+        }
+        catch (Exception)
+        {
+            // 忽略异常
+        }
+    }
+    
+        
+    #endregion
+        
+    #region 嵌套类
+        
+    /// <summary>
+    /// 活跃效果
+    /// </summary>
+    public class ActiveEffect
+    {
+        public AttributeEffect Effect { get; set; } = null!;
+        public DateTime AppliedTime { get; set; }
+        public DateTime ExpiryTime { get; set; }
+        public AttributeSet? Source { get; set; }
+        public string? SourceAbilityId { get; set; }
+    }
+        
+    /// <summary>
+    /// 效果叠加信息
+    /// </summary>
+    public class EffectStack
+    {
+        public string EffectKey { get; set; } = string.Empty;
+        public int MaxStacks { get; set; }
+        public int CurrentStacks { get; set; }
+    }
+    
+    /// <summary>
+    /// 周期效果信息
+    /// </summary>
+    public class PeriodicEffect
+    {
+        public AttributeEffect Effect { get; set; } = null!;
+        public DateTime AppliedTime { get; set; }
+        public DateTime ExpiryTime { get; set; }
+        public DateTime NextExecutionTime { get; set; }
+        public double IntervalSeconds { get; set; }
+        public AttributeSet? Source { get; set; }
+        public string? SourceAbilityId { get; set; }
+        public int ExecutionCount { get; set; }
+    }
+    
+        
+    #endregion
+        
+    /// <summary>
+    /// 刷新效果持续时间
+    /// </summary>
+    /// <param name="effectId">效果ID</param>
+    /// <param name="target">目标属性集</param>
+    /// <param name="newDuration">新的持续时间（可选）</param>
+    /// <returns>是否成功刷新</returns>
+    public bool RefreshEffect(string effectId, AttributeSet target, TimeSpan? newDuration = null)
+    {
+        if (string.IsNullOrEmpty(effectId) || target == null)
+            return false;
+            
+        var targetId = target.Id;
+            
+        return ExecuteWithLock(() =>
+        {
+            if (!_activeEffects.ContainsKey(targetId))
+                return false;
+                
+            var effects = _activeEffects[targetId];
+            var effect = effects.FirstOrDefault(e => e.Effect.Id.ToString() == effectId);
+                
+            if (effect == null)
+                return false;
+                
+            try
+            {
+                if (newDuration.HasValue)
+                {
+                    effect.ExpiryTime = DateTime.UtcNow.Add(newDuration.Value);
+                }
+                else
+                {
+                    effect.ExpiryTime = effect.Effect.Duration.IsInfinite ? DateTime.MaxValue : DateTime.UtcNow.AddSeconds(effect.Effect.Duration.TotalTime);
+                }
+                    
+                PublishEvent(new EffectRefreshed(targetId, effect.Effect, target));
+                _nextExpiryTimes[targetId] = effects.Min(e => e.ExpiryTime);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        });
+    }
+        
+        
+    /// <summary>
+    /// 清理所有效果
+    /// </summary>
+    public void ClearAllEffects()
+    {
+        ExecuteWithLock(() =>
+        {
+            try
+            {
+                _activeEffects.Clear();
+                _stackableEffects.Clear();
+                _nextExpiryTimes.Clear();
+            }
+            catch (Exception)
+            {
+                // 忽略异常
+            }
+        });
     }
 }

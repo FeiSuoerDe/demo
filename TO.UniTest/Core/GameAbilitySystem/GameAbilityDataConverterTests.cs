@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
+using TO.Commons.Attributes;
 using TO.Data.Models.GameAbilitySystem;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 
@@ -17,7 +18,7 @@ namespace TO.UniTest.Core.GameAbilitySystem
                 new Dictionary<string, object>
                 {
                     ["SetId"] = Guid.NewGuid().ToString(),
-                    ["AttributeType"] = "Health",
+                    ["AttributeType"] = "Character.Health",
                     ["BaseValue"] = "100",
                     ["MinValue"] = "0",
                     ["MaxValue"] = "200"
@@ -30,10 +31,10 @@ namespace TO.UniTest.Core.GameAbilitySystem
             // Assert
             Assert.NotNull(result);
             Assert.Single(result.AttributeValues);
-            Assert.Equal(AttributeType.Health, result.AttributeValues[0].Type);
-            Assert.Equal(100f, result.AttributeValues[0].BaseValue);
-            Assert.Equal(0f, result.AttributeValues[0].MinValue);
-            Assert.Equal(200f, result.AttributeValues[0].MaxValue);
+            Assert.Equal(GameAttributes.Health, result.AttributeValues.Type);
+            Assert.Equal(100f, result.AttributeValues.BaseValue);
+            Assert.Equal(0f, result.AttributeValues.MinValue);
+            Assert.Equal(200f, result.AttributeValues.MaxValue);
         }
 
         [Fact]
@@ -45,7 +46,7 @@ namespace TO.UniTest.Core.GameAbilitySystem
                 new Dictionary<string, object>
                 {
                     ["SetId"] = Guid.NewGuid().ToString(),
-                    ["AttributeType"] = "Invalid",
+                    ["AttributeType"] = "Invalid.Key",
                     ["BaseValue"] = "100",
                     ["MinValue"] = "0",
                     ["MaxValue"] = "200"
@@ -65,7 +66,7 @@ namespace TO.UniTest.Core.GameAbilitySystem
                 new Dictionary<string, object>
                 {
                     ["SetId"] = Guid.NewGuid().ToString(),
-                    ["AttributeType"] = "Health",
+                    ["AttributeType"] = "Character.Health",
                     ["BaseValue"] = "100",
                     ["MinValue"] = "200",
                     ["MaxValue"] = "0"

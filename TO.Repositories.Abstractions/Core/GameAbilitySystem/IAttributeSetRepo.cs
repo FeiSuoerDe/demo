@@ -1,5 +1,4 @@
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
-using TO.Commons.Enums.Game;
 
 namespace TO.Repositories.Abstractions.Core.GameAbilitySystem;
 
@@ -41,12 +40,7 @@ public interface IAttributeSetRepo
     /// <returns>如果存在返回true，否则返回false</returns>
     bool Exists(Guid id);
     
-    /// <summary>
-    /// 查找包含指定效果的属性集
-    /// </summary>
-    /// <param name="effectId">效果ID</param>
-    /// <returns>包含该效果的属性集列表</returns>
-    IEnumerable<AttributeSet> FindWithEffect(Guid effectId);
+    // Removed: IEnumerable<AttributeSet> FindWithEffect(Guid effectId);
     
     /// <summary>
     /// 清空所有属性集

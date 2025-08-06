@@ -13,4 +13,11 @@ public partial class Main : Node, IMain
         NodeScope = TO.Contexts.Contexts.Instance.RegisterNode<IMain, NodeMainService>(this);
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        
+        // 释放依赖注入容器
+        NodeScope?.Dispose();
+    }
 }

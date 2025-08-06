@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2j4dasckbiya"]
+
+[ext_resource type="Script" uid="uid://2leh8ymfx3wu" path="res://Scripts/UI/HUD/TestBarHud.cs" id="1_nlxxg"]
+
+[node name="TestBarHud" type="Control" node_paths=PackedStringArray("HSlider", "HLabel", "ConLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nlxxg")
+HSlider = NodePath("SliderComponents/HSlider")
+HLabel = NodePath("SliderComponents/Label2")
+ConLabel = NodePath("SliderComponents/Label")
+
+[node name="SliderComponents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -21.5
+offset_right = 84.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SliderComponents"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Master Volume: 100%"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="SliderComponents"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Master Volume: 100%"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="SliderComponents"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+editable = false
+scrollable = false

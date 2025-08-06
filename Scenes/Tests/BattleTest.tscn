@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0i6uiobh18r5"]
+
+[ext_resource type="Texture2D" uid="uid://b8n7cpxo8idw1" path="res://Assets/Textures/Ship/fighter_large_normal_01.png" id="1_vykct"]
+[ext_resource type="Script" uid="uid://cnmptffohf331" path="res://Scripts/Tests/ShipTest.cs" id="2_ltlcu"]
+[ext_resource type="PackedScene" uid="uid://cxfpj2rokuan5" path="res://Scenes/Tests/Bullet.tscn" id="3_ltlcu"]
+[ext_resource type="Script" uid="uid://3tty3bip7lrr" path="res://Scripts/Core/GameAbilitySystem/AbilitySystemComponent.cs" id="3_v3wpo"]
+[ext_resource type="PackedScene" uid="uid://d2j4dasckbiya" path="res://Scenes/UI/HUD/TestBarHUD.tscn" id="5_v3wpo"]
+[ext_resource type="Script" uid="uid://3mvb54s608jj" path="res://Scripts/Tests/ShipTest_2.cs" id="6_72enx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72enx"]
+size = Vector2(202.641, 207.252)
+
+[node name="BattleTest" type="Node2D"]
+
+[node name="TestBarHud" parent="." instance=ExtResource("5_v3wpo")]
+offset_left = 853.0
+offset_top = 636.0
+offset_right = 1230.0
+offset_bottom = 748.0
+size_flags_horizontal = 8
+gameAttributes = "Ship.Core.Hull"
+gameAttributes_2 = "Ship.Core.MaxHull"
+
+[node name="FighterLargeNormal01" type="Sprite2D" parent="." node_paths=PackedStringArray("_abilitySystemComponent", "_weaponAbilitySystemComponent", "_scene")]
+position = Vector2(658, 473)
+scale = Vector2(0.601563, 0.601563)
+texture = ExtResource("1_vykct")
+script = ExtResource("2_ltlcu")
+_abilitySystemComponent = NodePath("AbilitySystemComponent")
+_weaponAbilitySystemComponent = NodePath("WeaponAbilitySystemComponent")
+_bulletPrefab = ExtResource("3_ltlcu")
+_scene = NodePath("..")
+
+[node name="AbilitySystemComponent" type="Node" parent="FighterLargeNormal01"]
+script = ExtResource("3_v3wpo")
+AttributeSetId = "ship_fighter_001"
+metadata/_custom_type_script = "uid://3tty3bip7lrr"
+
+[node name="WeaponAbilitySystemComponent" type="Node" parent="FighterLargeNormal01"]
+script = ExtResource("3_v3wpo")
+AttributeSetId = "weapon_set_001"
+metadata/_custom_type_script = "uid://3tty3bip7lrr"
+
+[node name="FighterLargeNormal02" type="Sprite2D" parent="." node_paths=PackedStringArray("_area2D", "_abilitySystemComponent", "_testBarHud")]
+position = Vector2(1128, 377)
+scale = Vector2(0.361878, 0.361878)
+texture = ExtResource("1_vykct")
+script = ExtResource("6_72enx")
+_area2D = NodePath("Area2D")
+_abilitySystemComponent = NodePath("AbilitySystemComponent")
+_testBarHud = NodePath("../TestBarHud")
+
+[node name="AbilitySystemComponent" type="Node" parent="FighterLargeNormal02"]
+script = ExtResource("3_v3wpo")
+AttributeSetId = "ship_fighter_001"
+metadata/_custom_type_script = "uid://3tty3bip7lrr"
+
+[node name="Area2D" type="Area2D" parent="FighterLargeNormal02"]
+position = Vector2(-1093.82, -786.286)
+scale = Vector2(1.66234, 1.66234)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FighterLargeNormal02/Area2D"]
+position = Vector2(659.662, 477.156)
+scale = Vector2(0.601563, 0.601563)
+shape = SubResource("RectangleShape2D_72enx")

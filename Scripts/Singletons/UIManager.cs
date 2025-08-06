@@ -26,4 +26,12 @@ public partial class UIManager : Control, IUIManager
 		layer.SetLayerName(name);
 		return layer;
 	}
+	
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+        
+		// 释放依赖注入容器
+		NodeScope?.Dispose();
+	}
 }

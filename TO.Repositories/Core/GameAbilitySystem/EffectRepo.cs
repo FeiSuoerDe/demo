@@ -1,5 +1,4 @@
 using TO.Commons.Enums.Game;
-using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 using TO.Repositories.Bases;
 using TO.Repositories.Abstractions.Core.GameAbilitySystem;

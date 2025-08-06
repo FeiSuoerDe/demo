@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxfpj2rokuan5"]
+
+[ext_resource type="Texture2D" uid="uid://dxqpx0c36cvrh" path="res://Assets/Textures/FX/Celestial/cloud_01.png" id="1_wy751"]
+[ext_resource type="Script" uid="uid://djdt7e8r8qxyo" path="res://Scripts/Tests/Bullet.cs" id="2_s1ubj"]
+[ext_resource type="Script" uid="uid://3tty3bip7lrr" path="res://Scripts/Core/GameAbilitySystem/AbilitySystemComponent.cs" id="3_s1ubj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qieni"]
+
+[node name="Bullet" type="Sprite2D" node_paths=PackedStringArray("_area", "_abilitySystemComponent")]
+scale = Vector2(0.0380859, 0.0380859)
+texture = ExtResource("1_wy751")
+script = ExtResource("2_s1ubj")
+_effectID = "ReduceHull_Effect_02"
+_area = NodePath("RigidBody2D")
+_abilitySystemComponent = NodePath("AbilitySystemComponent")
+
+[node name="RigidBody2D" type="Area2D" parent="."]
+position = Vector2(-0.000200321, 0.000901443)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, -5.00801e-05)
+shape = SubResource("CircleShape2D_qieni")
+
+[node name="AbilitySystemComponent" type="Node" parent="."]
+script = ExtResource("3_s1ubj")
+AttributeSetId = "Bullet"
+metadata/_custom_type_script = "uid://3tty3bip7lrr"
