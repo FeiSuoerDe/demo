@@ -1,10 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddv3icmqt81i1"]
+[gd_scene load_steps=5 format=3 uid="uid://ddv3icmqt81i1"]
 
 [ext_resource type="Script" uid="uid://cjx1jsf1u325x" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/MissileWeapon.cs" id="1_j0t3q"]
 [ext_resource type="Texture2D" uid="uid://bu2jds77dklld" path="res://Assets/贴图/飞船贴图/武器/火花.png" id="1_l3bwc"]
+[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="2_hm187"]
 
-[node name="MissileWeapon" type="Node2D"]
+[sub_resource type="Resource" id="Resource_uoh26"]
+script = ExtResource("2_hm187")
+WeaponName = "夯"
+Size = 0
+SpecificWeaponType = 0
+FireRate = 1.0
+Range = 1000.0
+IsAutomatic = false
+Damage = 10
+ShieldDamageMultiplier = 0.5
+ArmorDamageMultiplier = 1.0
+HealthDamageMultiplier = 1.0
+AmmoCapacity = 100
+CurrentAmmo = 100
+ReloadTime = 2.0
+TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
+BaseSpreadAngle = 1.0
+SpreadIncreasePerShot = 0.5
+MaxSpreadAngle = 15.0
+SpreadRecoveryRate = 2.0
+metadata/_custom_type_script = "uid://csfjf8h7uujn3"
+
+[node name="MissileWeapon" type="Node2D" node_paths=PackedStringArray("_aimLine", "FirePoint")]
 script = ExtResource("1_j0t3q")
+_aimLine = NodePath("Marker2D2/Line2D")
+Data = SubResource("Resource_uoh26")
+FirePoint = NodePath("Marker2D2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgiqsjv3hutfr"]
+
+[ext_resource type="PackedScene" uid="uid://chb6n5xsexgxh" path="res://Scenes/Physics/SpaceshipPhysics/spaceship_physics.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://b01hb358ikqos" path="res://Scenes/Camera/main_camera_2d.tscn" id="2_0e48y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
+radius = 92.58
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SpaceshipPhysics" parent="." instance=ExtResource("1_wtcfe")]
+
+[node name="MainCamera2D" parent="SpaceshipPhysics" node_paths=PackedStringArray("PlayerShip") instance=ExtResource("2_0e48y")]
+top_level = true
+position_smoothing_enabled = true
+PlayerShip = NodePath("..")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-79, -432)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+
+[node name="Label" type="Label" parent="RigidBody2D"]
+offset_left = -75.0
+offset_top = -55.0
+offset_right = 125.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 80
+text = "靶子"

@@ -57,11 +57,11 @@ antialiased = true
 [node name="Left" type="Line2D" parent="Marker2D"]
 modulate = Color(1, 0.980392, 0, 0.380392)
 width = 4.0
-default_color = Color(1, 0.980392, 0, 0.243137)
+default_color = Color(1, 0.980392, 0, 0.32549)
 antialiased = true
 
 [node name="Right" type="Line2D" parent="Marker2D"]
 modulate = Color(1, 0.980392, 0, 0.380392)
 width = 4.0
-default_color = Color(1, 0.980392, 0, 0.243137)
+default_color = Color(1, 0.980392, 0, 0.32549)
 antialiased = true

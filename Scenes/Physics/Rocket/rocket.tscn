@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcnhhrqqgttir"]
+[gd_scene load_steps=6 format=3 uid="uid://dcnhhrqqgttir"]
 
 [ext_resource type="Script" uid="uid://cc7apbifcu2gs" path="res://Scripts/Physics/Rocket/Rocket.cs" id="1_imf0c"]
 
@@ -9,12 +9,16 @@ size = Vector2(21, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_imf0c"]
 
-[node name="Rocket" type="RigidBody2D" node_paths=PackedStringArray("TrackingArea", "TrackingCollisionShape")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bls0f"]
+radius = 13.0
+
+[node name="Rocket" type="RigidBody2D" node_paths=PackedStringArray("TrackingArea", "TrackingCollisionShape", "CollisionShape")]
 collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_imf0c")
 TrackingArea = NodePath("Area2D")
 TrackingCollisionShape = NodePath("Area2D/CollisionShape2D")
+CollisionShape = NodePath("Area2D2/CollisionShape")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
@@ -29,4 +33,10 @@ texture = SubResource("CanvasTexture_ail2h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_imf0c")
 
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_bls0f")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

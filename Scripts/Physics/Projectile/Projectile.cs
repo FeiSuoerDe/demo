@@ -11,6 +11,8 @@ public partial class Projectile : RigidBody2D
     public float MaxDistance = 1000.0f;
     // 经过1000距离销毁
     private Vector2 _startPosition;
+    // 伤害
+    public float Damage { get; set; } = 10.0f;
     public override void _Ready()
     {
         // 初始化弹丸位置
@@ -25,6 +27,13 @@ public partial class Projectile : RigidBody2D
         {
             QueueFree(); // 超过最大距离后销毁弹丸
         }
+    }
+    // 碰撞检测
+    public void _on_area_2d_body_entered(Node body)
+    {
+        GD.Print($"火箭与 {body.Name} 碰撞，造成 {Damage} 点伤害");
+        // 碰撞后销毁弹丸
+        QueueFree();
     }
 
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chb6n5xsexgxh"]
+[gd_scene load_steps=12 format=3 uid="uid://chb6n5xsexgxh"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_5j5wk"]
 [ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_hbgdg"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bpwliu4o0e4wv" path="res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpoint/weapon_hardpoint.tscn" id="5_gwfeb"]
 [ext_resource type="PackedScene" uid="uid://ngaaks8caymq" path="res://Scenes/Physics/SpaceshipPhysics/weapon/autocannon_weapon.tscn" id="6_1xp41"]
 [ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="7_xfnat"]
-[ext_resource type="PackedScene" uid="uid://b01hb358ikqos" path="res://Scenes/Camera/main_camera_2d.tscn" id="8_uoxec"]
+[ext_resource type="PackedScene" uid="uid://ddv3icmqt81i1" path="res://Scenes/Physics/SpaceshipPhysics/weapon/missile_weapon.tscn" id="8_xojdg"]
 
 [sub_resource type="Resource" id="Resource_gwfeb"]
 script = ExtResource("2_hbgdg")
@@ -56,6 +56,28 @@ BaseSpreadAngle = 0.8
 SpreadIncreasePerShot = 0.3
 MaxSpreadAngle = 4.0
 SpreadRecoveryRate = 1.3
+metadata/_custom_type_script = "uid://csfjf8h7uujn3"
+
+[sub_resource type="Resource" id="Resource_xojdg"]
+script = ExtResource("7_xfnat")
+WeaponName = "火花"
+Size = 0
+SpecificWeaponType = 0
+FireRate = 2.0
+Range = 1000.0
+IsAutomatic = false
+Damage = 10
+ShieldDamageMultiplier = 0.5
+ArmorDamageMultiplier = 1.0
+HealthDamageMultiplier = 1.0
+AmmoCapacity = 100
+CurrentAmmo = 100
+ReloadTime = 2.0
+TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
+BaseSpreadAngle = 1.0
+SpreadIncreasePerShot = 0.5
+MaxSpreadAngle = 15.0
+SpreadRecoveryRate = 2.0
 metadata/_custom_type_script = "uid://csfjf8h7uujn3"
 
 [node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("SpeedLabel", "AngularSpeedLabel", "AngleLabel", "WeaponStatusLabel", "EngineMount", "WeaponHardpoint")]
@@ -132,9 +154,10 @@ Data = SubResource("Resource_uoxec")
 
 [node name="WeaponHardpoint3" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
 position = Vector2(57, 2)
-Type = 2
+Type = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="MissileWeapon" parent="Weapon Hardpoint/WeaponHardpoint3" instance=ExtResource("8_xojdg")]
+Data = SubResource("Resource_xojdg")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -171,6 +194,3 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "航速："
-
-[node name="MainCamera2D" parent="." instance=ExtResource("8_uoxec")]
-top_level = true

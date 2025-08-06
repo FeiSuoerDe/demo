@@ -46,7 +46,7 @@ public partial class AutocannonWeapon : Weapon
         // 初始化瞄准线长度等于射程
         if (_aimLine != null)
         {
-            _aimLine.Width = 3; // 设置瞄准线宽度
+            _aimLine.Width = 2; // 设置瞄准线宽度
                                 // 其实位置为00
             _aimLine.AddPoint(new Vector2(0, 0)); // 添加第一个点为原点
             // 设置瞄准线长度为射程
@@ -57,8 +57,8 @@ public partial class AutocannonWeapon : Weapon
         // // 初始化散布线
         if (_leftSpreadLine != null && _rightSpreadLine != null)
         {
-            _leftSpreadLine.Width = 2; // 设置左散布线宽度
-            _rightSpreadLine.Width = 2; // 设置右散布线宽度
+            _leftSpreadLine.Width = 1; // 设置左散布线宽度
+            _rightSpreadLine.Width = 1; // 设置右散布线宽度
             // 添加点
             _leftSpreadLine.AddPoint(new Vector2(0, 0)); // 左散布线起点
             _rightSpreadLine.AddPoint(new Vector2(0, 0)); // 右散布线起点
@@ -206,5 +206,10 @@ public partial class AutocannonWeapon : Weapon
 
         // 添加到发射点
         FirePoint.AddChild(bullet);
+    }
+    // GetStatus
+    public override string GetStatus()
+    {
+        return $"{Data.WeaponName} - 剩余弹药: {Data.CurrentAmmo}/{Data.AmmoCapacity}";
     }
 }

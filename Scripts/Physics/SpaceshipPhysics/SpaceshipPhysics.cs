@@ -138,7 +138,6 @@ public partial class SpaceshipPhysics : RigidBody2D
 
             Vector2 forceDirection = Transform.Y.Normalized();
             force += forceDirection * accelerationForce;
-            GD.Print($"后退: 力量={accelerationForce}, 方向={forceDirection}");
             isMoving = true;
         }
 
@@ -328,7 +327,7 @@ public partial class SpaceshipPhysics : RigidBody2D
             {
                 if (weapon != null)
                 {
-                    statusText += $"{weapon.Data.WeaponName} -  剩余弹药: {weapon.Data.CurrentAmmo}/{weapon.Data.AmmoCapacity}\n";
+                    statusText += $"{weapon.GetStatus()}\n";
                 }
             }
             WeaponStatusLabel.Text = statusText;

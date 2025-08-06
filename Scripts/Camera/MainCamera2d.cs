@@ -3,6 +3,9 @@ using System;
 
 public partial class MainCamera2d : Camera2D
 {
+    // 玩家操控船体
+    [Export]
+    public Node2D PlayerShip { get; set; }
     // 相机移动速度
     [Export]
     public float MoveSpeed { get; set; } = 500.0f;
@@ -26,7 +29,20 @@ public partial class MainCamera2d : Camera2D
 
     public override void _Process(double delta)
     {
+        if (PlayerShip != null)
+        {
+            // 获取船体的全局位置
+            Vector2 shipPosition = PlayerShip.GlobalPosition;
 
+            // 获取鼠标在世界坐标系中的位置
+            Vector2 mousePosition = GetGlobalMousePosition();
+
+            // 计算船体和鼠标位置的中点
+            Vector2 targetPosition = (shipPosition + mousePosition) / 2.0f;
+
+            // 设置相机位置
+            GlobalPosition = targetPosition;
+        }
     }
 
     public override void _Input(InputEvent @event)

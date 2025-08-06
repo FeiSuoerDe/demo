@@ -122,4 +122,9 @@ public partial class Weapon : Node2D
     {
         return (float)(GD.RandRange(-_currentSpread, _currentSpread) * (Mathf.Pi / 180.0));
     }
+    // 输出当前信息抽象方法
+    public virtual string GetStatus()
+    {
+        return "Weapon Status: Base Class";
+    }
 }

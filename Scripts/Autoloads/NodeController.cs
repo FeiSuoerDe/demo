@@ -34,7 +34,8 @@ public partial class NodeController : Node
         {"MapContShip","res://Scenes/CosmicMap/MapContShip/map_cont_ship.tscn" },{
             "GalaxyDataDisplayUI", "res://Scenes/UI/GalaxyDataDisplayUI/galaxy_data_display_ui.tscn" },
         {"PlanetInfoItem", "res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" },
-        {"Projectile","res://Scenes/Physics/Projectile/projectile.tscn"}
+        {"Projectile","res://Scenes/Physics/Projectile/projectile.tscn"},
+        {"Rocket","res://Scenes/Physics/Rocket/rocket.tscn"}
 
     };
 

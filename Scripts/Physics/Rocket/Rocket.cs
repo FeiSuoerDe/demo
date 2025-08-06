@@ -3,11 +3,19 @@ using System;
 
 public partial class Rocket : RigidBody2D
 {
+    // 添加伤害属性
+    public float Damage { get; set; } = 50.0f;
+
     // 目标node2d
     public RigidBody2D Target;
     // 速度
     [Export]
     public float Speed = 500.0f; // 火箭速度，单位为像素/秒
+    // 新增加速度和最大速度属性
+    [Export]
+    public float Acceleration = 100.0f; // 加速度，单位为像素/秒²
+    [Export]
+    public float MaxSpeed = 800.0f; // 最大速度，单位为像素/秒
     [Export]
     // 追踪半径
     public float TrackingRadius = 500.0f; // 追踪半径，单位为像素
@@ -17,6 +25,9 @@ public partial class Rocket : RigidBody2D
     [Export]
     // 追踪coll
     public CollisionShape2D TrackingCollisionShape;
+    // 碰撞collisionShape
+    [Export]
+    public CollisionShape2D CollisionShape;
 
     // 惯性控制参数
     [Export]
@@ -57,9 +68,15 @@ public partial class Rocket : RigidBody2D
         // 平滑过渡到目标方向（考虑惯性）
         _currentDirection = _currentDirection.Lerp(targetDirection, TurnRate * delta).Normalized();
 
-        // 平滑加速到目标速度
-        float targetSpeed = Speed;
-        _currentVelocity = _currentVelocity.Lerp(_currentDirection * targetSpeed, AccelerationRate * delta);
+        // 计算加速度并应用
+        Vector2 acceleration = _currentDirection * Acceleration;
+        _currentVelocity += acceleration * delta;
+        
+        // 限制速度不超过最大速度
+        if (_currentVelocity.Length() > MaxSpeed)
+        {
+            _currentVelocity = _currentVelocity.Normalized() * MaxSpeed;
+        }
 
         // 应用速度
         LinearVelocity = _currentVelocity;
@@ -84,9 +101,15 @@ public partial class Rocket : RigidBody2D
         // 平滑过渡到目标方向（考虑惯性）
         _currentDirection = _currentDirection.Lerp(targetDirection, TurnRate * delta).Normalized();
 
-        // 平滑加速到目标速度
-        float targetSpeed = Speed;
-        _currentVelocity = _currentVelocity.Lerp(_currentDirection * targetSpeed, AccelerationRate * delta);
+        // 计算加速度并应用
+        Vector2 acceleration = _currentDirection * Acceleration;
+        _currentVelocity += acceleration * delta;
+        
+        // 限制速度不超过最大速度
+        if (_currentVelocity.Length() > MaxSpeed)
+        {
+            _currentVelocity = _currentVelocity.Normalized() * MaxSpeed;
+        }
 
         // 应用速度
         LinearVelocity = _currentVelocity;
@@ -106,7 +129,6 @@ public partial class Rocket : RigidBody2D
 
         if (Target != null)
         {
-            GD.Print($"追踪目标: {Target.Name}");
             TrackTarget((float)delta);
         }
         else
@@ -121,7 +143,18 @@ public partial class Rocket : RigidBody2D
         if (body is RigidBody2D rigidBody)
         {
             Target = rigidBody; // 设置目标为进入的刚体
-            GD.Print($"目标已设置: {Target.Name}");
+        }
+    }
+    // 碰撞信号
+    public void _on_area_2d_2_body_entered(Node body)
+    {
+        if (body is RigidBody2D rigidBody)
+        {
+            // 处理碰撞逻辑
+            GD.Print($"火箭与 {rigidBody.Name} 碰撞，造成 {Damage} 点伤害");
+            // 这里可以添加伤害逻辑，例如调用目标的受伤方法
+            // rigidBody.TakeDamage(Damage);
+            QueueFree(); // 销毁火箭
         }
     }
 }
