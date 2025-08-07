@@ -25,7 +25,8 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_ail2h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(19, 9)
+position = Vector2(0.5, -0.5)
+scale = Vector2(16, 4)
 texture = SubResource("CanvasTexture_ail2h")
 
 [node name="Area2D" type="Area2D" parent="."]
