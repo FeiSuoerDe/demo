@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2687dbca-c93d-4e26-8d19-ee263239c265" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Apps.Services.Abstractions/obj/Debug/net9.0/TO.Apps.Services.Abstractions.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Eevents/obj/Debug/net9.0/TO.Domains.Eevents.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/Debug/net9.0/TO.Domains.Models.Entities.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Entities/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/Debug/net9.0/TO.Domains.Models.Repositories.Abstractions.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.Repositories.Abstractions/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/Debug/net9.0/TO.Domains.Models.VO.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Models.VO/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/Debug/net9.0/TO.Domains.Services.Abstractions.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Domains.Services.Abstractions/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/Debug/net9.0/TO.Events.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Events/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Events/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/Debug/net9.0/TO.GodotNodes.Abstractions.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.GodotNodes.Abstractions/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/Debug/net9.0/To.Infras.Writers.Abstractions.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers.Abstractions/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/TO.Infras.Writers.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/TO.Infras.Writers.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/TO.Infras.Writers.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers/obj/Debug/net9.0/To.Infras.Writers.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Infras.Writers/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Infras.Writers/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.GlobalUsings.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.GlobalUsings.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/Debug/net9.0/TO.Nodes.Abstractions.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TO.Nodes.Abstractions/obj/rider.project.model.nuget.info" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "WisenextTime"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/FeiSuoerDe/demo.git",
+    "accountId": "48725f39-498c-402d-ad6e-26e155654f8c"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2zWleJ65fqhALHB4cQKLpojInbJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "develop 上的 #2",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Attach to Player" type="ConnectRemote" factoryName="Mono Remote" show_console_on_std_err="false" show_console_on_std_out="false" port="23685" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="2687dbca-c93d-4e26-8d19-ee263239c265" name="更改" comment="" />
+      <created>1751854803448</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1751854803448</updated>
+      <workItem from="1751854804560" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

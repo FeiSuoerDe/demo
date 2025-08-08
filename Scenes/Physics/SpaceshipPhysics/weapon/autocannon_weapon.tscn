@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://ngaaks8caymq"]
+
+[ext_resource type="Script" uid="uid://s3r00djjiqq3" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/AutocannonWeapon.cs" id="1_eiaj1"]
+[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="2_yfe82"]
+[ext_resource type="Texture2D" uid="uid://b1w5bctkhd5tb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_0.png" id="3_kuj55"]
+[ext_resource type="Texture2D" uid="uid://bv06paatiwacb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_1.png" id="4_gpm8v"]
+
+[sub_resource type="Resource" id="Resource_p8tth"]
+script = ExtResource("2_yfe82")
+WeaponName = "夯"
+Size = 0
+SpecificWeaponType = 0
+FireRate = 200.0
+Range = 1000.0
+IsAutomatic = false
+Damage = 10
+ShieldDamageMultiplier = 0.5
+ArmorDamageMultiplier = 1.0
+HealthDamageMultiplier = 1.0
+AmmoCapacity = 100
+CurrentAmmo = 100
+ReloadTime = 2.0
+TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
+BaseSpreadAngle = 1.0
+SpreadIncreasePerShot = 0.5
+MaxSpreadAngle = 5.0
+SpreadRecoveryRate = 2.0
+
+[node name="AutocannonWeapon" type="Node2D" node_paths=PackedStringArray("_aimLine", "_leftSpreadLine", "_rightSpreadLine", "FirePoint")]
+script = ExtResource("1_eiaj1")
+_aimLine = NodePath("Marker2D/Line2D")
+_leftSpreadLine = NodePath("Marker2D/Left")
+_rightSpreadLine = NodePath("Marker2D/Right")
+Data = SubResource("Resource_p8tth")
+FirePoint = NodePath("Marker2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_kuj55")
+
+[node name="蜂刺1" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(0, -1)
+texture = ExtResource("4_gpm8v")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="Line2D" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+antialiased = true
+
+[node name="Left" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+default_color = Color(1, 0.980392, 0, 0.32549)
+antialiased = true
+
+[node name="Right" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+default_color = Color(1, 0.980392, 0, 0.32549)
+antialiased = true

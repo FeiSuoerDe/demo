@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpwliu4o0e4wv"]
+
+[ext_resource type="Script" uid="uid://du2xg4jb1s43y" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpoint/WeaponHardpoint.cs" id="1_vvq2c"]
+
+[node name="WeaponHardpoint" type="Node2D"]
+script = ExtResource("1_vvq2c")

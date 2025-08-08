@@ -10,13 +10,20 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
 config/name="FTLInvoice"
 run/main_scene="uid://cja4cqqj2p0dm"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+=======
+config/name="Time-lapseInvoices"
+run/main_scene="uid://c67siooh605qb"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+>>>>>>> dev_noFrame
 config/icon="res://icon.svg"
 
 [autoload]
 
+<<<<<<< HEAD
 FrameProviderDispatcher="*res://addons/R3.Godot/FrameProviderDispatcher.cs"
 ObservableTrackerRuntimeHook="*res://addons/R3.Godot/ObservableTrackerRuntimeHook.cs"
 GdTaskPlayerLoopAutoload="*res://addons/GDTask/Autoload/GDTaskPlayerLoopAutoload.cs"
@@ -25,36 +32,43 @@ SaveManager="*res://Scripts/Singletons/SaveManager.cs"
 SceneManager="*res://Scripts/Singletons/SceneManager.cs"
 SequenceManager="*res://Scripts/Singletons/SequenceManager.cs"
 UiManager="*res://Scripts/Singletons/UIManager.cs"
+=======
+GameManager="*res://Scripts/Autoloads/GameManager.cs"
+ResourceManagement="*res://Scripts/Autoloads/resource_management.tscn"
+>>>>>>> dev_noFrame
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=800
-window/handheld/orientation=4
-window/vsync/vsync_mode=0
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/always_on_top=true
 
 [dotnet]
 
-project/assembly_name="demo"
+project/assembly_name="Time-lapseInvoices"
 
+<<<<<<< HEAD
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/R3.Godot/plugin.cfg")
 
 [file_customization]
+=======
+[editor]
+>>>>>>> dev_noFrame
 
-folder_colors={
-"res://Assets/": "orange",
-"res://Scenes/": "green",
-"res://Scripts/": "purple"
-}
+movie_writer/movie_file="E:/360MoveData/Users/lxl/Desktop/ship (2)/001.avi"
 
 [gui]
 
-theme/custom="uid://bq85hq2tmv3h1"
+theme/custom="uid://b3kq74llqlv3x"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.0383972, 0.0383972, 0.0383971, 1)
+textures/canvas_textures/default_texture_filter=3
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/use_debanding=true

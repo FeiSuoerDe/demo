@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b08gtgkn7hgj4"]
+
+[ext_resource type="Script" uid="uid://cqk3ug6esnlmf" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/Weapon.cs" id="1_0y2fb"]
+[ext_resource type="Texture2D" uid="uid://bv06paatiwacb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_1.png" id="2_0y2fb"]
+[ext_resource type="Texture2D" uid="uid://b1w5bctkhd5tb" path="res://Assets/贴图/飞船贴图/武器/蜂刺_0.png" id="3_wer43"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_0y2fb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_wer43")
+
+[node name="蜂刺1" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(0, -1)
+texture = ExtResource("2_0y2fb")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(20, 0)
