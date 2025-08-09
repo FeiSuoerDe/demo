@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4t34r4diq7nm" path="res://Scripts/UI/MainUI/MainUi.cs" id="1_ln6rs"]
 [ext_resource type="Script" uid="uid://bviljfkh3f0ug" path="res://Scripts/UI/MainUI/Background.gd" id="2_68cjw"]
-[ext_resource type="Texture2D" uid="uid://ds0fk6xcsrv10" path="res://Assets/贴图/背景/SBS - Seamless Space Backgrounds - Large 1024x1024/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="3_v8rnc"]
+[ext_resource type="Texture2D" uid="uid://ds0fk6xcsrv10" path="res://Assets/贴图/UI/SBS - Seamless Space Backgrounds - Large 1024x1024/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="3_v8rnc"]
 
 [node name="MainUI" type="Control" node_paths=PackedStringArray("StartButton", "ExitButton")]
 layout_mode = 3

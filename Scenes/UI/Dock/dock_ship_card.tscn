@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm7s7g0o0qwrg"]
+
+[ext_resource type="Texture2D" uid="uid://tuiauoblskae" path="res://Assets/贴图/UI/BackgroundSprites/11.atlastex" id="1_neg8n"]
+
+[node name="DockShipCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 280.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 200
+dragging_enabled = false
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VSplitContainer"]
+layout_mode = 2
+texture = ExtResource("1_neg8n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="Panel/VSplitContainer"]
+layout_mode = 2

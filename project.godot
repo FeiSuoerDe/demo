@@ -44,7 +44,7 @@ movie_writer/movie_file="E:/360MoveData/Users/lxl/Desktop/ship (2)/001.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/R3.Godot/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 

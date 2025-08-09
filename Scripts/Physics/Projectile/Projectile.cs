@@ -32,7 +32,6 @@ public partial class Projectile : RigidBody2D
     // 碰撞检测
     public void _on_area_2d_body_entered(Node body)
     {
-        GD.Print($"火箭与 {body.Name} 碰撞，造成 {Damage} 点伤害");
         // 碰撞后销毁弹丸
         QueueFree();
     }
