@@ -1,6 +1,8 @@
-using Godot;
 using System;
+using Godot;
 using TimelapseInvoices.Scripts.Autoloads;
+
+namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon;
 
 /// <summary>
 /// 导弹武器类，实现导弹发射和追踪行为
@@ -41,7 +43,7 @@ public partial class MissileWeapon : Weapon
         base._Ready();
 
         // 设置武器类型为导弹
-        Data.SpecificWeaponType = WeaponData.HardpointType.Missile;
+        Data.SpecificWeaponType = DataClass.WeaponData.HardpointType.Missile;
 
         // 初始化当前弹药为一次装填量
         _currentAmmo = AmmoPerReload;
@@ -239,7 +241,7 @@ public partial class MissileWeapon : Weapon
         }
 
         // 从预制体实例化导弹对象
-        Rocket missile = _missileScene.Instantiate<Rocket>();
+        Rocket.Rocket missile = _missileScene.Instantiate<Rocket.Rocket>();
         if (missile == null)
         {
             GD.PrintErr("导弹实例化失败。");

@@ -3,7 +3,7 @@
 
 using Godot;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 [Tool]
 public partial class GodotR3Plugin : EditorPlugin

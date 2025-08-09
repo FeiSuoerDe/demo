@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace demo.addons.GDTask.CompilerServices
+namespace TimelapseInvoices.addons.GDTask.CompilerServices
 {
     [StructLayout(LayoutKind.Auto)]
     public struct AsyncGdTaskVoidMethodBuilder

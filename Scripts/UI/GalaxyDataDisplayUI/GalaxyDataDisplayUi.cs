@@ -1,6 +1,7 @@
 using Godot;
-using System;
 using TimelapseInvoices.Scripts.Autoloads;
+
+namespace TimelapseInvoices.Scripts.UI.GalaxyDataDisplayUI;
 
 public partial class GalaxyDataDisplayUi : Control
 {
@@ -39,11 +40,11 @@ public partial class GalaxyDataDisplayUi : Control
         // 暂停游戏
         GetTree().Paused = true;
         // 获取星系数据
-        Galaxy galaxy = GameManager.galaxies[galaxyId];
+        Galaxy.Galaxy galaxy = Autoloads.GameManager.galaxies[galaxyId];
         GD.Print("正在显示星系数据，ID: " + galaxyId);
         // 设置星系名称
         galaxyNameLabel.Text = galaxy.GalaxyName;
-        foreach (Planet planet in galaxy.Planets)
+        foreach (Galaxy.planet.Planet planet in galaxy.Planets)
         {
             PackedScene packedScene = (PackedScene)ResourceLoader.Load(NodeController.NodeDictionary["PlanetInfoItem"]);
             if (packedScene != null)
@@ -53,7 +54,7 @@ public partial class GalaxyDataDisplayUi : Control
                 // 将星球信息项添加到容器中
                 planetInfoContainer.AddChild(planetInfoItem);
                 // 设置星球信息
-                planetInfoItem.SetPlanetInfo(planet.PName, Planet.PlanetTypeTranslations[planet.Type], planet.DistanceFromStar, planet.Mass, planet.RotationSpeed, planet.RevolutionPeriod, planet.Volume);
+                planetInfoItem.SetPlanetInfo(planet.PName, Galaxy.planet.Planet.PlanetTypeTranslations[planet.Type], planet.DistanceFromStar, planet.Mass, planet.RotationSpeed, planet.RevolutionPeriod, planet.Volume);
 
 
             }

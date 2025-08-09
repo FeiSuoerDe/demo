@@ -1,11 +1,10 @@
 using System;
-using demo.UI.Bases;
 using Godot;
-using TO.Data.Attributes;
+using TimelapseInvoices.Scripts.UI.Bases;
 using TO.Nodes.Abstractions.UI.HUD;
 using TO.Services.UI.HUD;
 
-namespace demo.UI.HUD;
+namespace TimelapseInvoices.Scripts.UI.HUD;
 
 public partial class TestBarHud : UIScreen,ITestBarHud
 {

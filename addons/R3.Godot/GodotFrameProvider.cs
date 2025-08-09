@@ -6,7 +6,7 @@ using Godot;
 using R3;
 using R3.Collections;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 internal enum PlayerLoopTiming
 {

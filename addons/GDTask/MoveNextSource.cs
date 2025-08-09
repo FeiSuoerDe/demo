@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public abstract class MoveNextSource : IGdTaskSource<bool>
     {

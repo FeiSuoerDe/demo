@@ -1,6 +1,6 @@
-using demo.Core.GameAbilitySystem;
+using TimelapseInvoices.Scripts.Core.GameAbilitySystem;
 
-namespace demo.Tests;
+namespace TimelapseInvoices.Scripts.Tests;
 
 public interface IBullet
 {

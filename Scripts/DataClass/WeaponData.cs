@@ -1,11 +1,12 @@
-using System;
 using Godot;
+
+namespace TimelapseInvoices.Scripts.DataClass;
 
 [GlobalClass]
 /// <summary>
 /// 武器数据资源类，存储武器的所有属性和状态
 /// </summary>
-public partial class WeaponData : Resource
+public partial class WeaponData : Godot.Resource
 {
     #region 武器类型定义
 

@@ -3,7 +3,7 @@ using Godot;
 using TO.Nodes.Abstractions.Scenes;
 using TO.Services.Scenes;
 
-namespace demo.Scenes;
+namespace TimelapseInvoices.Scripts.Scenes;
 
 public partial class Main : Node, IMain
 {

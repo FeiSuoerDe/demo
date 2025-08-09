@@ -2,7 +2,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 public partial class FrameProviderDispatcher : global::Godot.Node
 {

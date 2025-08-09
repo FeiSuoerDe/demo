@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Godot;
 using TO.Nodes.Abstractions.UI.Bases;
 
-namespace demo.UI.Bases;
+namespace TimelapseInvoices.Scripts.UI.Bases;
 
 public partial class UILayer : CanvasLayer, IUILayer
 {

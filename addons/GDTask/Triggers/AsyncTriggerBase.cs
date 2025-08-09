@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
-using demo.addons.GDTask.Internal;
 using Godot;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask.Triggers
+namespace TimelapseInvoices.addons.GDTask.Triggers
 {
     public abstract partial class AsyncTriggerBase<T> : Node
     {

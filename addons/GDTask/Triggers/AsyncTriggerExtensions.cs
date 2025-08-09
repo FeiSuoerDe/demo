@@ -2,7 +2,7 @@
 using System.Threading;
 using Godot;
 
-namespace demo.addons.GDTask.Triggers;
+namespace TimelapseInvoices.addons.GDTask.Triggers;
 
 public static class GdTaskCancellationExtensions
 {

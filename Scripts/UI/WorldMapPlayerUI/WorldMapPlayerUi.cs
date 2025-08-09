@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.UI.WorldMapPlayerUI;
 
 public partial class WorldMapPlayerUi : Control
 {

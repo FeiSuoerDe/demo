@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Godot;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     internal static class DiagnosticsExtensions
     {

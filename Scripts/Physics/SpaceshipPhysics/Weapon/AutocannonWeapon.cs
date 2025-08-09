@@ -2,6 +2,8 @@
 using Godot;
 using TimelapseInvoices.Scripts.Autoloads;
 
+namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon;
+
 /// <summary>
 /// 实弹武器类，实现自动机枪行为
 /// </summary>
@@ -32,7 +34,7 @@ public partial class AutocannonWeapon : Weapon
         base._Ready();
 
         // 设置武器类型 (修正枚举引用)
-        Data.SpecificWeaponType = WeaponData.HardpointType.Kinetic; // 设置为动能武器
+        Data.SpecificWeaponType = DataClass.WeaponData.HardpointType.Kinetic; // 设置为动能武器
 
         // 加载子弹场景
         try
@@ -47,7 +49,7 @@ public partial class AutocannonWeapon : Weapon
         if (_aimLine != null)
         {
             _aimLine.Width = 2; // 设置瞄准线宽度
-                                // 其实位置为00
+            // 其实位置为00
             _aimLine.AddPoint(new Vector2(0, 0)); // 添加第一个点为原点
             // 设置瞄准线长度为射程
             _aimLine.AddPoint(new Vector2(Data.Range, 0)); // 添加第二个点为射程长度
@@ -62,7 +64,7 @@ public partial class AutocannonWeapon : Weapon
             // 添加点
             _leftSpreadLine.AddPoint(new Vector2(0, 0)); // 左散布线起点
             _rightSpreadLine.AddPoint(new Vector2(0, 0)); // 右散布线起点
-                                                          // 长度为射程
+            // 长度为射程
             _leftSpreadLine.AddPoint(new Vector2(Data.Range, 0)); // 左散布线终点
             _rightSpreadLine.AddPoint(new Vector2(Data.Range, 0)); // 右散布线终点
             GD.Print("散布线初始化完成");
@@ -193,7 +195,7 @@ public partial class AutocannonWeapon : Weapon
         }
 
         // 实例化子弹
-        Projectile bullet = _bulletScene.Instantiate<Projectile>();
+        Projectile.Projectile bullet = _bulletScene.Instantiate<Projectile.Projectile>();
         if (bullet == null)
         {
             GD.PrintErr("子弹实例化失败。");

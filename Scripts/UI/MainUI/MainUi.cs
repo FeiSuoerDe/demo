@@ -1,6 +1,7 @@
 using Godot;
-using System;
 using TimelapseInvoices.Scripts.Autoloads;
+
+namespace TimelapseInvoices.Scripts.UI.MainUI;
 
 public partial class MainUi : Control
 {

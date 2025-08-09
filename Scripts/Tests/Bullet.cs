@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using demo.Core.GameAbilitySystem;
 using Godot;
+using TimelapseInvoices.Scripts.Core.GameAbilitySystem;
 using TO.Commons.Enums.Game;
 using TO.Data.Attributes;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 using TO.Data.Models.GameAbilitySystem.GameplayEffect;
 
-namespace demo.Tests;
+namespace TimelapseInvoices.Scripts.Tests;
 
 public partial class Bullet : Node2D, IBullet
 {

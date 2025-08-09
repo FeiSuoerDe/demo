@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public enum GdTaskStatus
     {

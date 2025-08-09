@@ -1,6 +1,6 @@
 using Godot;
-using System;
-using TimelapseInvoices.Scripts.Autoloads;
+
+namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon;
 
 /// <summary>
 /// 武器基类，提供所有武器通用的功能
@@ -9,7 +9,7 @@ public partial class Weapon : Node2D
 {
     // 武器数据
     [Export]
-    public WeaponData Data;
+    public DataClass.WeaponData Data;
 
     // 发射点
     [Export]

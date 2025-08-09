@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     internal readonly struct ValueStopwatch
     {

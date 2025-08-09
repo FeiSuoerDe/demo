@@ -1,13 +1,14 @@
 using Godot;
-using System;
 
 // ShipResource.cs
+namespace TimelapseInvoices.Scripts.Resource;
+
 /// <summary>
 /// 飞船资源定义，使用Godot的Resource系统存储飞船属性
 /// 可以创建.tres资源文件来配置不同飞船
 /// /// </summary>
 [GlobalClass]
-public partial class ShipResource : Resource
+public partial class ShipResource : Godot.Resource
 {
     [Export] public string ShipName { get; set; } // 飞船名称
     [Export] public Texture2D Icon { get; set; }   // 飞船图标，用于UI显示

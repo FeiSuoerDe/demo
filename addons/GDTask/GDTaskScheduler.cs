@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     // GDTask has no scheduler like TaskScheduler.
     // Only handle unobserved exception.

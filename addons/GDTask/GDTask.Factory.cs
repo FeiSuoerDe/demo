@@ -2,7 +2,7 @@
 using System.Runtime.ExceptionServices;
 using System.Threading;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public partial struct GDTask
     {

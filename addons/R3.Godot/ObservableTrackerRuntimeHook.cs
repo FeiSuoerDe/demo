@@ -6,7 +6,7 @@ using Godot;
 using R3;
 using GDArray = Godot.Collections.Array;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 // Sends runtime ObservableTracker information to ObservableTrackerDebuggerPlugin.
 // Needs to be an Autoload. Should not be instantiated manually.

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Godot;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public partial struct GDTask
     {

@@ -2,9 +2,9 @@ using Autofac;
 using Godot;
 using TO.Nodes.Abstractions.Singletons;
 using TO.Nodes.Abstractions.UI.Bases;
-using UILayer = demo.UI.Bases.UILayer;
+using UILayer = TimelapseInvoices.Scripts.UI.Bases.UILayer;
 
-namespace demo.Singletons;
+namespace TimelapseInvoices.Scripts.Singletons;
 
 /// <summary>
 /// UI管理器，负责管理游戏中的UI屏幕

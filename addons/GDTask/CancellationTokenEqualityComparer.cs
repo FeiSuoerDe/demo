@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public partial class CancellationTokenEqualityComparer : IEqualityComparer<CancellationToken>
     {

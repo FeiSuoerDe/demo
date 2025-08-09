@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.UI.GalaxyDataDisplayUI;
 
 public partial class PlanetInfoItem : HBoxContainer
 {

@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.Physics.Projectile;
 
 public partial class Projectile : RigidBody2D
 {

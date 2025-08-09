@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.CosmicMap;
 
 public partial class CosmicMap : Node2D
 {
@@ -61,17 +62,17 @@ public partial class CosmicMap : Node2D
         if (portalScene != null)
         {
             // 创建传送门实例
-            Portal portalInstance = (Portal)portalScene.Instantiate();
+            Portal.Portal portalInstance = (Portal.Portal)portalScene.Instantiate();
             portalInstance.Position = position;
             portalInstance.partialId = portalCount;
             AddChild(portalInstance);
 
             // 创建星系
-            Galaxy galaxy = new Galaxy();
+            Galaxy.Galaxy galaxy = new Galaxy.Galaxy();
             //    获取星系名字使用全局随机数
             if (galaxyNames.Length > 0)
             {
-                int randomIndex = GameManager.GlobalRandom.Next(galaxyNames.Length);
+                int randomIndex = Autoloads.GameManager.GlobalRandom.Next(galaxyNames.Length);
                 galaxy.GalaxyName = galaxyNames[randomIndex].Trim();
             }
             else
@@ -83,7 +84,7 @@ public partial class CosmicMap : Node2D
             galaxy.GeneratePlanets();
 
             // 使用 Add 添加到列表末尾
-            GameManager.galaxies.Add(galaxy);
+            Autoloads.GameManager.galaxies.Add(galaxy);
 
 
             portalCount++;
@@ -102,8 +103,8 @@ public partial class CosmicMap : Node2D
 
         for (int i = 0; i < galaxyCount; i++)
         {
-            float x = (float)GameManager.GlobalRandom.NextDouble() * mapSize.X;
-            float y = (float)GameManager.GlobalRandom.NextDouble() * mapSize.Y;
+            float x = (float)Autoloads.GameManager.GlobalRandom.NextDouble() * mapSize.X;
+            float y = (float)Autoloads.GameManager.GlobalRandom.NextDouble() * mapSize.Y;
             points[i] = new Vector2(x, y);
             GD.Print($"Galaxy {i}: Position = {points[i]}");
         }

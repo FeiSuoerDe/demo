@@ -1,7 +1,8 @@
-using demo.Core.GameAbilitySystem;
 using Godot;
+using TimelapseInvoices.Scripts.Core.GameAbilitySystem;
+using TimelapseInvoices.Scripts.UI.HUD;
 
-namespace demo.Tests;
+namespace TimelapseInvoices.Scripts.Tests;
 
 public partial class ShipTest_2 : Sprite2D
 {
@@ -11,7 +12,7 @@ public partial class ShipTest_2 : Sprite2D
     private AbilitySystemComponent _abilitySystemComponent;
     
     [Export]
-    private UI.HUD.TestBarHud _testBarHud;
+    private TestBarHud _testBarHud;
    
     public override void _Ready()
     {

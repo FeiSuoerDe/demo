@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     // optimized version of Standard Queue<T>.
     internal class MinimumQueue<T>

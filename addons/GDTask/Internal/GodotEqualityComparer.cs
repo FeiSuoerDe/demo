@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     internal static class GodotEqualityComparer
     {

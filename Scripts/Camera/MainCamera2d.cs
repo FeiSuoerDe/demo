@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.Camera;
 
 public partial class MainCamera2d : Camera2D
 {

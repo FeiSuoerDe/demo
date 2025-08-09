@@ -1,9 +1,10 @@
 using System;
 using Autofac;
-using demo.Core.GameAbilitySystem;
 using Godot;
+using TimelapseInvoices.Scripts.Core.GameAbilitySystem;
+using TimelapseInvoices.Scripts.UI.HUD;
 
-namespace demo.Tests;
+namespace TimelapseInvoices.Scripts.Tests;
 
 public partial class AttributeTest : Node
 {
@@ -11,7 +12,7 @@ public partial class AttributeTest : Node
     public AbilitySystemComponent AbilitySystemComponent { get; set; }
     
     [Export]
-    public UI.HUD.TestBarHud TestBarHud { get; set; }
+    public TestBarHud TestBarHud { get; set; }
     
     [Export]
     private Button hurtButton { get; set; }

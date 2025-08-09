@@ -1,8 +1,8 @@
 ﻿using System;
-using demo.addons.GDTask.Autoload;
 using Godot;
+using TimelapseInvoices.addons.GDTask.Autoload;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     internal sealed class PlayerLoopRunner
     {

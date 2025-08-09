@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
-using demo.addons.GDTask.Autoload;
-using demo.addons.GDTask.Triggers;
 using Godot;
+using TimelapseInvoices.addons.GDTask.Autoload;
+using TimelapseInvoices.addons.GDTask.Triggers;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
 
     public static partial class CancellationTokenSourceExtensions

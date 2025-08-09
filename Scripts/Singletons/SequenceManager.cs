@@ -6,7 +6,7 @@ using Godot;
 using TO.Commons.Configs;
 using TO.Nodes.Abstractions.Singletons;
 
-namespace demo.Singletons;
+namespace TimelapseInvoices.Scripts.Singletons;
 
 /// <summary>
 /// 游戏状态序列管理器

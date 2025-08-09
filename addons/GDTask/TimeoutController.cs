@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
-using demo.addons.GDTask.Autoload;
+using TimelapseInvoices.addons.GDTask.Autoload;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     // CancellationTokenSource itself can not reuse but CancelAfter(Timeout.InfiniteTimeSpan) allows reuse if did not reach timeout.
     // Similar discussion:

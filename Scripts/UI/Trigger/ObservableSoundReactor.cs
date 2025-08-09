@@ -8,7 +8,7 @@ using TO.Commons.Enums.System;
 using TO.Nodes.Abstractions.UI.Trigger;
 using TO.Services.UI.Trigger;
 
-namespace demo.UI.Trigger;
+namespace TimelapseInvoices.Scripts.UI.Trigger;
 
 [GlobalClass]
 public partial class ObservableSoundReactor : Node , IObservableSoundReactor

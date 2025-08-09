@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     // public for add user custom.
 

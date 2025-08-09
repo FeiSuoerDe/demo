@@ -2,7 +2,7 @@
 
 using System;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public readonly struct AsyncUnit : IEquatable<AsyncUnit>
     {

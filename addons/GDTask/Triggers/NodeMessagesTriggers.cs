@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Godot;
 
-namespace demo.addons.GDTask.Triggers
+namespace TimelapseInvoices.addons.GDTask.Triggers
 {
     #region PhysicsProcess
 

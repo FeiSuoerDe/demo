@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.CosmicMap.MapContShip;
 
 public partial class MapContShip : RigidBody2D
 {

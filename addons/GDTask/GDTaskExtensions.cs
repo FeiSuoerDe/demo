@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using demo.addons.GDTask.Autoload;
-using demo.addons.GDTask.Internal;
+using TimelapseInvoices.addons.GDTask.Autoload;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public static partial class GdTaskExtensions
     {

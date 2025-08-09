@@ -2,7 +2,7 @@ using Autofac;
 using Godot;
 using TO.Nodes.Abstractions.Singletons;
 
-namespace demo.Singletons;
+namespace TimelapseInvoices.Scripts.Singletons;
 
 public partial class SaveManager : Node,ISaveManager
 {

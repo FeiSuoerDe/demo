@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using R3;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 public class GodotTimeProvider : TimeProvider
 {

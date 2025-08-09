@@ -1,15 +1,17 @@
-using Godot;
 using System;
+using Godot;
 
 // 武器槽位
+namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
+
 public partial class WeaponHardpoint : Node2D
 {
     // 类型分为（能量，导弹，动能）
     [Export]
-    public WeaponData.HardpointType Type; // 武器类型
-                                          // 槽位大小（分为大中小特）
+    public DataClass.WeaponData.HardpointType Type; // 武器类型
+    // 槽位大小（分为大中小特）
     [Export]
-    public WeaponData.WeaponSize Size; // 槽位大小
+    public DataClass.WeaponData.WeaponSize Size; // 槽位大小
     public override void _Ready()
     {
         base._Ready();

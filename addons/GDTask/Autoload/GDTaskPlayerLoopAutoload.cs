@@ -1,8 +1,8 @@
 ﻿using System;
-using demo.addons.GDTask.Internal;
 using Godot;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask.Autoload;
+namespace TimelapseInvoices.addons.GDTask.Autoload;
 
 public enum PlayerLoopTiming
 {

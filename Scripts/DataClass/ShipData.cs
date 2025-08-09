@@ -1,6 +1,7 @@
-
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.DataClass;
+
 /// <summary>
 /// 船只类型枚举 - 定义了游戏中所有可用的船只类型
 /// </summary>
@@ -36,7 +37,7 @@ public enum ShipType
 /// 作为游戏中所有船只的数据模型，支持在Godot编辑器中编辑
 /// </summary>
 [GlobalClass]
-public partial class ShipData : Resource
+public partial class ShipData : Godot.Resource
 {
     #region 默认值设置
     /// <summary>默认船只类型 - 新建船只时使用的默认类型</summary>
@@ -202,9 +203,9 @@ public partial class ShipData : Resource
     /// <param name="currentRadiation">当前辐射值</param>
     /// <param name="maxRadiation">最大辐射值</param>
     public ShipData(string shipId, string shipName, ShipType type, float acceleration, float maxSpeed,
-                   float turningAcceleration, float maxTurningSpeed, int basePrice, int rarity,
-                   float baseShield, float baseArmor, float baseHealth,
-                   float radiationDissipationRate, float currentRadiation, float maxRadiation)
+        float turningAcceleration, float maxTurningSpeed, int basePrice, int rarity,
+        float baseShield, float baseArmor, float baseHealth,
+        float radiationDissipationRate, float currentRadiation, float maxRadiation)
     {
         // 设置基本信息
         ShipId = shipId;

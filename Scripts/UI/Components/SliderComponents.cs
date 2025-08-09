@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace demo.UI.Components;
+namespace TimelapseInvoices.Scripts.UI.Components;
 
 public partial class SliderComponents : Node
 {

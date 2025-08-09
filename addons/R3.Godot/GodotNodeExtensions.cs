@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 public static class GodotNodeExtensions
 {

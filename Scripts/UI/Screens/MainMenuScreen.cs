@@ -1,17 +1,16 @@
-
-
 using System;
 using Godot;
+using TimelapseInvoices.Scripts.UI.Bases;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Services.UI.Screens;
 
-namespace demo.UI.Screens;
+namespace TimelapseInvoices.Scripts.UI.Screens;
 
 /// <summary>
 /// 主菜单界面类，继承自UIScreen基类，实现IMainMenuScreen接口
 /// 用于处理游戏主菜单的显示和用户交互
 /// </summary>
-public partial class MainMenuScreen : Bases.UIScreen, IMainMenuScreen
+public partial class MainMenuScreen : UIScreen, IMainMenuScreen
 {
 	/// <summary>
 	/// 开始游戏按钮，使用Godot的Export特性使其可在编辑器中指定

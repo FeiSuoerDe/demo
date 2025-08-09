@@ -2,10 +2,10 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using demo.addons.GDTask.Autoload;
-using demo.addons.GDTask.Internal;
+using TimelapseInvoices.addons.GDTask.Autoload;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public partial struct GDTask
     {

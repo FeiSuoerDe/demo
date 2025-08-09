@@ -5,9 +5,9 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using demo.addons.GDTask.Internal;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public interface IResolvePromise
     {

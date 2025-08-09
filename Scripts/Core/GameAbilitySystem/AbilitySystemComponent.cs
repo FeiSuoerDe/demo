@@ -7,7 +7,7 @@ using TO.Nodes.Abstractions.Core.GameAbilitySystem;
 using TO.Services.Abstractions.Core.GameAbilitySystem.GameplayAbility;
 using TO.Services.Core.GameAbilitySystem.Components;
 
-namespace demo.Core.GameAbilitySystem;
+namespace TimelapseInvoices.Scripts.Core.GameAbilitySystem;
 
 /// <summary>
 /// Ability System Component 实现类

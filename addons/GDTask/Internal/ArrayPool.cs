@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace demo.addons.GDTask.Internal
+namespace TimelapseInvoices.addons.GDTask.Internal
 {
     // Same interface as System.Buffers.ArrayPool<T> but only provides Shared.
 

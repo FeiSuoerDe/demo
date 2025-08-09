@@ -1,6 +1,7 @@
-using Godot;
-using System;
 using System.Collections.Generic;
+using Godot;
+
+namespace TimelapseInvoices.Scripts.Galaxy.planet;
 
 public partial class Planet : Node2D
 {

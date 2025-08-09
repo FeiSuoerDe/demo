@@ -1,7 +1,8 @@
-using Godot;
 using System;
 using System.Collections.Generic;
-using TimelapseInvoices.Scripts.Autoloads;
+using Godot;
+
+namespace TimelapseInvoices.Scripts.Autoloads;
 
 // 
 // GameManager.cs
@@ -11,7 +12,7 @@ public partial class GameManager : Node
 
     public static NodeController NodeController = new NodeController();
     public static GameManager Instance;
-    public static List<Galaxy> galaxies = new List<Galaxy>();
+    public static List<Galaxy.Galaxy> galaxies = new List<Galaxy.Galaxy>();
     private VersionInfo versionInfo = new VersionInfo();
     // 全局随机数
     public static Random GlobalRandom = new Random(0);

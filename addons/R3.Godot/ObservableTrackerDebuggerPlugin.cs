@@ -7,7 +7,7 @@ using Godot;
 using R3;
 using GDArray = Godot.Collections.Array;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 // ObservableTrackerDebuggerPlugin creates the Observable Tracker tab in the debugger, and communicates with ObservableTrackerRuntimeHook via EditorDebuggerSessions.
 [Tool]

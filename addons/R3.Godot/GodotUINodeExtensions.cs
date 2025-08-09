@@ -3,7 +3,7 @@ using System.Threading;
 using Godot;
 using R3;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 public static class GodotUiNodeExtensions
 {

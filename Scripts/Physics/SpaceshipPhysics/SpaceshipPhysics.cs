@@ -1,6 +1,7 @@
-using Godot;
-using System;
 using System.Collections.Generic;
+using Godot;
+
+namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics;
 
 /// <summary>
 /// 飞船物理体控制器
@@ -30,7 +31,7 @@ public partial class SpaceshipPhysics : RigidBody2D
     #endregion
 
     #region 导出属性
-    [Export] public ShipData ShipData;                     // 飞船数据
+    [Export] public DataClass.ShipData ShipData;                     // 飞船数据
     [Export] public Label SpeedLabel;                      // 速度显示标签
     [Export] public Label AngularSpeedLabel;               // 角速度显示标签
     [Export] public Label AngleLabel;                      // 角度显示标签
@@ -46,7 +47,7 @@ public partial class SpaceshipPhysics : RigidBody2D
     #endregion
 
     #region 公共属性
-    public List<Weapon> Weapons = new List<Weapon>();      // 飞船武器列表
+    public List<Weapon.Weapon> Weapons = new List<Weapon.Weapon>();      // 飞船武器列表
     public List<Engine> Engines = new List<Engine>();      // 飞船引擎列表
     public bool IsControlled = false;                      // 是否受控
     #endregion
@@ -270,14 +271,14 @@ public partial class SpaceshipPhysics : RigidBody2D
     /// <summary>
     /// 获取所有武器
     /// </summary>
-    public List<Weapon> GetWeapons()
+    public List<Weapon.Weapon> GetWeapons()
     {
         if (WeaponHardpoint == null) return Weapons;
 
         Weapons.Clear();
         foreach (Node child in WeaponHardpoint.GetChildren())
         {
-            Weapon weapon = GetWeaponFromNode(child);
+            Weapon.Weapon weapon = GetWeaponFromNode(child);
             if (weapon != null)
             {
                 Weapons.Add(weapon);
@@ -294,16 +295,16 @@ public partial class SpaceshipPhysics : RigidBody2D
     /// <summary>
     /// 从节点获取武器组件
     /// </summary>
-    private Weapon GetWeaponFromNode(Node node)
+    private Weapon.Weapon GetWeaponFromNode(Node node)
     {
         // 检查子节点
         if (node.GetChildCount() > 0)
         {
-            return node.GetChild<Weapon>(0);
+            return node.GetChild<Weapon.Weapon>(0);
         }
 
         // 检查当前节点
-        return node as Weapon;
+        return node as Weapon.Weapon;
     }
 
     /// <summary>
@@ -389,5 +390,3 @@ public partial class SpaceshipPhysics : RigidBody2D
     }
     #endregion
 }
-
-

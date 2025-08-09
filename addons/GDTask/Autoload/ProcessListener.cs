@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace demo.addons.GDTask.Autoload
+namespace TimelapseInvoices.addons.GDTask.Autoload
 {
     public partial class ProcessListener : Node
     {

@@ -4,9 +4,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using demo.addons.GDTask.Internal;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask.CompilerServices
+namespace TimelapseInvoices.addons.GDTask.CompilerServices
 {
     internal interface IStateMachineRunner
     {

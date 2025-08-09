@@ -3,12 +3,13 @@
 
 using System;
 using Godot;
+using TimelapseInvoices.Scripts.UI.Bases;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Services.UI.Screens;
 
-namespace demo.UI.Screens;
+namespace TimelapseInvoices.Scripts.UI.Screens;
 
-public partial class SettingsMenuScreen : Bases.UIScreen, ISettingsMenuScreen
+public partial class SettingsMenuScreen : UIScreen, ISettingsMenuScreen
 {
 
     [Export] public Button? AudioButton { get; set; }

@@ -5,7 +5,7 @@ using R3;
 using TO.Commons.Enums.UI;
 using TO.Nodes.Abstractions.UI.Bases;
 
-namespace demo.UI.Bases;
+namespace TimelapseInvoices.Scripts.UI.Bases;
 
 
 /// <summary>

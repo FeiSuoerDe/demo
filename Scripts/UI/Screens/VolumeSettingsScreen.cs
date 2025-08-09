@@ -1,12 +1,13 @@
 using System;
-using demo.UI.Components;
 using Godot;
+using TimelapseInvoices.Scripts.UI.Bases;
+using TimelapseInvoices.Scripts.UI.Components;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Services.UI.Screens;
 
-namespace demo.UI.Screens
+namespace TimelapseInvoices.Scripts.UI.Screens
 {
-    public partial class VolumeSettingsScreen : Bases.UIScreen, IVolumeSettingsScreen
+    public partial class VolumeSettingsScreen : UIScreen, IVolumeSettingsScreen
     {
         [Export] private SliderComponents? MasterSliderComponents { get; set; }
 

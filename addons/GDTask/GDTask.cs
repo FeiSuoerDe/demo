@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
-using demo.addons.GDTask.CompilerServices;
+using TimelapseInvoices.addons.GDTask.CompilerServices;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     internal static class AwaiterActions
     {

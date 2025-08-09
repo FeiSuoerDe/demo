@@ -1,13 +1,14 @@
 using Godot;
-using System;
 
 // WeaponResource.cs
+namespace TimelapseInvoices.Scripts.Resource;
+
 /// <summary>
 /// 武器资源定义，使用Godot的Resource系统存储武器属性
 /// 可以创建.tres资源文件来配置不同武器
 /// </summary>
 [GlobalClass]
-public partial class WeaponResource : Resource
+public partial class WeaponResource : Godot.Resource
 {
     [Export] public string WeaponName { get; set; } // 武器名称
     [Export] public Texture2D Icon { get; set; }   // 武器图标，用于UI显示

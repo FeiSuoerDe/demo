@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public static partial class GdTaskExtensions
     {

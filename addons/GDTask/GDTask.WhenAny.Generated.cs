@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
-using demo.addons.GDTask.Internal;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public partial struct GDTask
     {

@@ -1,10 +1,9 @@
-
-using demo.UI.Bases;
 using Godot;
+using TimelapseInvoices.Scripts.UI.Bases;
 using TO.Nodes.Abstractions.UI.Screens;
 using TO.Services.UI.Screens;
 
-namespace demo.UI.Screens;
+namespace TimelapseInvoices.Scripts.UI.Screens;
 
 public partial class LoadingScreen : UIScreen, ILoadingScreen
 {

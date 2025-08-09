@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Godot;
 using R3;
 
-namespace demo.addons.R3.Godot;
+namespace TimelapseInvoices.addons.R3.Godot;
 
 [Tool]
 public partial class ObservableTrackerTree : Tree

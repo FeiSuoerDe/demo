@@ -1,8 +1,9 @@
 using Godot;
-using System;
 using TimelapseInvoices.Scripts.Autoloads;
 
 // 传送门！
+namespace TimelapseInvoices.Scripts.CosmicMap.Portal;
+
 public partial class Portal : Node2D
 {
     public int partialId; // 传送门的唯一标识符
@@ -12,11 +13,11 @@ public partial class Portal : Node2D
     // area 进入时触发
     public void _on_area_2d_body_entered(Node body)
     {
-        GameManager.galaxies[partialId].PrintGalaxyInfo();
+        Autoloads.GameManager.galaxies[partialId].PrintGalaxyInfo();
         PackedScene GalaxyDataDisplayUI = (PackedScene)ResourceLoader.Load(NodeController.NodeDictionary["GalaxyDataDisplayUI"]);
         if (GalaxyDataDisplayUI != null)
         {
-            GalaxyDataDisplayUi galaxyDataDisplayUiInstance = (GalaxyDataDisplayUi)GalaxyDataDisplayUI.Instantiate();
+            UI.GalaxyDataDisplayUI.GalaxyDataDisplayUi galaxyDataDisplayUiInstance = (UI.GalaxyDataDisplayUI.GalaxyDataDisplayUi)GalaxyDataDisplayUI.Instantiate();
             galaxyDataDisplayUiInstance.galaxyId = partialId; // 设置星系ID
             GetTree().Root.AddChild(galaxyDataDisplayUiInstance);
             galaxyDataDisplayUiInstance.Show();

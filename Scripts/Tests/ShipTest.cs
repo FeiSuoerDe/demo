@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using demo.Core.GameAbilitySystem;
 using Godot;
+using TimelapseInvoices.Scripts.Core.GameAbilitySystem;
 using TO.Data.Attributes;
 using TO.Data.Models.GameAbilitySystem.GameplayAttribute;
 
-namespace demo.Tests;
+namespace TimelapseInvoices.Scripts.Tests;
 
 public partial class ShipTest : Sprite2D
 {

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using demo.addons.GDTask.Autoload;
-using demo.addons.GDTask.Internal;
 using Godot;
+using TimelapseInvoices.addons.GDTask.Autoload;
+using TimelapseInvoices.addons.GDTask.Internal;
 
-namespace demo.addons.GDTask
+namespace TimelapseInvoices.addons.GDTask
 {
     public partial struct GDTask
     {

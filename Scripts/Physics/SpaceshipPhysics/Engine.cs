@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics;
 
 public partial class Engine : GpuParticles2D
 {
