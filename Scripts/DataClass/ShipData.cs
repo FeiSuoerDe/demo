@@ -77,6 +77,12 @@ public partial class ShipData : Godot.Resource
     /// <summary>船只名称 - 显示用的船只名字</summary>
     [Export]
     public string ShipName { get; set; }
+    [Export]
+    // 船只型号
+    public string ShipModel { get; set; }
+    [Export]
+    // 描述
+    public string Description { get; set; }
 
     /// <summary>船只类型 - 决定船只的基本特性和可用装备</summary>
     [Export]

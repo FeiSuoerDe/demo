@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://340t54prdsx1"]
+[gd_scene load_steps=2 format=3 uid="uid://340t54prdsx1"]
+
+[ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
 
 [node name="Dock" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q1i6r")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
