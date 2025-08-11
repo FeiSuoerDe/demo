@@ -4,17 +4,57 @@ using Godot;
 // 武器槽位
 namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
+public class WeaponHardpointData
+{
+    // 在飞船贴图的相对位置
+    public Vector2 ToPosition { get; set; } = new Vector2(0, 0);
+    // 类型分为（能量，导弹，动能）
+    public DataClass.WeaponData.HardpointType Type { get; set; } // 武器类型
+
+    // 槽位大小（分为大中小特）
+    public DataClass.WeaponData.WeaponSize Size { get; set; } // 槽位大小
+
+    public WeaponHardpointData()
+    {
+        // 默认构造函数
+    }
+
+    public WeaponHardpointData(DataClass.WeaponData.HardpointType type, DataClass.WeaponData.WeaponSize size)
+    {
+        Type = type;
+        Size = size;
+    }
+
+    // 复制数据的方法
+    public WeaponHardpointData Clone()
+    {
+        return new WeaponHardpointData(Type, Size);
+    }
+
+    // 验证武器兼容性的方法
+    public bool IsCompatibleWith(Weapon weapon)
+    {
+        return weapon.Data.SpecificWeaponType == Type && weapon.Data.Size == Size;
+    }
+}
+
 public partial class WeaponHardpoint : Node2D
 {
-    // 类型分为（能量，导弹，动能）
     [Export]
-    public DataClass.WeaponData.HardpointType Type; // 武器类型
-    // 槽位大小（分为大中小特）
+    private DataClass.WeaponData.HardpointType _type;
+
     [Export]
-    public DataClass.WeaponData.WeaponSize Size; // 槽位大小
+    private DataClass.WeaponData.WeaponSize _size;
+
+    // 数据对象
+    public WeaponHardpointData Data { get; private set; }
+
     public override void _Ready()
     {
         base._Ready();
+
+        // 初始化数据
+        Data = new WeaponHardpointData(_type, _size);
 
         try
         {
@@ -48,13 +88,14 @@ public partial class WeaponHardpoint : Node2D
             GD.PrintErr($"检查武器兼容性时发生错误: {ex.Message}");
         }
     }
+
     // 检查武器是否与槽位兼容
     public bool IsWeaponCompatible(Weapon weapon)
     {
-        // 检查武器类型与槽位类型是否匹配
-        // 并且检查武器大小与槽位大小是否匹配
-        // 如果不匹配则删除武器
-        if (weapon.Data.SpecificWeaponType == Type && weapon.Data.Size == Size)
+        // 使用数据类的方法来检查兼容性
+        bool isCompatible = Data.IsCompatibleWith(weapon);
+
+        if (isCompatible)
         {
             // 输出确认文本,高科技风格(中文)
             GD.Print($"武器 {weapon.Data.WeaponName} 与此槽位兼容-子系统就位");
@@ -66,5 +107,19 @@ public partial class WeaponHardpoint : Node2D
             weapon.QueueFree(); // 删除不兼容的武器
             return false; // 不兼容
         }
+    }
+
+    // 设置槽位类型
+    public void SetHardpointType(DataClass.WeaponData.HardpointType type)
+    {
+        _type = type;
+        Data.Type = type;
+    }
+
+    // 设置槽位大小
+    public void SetHardpointSize(DataClass.WeaponData.WeaponSize size)
+    {
+        _size = size;
+        Data.Size = size;
     }
 }

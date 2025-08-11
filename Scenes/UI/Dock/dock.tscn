@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://340t54prdsx1"]
+[gd_scene load_steps=4 format=3 uid="uid://340t54prdsx1"]
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
+[ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_q08yo"]
+[ext_resource type="Texture2D" uid="uid://cpucn5bsk0j0u" path="res://Assets/贴图/船坞ui贴图/武器槽位标注线.png" id="3_mpjxy"]
 
 [node name="Dock" type="Control"]
 layout_mode = 3
@@ -42,3 +44,118 @@ layout_mode = 2
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -295.5
+offset_right = 286.0
+offset_bottom = 295.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q08yo")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 257.5
+offset_right = 326.0
+offset_bottom = 335.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 259.5
+offset_right = 182.0
+offset_bottom = 337.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 396.5
+offset_right = 297.0
+offset_bottom = 474.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 396.5
+offset_right = 353.0
+offset_bottom = 474.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 259.5
+offset_right = 464.0
+offset_bottom = 337.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 116.5
+offset_right = 328.0
+offset_bottom = 194.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 181.5
+offset_right = 328.0
+offset_bottom = 259.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 6.5
+offset_right = 209.0
+offset_bottom = 84.5
+texture = ExtResource("3_mpjxy")
+
+[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 6.5
+offset_right = 445.0
+offset_bottom = 84.5
+texture = ExtResource("3_mpjxy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = -113.0
+offset_right = 108.0
+offset_bottom = -63.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "船名"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "型号"

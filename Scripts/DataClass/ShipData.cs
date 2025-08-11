@@ -1,5 +1,8 @@
 using Godot;
-
+using System;
+using System.Collections.Generic;
+using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics;
+using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 namespace TimelapseInvoices.Scripts.DataClass;
 
 /// <summary>
@@ -36,8 +39,7 @@ public enum ShipType
 /// 船只数据类 - 包含船只的所有基本属性和状态信息
 /// 作为游戏中所有船只的数据模型，支持在Godot编辑器中编辑
 /// </summary>
-[GlobalClass]
-public partial class ShipData : Godot.Resource
+public partial class ShipData
 {
     #region 默认值设置
     /// <summary>默认船只类型 - 新建船只时使用的默认类型</summary>
@@ -77,11 +79,13 @@ public partial class ShipData : Godot.Resource
     /// <summary>船只名称 - 显示用的船只名字</summary>
     [Export]
     public string ShipName { get; set; }
+
+    /// <summary>船只型号 - 船只的具体型号标识</summary>
     [Export]
-    // 船只型号
     public string ShipModel { get; set; }
+
+    /// <summary>描述 - 船只的详细说明文本</summary>
     [Export]
-    // 描述
     public string Description { get; set; }
 
     /// <summary>船只类型 - 决定船只的基本特性和可用装备</summary>
@@ -143,6 +147,14 @@ public partial class ShipData : Godot.Resource
     /// <summary>最大辐射值 - 船只可承受的最大辐射水平，超过可能导致系统故障</summary>
     [Export]
     public float MaxRadiation { get; set; }
+    #endregion
+
+    #region 装备属性
+    /// <summary>舰船引擎数据列表 - 包含船只所有引擎的数据信息</summary>
+    public List<EngineData> EnginesDatas { get; set; } = new List<EngineData>();
+
+    /// <summary>武器槽位数据列表 - 包含船只所有武器挂载点的数据信息</summary>
+    public List<WeaponHardpointData> WeaponHardpointDatas { get; set; } = new List<WeaponHardpointData>();
     #endregion
 
     #region 构造方法
