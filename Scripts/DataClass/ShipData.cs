@@ -39,7 +39,8 @@ public enum ShipType
 /// 船只数据类 - 包含船只的所有基本属性和状态信息
 /// 作为游戏中所有船只的数据模型，支持在Godot编辑器中编辑
 /// </summary>
-public partial class ShipData
+[GlobalClass]
+public partial class ShipData : Godot.Resource
 {
     #region 默认值设置
     /// <summary>默认船只类型 - 新建船只时使用的默认类型</summary>

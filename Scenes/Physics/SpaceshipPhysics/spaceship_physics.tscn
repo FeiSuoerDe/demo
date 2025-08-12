@@ -20,6 +20,8 @@ DEFAULT_MAX_RADIATION = 100.0
 DEFAULT_CURRENT_SPEED = 0.0
 ShipId = ""
 ShipName = ""
+ShipModel = ""
+Description = ""
 Type = 0
 Rarity = 0
 BasePrice = 0
@@ -136,15 +138,12 @@ scale = Vector2(2, 2)
 
 [node name="WeaponHardpoint" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
 position = Vector2(0, 1)
-Type = 1
 
 [node name="MissileWeapon" parent="Weapon Hardpoint/WeaponHardpoint" instance=ExtResource("8_xojdg")]
 Data = SubResource("Resource_xojdg")
 
 [node name="WeaponHardpoint2" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
 position = Vector2(-56, 1)
-Type = 2
-Size = 2
 
 [node name="AutocannonWeapon" parent="Weapon Hardpoint/WeaponHardpoint2" instance=ExtResource("6_1xp41")]
 TurnSpeed = 1.0
@@ -152,20 +151,20 @@ Data = SubResource("Resource_uoxec")
 
 [node name="WeaponHardpoint3" parent="Weapon Hardpoint" instance=ExtResource("5_gwfeb")]
 position = Vector2(57, 2)
-Type = 2
-Size = 2
 
 [node name="AutocannonWeapon" parent="Weapon Hardpoint/WeaponHardpoint3" instance=ExtResource("6_1xp41")]
 TurnSpeed = 1.0
 Data = SubResource("Resource_uoxec")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer"]
 offset_right = 40.0

@@ -71,7 +71,7 @@ public class EngineData
 public partial class Engine : GpuParticles2D
 {
     // 数据对象
-    public EngineData Data { get; private set; } = new EngineData();
+    public EngineData Data = new EngineData();
 
     public override void _Ready()
     {

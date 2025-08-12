@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://340t54prdsx1"]
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
-[ext_resource type="Texture2D" uid="uid://cbxfyc50cp3t8" path="res://Assets/贴图/UI/BackgroundSprites/17.atlastex" id="2_q08yo"]
-[ext_resource type="Texture2D" uid="uid://cpucn5bsk0j0u" path="res://Assets/贴图/船坞ui贴图/武器槽位标注线.png" id="3_mpjxy"]
+[ext_resource type="PackedScene" uid="uid://chb6n5xsexgxh" path="res://Scenes/Physics/SpaceshipPhysics/spaceship_physics.tscn" id="2_ncd3y"]
+[ext_resource type="PackedScene" uid="uid://cm7s7g0o0qwrg" path="res://Scenes/UI/Dock/dock_ship_card.tscn" id="2_q08yo"]
 
 [node name="Dock" type="Control"]
 layout_mode = 3
@@ -23,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 split_offset = 300
 dragging_enabled = false
+dragger_visibility = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/HSplitContainer"]
 layout_mode = 2
@@ -42,96 +43,23 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer"]
+[node name="DockShipCard" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -286.0
-offset_top = -295.5
-offset_right = 286.0
-offset_bottom = 295.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_q08yo")
-stretch_mode = 5
+[node name="DockShipCard2" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 248.0
-offset_top = 257.5
-offset_right = 326.0
-offset_bottom = 335.5
-texture = ExtResource("3_mpjxy")
+[node name="DockShipCard3" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
+layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 259.5
-offset_right = 182.0
-offset_bottom = 337.5
-texture = ExtResource("3_mpjxy")
+[node name="DockShipCard4" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
+layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 219.0
-offset_top = 396.5
-offset_right = 297.0
-offset_bottom = 474.5
-texture = ExtResource("3_mpjxy")
+[node name="DockShipCard5" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
+layout_mode = 2
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 275.0
-offset_top = 396.5
-offset_right = 353.0
-offset_bottom = 474.5
-texture = ExtResource("3_mpjxy")
-
-[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 386.0
-offset_top = 259.5
-offset_right = 464.0
-offset_bottom = 337.5
-texture = ExtResource("3_mpjxy")
-
-[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 116.5
-offset_right = 328.0
-offset_bottom = 194.5
-texture = ExtResource("3_mpjxy")
-
-[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 181.5
-offset_right = 328.0
-offset_bottom = 259.5
-texture = ExtResource("3_mpjxy")
-
-[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 131.0
-offset_top = 6.5
-offset_right = 209.0
-offset_bottom = 84.5
-texture = ExtResource("3_mpjxy")
-
-[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/HSplitContainer/Panel2/TextureRect"]
-layout_mode = 0
-offset_left = 367.0
-offset_top = 6.5
-offset_right = 445.0
-offset_bottom = 84.5
-texture = ExtResource("3_mpjxy")
+[node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer"]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 1
@@ -159,3 +87,47 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "型号"
+
+[node name="Control" type="Control" parent="CanvasLayer/HSplitContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceshipPhysics" parent="CanvasLayer/HSplitContainer/Panel2/Control" instance=ExtResource("2_ncd3y")]
+
+[node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2"]
+layout_mode = 0
+offset_left = 1321.0
+offset_top = 45.0
+offset_right = 1361.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 40
+text = "装配点
+"
+
+[node name="Label2" type="Label" parent="CanvasLayer/HSplitContainer/Panel2"]
+layout_mode = 0
+offset_left = 1336.0
+offset_top = 535.0
+offset_right = 1384.0
+offset_bottom = 584.0
+theme_override_font_sizes/font_size = 40
+text = "船插"
+
+[node name="Label3" type="Label" parent="CanvasLayer/HSplitContainer/Panel2"]
+layout_mode = 0
+offset_left = 1340.0
+offset_top = 955.0
+offset_right = 1500.0
+offset_bottom = 1010.0
+theme_override_font_sizes/font_size = 40
+text = "详细参数"

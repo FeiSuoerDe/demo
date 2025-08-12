@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://du5e2d6w4yuqj"]
+
+[ext_resource type="Texture2D" uid="uid://cpucn5bsk0j0u" path="res://Assets/贴图/船坞ui贴图/武器槽位标注线.png" id="1_eqsog"]
+[ext_resource type="Script" uid="uid://bba7idy8rg8ee" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpointMarking.cs" id="2_akgic"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_eqsog")
+script = ExtResource("2_akgic")

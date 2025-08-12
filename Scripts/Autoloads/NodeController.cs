@@ -35,7 +35,9 @@ public partial class NodeController : Node
             "GalaxyDataDisplayUI", "res://Scenes/UI/GalaxyDataDisplayUI/galaxy_data_display_ui.tscn" },
         {"PlanetInfoItem", "res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" },
         {"Projectile","res://Scenes/Physics/Projectile/projectile.tscn"},
-        {"Rocket","res://Scenes/Physics/Rocket/rocket.tscn"}
+        {"Rocket","res://Scenes/Physics/Rocket/rocket.tscn"},{
+            "WeaponHardpointMarking","res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn"
+        }
 
     };
 
