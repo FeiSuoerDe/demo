@@ -3,12 +3,14 @@ using Godot;
 
 namespace TimelapseInvoices.Scripts.Autoloads;
 
+/// <summary>
+/// 节点控制器
+/// </summary>
 public partial class NodeController : Node
 {
-
-    // 节点控制器
-
+    // 单例实例
     public static NodeController Instance { get; private set; }
+
     public override void _Ready()
     {
         if (Instance == null)
@@ -22,24 +24,21 @@ public partial class NodeController : Node
             QueueFree(); // Remove this instance if another already exists
         }
     }
-    //字典
+
+    // 节点路径字典
     public static Dictionary<string, string> NodeDictionary { get; private set; } = new Dictionary<string, string>()
     {
         { "GameManager", "GameManager" },
         { "Galaxy", "res://Scenes/Galaxy/galaxy.tscn" },
-        {"Planet", "res://Scenes/Galaxy/Planet/planet.tscn" },
-        {"MainCamera","res://Scenes/Camera/main_camera_2d.tscn"} ,
-        {"CosmicMap","res://Scenes/CosmicMap/cosmic_map.tscn" },
-        { "Portal","res://Scenes/CosmicMap/Portal/portal.tscn"},
-        {"MapContShip","res://Scenes/CosmicMap/MapContShip/map_cont_ship.tscn" },{
-            "GalaxyDataDisplayUI", "res://Scenes/UI/GalaxyDataDisplayUI/galaxy_data_display_ui.tscn" },
-        {"PlanetInfoItem", "res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" },
-        {"Projectile","res://Scenes/Physics/Projectile/projectile.tscn"},
-        {"Rocket","res://Scenes/Physics/Rocket/rocket.tscn"},{
-            "WeaponHardpointMarking","res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn"
-        }
-
+        { "Planet", "res://Scenes/Galaxy/Planet/planet.tscn" },
+        { "MainCamera", "res://Scenes/Camera/main_camera_2d.tscn" },
+        { "CosmicMap", "res://Scenes/CosmicMap/cosmic_map.tscn" },
+        { "Portal", "res://Scenes/CosmicMap/Portal/portal.tscn" },
+        { "MapContShip", "res://Scenes/CosmicMap/MapContShip/map_cont_ship.tscn" },
+        { "GalaxyDataDisplayUI", "res://Scenes/UI/GalaxyDataDisplayUI/galaxy_data_display_ui.tscn" },
+        { "PlanetInfoItem", "res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" },
+        { "Projectile", "res://Scenes/Physics/Projectile/projectile.tscn" },
+        { "Rocket", "res://Scenes/Physics/Rocket/rocket.tscn" },
+        { "WeaponHardpointMarking", "res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn" }
     };
-
-
 }

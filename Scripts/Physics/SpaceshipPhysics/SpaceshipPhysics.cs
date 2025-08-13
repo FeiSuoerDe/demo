@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Godot;
 using TimelapseInvoices.Scripts.DataClass;
+using TimelapseInvoices.Scripts.Autoloads;
+using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
 namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics;
 
@@ -32,12 +34,10 @@ public partial class SpaceshipPhysics : RigidBody2D
 
     #region 导出属性和字段
     [Export] public ShipData ShipData;                     // 飞船数据
-    [Export] public Label SpeedLabel;                      // 速度显示标签
-    [Export] public Label AngularSpeedLabel;               // 角速度显示标签
-    [Export] public Label AngleLabel;                      // 角度显示标签
-    [Export] public Label WeaponStatusLabel;               // 武器状态显示标签
     [Export] public Node EngineMount;                      // 引擎槽位节点
-    [Export] public Node WeaponHardpoint;                  // 武器槽位节点
+    // 武器槽位list
+    [Export]
+    public Godot.Collections.Array<WeaponHardpoint> WeaponHardpoint { get; set; } = new Godot.Collections.Array<WeaponHardpoint>();
 
     // 私有字段
     private ShipState currentState = ShipState.Idle;       // 当前飞船状态
@@ -54,6 +54,10 @@ public partial class SpaceshipPhysics : RigidBody2D
     public override void _Ready()
     {
         InitializeSpaceship();
+        IsShowMode = true;
+        ShowDock();
+
+
     }
 
     public override void _PhysicsProcess(double delta)
@@ -68,14 +72,16 @@ public partial class SpaceshipPhysics : RigidBody2D
         // 更新状态和应用物理
         UpdateShipState();
         ApplyCentralForce(force);
-        ApplyTorque(torque);
+
+        // 在展示模式下不应用扭矩，防止旋转
+        if (!IsShowMode)
+        {
+            ApplyTorque(torque);
+        }
 
         // 限制速度
         LimitMaxSpeed();
         LimitMaxAngularVelocity();
-
-        // 更新UI
-        UpdateUI();
     }
     #endregion
 
@@ -180,17 +186,12 @@ public partial class SpaceshipPhysics : RigidBody2D
 
         if (WeaponHardpoint != null)
         {
-            foreach (Node child in WeaponHardpoint.GetChildren())
+            foreach (Node node in WeaponHardpoint)
             {
-                Weapon.Weapon weapon = GetWeaponFromNode(child);
+                Weapon.Weapon weapon = GetWeaponFromNode(node);
                 if (weapon != null)
                 {
                     Weapons.Add(weapon);
-                    GD.Print($"找到武器: {weapon.Data.WeaponName}");
-                }
-                else
-                {
-                    GD.Print($"武器挂载点 '{child.Name}' 下没有武器节点。");
                 }
             }
         }
@@ -334,67 +335,51 @@ public partial class SpaceshipPhysics : RigidBody2D
     }
     #endregion
 
-    #region UI更新
-    /// <summary>
-    /// 更新UI显示
-    /// </summary>
-    private void UpdateUI()
+    // 是否处于展示模式
+    public bool IsShowMode { get; set; } = false;
+    // 展示方法
+    public void ShowDock()
     {
-        UpdateSpeedLabel();
-        UpdateWeaponStatus();
-        UpdateAngularSpeed();
-        UpdateAngleLabel();
+
+        // 生成武器槽位框线
+        GenerateWeaponHardpointLines();
     }
-
-    /// <summary>
-    /// 更新速度标签
-    /// </summary>
-    private void UpdateSpeedLabel()
+    private PackedScene Marking;
+    //  生成武器槽位框线方法
+    public void GenerateWeaponHardpointLines()
     {
-        if (SpeedLabel == null) return;
-
-        float currentSpeed = ShipData.CurrentSpeed;
-        float speedPercent = (currentSpeed / ShipData.MaxSpeed) * 100;
-        SpeedLabel.Text = $"速度: {currentSpeed:F1} px/s ({speedPercent:F0}%)";
-    }
-
-    /// <summary>
-    /// 更新角度标签
-    /// </summary>
-    private void UpdateAngleLabel()
-    {
-        if (AngleLabel == null) return;
-
-        float angleInDegrees = Mathf.RadToDeg(Transform.Rotation);
-        AngleLabel.Text = $"角度: {angleInDegrees:F1}°";
-    }
-
-    /// <summary>
-    /// 更新武器状态
-    /// </summary>
-    public void UpdateWeaponStatus()
-    {
-        if (WeaponStatusLabel == null || Weapons.Count == 0) return;
-
-        string statusText = "武器状态:\n";
-        foreach (var weapon in Weapons)
+        Marking = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["WeaponHardpointMarking"]);
+        if (WeaponHardpoint == null || WeaponHardpoint.Count == 0)
         {
-            if (weapon != null)
+            GD.Print("没有武器槽位可供生成框线。");
+            return;
+        }
+
+        foreach (var hardpoint in WeaponHardpoint)
+        {
+            if (hardpoint != null)
             {
-                statusText += $"{weapon.GetStatus()}\n";
+                // 实例化标记节点
+                var markingInstance = Marking.Instantiate<WeaponHardpointMarking>();
+                if (markingInstance != null)
+                {
+                    // 设置标记位置和旋转
+                    // 将标记添加到武器槽位下
+                    hardpoint.AddChild(markingInstance);
+                    GD.Print($"生成武器槽位框线: {hardpoint.Name}");
+                }
+                else
+                {
+                    GD.PrintErr("无法实例化武器槽位框线标记。");
+                }
+            }
+            else
+            {
+                GD.PrintErr("武器槽位为空，无法生成框线。");
+
+
             }
         }
-        WeaponStatusLabel.Text = statusText;
     }
 
-    /// <summary>
-    /// 更新角速度显示
-    /// </summary>
-    public void UpdateAngularSpeed()
-    {
-        if (AngularSpeedLabel == null) return;
-
-        AngularSpeedLabel.Text = $"角速度: {AngularVelocity:F1} rad/s";
-    }
-    #endregion
 }

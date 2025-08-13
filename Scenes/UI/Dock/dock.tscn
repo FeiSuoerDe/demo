@@ -102,8 +102,6 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpaceshipPhysics" parent="CanvasLayer/HSplitContainer/Panel2/Control" instance=ExtResource("2_ncd3y")]
-
 [node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 0
 offset_left = 1321.0
@@ -131,3 +129,6 @@ offset_right = 1500.0
 offset_bottom = 1010.0
 theme_override_font_sizes/font_size = 40
 text = "详细参数"
+
+[node name="SpaceshipPhysics" parent="CanvasLayer/HSplitContainer/Panel2" instance=ExtResource("2_ncd3y")]
+position = Vector2(790, 520)
