@@ -1,16 +1,18 @@
-using System.Collections.Generic;
 using Godot;
 using TimelapseInvoices.Scripts.DataClass;
-using TimelapseInvoices.Scripts.Autoloads;
-using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
 namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics;
 
 /// <summary>
-/// 飞船物理体控制器
+/// 飞船物理体，负责移动并挂在贴图
 /// </summary>
+[GlobalClass]
 public partial class SpaceshipPhysics : RigidBody2D
 {
+    // 贴图节点
+    [Export] public Sprite2D ShipSprite;
+    // 碰撞体节点
+    [Export] public CollisionPolygon2D ShipCollision;
     #region 枚举与常量
     /// <summary>
     /// 飞船状态枚举，与引擎状态对应
@@ -34,10 +36,6 @@ public partial class SpaceshipPhysics : RigidBody2D
 
     #region 导出属性和字段
     [Export] public ShipData ShipData;                     // 飞船数据
-    [Export] public Node EngineMount;                      // 引擎槽位节点
-    // 武器槽位list
-    [Export]
-    public Godot.Collections.Array<WeaponHardpoint> WeaponHardpoint { get; set; } = new Godot.Collections.Array<WeaponHardpoint>();
 
     // 私有字段
     private ShipState currentState = ShipState.Idle;       // 当前飞船状态
@@ -45,21 +43,10 @@ public partial class SpaceshipPhysics : RigidBody2D
     private bool isMoving = false;                         // 是否处于移动状态
 
     // 公共属性
-    public List<Weapon.Weapon> Weapons { get; private set; } = new List<Weapon.Weapon>();  // 飞船武器列表
-    public List<Engine> Engines { get; private set; } = new List<Engine>();                // 飞船引擎列表
-    public bool IsControlled { get; set; } = false;                                        // 是否受控
+    public bool IsControlled { get; set; } = false;        // 是否受控
     #endregion
 
     #region Godot生命周期方法
-    public override void _Ready()
-    {
-        InitializeSpaceship();
-        IsShowMode = true;
-        ShowDock();
-
-
-    }
-
     public override void _PhysicsProcess(double delta)
     {
         // 重置状态
@@ -72,29 +59,11 @@ public partial class SpaceshipPhysics : RigidBody2D
         // 更新状态和应用物理
         UpdateShipState();
         ApplyCentralForce(force);
-
-        // 在展示模式下不应用扭矩，防止旋转
-        if (!IsShowMode)
-        {
-            ApplyTorque(torque);
-        }
+        ApplyTorque(torque);
 
         // 限制速度
         LimitMaxSpeed();
         LimitMaxAngularVelocity();
-    }
-    #endregion
-
-    #region 初始化
-    /// <summary>
-    /// 初始化飞船系统
-    /// </summary>
-    private void InitializeSpaceship()
-    {
-        GetEngines();
-        GetWeapons();
-        UpdateEngines();
-        GD.Print("动力子系统上线，引擎子系统上线，指挥权限移交。");
     }
     #endregion
 
@@ -126,92 +95,7 @@ public partial class SpaceshipPhysics : RigidBody2D
         if (currentState != state)
         {
             currentState = state;
-            UpdateEngines();
         }
-    }
-    #endregion
-
-    #region 引擎管理
-    /// <summary>
-    /// 更新所有引擎的状态
-    /// </summary>
-    private void UpdateEngines()
-    {
-        if (Engines == null || Engines.Count == 0)
-            return;
-
-        EngineData.EngineState engineState = currentState switch
-        {
-            ShipState.Idle => EngineData.EngineState.Idle,
-            ShipState.On => EngineData.EngineState.On,
-            ShipState.Boosting => EngineData.EngineState.Boosting,
-            _ => EngineData.EngineState.Off,
-        };
-
-        foreach (var engine in Engines)
-        {
-            engine?.SetEngineState(engineState);
-        }
-    }
-
-    /// <summary>
-    /// 获取所有引擎
-    /// </summary>
-    public List<Engine> GetEngines()
-    {
-        Engines.Clear();
-
-        if (EngineMount != null)
-        {
-            foreach (Node child in EngineMount.GetChildren())
-            {
-                if (child is Engine engine)
-                {
-                    Engines.Add(engine);
-                }
-            }
-        }
-
-        return Engines;
-    }
-    #endregion
-
-    #region 武器管理
-    /// <summary>
-    /// 获取所有武器
-    /// </summary>
-    public List<Weapon.Weapon> GetWeapons()
-    {
-        Weapons.Clear();
-
-        if (WeaponHardpoint != null)
-        {
-            foreach (Node node in WeaponHardpoint)
-            {
-                Weapon.Weapon weapon = GetWeaponFromNode(node);
-                if (weapon != null)
-                {
-                    Weapons.Add(weapon);
-                }
-            }
-        }
-
-        return Weapons;
-    }
-
-    /// <summary>
-    /// 从节点获取武器组件
-    /// </summary>
-    private Weapon.Weapon GetWeaponFromNode(Node node)
-    {
-        // 检查子节点
-        if (node.GetChildCount() > 0)
-        {
-            return node.GetChild<Weapon.Weapon>(0);
-        }
-
-        // 检查当前节点
-        return node as Weapon.Weapon;
     }
     #endregion
 
@@ -334,52 +218,4 @@ public partial class SpaceshipPhysics : RigidBody2D
         }
     }
     #endregion
-
-    // 是否处于展示模式
-    public bool IsShowMode { get; set; } = false;
-    // 展示方法
-    public void ShowDock()
-    {
-
-        // 生成武器槽位框线
-        GenerateWeaponHardpointLines();
-    }
-    private PackedScene Marking;
-    //  生成武器槽位框线方法
-    public void GenerateWeaponHardpointLines()
-    {
-        Marking = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["WeaponHardpointMarking"]);
-        if (WeaponHardpoint == null || WeaponHardpoint.Count == 0)
-        {
-            GD.Print("没有武器槽位可供生成框线。");
-            return;
-        }
-
-        foreach (var hardpoint in WeaponHardpoint)
-        {
-            if (hardpoint != null)
-            {
-                // 实例化标记节点
-                var markingInstance = Marking.Instantiate<WeaponHardpointMarking>();
-                if (markingInstance != null)
-                {
-                    // 设置标记位置和旋转
-                    // 将标记添加到武器槽位下
-                    hardpoint.AddChild(markingInstance);
-                    GD.Print($"生成武器槽位框线: {hardpoint.Name}");
-                }
-                else
-                {
-                    GD.PrintErr("无法实例化武器槽位框线标记。");
-                }
-            }
-            else
-            {
-                GD.PrintErr("武器槽位为空，无法生成框线。");
-
-
-            }
-        }
-    }
-
 }

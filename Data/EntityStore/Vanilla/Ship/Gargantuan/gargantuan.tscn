@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://v8qs0cao1s3h"]
+
+[ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_i4tg0"]
+[ext_resource type="Texture2D" uid="uid://d2qpbheaamrv4" path="res://Assets/贴图/飞船贴图/船体/03.atlastex" id="2_s28fv"]
+
+[node name="Gargantuan" type="Node"]
+
+[node name="SpaceshipPhysics" type="RigidBody2D" parent="." node_paths=PackedStringArray("ShipSprite", "ShipCollision")]
+script = ExtResource("1_i4tg0")
+ShipSprite = NodePath("Sprite2D")
+ShipCollision = NodePath("CollisionPolygon2D")
+metadata/_custom_type_script = "uid://cslwjsl5q7y12"
+
+[node name="Sprite2D" type="Sprite2D" parent="SpaceshipPhysics"]
+texture = ExtResource("2_s28fv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpaceshipPhysics"]

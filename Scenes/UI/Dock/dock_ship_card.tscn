@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cm7s7g0o0qwrg"]
 
-[ext_resource type="Texture2D" uid="uid://tuiauoblskae" path="res://Assets/贴图/UI/BackgroundSprites/11.atlastex" id="1_neg8n"]
+[ext_resource type="Texture2D" uid="uid://tuiauoblskae" path="res://Assets/贴图/飞船贴图/船体/11.atlastex" id="1_neg8n"]
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(280, 280)
