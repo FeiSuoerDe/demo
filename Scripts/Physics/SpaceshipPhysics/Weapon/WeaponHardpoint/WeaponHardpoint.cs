@@ -4,6 +4,7 @@ using Godot;
 // 武器槽位
 namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
+
 public class WeaponHardpointData
 {
     // 在飞船贴图的相对位置
@@ -37,6 +38,7 @@ public class WeaponHardpointData
         return weapon.Data.SpecificWeaponType == Type && weapon.Data.Size == Size;
     }
 }
+[GlobalClass]
 
 public partial class WeaponHardpoint : Node2D
 {

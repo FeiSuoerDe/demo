@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://v8qs0cao1s3h"]
+[gd_scene load_steps=4 format=3 uid="uid://v8qs0cao1s3h"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_i4tg0"]
 [ext_resource type="Texture2D" uid="uid://d2qpbheaamrv4" path="res://Assets/贴图/飞船贴图/船体/03.atlastex" id="2_s28fv"]
+[ext_resource type="Script" uid="uid://du2xg4jb1s43y" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpoint/WeaponHardpoint.cs" id="3_gpba8"]
 
 [node name="Gargantuan" type="Node"]
 
@@ -15,3 +16,8 @@ metadata/_custom_type_script = "uid://cslwjsl5q7y12"
 texture = ExtResource("2_s28fv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpaceshipPhysics"]
+polygon = PackedVector2Array(-28, -119, -102, 44, -44, 125, -40, 98, 36, 100, 40, 126, 100, 46, 26, -120, 22, -80, -4, -107, -19, -80)
+
+[node name="WeaponHardpoint" type="Node2D" parent="SpaceshipPhysics"]
+script = ExtResource("3_gpba8")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"

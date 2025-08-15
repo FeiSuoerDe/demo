@@ -67,6 +67,7 @@ public class EngineData
         };
     }
 }
+[GlobalClass]
 
 public partial class Engine : GpuParticles2D
 {
