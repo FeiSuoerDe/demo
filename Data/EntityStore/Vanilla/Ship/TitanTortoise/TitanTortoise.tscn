@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://saorhsw6y8jq"]
+
+[ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_g6qq8"]
+[ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_jgvid"]
+[ext_resource type="Texture2D" uid="uid://bfuulj5wtkmhe" path="res://Assets/贴图/飞船贴图/船体/02.atlastex" id="2_rpc5n"]
+[ext_resource type="Script" uid="uid://du2xg4jb1s43y" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpoint/WeaponHardpoint.cs" id="3_rpc5n"]
+[ext_resource type="PackedScene" uid="uid://bdj6rhoesiau" path="res://Scenes/Physics/SpaceshipPhysics/Engine/ship_engine.tscn" id="4_yrgmq"]
+
+[sub_resource type="Resource" id="Resource_rg2tx"]
+script = ExtResource("2_jgvid")
+ShipId = "ship_default_001"
+ShipName = "巨龟"
+ShipModel = "巨龟-01"
+Description = "大型采矿开阔工程船，前置厚实盔甲，用于防护小行星的变轨撞击，经过军事化改装后拥有了可观的航速与武器槽位"
+Type = 3
+Rarity = 1
+BasePrice = 1000
+Acceleration = 100.0
+MaxSpeed = 600.0
+CurrentSpeed = 0.0
+TurningAcceleration = 200.0
+MaxTurningSpeed = 600.0
+BaseShield = 50.0
+BaseArmor = 30.0
+BaseHealth = 100.0
+RadiationDissipationRate = 1.0
+CurrentRadiation = 0.0
+MaxRadiation = 100.0
+metadata/_custom_type_script = "uid://cmuqgxd0j234w"
+
+[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("ShipSprite", "ShipCollision", "WeaponHardpoints", "Engines")]
+gravity_scale = 0.0
+script = ExtResource("1_g6qq8")
+ShipSprite = NodePath("Sprite2D")
+ShipCollision = NodePath("CollisionPolygon2D")
+WeaponHardpoints = [NodePath("WeaponHardpoint"), NodePath("WeaponHardpoint2")]
+Engines = [NodePath("GPUParticles2D"), NodePath("GPUParticles2D2"), NodePath("GPUParticles2D3"), NodePath("GPUParticles2D4")]
+ShipData = SubResource("Resource_rg2tx")
+metadata/_custom_type_script = "uid://cslwjsl5q7y12"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rpc5n")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -43, -50, -8, -59, 35, -50, 43, 53, 44, 60, 35, 58, -6)
+
+[node name="WeaponHardpoint" type="Node2D" parent="."]
+script = ExtResource("3_rpc5n")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint2" type="Node2D" parent="."]
+position = Vector2(0, 26)
+script = ExtResource("3_rpc5n")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("4_yrgmq")]
+position = Vector2(-27, 30)
+
+[node name="GPUParticles2D2" parent="." instance=ExtResource("4_yrgmq")]
+position = Vector2(-14, 38)
+
+[node name="GPUParticles2D3" parent="." instance=ExtResource("4_yrgmq")]
+position = Vector2(15, 38)
+
+[node name="GPUParticles2D4" parent="." instance=ExtResource("4_yrgmq")]
+position = Vector2(28, 30)

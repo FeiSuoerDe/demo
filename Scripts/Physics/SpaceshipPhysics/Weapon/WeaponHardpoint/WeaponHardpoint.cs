@@ -89,6 +89,11 @@ public partial class WeaponHardpoint : Node2D
         {
             GD.PrintErr($"检查武器兼容性时发生错误: {ex.Message}");
         }
+        // 输出自己的所有子节点
+        for (int i = 0; i < GetChildCount(); i++)
+        {
+            GD.Print($"子节点 {i}: {GetChild(i).Name}");
+        }
     }
 
     // 检查武器是否与槽位兼容

@@ -42,117 +42,87 @@ public enum ShipType
 [GlobalClass]
 public partial class ShipData : Godot.Resource
 {
-    #region 默认值设置
-    /// <summary>默认船只类型 - 新建船只时使用的默认类型</summary>
-    [Export]
-    public ShipType DEFAULT_SHIP_TYPE = ShipType.Destroyer;
-
-    /// <summary>默认生命值 - 新建船只的基础生命值</summary>
-    [Export]
-    public float DEFAULT_HEALTH = 100f;
-
-    /// <summary>默认稀有度 - 新建船只的基础稀有度等级</summary>
-    [Export]
-    public int DEFAULT_RARITY = 1;
-
-    /// <summary>默认辐射耗散速度 - 船只每秒自动减少的辐射值</summary>
-    [Export]
-    public float DEFAULT_RADIATION_DISSIPATION_RATE = 1.0f;
-
-    /// <summary>默认当前辐射值 - 新建船只的初始辐射水平</summary>
-    [Export]
-    public float DEFAULT_CURRENT_RADIATION = 0f;
-
-    /// <summary>默认最大辐射值 - 船只可承受的最大辐射水平</summary>
-    [Export]
-    public float DEFAULT_MAX_RADIATION = 100f;
-
-    /// <summary>默认当前速度 - 新建船只的初始速度</summary>
-    [Export]
-    public float DEFAULT_CURRENT_SPEED = 0f;
-    #endregion
-
     #region 基本信息属性
     /// <summary>全局唯一的船只ID - 用于在游戏中唯一标识一艘船</summary>
     [Export]
-    public string ShipId { get; set; }
+    public string ShipId { get; set; } = "ship_default_001";
 
     /// <summary>船只名称 - 显示用的船只名字</summary>
     [Export]
-    public string ShipName { get; set; }
+    public string ShipName { get; set; } = "测试驱逐舰";
 
     /// <summary>船只型号 - 船只的具体型号标识</summary>
     [Export]
-    public string ShipModel { get; set; }
+    public string ShipModel { get; set; } = "测试型-01";
 
     /// <summary>描述 - 船只的详细说明文本</summary>
     [Export]
-    public string Description { get; set; }
+    public string Description { get; set; } = "这是一艘用于测试的标准驱逐舰";
 
     /// <summary>船只类型 - 决定船只的基本特性和可用装备</summary>
     [Export]
-    public ShipType Type { get; set; }
+    public ShipType Type { get; set; } = ShipType.Destroyer;
 
     /// <summary>稀有度 - 影响船只属性上限和获取难度</summary>
     [Export]
-    public int Rarity { get; set; }
+    public int Rarity { get; set; } = 1;
 
     /// <summary>基础价格 - 船只在市场上的基本价值</summary>
     [Export]
-    public int BasePrice { get; set; }
+    public int BasePrice { get; set; } = 1000;
     #endregion
 
     #region 性能属性
     /// <summary>加速度 - 船只加速的速率 (单位: 节/秒²)</summary>
     [Export]
-    public float Acceleration { get; set; }
+    public float Acceleration { get; set; } = 5.0f;
 
     /// <summary>最大速度 - 船只能达到的最高速度 (单位: 节)</summary>
     [Export]
-    public float MaxSpeed { get; set; }
+    public float MaxSpeed { get; set; } = 50.0f;
 
     /// <summary>当前速度 - 船只当前的速度 (单位: 节)</summary>
     [Export]
-    public float CurrentSpeed { get; set; }
+    public float CurrentSpeed { get; set; } = 0f;
 
     /// <summary>转向加速度 - 船只转向的速率 (单位: 度/秒²)</summary>
     [Export]
-    public float TurningAcceleration { get; set; }
+    public float TurningAcceleration { get; set; } = 200.0f;
 
     /// <summary>最大转向速度 - 船只能达到的最大转向速率 (单位: 度/秒)</summary>
     [Export]
-    public float MaxTurningSpeed { get; set; }
+    public float MaxTurningSpeed { get; set; } = 600.0f;
     #endregion
 
     #region 战斗属性
     /// <summary>基础护盾值 - 船只的能量护盾强度</summary>
     [Export]
-    public float BaseShield { get; set; }
+    public float BaseShield { get; set; } = 50f;
 
     /// <summary>基础装甲值 - 船只的物理装甲强度</summary>
     [Export]
-    public float BaseArmor { get; set; }
+    public float BaseArmor { get; set; } = 30f;
 
     /// <summary>基础生命值 - 船只的结构完整性</summary>
     [Export]
-    public float BaseHealth { get; set; }
+    public float BaseHealth { get; set; } = 100f;
 
     /// <summary>辐射耗散速度 - 船只每秒自动降低的辐射值</summary>
     [Export]
-    public float RadiationDissipationRate { get; set; }
+    public float RadiationDissipationRate { get; set; } = 1.0f;
 
     /// <summary>当前辐射值 - 船只当前累积的辐射水平</summary>
     [Export]
-    public float CurrentRadiation { get; set; }
+    public float CurrentRadiation { get; set; } = 0f;
 
     /// <summary>最大辐射值 - 船只可承受的最大辐射水平，超过可能导致系统故障</summary>
     [Export]
-    public float MaxRadiation { get; set; }
+    public float MaxRadiation { get; set; } = 100f;
     #endregion
 
     #region 装备属性
     /// <summary>舰船引擎数据列表 - 包含船只所有引擎的数据信息</summary>
-    public List<EngineData> EnginesDatas { get; set; } = new List<EngineData>();
+    // public List<ShipEngineData> ShipEnginesDatas { get; set; } = new List<ShipEngineData>();
 
     /// <summary>武器槽位数据列表 - 包含船只所有武器挂载点的数据信息</summary>
     public List<WeaponHardpointData> WeaponHardpointDatas { get; set; } = new List<WeaponHardpointData>();
@@ -160,32 +130,12 @@ public partial class ShipData : Godot.Resource
 
     #region 构造方法
     /// <summary>
-    /// 默认构造方法 - 使用默认值初始化所有属性
+    /// 默认构造方法 - 属性已通过声明时初始化
     /// 适用于在编辑器中创建新的船只数据
     /// </summary>
     public ShipData()
     {
-        // 初始化基本信息
-        ShipId = string.Empty;
-        ShipName = string.Empty;
-        Type = DEFAULT_SHIP_TYPE;
-        BasePrice = 0;
-        Rarity = DEFAULT_RARITY;
-
-        // 初始化性能属性
-        Acceleration = 0f;
-        MaxSpeed = 0f;
-        CurrentSpeed = DEFAULT_CURRENT_SPEED;
-        TurningAcceleration = 0f;
-        MaxTurningSpeed = 0f;
-
-        // 初始化战斗属性
-        BaseShield = 0f;
-        BaseArmor = 0f;
-        BaseHealth = DEFAULT_HEALTH;
-        RadiationDissipationRate = DEFAULT_RADIATION_DISSIPATION_RATE;
-        CurrentRadiation = DEFAULT_CURRENT_RADIATION;
-        MaxRadiation = DEFAULT_MAX_RADIATION;
+        // 所有基本属性已在声明时初始化，无需再次赋值
     }
 
     /// <summary>
@@ -195,7 +145,7 @@ public partial class ShipData : Godot.Resource
     /// <param name="shipId">船只ID</param>
     /// <param name="shipName">船只名称</param>
     /// <param name="type">船只类型</param>
-    public ShipData(string shipId, string shipName, ShipType type) : this()
+    public ShipData(string shipId, string shipName, ShipType type)
     {
         ShipId = shipId;
         ShipName = shipName;
@@ -236,7 +186,7 @@ public partial class ShipData : Godot.Resource
         // 设置性能属性
         Acceleration = acceleration;
         MaxSpeed = maxSpeed;
-        CurrentSpeed = 0f; // 初始速度为0
+        CurrentSpeed = 0f; // 初始速度始终为0
         TurningAcceleration = turningAcceleration;
         MaxTurningSpeed = maxTurningSpeed;
 

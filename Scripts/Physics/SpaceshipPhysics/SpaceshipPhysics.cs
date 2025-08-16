@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 using TimelapseInvoices.Scripts.DataClass;
+using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
 namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics;
 
@@ -24,6 +27,12 @@ public partial class SpaceshipPhysics : RigidBody2D
         On,        // 开启
         Boosting   // 加速
     }
+    // 槽位list
+    [Export]
+    public Array<WeaponHardpoint> WeaponHardpoints = new Array<WeaponHardpoint>();
+    [Export]
+    // 引擎list
+    public Array<GpuParticles2D> Engines { get; set; } = new Array<GpuParticles2D>();
 
     // 物理控制相关常量
     private const float BOOST_SPEED_MULTIPLIER = 2.0f;     // 加速状态下速度提升倍率
@@ -83,7 +92,21 @@ public partial class SpaceshipPhysics : RigidBody2D
     /// </summary>
     private void UpdateShipState()
     {
-        ShipState newState = isMoving ? (isBoosting ? ShipState.Boosting : ShipState.On) : ShipState.Idle;
+        ShipState newState;
+
+        if (isMoving)
+        {
+            // 按下任意方向键时，设为开启状态
+            newState = ShipState.On;
+
+        }
+        else
+        {
+            // 不进行任何操作时，设为待机状态
+            newState = ShipState.Idle;
+        }
+
+        // 将新状态应用到飞船
         SetShipState(newState);
     }
 
@@ -95,6 +118,39 @@ public partial class SpaceshipPhysics : RigidBody2D
         if (currentState != state)
         {
             currentState = state;
+
+            // 更新所有引擎的状态
+            foreach (var engine in Engines)
+            {
+                GD.Print($"Setting engine state to: {state}");
+                SetEngineState(engine, state);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 设置引擎粒子效果状态
+    /// </summary>
+    private void SetEngineState(GpuParticles2D engine, ShipState state)
+    {
+        switch (state)
+        {
+            case ShipState.Off:
+                engine.Emitting = false;
+                break;
+            case ShipState.On:
+                engine.Emitting = true;
+                engine.Lifetime = 0.5f; // 设置粒子寿命
+                GD.Print("引擎开启，开始发射粒子");
+                break;
+            case ShipState.Boosting:
+                engine.Emitting = true; // 加速时也发射粒子
+                engine.Lifetime = 0.8f; // 设置粒子寿命
+                break;
+            default: // Idle
+                engine.Emitting = true; // 待机或其他状态不发射
+                engine.Lifetime = 0.2f; // 恢复默认粒子寿命
+                break;
         }
     }
     #endregion
