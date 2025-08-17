@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://340t54prdsx1"]
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
-[ext_resource type="PackedScene" uid="uid://cm7s7g0o0qwrg" path="res://Scenes/UI/Dock/dock_ship_card.tscn" id="2_q08yo"]
+[ext_resource type="PackedScene" uid="uid://saorhsw6y8jq" path="res://Data/EntityStore/Vanilla/Ship/TitanTortoise/TitanTortoise.tscn" id="2_ncd3y"]
 
-[node name="Dock" type="Control"]
+[node name="Dock" type="Control" node_paths=PackedStringArray("ShipDisplayPosition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q1i6r")
+ShipDisplayPosition = NodePath("CanvasLayer/HSplitContainer/Panel2/center")
+MaxZoom = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -40,21 +42,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer"]
-layout_mode = 2
-
-[node name="DockShipCard" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
-layout_mode = 2
-
-[node name="DockShipCard2" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
-layout_mode = 2
-
-[node name="DockShipCard3" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
-layout_mode = 2
-
-[node name="DockShipCard4" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
-layout_mode = 2
-
-[node name="DockShipCard5" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_q08yo")]
 layout_mode = 2
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer"]
@@ -129,17 +116,14 @@ offset_bottom = 1010.0
 theme_override_font_sizes/font_size = 40
 text = "详细参数"
 
-[node name="Control2" type="Control" parent="CanvasLayer/HSplitContainer/Panel2"]
+[node name="center" type="Control" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
+
+[node name="SpaceshipPhysics" parent="CanvasLayer/HSplitContainer/Panel2/center" instance=ExtResource("2_ncd3y")]

@@ -53,6 +53,7 @@ public partial class SpaceshipPhysics : RigidBody2D
 
     // 公共属性
     public bool IsControlled { get; set; } = false;        // 是否受控
+    public bool IsShowcaseMode { get; set; } = false;      // 是否处于展示模式
     #endregion
 
     #region Godot生命周期方法
@@ -161,6 +162,10 @@ public partial class SpaceshipPhysics : RigidBody2D
     /// </summary>
     private Vector2 HandleMovementInput()
     {
+        // 在展示模式下不响应输入
+        if (IsShowcaseMode)
+            return Vector2.Zero;
+
         Vector2 force = Vector2.Zero;
         float accelerationForce = ShipData.Acceleration;
 
@@ -218,6 +223,10 @@ public partial class SpaceshipPhysics : RigidBody2D
     /// </summary>
     private float HandleRotationInput()
     {
+        // 在展示模式下不响应输入
+        if (IsShowcaseMode)
+            return 0f;
+
         return Input.IsKeyPressed(Key.Shift) ? HandleManualRotation() : HandleMouseRotation();
     }
 
