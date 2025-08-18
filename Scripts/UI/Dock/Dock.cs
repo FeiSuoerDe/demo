@@ -42,6 +42,19 @@ public partial class Dock : Control
             CurrentShipBody.ProcessMode = ProcessModeEnum.Disabled;
             // 添加武器槽位标记
             AddWeaponHardpointMarkings();
+            // 更新飞船信息
+            UpdateShipInfo(CurrentShipBody.ShipData.ShipName, CurrentShipBody.ShipData.ShipModel);
+        }
+
+        // 连接信号
+        if (ShipDetailButton != null)
+        {
+            ShipDetailButton.Pressed += OnShipDetailButtonPressed;
+        }
+
+        if (CloseShipDetailButton != null)
+        {
+            CloseShipDetailButton.Pressed += OnCloseShipDetailButtonPressed;
         }
     }
 
@@ -91,7 +104,8 @@ public partial class Dock : Control
             return null;
         }
 
-        CurrentShipBody = ShipDisplayPosition.GetNode<SpaceshipPhysics>("SpaceshipPhysics");
+        // ShipDisplayPosition下只有一个节点
+        CurrentShipBody = ShipDisplayPosition.GetChild<SpaceshipPhysics>(0);
         if (CurrentShipBody == null)
         {
             GD.PrintErr("未找到当前展示的飞船物理体，请检查节点路径。");
@@ -111,4 +125,69 @@ public partial class Dock : Control
             hardpoint.AddChild(markingInstance);
         }
     }
+
+
+    [Export]
+    // 飞船名字
+    public Label ShipNameLabel;
+    [Export]
+    // 型号
+    public Label ShipModelLabel;
+
+    // 更新飞船信息
+    public void UpdateShipInfo(string shipName, string shipModel)
+    {
+        if (ShipNameLabel != null)
+        {
+            ShipNameLabel.Text = shipName;
+        }
+        if (ShipModelLabel != null)
+        {
+            ShipModelLabel.Text = shipModel;
+        }
+        richTextLabel.Text = CurrentShipBody.ShipData.GetFullInfo();
+    }
+    // 详细参数按钮
+    [Export]
+    public Button ShipDetailButton;
+    [Export]
+    // 详细参数面板
+    public CanvasLayer ShipDetailPanel;
+    // 显示详细参数面板
+    public void ShowShipDetailPanel()
+    {
+        if (ShipDetailPanel != null)
+        {
+            ShipDetailPanel.Visible = true;
+        }
+    }
+    [Export]
+    // 详细信息文本text
+    public RichTextLabel richTextLabel;
+    // 隐藏详细参数面板
+    public void HideShipDetailPanel()
+    {
+        if (ShipDetailPanel != null)
+        {
+            ShipDetailPanel.Visible = false;
+        }
+    }
+    // 点击详细参数按钮时触发
+    public void OnShipDetailButtonPressed()
+    {
+        if (ShipDetailPanel != null)
+        {
+            ShipDetailPanel.Visible = !ShipDetailPanel.Visible;
+        }
+
+    }
+    [Export]
+    // 关闭详细参数面板按钮
+    public Button CloseShipDetailButton;
+    // 点击关闭按钮时触发
+    public void OnCloseShipDetailButtonPressed()
+    {
+        HideShipDetailPanel();
+    }
+
 }

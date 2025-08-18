@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://340t54prdsx1"]
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
-[ext_resource type="PackedScene" uid="uid://saorhsw6y8jq" path="res://Data/EntityStore/Vanilla/Ship/TitanTortoise/TitanTortoise.tscn" id="2_ncd3y"]
+[ext_resource type="PackedScene" uid="uid://c13w2f6bsqh6r" path="res://Data/EntityStore/Vanilla/Ship/BoneScholar/bone_scholar.tscn" id="2_ncd3y"]
 
-[node name="Dock" type="Control" node_paths=PackedStringArray("ShipDisplayPosition")]
+[node name="Dock" type="Control" node_paths=PackedStringArray("ShipDisplayPosition", "CurrentShipBody", "ShipNameLabel", "ShipModelLabel", "ShipDetailButton", "ShipDetailPanel", "richTextLabel", "CloseShipDetailButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q1i6r")
 ShipDisplayPosition = NodePath("CanvasLayer/HSplitContainer/Panel2/center")
+CurrentShipBody = NodePath("CanvasLayer/HSplitContainer/Panel2/center/BoneScholar")
 MaxZoom = 8.0
+ShipNameLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/ShipName")
+ShipModelLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2/Model")
+ShipDetailButton = NodePath("CanvasLayer/HSplitContainer/Panel2/ShipDetailButton")
+ShipDetailPanel = NodePath("CanvasLayer/HSplitContainer/Panel2/ShipDetailButton/CanvasLayer")
+richTextLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/ShipDetailButton/CanvasLayer/Panel/RichTextLabel")
+CloseShipDetailButton = NodePath("CanvasLayer/HSplitContainer/Panel2/ShipDetailButton/CanvasLayer/Panel/Button")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -61,7 +68,7 @@ grow_vertical = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+[node name="ShipName" type="Label" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "船名"
@@ -69,7 +76,7 @@ text = "船名"
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2"]
+[node name="Model" type="Label" parent="CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "型号"
@@ -107,14 +114,41 @@ offset_bottom = 584.0
 theme_override_font_sizes/font_size = 40
 text = "船插"
 
-[node name="Label3" type="Label" parent="CanvasLayer/HSplitContainer/Panel2"]
+[node name="ShipDetailButton" type="Button" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 0
 offset_left = 1340.0
 offset_top = 955.0
-offset_right = 1500.0
-offset_bottom = 1010.0
+offset_right = 1508.0
+offset_bottom = 1018.0
 theme_override_font_sizes/font_size = 40
 text = "详细参数"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer/HSplitContainer/Panel2/ShipDetailButton"]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HSplitContainer/Panel2/ShipDetailButton/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 323.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/HSplitContainer/Panel2/ShipDetailButton/CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HSplitContainer/Panel2/ShipDetailButton/CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 660.0
+offset_bottom = 1084.0
 
 [node name="center" type="Control" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 1
@@ -126,4 +160,4 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpaceshipPhysics" parent="CanvasLayer/HSplitContainer/Panel2/center" instance=ExtResource("2_ncd3y")]
+[node name="BoneScholar" parent="CanvasLayer/HSplitContainer/Panel2/center" instance=ExtResource("2_ncd3y")]

@@ -227,5 +227,59 @@ public partial class ShipData : Godot.Resource
     {
         return $"{ShipName} [{Type}] (ID: {ShipId})";
     }
+
+    /// <summary>
+    /// 获取船只的完整数据信息
+    /// 返回格式化的字符串，包含所有船只属性
+    /// </summary>
+    /// <returns>格式化的船只完整信息</returns>
+    public string GetFullInfo()
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        
+        // 基本信息
+        sb.AppendLine("=== 基本信息 ===");
+        sb.AppendLine($"ID: {ShipId}");
+        sb.AppendLine($"名称: {ShipName}");
+        sb.AppendLine($"型号: {ShipModel}");
+        sb.AppendLine($"类型: {Type}");
+        sb.AppendLine($"稀有度: {Rarity}");
+        sb.AppendLine($"基础价格: {BasePrice}");
+        sb.AppendLine($"描述: {Description}");
+        sb.AppendLine();
+        
+        // 性能属性
+        sb.AppendLine("=== 性能属性 ===");
+        sb.AppendLine($"加速度: {Acceleration:F2} 节/秒²");
+        sb.AppendLine($"最大速度: {MaxSpeed:F2} 节");
+        sb.AppendLine($"当前速度: {CurrentSpeed:F2} 节");
+        sb.AppendLine($"转向加速度: {TurningAcceleration:F2} 度/秒²");
+        sb.AppendLine($"最大转向速度: {MaxTurningSpeed:F2} 度/秒");
+        sb.AppendLine();
+        
+        // 战斗属性
+        sb.AppendLine("=== 战斗属性 ===");
+        sb.AppendLine($"基础护盾值: {BaseShield:F2}");
+        sb.AppendLine($"基础装甲值: {BaseArmor:F2}");
+        sb.AppendLine($"基础生命值: {BaseHealth:F2}");
+        sb.AppendLine($"辐射耗散速度: {RadiationDissipationRate:F2}/秒");
+        sb.AppendLine($"当前辐射值: {CurrentRadiation:F2}/{MaxRadiation:F2}");
+        sb.AppendLine();
+        
+        // 装备属性
+        sb.AppendLine("=== 装备信息 ===");
+        sb.AppendLine($"武器挂载点数量: {WeaponHardpointDatas.Count}");
+        
+        // 列出所有武器挂载点
+        for (int i = 0; i < WeaponHardpointDatas.Count; i++)
+        {
+            var hardpoint = WeaponHardpointDatas[i];
+            sb.AppendLine($"挂载点 #{i+1}: {(hardpoint != null ? hardpoint.ToString() : "未装配")}");
+        }
+        
+        return sb.ToString();
+    }
     #endregion
+    // 输出所有数据方法
+    
 }

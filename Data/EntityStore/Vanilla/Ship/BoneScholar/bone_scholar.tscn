@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://c13w2f6bsqh6r"]
+
+[ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_46cag"]
+[ext_resource type="Texture2D" uid="uid://d2qpbheaamrv4" path="res://Assets/贴图/飞船贴图/船体/03.atlastex" id="2_64tky"]
+[ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_rbx2u"]
+[ext_resource type="Script" uid="uid://du2xg4jb1s43y" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpoint/WeaponHardpoint.cs" id="3_rbx2u"]
+
+[sub_resource type="Resource" id="Resource_4h0cc"]
+script = ExtResource("2_rbx2u")
+ShipId = "ship_default_001"
+ShipName = "羊骨学者"
+ShipModel = "羊骨学者-01"
+Description = "用极快的速度出敌方战场正中，一次打满所有武器的残暴风格，闻名星海的羊骨死神"
+Type = 3
+Rarity = 1
+BasePrice = 1000
+Acceleration = 5.0
+MaxSpeed = 50.0
+CurrentSpeed = 0.0
+TurningAcceleration = 200.0
+MaxTurningSpeed = 600.0
+BaseShield = 50.0
+BaseArmor = 30.0
+BaseHealth = 100.0
+RadiationDissipationRate = 1.0
+CurrentRadiation = 0.0
+MaxRadiation = 100.0
+metadata/_custom_type_script = "uid://cmuqgxd0j234w"
+
+[node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("ShipSprite", "ShipCollision", "WeaponHardpoints")]
+script = ExtResource("1_46cag")
+ShipSprite = NodePath("Sprite2D")
+ShipCollision = NodePath("CollisionPolygon2D")
+WeaponHardpoints = [NodePath("WeaponHardpoint"), NodePath("WeaponHardpoint2"), NodePath("WeaponHardpoint3"), NodePath("WeaponHardpoint4"), NodePath("WeaponHardpoint5"), NodePath("WeaponHardpoint6"), NodePath("WeaponHardpoint7"), NodePath("WeaponHardpoint8")]
+ShipData = SubResource("Resource_4h0cc")
+metadata/_custom_type_script = "uid://cslwjsl5q7y12"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_64tky")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-31, -120, -73, -47, -102, 39, -43, 124, -41, 93, 41, 94, 39, 124, 100, 45, 73, -43, 26, -119, 22, -74, -1, -108, -18, -80)
+
+[node name="WeaponHardpoint" type="Node2D" parent="."]
+position = Vector2(0, 49)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint2" type="Node2D" parent="."]
+position = Vector2(-29, 35)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint3" type="Node2D" parent="."]
+position = Vector2(28, 35)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint4" type="Node2D" parent="."]
+position = Vector2(84, 38)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint5" type="Node2D" parent="."]
+position = Vector2(34, 67)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint6" type="Node2D" parent="."]
+position = Vector2(-35, 67)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint7" type="Node2D" parent="."]
+position = Vector2(-85, 38)
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint8" type="Node2D" parent="."]
+script = ExtResource("3_rbx2u")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
