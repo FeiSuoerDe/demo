@@ -39,6 +39,7 @@ public partial class NodeController : Node
         { "PlanetInfoItem", "res://Scenes/UI/GalaxyDataDisplayUI/planet_info_item.tscn" },
         { "Projectile", "res://Scenes/Physics/Projectile/projectile.tscn" },
         { "Rocket", "res://Scenes/Physics/Rocket/rocket.tscn" },
-        { "WeaponHardpointMarking", "res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn" }
+        { "WeaponHardpointMarking", "res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn" },
+        {"DockShipCard","res://Scenes/UI/Dock/dock_ship_card.tscn"}
     };
 }

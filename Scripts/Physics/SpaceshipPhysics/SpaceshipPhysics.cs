@@ -56,7 +56,10 @@ public partial class SpaceshipPhysics : RigidBody2D
     public bool IsShowcaseMode { get; set; } = false;      // 是否处于展示模式
     #endregion
 
+
     #region Godot生命周期方法
+
+
     public override void _PhysicsProcess(double delta)
     {
         // 重置状态

@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm7s7g0o0qwrg"]
+[gd_scene load_steps=3 format=3 uid="uid://cm7s7g0o0qwrg"]
 
 [ext_resource type="Texture2D" uid="uid://tuiauoblskae" path="res://Assets/贴图/飞船贴图/船体/11.atlastex" id="1_neg8n"]
+[ext_resource type="Script" uid="uid://cw4fhgpadi8y4" path="res://Scripts/UI/Dock/DockShipCard.cs" id="1_w1knd"]
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" node_paths=PackedStringArray("ShipTexture", "ShipNameLabel", "ShipTypeLabel")]
 custom_minimum_size = Vector2(280, 280)
 offset_right = 280.0
 offset_bottom = 280.0
+script = ExtResource("1_w1knd")
+ShipTexture = NodePath("VSplitContainer/TextureRect")
+ShipNameLabel = NodePath("VSplitContainer/Panel/VBoxContainer/Label")
+ShipTypeLabel = NodePath("VSplitContainer/Panel/VBoxContainer/Label2")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
 layout_mode = 1
@@ -43,3 +48,12 @@ text = "船名"
 [node name="Label2" type="Label" parent="VSplitContainer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "型号"
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

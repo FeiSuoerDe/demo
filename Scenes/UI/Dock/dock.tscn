@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://340t54prdsx1"]
+[gd_scene load_steps=2 format=3 uid="uid://340t54prdsx1"]
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
-[ext_resource type="PackedScene" uid="uid://c13w2f6bsqh6r" path="res://Data/EntityStore/Vanilla/Ship/BoneScholar/bone_scholar.tscn" id="2_ncd3y"]
 
-[node name="Dock" type="Control" node_paths=PackedStringArray("ShipDisplayPosition", "CurrentShipBody", "ShipNameLabel", "ShipModelLabel", "ShipDetailButton", "ShipDetailPanel", "richTextLabel", "CloseShipDetailButton")]
+[node name="Dock" type="Control" node_paths=PackedStringArray("ShipScrollContainer", "ShipDisplayPosition", "CurrentShipBody", "ShipNameLabel", "ShipModelLabel", "ShipDetailButton", "ShipDetailPanel", "richTextLabel", "CloseShipDetailButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +10,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q1i6r")
+ShipScrollContainer = NodePath("CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer")
 ShipDisplayPosition = NodePath("CanvasLayer/HSplitContainer/Panel2/center")
-CurrentShipBody = NodePath("CanvasLayer/HSplitContainer/Panel2/center/BoneScholar")
+CurrentShipBody = NodePath("")
 MaxZoom = 8.0
 ShipNameLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/ShipName")
 ShipModelLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2/Model")
@@ -159,5 +159,3 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BoneScholar" parent="CanvasLayer/HSplitContainer/Panel2/center" instance=ExtResource("2_ncd3y")]
