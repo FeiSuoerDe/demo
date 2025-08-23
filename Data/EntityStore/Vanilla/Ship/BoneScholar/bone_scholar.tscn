@@ -28,6 +28,7 @@ MaxRadiation = 100.0
 metadata/_custom_type_script = "uid://cmuqgxd0j234w"
 
 [node name="SpaceshipPhysics" type="RigidBody2D" node_paths=PackedStringArray("ShipSprite", "ShipCollision", "WeaponHardpoints")]
+gravity_scale = 0.0
 script = ExtResource("1_46cag")
 ShipSprite = NodePath("Sprite2D")
 ShipCollision = NodePath("CollisionPolygon2D")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
 
-[node name="Dock" type="Control" node_paths=PackedStringArray("ShipScrollContainer", "ShipDisplayPosition", "CurrentShipBody", "ShipNameLabel", "ShipModelLabel", "ShipDetailButton", "ShipDetailPanel", "richTextLabel", "CloseShipDetailButton")]
+[node name="Dock" type="Control" node_paths=PackedStringArray("ShipScrollContainer", "ShipDisplayPosition", "ShipNameLabel", "ShipModelLabel", "ShipDetailButton", "ShipDetailPanel", "richTextLabel", "CloseShipDetailButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,6 @@ grow_vertical = 2
 script = ExtResource("1_q1i6r")
 ShipScrollContainer = NodePath("CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer")
 ShipDisplayPosition = NodePath("CanvasLayer/HSplitContainer/Panel2/center")
-CurrentShipBody = NodePath("")
 MaxZoom = 8.0
 ShipNameLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/ShipName")
 ShipModelLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2/Model")
@@ -41,9 +40,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
+offset_left = 24.0
 offset_top = 13.0
-offset_right = -13.0
+offset_right = -26.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2

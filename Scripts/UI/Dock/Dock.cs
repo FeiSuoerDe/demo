@@ -26,29 +26,6 @@ public partial class Dock : Control
 
     public override void _Ready()
     {
-        // // 确保ShipDisplayPosition节点已设置
-        // if (ShipDisplayPosition == null)
-        // {
-        //     GD.PrintErr("ShipDisplayPosition节点未设置，请在编辑器中设置。");
-        //     return;
-        // }
-
-        // // 初始化缩放值
-        // ShipDisplayPosition.Scale = Vector2.One;
-
-        // // 获取当前展示的飞船物理体
-        // CurrentShipBody = GetCurrentShipBody();
-        // if (CurrentShipBody != null)
-        // {
-        //     // 如果当前飞船物理体存在，设置其展示模式
-        //     CurrentShipBody.IsShowcaseMode = true;
-        //     // 禁用物理模拟
-        //     CurrentShipBody.ProcessMode = ProcessModeEnum.Disabled;
-        //     // 添加武器槽位标记
-        //     AddWeaponHardpointMarkings();
-        //     // 更新飞船信息
-        //     UpdateShipInfo(CurrentShipBody.ShipData.ShipName, CurrentShipBody.ShipData.ShipModel);
-        // }
 
 
         // 读取AllShipScenes
@@ -59,6 +36,7 @@ public partial class Dock : Control
         }
         else
         {
+            int index = 0;
             // 通过飞船packed 中的ShipSprite来创建卡片
             foreach (var shipScene in GameManager.AllShipScenes)
             {
@@ -71,6 +49,9 @@ public partial class Dock : Control
                     var shipCard = shipCardScene.Instantiate<DockShipCard>();
 
                     shipCard.ShipTexture.Texture = shipInstance.ShipSprite.Texture;
+                    shipCard.DockNode = this; // 设置船坞节点
+                    shipCard.index = index; // 设置索引
+                    index++;
 
                     // 将卡片添加到滚动容器中
                     ShipScrollContainer.AddChild(shipCard);
@@ -81,6 +62,7 @@ public partial class Dock : Control
                     GD.PrintErr($"无法实例化飞船场景: {shipScene.ResourceName}");
                 }
             }
+
 
 
         }
@@ -108,7 +90,7 @@ public partial class Dock : Control
                 if (ShipDisplayPosition != null)
                 {
                     // 获取当前缩放
-                    Vector2 currentScale = ShipDisplayPosition.Scale;
+                    Vector2 currentScale = CurrentShipBody.Scale;
 
                     // 根据滚轮方向调整缩放
                     if (mouseEvent.ButtonIndex == MouseButton.WheelUp)
@@ -127,11 +109,47 @@ public partial class Dock : Control
                     currentScale.Y = Mathf.Clamp(currentScale.Y, MinZoom, MaxZoom);
 
                     // 应用新缩放
-                    ShipDisplayPosition.Scale = currentScale;
+                    CurrentShipBody.Scale = currentScale;
+                    GD.Print($"当前缩放: {currentScale}");
 
                     // 标记事件已处理
                 }
             }
+        }
+    }
+    // 设置当前展示飞船物理体
+    public void SetCurrentShipBody(int index)
+    {
+        if (ShipDisplayPosition == null)
+        {
+            GD.PrintErr("ShipDisplayPosition节点未设置，请检查。");
+            return;
+        }
+
+        // 清除当前展示的飞船物理体
+        if (CurrentShipBody != null)
+        {
+            ShipDisplayPosition.RemoveChild(CurrentShipBody);
+            CurrentShipBody.QueueFree();
+        }
+
+        // 获取当前展示飞船物理体
+        CurrentShipBody = GameManager.AllShipScenes[index].Instantiate<SpaceshipPhysics>();
+        if (CurrentShipBody != null)
+        {
+            ShipDisplayPosition.AddChild(CurrentShipBody);
+            // 禁用物理模拟
+            CurrentShipBody.ProcessMode = ProcessModeEnum.Disabled;
+            // 展示模式
+            CurrentShipBody.IsShowcaseMode = true;
+            AddWeaponHardpointMarkings(); // 添加武器标记
+                                          // 更新飞船信息
+            UpdateShipInfo(CurrentShipBody.ShipData.ShipName, CurrentShipBody.ShipData.ShipModel);
+
+        }
+        else
+        {
+            GD.PrintErr($"无法实例化飞船场景: {GameManager.AllShipScenes[index].ResourceName}");
         }
     }
 

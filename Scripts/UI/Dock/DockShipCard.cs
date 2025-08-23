@@ -17,7 +17,12 @@ public partial class DockShipCard : Control
     Label ShipTypeLabel;
     [Export]
     // 点击事件载体panel
-    Panel panel;
+    Button panel;
+    // 顺序
+    public int index;
+
+    // 船坞节点
+    public Dock DockNode;
     // 数据初始化
     public override void _Ready()
     {
@@ -25,8 +30,22 @@ public partial class DockShipCard : Control
         ShipTexture.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
         // Str
         ShipTexture.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+        // 连接点击事件
+        panel.Pressed += OnPanelPressed;
     }
-    // 设置数据
+
+    // 点击事件
+    public void OnPanelPressed()
+    {
+        // 如果船坞节点未设置，打印错误
+        if (DockNode == null)
+        {
+            GD.PrintErr("DockNode未设置，请在编辑器中设置。");
+            return;
+        }
+        // 设置当前船坞的展示飞船
+        DockNode.SetCurrentShipBody(index);
+    }
 
 
 }
