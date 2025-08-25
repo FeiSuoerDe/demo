@@ -142,9 +142,10 @@ public partial class Dock : Control
             CurrentShipBody.ProcessMode = ProcessModeEnum.Disabled;
             // 展示模式
             CurrentShipBody.IsShowcaseMode = true;
-            AddWeaponHardpointMarkings(); // 添加武器标记
-                                          // 更新飞船信息
+
+            // 更新飞船信息
             UpdateShipInfo(CurrentShipBody.ShipData.ShipName, CurrentShipBody.ShipData.ShipModel);
+            AddWeaponHardpointMarkings(); // 添加武器标记
 
         }
         else

@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpiy8lfr0mq8t"]
+
+[ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_tgglj"]
+[ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_a1oaw"]
+[ext_resource type="Texture2D" uid="uid://c6hq4w0ik8f4g" path="res://Assets/贴图/飞船贴图/船体/sails.png" id="2_wvh4c"]
+[ext_resource type="Script" uid="uid://du2xg4jb1s43y" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpoint/WeaponHardpoint.cs" id="4_a1oaw"]
+
+[sub_resource type="Resource" id="Resource_k5epv"]
+script = ExtResource("2_a1oaw")
+ShipId = "ship_default_001"
+ShipName = "测试驱逐舰"
+ShipModel = "测试型-01"
+Description = "这是一艘用于测试的标准驱逐舰"
+Type = 3
+Rarity = 1
+BasePrice = 1000
+Acceleration = 5.0
+MaxSpeed = 50.0
+CurrentSpeed = 0.0
+TurningAcceleration = 200.0
+MaxTurningSpeed = 600.0
+BaseShield = 50.0
+BaseArmor = 30.0
+BaseHealth = 100.0
+RadiationDissipationRate = 1.0
+CurrentRadiation = 0.0
+MaxRadiation = 100.0
+metadata/_custom_type_script = "uid://cmuqgxd0j234w"
+
+[node name="Sails" type="RigidBody2D" node_paths=PackedStringArray("ShipSprite", "ShipCollision")]
+script = ExtResource("1_tgglj")
+ShipSprite = NodePath("Sprite2D")
+ShipCollision = NodePath("CollisionPolygon2D")
+ShipData = SubResource("Resource_k5epv")
+metadata/_custom_type_script = "uid://cslwjsl5q7y12"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wvh4c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, -104, -80, 120, 96, 120, 80, -120)
+
+[node name="WeaponHardpoint" type="Node2D" parent="."]
+position = Vector2(-46, -53)
+script = ExtResource("4_a1oaw")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint2" type="Node2D" parent="."]
+position = Vector2(-46, -20)
+script = ExtResource("4_a1oaw")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint3" type="Node2D" parent="."]
+position = Vector2(-46, 48)
+script = ExtResource("4_a1oaw")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint4" type="Node2D" parent="."]
+position = Vector2(43, 48)
+script = ExtResource("4_a1oaw")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint5" type="Node2D" parent="."]
+position = Vector2(46, -20)
+script = ExtResource("4_a1oaw")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="WeaponHardpoint6" type="Node2D" parent="."]
+position = Vector2(46, -53)
+script = ExtResource("4_a1oaw")
+metadata/_custom_type_script = "uid://du2xg4jb1s43y"

@@ -80,6 +80,24 @@ public partial class SpaceshipPhysics : RigidBody2D
     }
     #endregion
 
+    public override void _Ready()
+    {
+        base._Ready();
+        // 获取所有的武器槽位
+        foreach (var child in GetChildren())
+        {
+            if (child is WeaponHardpoint hardpoint)
+            {
+                WeaponHardpoints.Add(hardpoint);
+            }
+        }
+        GD.Print($"Found {WeaponHardpoints.Count} weapon hardpoints.");
+        // 重力设置为0
+        GravityScale = 0;
+
+
+    }
+
     #region 状态管理
     /// <summary>
     /// 重置物理更新的状态
