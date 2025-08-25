@@ -13,7 +13,6 @@ public partial class WeaponHardpointMarking : TextureButton
         MouseEntered += OnMouseEntered;
         MouseExited += OnMouseExited;
         // 连接按钮事件
-        Pressed += OnHardpointButtonPressed;
     }
     private void OnMouseEntered()
     {
@@ -27,18 +26,18 @@ public partial class WeaponHardpointMarking : TextureButton
         Modulate = new Color(1.0f, 1.0f, 1.0f, 0.8f);
     }
     // 点击事件
-    private void OnHardpointButtonPressed()
-    {
-        ShowWeaponDetail();
-        GD.Print("Weapon Hardpoint Button Pressed");
-    }
+
     // 武器详情面板
     [Export]
     public Control WeaponDetailPanel;
     // 显示武器详情
+    public void _on_button_down()
+    {
+        ShowWeaponDetail();
+    }
+
     public void ShowWeaponDetail()
     {
         WeaponDetailPanel.Visible = !WeaponDetailPanel.Visible;
     }
-
 }

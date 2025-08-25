@@ -84,6 +84,8 @@ public partial class SpaceshipPhysics : RigidBody2D
     {
         base._Ready();
         // 获取所有的武器槽位
+        // 清空
+        WeaponHardpoints.Clear();
         foreach (var child in GetChildren())
         {
             if (child is WeaponHardpoint hardpoint)

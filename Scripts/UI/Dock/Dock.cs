@@ -90,7 +90,7 @@ public partial class Dock : Control
                 if (ShipDisplayPosition != null)
                 {
                     // 获取当前缩放
-                    Vector2 currentScale = CurrentShipBody.Scale;
+                    Vector2 currentScale = ShipDisplayPosition.Scale;
 
                     // 根据滚轮方向调整缩放
                     if (mouseEvent.ButtonIndex == MouseButton.WheelUp)
@@ -109,10 +109,9 @@ public partial class Dock : Control
                     currentScale.Y = Mathf.Clamp(currentScale.Y, MinZoom, MaxZoom);
 
                     // 应用新缩放
-                    CurrentShipBody.Scale = currentScale;
+                    ShipDisplayPosition.Scale = currentScale;
                     GD.Print($"当前缩放: {currentScale}");
 
-                    // 标记事件已处理
                 }
             }
         }
@@ -137,6 +136,15 @@ public partial class Dock : Control
         CurrentShipBody = GameManager.AllShipScenes[index].Instantiate<SpaceshipPhysics>();
         if (CurrentShipBody != null)
         {
+            // 清楚所有WeaponHardpointMarking
+            foreach (var child in ShipDisplayPosition.GetChildren())
+            {
+                if (child is WeaponHardpointMarking marking)
+                {
+                    ShipDisplayPosition.RemoveChild(marking);
+                    marking.QueueFree();
+                }
+            }
             ShipDisplayPosition.AddChild(CurrentShipBody);
             // 禁用物理模拟
             CurrentShipBody.ProcessMode = ProcessModeEnum.Disabled;
@@ -181,7 +189,12 @@ public partial class Dock : Control
         {
             var markingScene = GD.Load<PackedScene>("res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn");
             var markingInstance = markingScene.Instantiate<WeaponHardpointMarking>();
-            hardpoint.AddChild(markingInstance);
+
+            // 设置标记位置和旋转
+            markingInstance.Position = hardpoint.Position - new Vector2(16, 16); // 偏移16,16使其居中
+            // 将标记添加为武器槽位的子节点
+            ShipDisplayPosition.AddChild(markingInstance);
+            // hardpoint.AddChild(markingInstance);
         }
     }
 

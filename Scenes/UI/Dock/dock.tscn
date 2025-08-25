@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_q1i6r")
 ShipScrollContainer = NodePath("CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer")
 ShipDisplayPosition = NodePath("CanvasLayer/HSplitContainer/Panel2/center")
@@ -28,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 split_offset = 300
 dragging_enabled = false
 dragger_visibility = 2
@@ -46,13 +48,13 @@ offset_right = -26.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer"]
 layout_mode = 2
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 1
@@ -161,3 +163,4 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

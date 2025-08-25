@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bba7idy8rg8ee" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpointMarking.cs" id="2_akgic"]
 
 [node name="Sprite2D" type="TextureButton" node_paths=PackedStringArray("WeaponDetailPanel")]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+z_index = 5
+z_as_relative = false
+offset_right = 32.0
+offset_bottom = 32.0
 texture_normal = ExtResource("1_eqsog")
 texture_pressed = ExtResource("1_eqsog")
 texture_hover = ExtResource("1_eqsog")
@@ -17,6 +17,8 @@ WeaponDetailPanel = NodePath("Panel")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+z_index = 6
+z_as_relative = false
 layout_mode = 0
 offset_left = 80.0
 offset_top = -48.0
@@ -30,3 +32,5 @@ anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "武器详情"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
