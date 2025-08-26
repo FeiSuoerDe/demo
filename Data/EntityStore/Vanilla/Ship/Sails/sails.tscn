@@ -8,9 +8,9 @@
 [sub_resource type="Resource" id="Resource_k5epv"]
 script = ExtResource("2_a1oaw")
 ShipId = "ship_default_001"
-ShipName = "测试驱逐舰"
-ShipModel = "测试型-01"
-Description = "这是一艘用于测试的标准驱逐舰"
+ShipName = "帆"
+ShipModel = "Sails"
+Description = "作为一艘标准的侧弦船，帆并没有过于亮眼的特殊之处，但其标准化的武器槽位使得其是扩大战果，稳步推进的一个好手"
 Type = 3
 Rarity = 1
 BasePrice = 1000

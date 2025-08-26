@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://340t54prdsx1"]
+[gd_scene load_steps=3 format=3 uid="uid://340t54prdsx1"]
 
 [ext_resource type="Script" uid="uid://dccr2vgusiedr" path="res://Scripts/UI/Dock/Dock.cs" id="1_q1i6r"]
+[ext_resource type="Script" uid="uid://qepd8xl0ky5n" path="res://Scripts/UI/Dock/Panel2.cs" id="2_ncd3y"]
 
 [node name="Dock" type="Control" node_paths=PackedStringArray("ShipScrollContainer", "ShipDisplayPosition", "ShipNameLabel", "ShipModelLabel", "ShipDetailButton", "ShipDetailPanel", "richTextLabel", "CloseShipDetailButton")]
 layout_mode = 3
@@ -13,7 +14,6 @@ mouse_filter = 2
 script = ExtResource("1_q1i6r")
 ShipScrollContainer = NodePath("CanvasLayer/HSplitContainer/Panel/ScrollContainer/VBoxContainer")
 ShipDisplayPosition = NodePath("CanvasLayer/HSplitContainer/Panel2/center")
-MaxZoom = 8.0
 ShipNameLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/ShipName")
 ShipModelLabel = NodePath("CanvasLayer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer2/Model")
 ShipDetailButton = NodePath("CanvasLayer/HSplitContainer/Panel2/ShipDetailButton")
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 0
 split_offset = 300
 dragging_enabled = false
 dragger_visibility = 2
@@ -43,18 +43,23 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = 13.0
+offset_top = 24.0
 offset_right = -26.0
-offset_bottom = -15.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel/ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/HSplitContainer" node_paths=PackedStringArray("ShipDisplayPosition")]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
+script = ExtResource("2_ncd3y")
+ShipDisplayPosition = NodePath("center")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 1
@@ -83,20 +88,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "型号"
 
-[node name="Control" type="Control" parent="CanvasLayer/HSplitContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Label" type="Label" parent="CanvasLayer/HSplitContainer/Panel2"]
 layout_mode = 0
 offset_left = 1321.0
@@ -117,11 +108,18 @@ theme_override_font_sizes/font_size = 40
 text = "船插"
 
 [node name="ShipDetailButton" type="Button" parent="CanvasLayer/HSplitContainer/Panel2"]
-layout_mode = 0
-offset_left = 1340.0
-offset_top = 955.0
-offset_right = 1508.0
-offset_bottom = 1018.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -284.0
+offset_top = -151.0
+offset_right = -116.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "详细参数"
 

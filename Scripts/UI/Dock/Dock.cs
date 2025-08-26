@@ -16,18 +16,8 @@ public partial class Dock : Control
     [Export]
     public SpaceshipPhysics CurrentShipBody;
 
-    // 缩放控制参数
-    [Export]
-    public float MinZoom = 0.5f;
-    [Export]
-    public float MaxZoom = 2.0f;
-    [Export]
-    public float ZoomStep = 0.1f;
-
     public override void _Ready()
     {
-
-
         // 读取AllShipScenes
         if (GameManager.AllShipScenes.Count == 0)
         {
@@ -51,6 +41,7 @@ public partial class Dock : Control
                     shipCard.ShipTexture.Texture = shipInstance.ShipSprite.Texture;
                     shipCard.DockNode = this; // 设置船坞节点
                     shipCard.index = index; // 设置索引
+                    shipCard.SetNameAndType(shipInstance.ShipData.ShipName, shipInstance.ShipData.ShipModel);
                     index++;
 
                     // 将卡片添加到滚动容器中
@@ -62,11 +53,7 @@ public partial class Dock : Control
                     GD.PrintErr($"无法实例化飞船场景: {shipScene.ResourceName}");
                 }
             }
-
-
-
         }
-
 
         // 连接信号
         if (ShipDetailButton != null)
@@ -80,42 +67,6 @@ public partial class Dock : Control
         }
     }
 
-    // 处理输入事件
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventMouseButton mouseEvent)
-        {
-            if (mouseEvent.ButtonIndex == MouseButton.WheelUp || mouseEvent.ButtonIndex == MouseButton.WheelDown)
-            {
-                if (ShipDisplayPosition != null)
-                {
-                    // 获取当前缩放
-                    Vector2 currentScale = ShipDisplayPosition.Scale;
-
-                    // 根据滚轮方向调整缩放
-                    if (mouseEvent.ButtonIndex == MouseButton.WheelUp)
-                    {
-                        // 放大
-                        currentScale += new Vector2(ZoomStep, ZoomStep);
-                    }
-                    else if (mouseEvent.ButtonIndex == MouseButton.WheelDown)
-                    {
-                        // 缩小
-                        currentScale -= new Vector2(ZoomStep, ZoomStep);
-                    }
-
-                    // 限制缩放范围
-                    currentScale.X = Mathf.Clamp(currentScale.X, MinZoom, MaxZoom);
-                    currentScale.Y = Mathf.Clamp(currentScale.Y, MinZoom, MaxZoom);
-
-                    // 应用新缩放
-                    ShipDisplayPosition.Scale = currentScale;
-                    GD.Print($"当前缩放: {currentScale}");
-
-                }
-            }
-        }
-    }
     // 设置当前展示飞船物理体
     public void SetCurrentShipBody(int index)
     {
@@ -197,7 +148,6 @@ public partial class Dock : Control
             // hardpoint.AddChild(markingInstance);
         }
     }
-
 
     [Export]
     // 飞船名字

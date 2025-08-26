@@ -46,6 +46,19 @@ public partial class DockShipCard : Control
         // 设置当前船坞的展示飞船
         DockNode.SetCurrentShipBody(index);
     }
+    // 设置名字与型号接受两个字符串参数
+    public void SetNameAndType(string name, string type)
+    {
+        if (ShipNameLabel != null)
+        {
+            ShipNameLabel.Text = name;
+        }
+        if (ShipTypeLabel != null)
+        {
+            ShipTypeLabel.Text = type;
+        }
+    }
+
 
 
 }

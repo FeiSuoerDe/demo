@@ -9,8 +9,8 @@
 script = ExtResource("2_dw43k")
 ShipId = "ship_default_001"
 ShipName = "剑意"
-ShipModel = "测试型-01"
-Description = "这是一艘用于测试的标准驱逐舰"
+ShipModel = "SwordPower"
+Description = "作为太空舰队的战术骨干，在第三次星际冲突中展现出卓越的适应性和战场生存能力。其巨量并多元的武器槽位，使其成为舰队中最为灵活的作战单位。"
 Type = 3
 Rarity = 1
 BasePrice = 1000

@@ -8,9 +8,9 @@
 [sub_resource type="Resource" id="Resource_x2vu2"]
 script = ExtResource("2_df2tc")
 ShipId = "ship_default_001"
-ShipName = "测试驱逐舰"
-ShipModel = "测试型-01"
-Description = "这是一艘用于测试的标准驱逐舰"
+ShipName = "惊鸟"
+ShipModel = "BirdWatching"
+Description = "巨型护盾发生器的实验平台，火力较弱，但巨量的辐能容量保证其能够在密集的火力网中全身而退"
 Type = 3
 Rarity = 1
 BasePrice = 1000
