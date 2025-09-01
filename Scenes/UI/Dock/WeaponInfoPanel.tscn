@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://0b7j238x8vrl"]
+
+[ext_resource type="Script" uid="uid://cygi7mc8nb1gw" path="res://Scripts/UI/Dock/WeaponInfoPanel.cs" id="1_wfwj6"]
+
+[node name="WeaponInfoPanel" type="Panel"]
+offset_right = 128.0
+offset_bottom = 256.0
+script = ExtResource("1_wfwj6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "名字"
+
+[node name="WeaponType" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "名字"
+
+[node name="WeaponDamage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "名字"
+
+[node name="WeaponRange" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "名字"
+
+[node name="WeaponFireRate" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "名字"
+
+[node name="WeaponDescription" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "名字"

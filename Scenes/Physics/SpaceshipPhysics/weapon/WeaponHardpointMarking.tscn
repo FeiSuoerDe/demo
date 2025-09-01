@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cpucn5bsk0j0u" path="res://Assets/贴图/船坞ui贴图/武器槽位标注线.png" id="1_eqsog"]
 [ext_resource type="Script" uid="uid://bba7idy8rg8ee" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpointMarking.cs" id="2_akgic"]
 
-[node name="Sprite2D" type="TextureButton" node_paths=PackedStringArray("WeaponDetailPanel")]
+[node name="Sprite2D" type="TextureButton" node_paths=PackedStringArray("PanelContainer")]
 z_index = 5
 z_as_relative = false
 offset_right = 32.0
@@ -13,24 +13,12 @@ texture_pressed = ExtResource("1_eqsog")
 texture_hover = ExtResource("1_eqsog")
 texture_disabled = ExtResource("1_eqsog")
 script = ExtResource("2_akgic")
-WeaponDetailPanel = NodePath("Panel")
+PanelContainer = NodePath("Control")
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
-z_index = 6
-z_as_relative = false
-layout_mode = 0
-offset_left = 80.0
-offset_top = -48.0
-offset_right = 208.0
-offset_bottom = 208.0
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "武器详情"
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_right = 104.0
+offset_bottom = 40.0
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]

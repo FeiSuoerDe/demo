@@ -40,6 +40,7 @@ public partial class NodeController : Node
         { "Projectile", "res://Scenes/Physics/Projectile/projectile.tscn" },
         { "Rocket", "res://Scenes/Physics/Rocket/rocket.tscn" },
         { "WeaponHardpointMarking", "res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn" },
-        {"DockShipCard","res://Scenes/UI/Dock/dock_ship_card.tscn"}
+        {"DockShipCard","res://Scenes/UI/Dock/dock_ship_card.tscn"},
+        {"WeaponInfoPanel","res://Scenes/UI/Dock/WeaponInfoPanel.tscn"}
     };
 }
