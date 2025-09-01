@@ -33,7 +33,7 @@ public partial class WeaponInfoPanel : Panel
         // 射程
         weaponRangeLabel.Text = $"射程: {weaponData.Range} 米";
         // 射速
-        weaponFireRateLabel.Text = $"射速: {weaponData.FireRate} 发/秒";
+        weaponFireRateLabel.Text = $"射速: {weaponData.FireRate} 发/分钟";
         // 描述
         // weaponDescriptionLabel.Text = weaponData.Description;
     }

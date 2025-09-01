@@ -7,6 +7,8 @@ namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon;
 /// <summary>
 /// 实弹武器类，实现自动机枪行为
 /// </summary>
+
+[GlobalClass]
 public partial class AutocannonWeapon : Weapon
 {
     // 转向角速度

@@ -21,20 +21,23 @@ text = "名字"
 
 [node name="WeaponType" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "名字"
+text = "类型"
 
 [node name="WeaponDamage" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "名字"
+text = "伤害"
 
 [node name="WeaponRange" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "名字"
+text = "射程"
 
 [node name="WeaponFireRate" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "名字"
+text = "射速"
 
 [node name="WeaponDescription" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "名字"
+text = "描述"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2

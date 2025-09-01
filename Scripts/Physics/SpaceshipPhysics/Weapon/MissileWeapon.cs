@@ -8,6 +8,7 @@ namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon;
 /// 导弹武器类，实现导弹发射和追踪行为
 /// 继承自基础武器类，提供导弹特有的装填、发射和追踪功能
 /// </summary>
+[GlobalClass]
 public partial class MissileWeapon : Weapon
 {
     [Export]

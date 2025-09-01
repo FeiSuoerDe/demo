@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxfcu006pswvx"]
+
+[ext_resource type="Script" uid="uid://s3r00djjiqq3" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/AutocannonWeapon.cs" id="1_45pks"]
+[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="2_jb8xi"]
+[ext_resource type="Texture2D" uid="uid://cmghgrr4ir2qj" path="res://Assets/贴图/飞船贴图/武器/Longinus/goat_howl_hardpoint.png" id="2_tv2op"]
+[ext_resource type="Texture2D" uid="uid://38tg21ehc2e4" path="res://Assets/贴图/飞船贴图/武器/Longinus/goat_howl_hardpoint_recoi.png" id="3_jb8xi"]
+
+[sub_resource type="Resource" id="Resource_4si5v"]
+script = ExtResource("2_jb8xi")
+WeaponName = "朗基努斯之枪"
+Size = 2
+SpecificWeaponType = 2
+FireRate = 0.5
+Range = 1000.0
+IsAutomatic = false
+Damage = 10
+ShieldDamageMultiplier = 0.5
+ArmorDamageMultiplier = 1.0
+HealthDamageMultiplier = 1.0
+AmmoCapacity = 100
+CurrentAmmo = 100
+ReloadTime = 2.0
+TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
+BaseSpreadAngle = 1.0
+SpreadIncreasePerShot = 0.5
+MaxSpreadAngle = 15.0
+SpreadRecoveryRate = 2.0
+metadata/_custom_type_script = "uid://csfjf8h7uujn3"
+
+[node name="Longinus" type="Node2D" node_paths=PackedStringArray("_aimLine", "_leftSpreadLine", "_rightSpreadLine", "WeaponSprite", "FirePoint")]
+script = ExtResource("1_45pks")
+_aimLine = NodePath("Marker2D/Line2D")
+_leftSpreadLine = NodePath("Marker2D/Left")
+_rightSpreadLine = NodePath("Marker2D/Right")
+WeaponSprite = NodePath("Sprite2D")
+Data = SubResource("Resource_4si5v")
+FirePoint = NodePath("Marker2D")
+metadata/_custom_type_script = "uid://s3r00djjiqq3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tv2op")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(0, -15)
+texture = ExtResource("3_jb8xi")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -48)
+
+[node name="Line2D" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+antialiased = true
+
+[node name="Left" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+default_color = Color(1, 0.980392, 0, 0.243137)
+antialiased = true
+
+[node name="Right" type="Line2D" parent="Marker2D"]
+modulate = Color(1, 0.980392, 0, 0.380392)
+width = 4.0
+default_color = Color(1, 0.980392, 0, 0.243137)
+antialiased = true
+
+[node name="Timer" type="Timer" parent="."]

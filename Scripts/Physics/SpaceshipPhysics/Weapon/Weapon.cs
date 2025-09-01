@@ -7,6 +7,11 @@ namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon;
 /// </summary>
 public partial class Weapon : Node2D
 {
+
+
+    [Export]
+    // 贴图
+    public Sprite2D WeaponSprite;
     // 武器数据
     [Export]
     public DataClass.WeaponData Data;
