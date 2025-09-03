@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://s3r00djjiqq3" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/AutocannonWeapon.cs" id="1_45pks"]
 [ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="2_jb8xi"]
-[ext_resource type="Texture2D" uid="uid://cmghgrr4ir2qj" path="res://Assets/贴图/飞船贴图/武器/Longinus/goat_howl_hardpoint.png" id="2_tv2op"]
-[ext_resource type="Texture2D" uid="uid://38tg21ehc2e4" path="res://Assets/贴图/飞船贴图/武器/Longinus/goat_howl_hardpoint_recoi.png" id="3_jb8xi"]
+[ext_resource type="Texture2D" uid="uid://cmghgrr4ir2qj" path="res://Assets/贴图/飞船贴图/武器/Auto/Longinus/goat_howl_hardpoint.png" id="2_tv2op"]
+[ext_resource type="Texture2D" uid="uid://38tg21ehc2e4" path="res://Assets/贴图/飞船贴图/武器/Auto/Longinus/goat_howl_hardpoint_recoi.png" id="3_jb8xi"]
 
 [sub_resource type="Resource" id="Resource_4si5v"]
 script = ExtResource("2_jb8xi")

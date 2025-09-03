@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk0t6313b0lpr"
-path="res://.godot/imported/goat_heavyfist_recoi.png-44a0266a1c9e66dfeac71bc56f52e441.ctex"
+uid="uid://783m58ohlnfm"
+path="res://.godot/imported/goat_raise_hardpoint.png-fc2243474f559160d08c84b94731ad6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/贴图/飞船贴图/武器/Howling/goat_heavyfist_recoi.png"
-dest_files=["res://.godot/imported/goat_heavyfist_recoi.png-44a0266a1c9e66dfeac71bc56f52e441.ctex"]
+source_file="res://Assets/贴图/飞船贴图/武器/Auto/HeavyKnight/goat_raise_hardpoint.png"
+dest_files=["res://.godot/imported/goat_raise_hardpoint.png-fc2243474f559160d08c84b94731ad6b.ctex"]
 
 [params]
 

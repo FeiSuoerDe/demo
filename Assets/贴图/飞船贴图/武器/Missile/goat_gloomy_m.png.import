@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmghgrr4ir2qj"
-path="res://.godot/imported/goat_howl_hardpoint.png-5e8d834f746badf9293a374f0fd7bea2.ctex"
+uid="uid://do5dsyklduc6r"
+path="res://.godot/imported/goat_gloomy_m.png-f8bdf0082810584b79f4ea1233a42eb8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/贴图/飞船贴图/武器/Longinus/goat_howl_hardpoint.png"
-dest_files=["res://.godot/imported/goat_howl_hardpoint.png-5e8d834f746badf9293a374f0fd7bea2.ctex"]
+source_file="res://Assets/贴图/飞船贴图/武器/Missile/goat_gloomy_m.png"
+dest_files=["res://.godot/imported/goat_gloomy_m.png-f8bdf0082810584b79f4ea1233a42eb8.ctex"]
 
 [params]
 

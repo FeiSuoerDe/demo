@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn48j0nopcqsh"
-path="res://.godot/imported/goat_raise_hardpoint_recoi.png-73ef0c27b3db8808604a3362dc5c2b7f.ctex"
+uid="uid://bcd7144bbt0we"
+path="res://.godot/imported/goat_gloomy_l.png-264d1550d6fa9f25512ac03b23cf45d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/贴图/飞船贴图/武器/HeavyKnight/goat_raise_hardpoint_recoi.png"
-dest_files=["res://.godot/imported/goat_raise_hardpoint_recoi.png-73ef0c27b3db8808604a3362dc5c2b7f.ctex"]
+source_file="res://Assets/贴图/飞船贴图/武器/Missile/goat_gloomy_l.png"
+dest_files=["res://.godot/imported/goat_gloomy_l.png-264d1550d6fa9f25512ac03b23cf45d2.ctex"]
 
 [params]
 

@@ -62,6 +62,9 @@ public partial class WeaponData : Godot.Resource
     /// </summary>
     [Export]
     public string WeaponName = "夯";
+    [Export]
+    // 型号名字
+    public string ModelName = "M1";
 
     /// <summary>
     /// 武器尺寸
@@ -143,6 +146,9 @@ public partial class WeaponData : Godot.Resource
     /// </summary>
     [Export]
     public float ReloadTime = 2.0f;
+    [Export]
+    // 武器描述
+    public string Description = "一把夯";
 
     /// <summary>
     /// 武器贴图资源路径

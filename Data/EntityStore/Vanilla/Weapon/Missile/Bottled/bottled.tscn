@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddv3icmqt81i1"]
+[gd_scene load_steps=5 format=3 uid="uid://dao8njea1su6j"]
 
-[ext_resource type="Script" uid="uid://cjx1jsf1u325x" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/MissileWeapon.cs" id="1_j0t3q"]
-[ext_resource type="Texture2D" uid="uid://bu2jds77dklld" path="res://Assets/贴图/飞船贴图/武器/火花.png" id="1_l3bwc"]
-[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="2_hm187"]
+[ext_resource type="Script" uid="uid://cjx1jsf1u325x" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/MissileWeapon.cs" id="1_vakyp"]
+[ext_resource type="Script" uid="uid://csfjf8h7uujn3" path="res://Scripts/DataClass/WeaponData.cs" id="2_pb22i"]
+[ext_resource type="Texture2D" uid="uid://c1n255sk4svq4" path="res://Assets/贴图/飞船贴图/武器/Missile/goat_gloomy_s_h.png" id="3_w6a5m"]
 
-[sub_resource type="Resource" id="Resource_uoh26"]
-script = ExtResource("2_hm187")
-WeaponName = "夯"
+[sub_resource type="Resource" id="Resource_a740x"]
+script = ExtResource("2_pb22i")
+WeaponName = "瓶装水"
 ModelName = "M1"
 Size = 0
-SpecificWeaponType = 0
+SpecificWeaponType = 1
 FireRate = 1.0
 Range = 1000.0
 IsAutomatic = false
@@ -20,7 +20,7 @@ HealthDamageMultiplier = 1.0
 AmmoCapacity = 100
 CurrentAmmo = 100
 ReloadTime = 2.0
-Description = "一把夯"
+Description = "雨系列的原型实验机"
 TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
 BaseSpreadAngle = 1.0
 SpreadIncreasePerShot = 0.5
@@ -28,15 +28,17 @@ MaxSpreadAngle = 15.0
 SpreadRecoveryRate = 2.0
 metadata/_custom_type_script = "uid://csfjf8h7uujn3"
 
-[node name="MissileWeapon" type="Node2D" node_paths=PackedStringArray("_aimLine", "FirePoint")]
-script = ExtResource("1_j0t3q")
+[node name="Bottled" type="Node2D" node_paths=PackedStringArray("_aimLine", "WeaponSprite", "FirePoint")]
+script = ExtResource("1_vakyp")
 _aimLine = NodePath("Marker2D2/Line2D")
-Data = SubResource("Resource_uoh26")
+WeaponSprite = NodePath("Sprite2D")
+Data = SubResource("Resource_a740x")
 FirePoint = NodePath("Marker2D2")
+metadata/_custom_type_script = "uid://cjx1jsf1u325x"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("1_l3bwc")
+texture = ExtResource("3_w6a5m")
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
