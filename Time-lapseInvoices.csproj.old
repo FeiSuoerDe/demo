@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.5.0">
+<Project Sdk="Godot.NET.Sdk/4.4.1">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
@@ -6,12 +6,12 @@
     <RootNamespace>TimelapseInvoices</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="TO.*\**" />
-    <Compile Remove="**\*.Abstractions" />
+    <Compile Remove="TO.*\**"/>
+    <Compile Remove="**\*.Abstractions"/>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="TO.*\**" />
-    <EmbeddedResource Remove="**\*.Abstractions" />
+    <EmbeddedResource Remove="TO.*\**"/>
+    <EmbeddedResource Remove="**\*.Abstractions"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="TO.Contexts\TO.Contexts.csproj" />
