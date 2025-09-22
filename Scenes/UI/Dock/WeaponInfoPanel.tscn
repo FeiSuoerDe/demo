@@ -24,6 +24,7 @@ layout_mode = 2
 text = "类型"
 
 [node name="WeaponDamage" type="Label" parent="VBoxContainer"]
+z_index = 1
 layout_mode = 2
 text = "伤害"
 
