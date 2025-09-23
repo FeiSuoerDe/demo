@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using TimelapseInvoices.Scripts.DataClass;
 
 // 武器槽位
 namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
@@ -7,6 +8,7 @@ namespace TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpo
 
 public class WeaponHardpointData
 {
+    public WeaponData weaponData;
     // 在飞船贴图的相对位置
     public Vector2 ToPosition { get; set; } = new Vector2(0, 0);
     // 类型分为（能量，导弹，动能）
@@ -51,6 +53,7 @@ public partial class WeaponHardpoint : Node2D
     // 数据对象
     public WeaponHardpointData Data { get; private set; }
 
+
     public override void _Ready()
     {
         base._Ready();
@@ -69,6 +72,7 @@ public partial class WeaponHardpoint : Node2D
                     if (IsWeaponCompatible(weaponNode))
                     {
                         GD.Print("武器已就位，准备就绪。");
+                        Data.weaponData = weaponNode.Data;
                     }
                     else
                     {

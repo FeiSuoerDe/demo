@@ -10,21 +10,6 @@ script = ExtResource("2_xfcke")
 WeaponName = "重型骑士"
 Size = 2
 SpecificWeaponType = 2
-FireRate = 1.0
-Range = 1000.0
-IsAutomatic = false
-Damage = 10
-ShieldDamageMultiplier = 0.5
-ArmorDamageMultiplier = 1.0
-HealthDamageMultiplier = 1.0
-AmmoCapacity = 100
-CurrentAmmo = 100
-ReloadTime = 2.0
-TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
-BaseSpreadAngle = 1.0
-SpreadIncreasePerShot = 0.5
-MaxSpreadAngle = 15.0
-SpreadRecoveryRate = 2.0
 metadata/_custom_type_script = "uid://csfjf8h7uujn3"
 
 [node name="HeavyKnight" type="Node2D" node_paths=PackedStringArray("_aimLine", "_leftSpreadLine", "_rightSpreadLine", "WeaponSprite", "FirePoint")]
@@ -38,7 +23,7 @@ FirePoint = NodePath("Marker2D")
 metadata/_custom_type_script = "uid://s3r00djjiqq3"
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(35, 0)
 
 [node name="Line2D" type="Line2D" parent="Marker2D"]
 modulate = Color(1, 0.980392, 0, 0.380392)
@@ -60,6 +45,8 @@ antialiased = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 0)
+rotation = 1.5707964
 texture = ExtResource("3_nw130")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]

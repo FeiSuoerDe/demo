@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cygi7mc8nb1gw" path="res://Scripts/UI/Dock/WeaponInfoPanel.cs" id="1_wfwj6"]
 
-[node name="WeaponInfoPanel" type="Panel"]
+[node name="WeaponInfoPanel" type="Panel" node_paths=PackedStringArray("WeaponName", "WeaponType", "WeaponDamage", "WeaponRange", "WeaponFireRate", "WeaponDescription")]
 offset_right = 128.0
 offset_bottom = 256.0
 script = ExtResource("1_wfwj6")
+WeaponName = NodePath("VBoxContainer/WeaponName")
+WeaponType = NodePath("VBoxContainer/WeaponType")
+WeaponDamage = NodePath("VBoxContainer/WeaponDamage")
+WeaponRange = NodePath("VBoxContainer/WeaponRange")
+WeaponFireRate = NodePath("VBoxContainer/WeaponFireRate")
+WeaponDescription = NodePath("VBoxContainer/WeaponDescription")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

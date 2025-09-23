@@ -1,5 +1,6 @@
 using Godot;
 using TimelapseInvoices.Scripts.Autoloads;
+using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
 public partial class WeaponHardpointMarking : TextureButton
 {
@@ -32,7 +33,7 @@ public partial class WeaponHardpointMarking : TextureButton
     }
 
     // 武器信息面板
-    private Control _weaponInfoPanel;
+    private WeaponInfoPanel _weaponInfoPanel;
 
     // 面板存放处
     [Export]
@@ -46,8 +47,12 @@ public partial class WeaponHardpointMarking : TextureButton
             var panelScene = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["WeaponInfoPanel"]);
             if (panelScene != null)
             {
-                _weaponInfoPanel = panelScene.Instantiate<Control>();
+                _weaponInfoPanel = panelScene.Instantiate<WeaponInfoPanel>();
+                // 查找父节点
+                GD.Print("Parent Node: " + GetParent().Name);
+                _weaponInfoPanel.weaponData = ((WeaponHardpoint)GetParent()).Data.weaponData;
                 PanelContainer.AddChild(_weaponInfoPanel);
+                _weaponInfoPanel.UpdateUI();
             }
         }
 

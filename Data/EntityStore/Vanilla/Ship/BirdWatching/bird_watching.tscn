@@ -1,30 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjdqjudvagcqj"]
+[gd_scene load_steps=7 format=3 uid="uid://cjdqjudvagcqj"]
 
 [ext_resource type="Script" uid="uid://cslwjsl5q7y12" path="res://Scripts/Physics/SpaceshipPhysics/SpaceshipPhysics.cs" id="1_355mv"]
 [ext_resource type="Texture2D" uid="uid://bay3okw3fyo0g" path="res://Assets/贴图/飞船贴图/船体/birdwatching.png" id="2_c7tq6"]
 [ext_resource type="Script" uid="uid://cmuqgxd0j234w" path="res://Scripts/DataClass/ShipData.cs" id="2_df2tc"]
 [ext_resource type="Script" uid="uid://du2xg4jb1s43y" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpoint/WeaponHardpoint.cs" id="3_c7tq6"]
+[ext_resource type="PackedScene" uid="uid://dkaidridcg5pi" path="res://Data/EntityStore/Vanilla/Weapon/Auto/HeavyKnight/heavy_knight.tscn" id="5_x2vu2"]
 
 [sub_resource type="Resource" id="Resource_x2vu2"]
 script = ExtResource("2_df2tc")
-ShipId = "ship_default_001"
 ShipName = "惊鸟"
 ShipModel = "BirdWatching"
 Description = "巨型护盾发生器的实验平台，火力较弱，但巨量的辐能容量保证其能够在密集的火力网中全身而退"
-Type = 3
-Rarity = 1
-BasePrice = 1000
-Acceleration = 5.0
-MaxSpeed = 50.0
-CurrentSpeed = 0.0
-TurningAcceleration = 200.0
-MaxTurningSpeed = 600.0
-BaseShield = 50.0
-BaseArmor = 30.0
-BaseHealth = 100.0
-RadiationDissipationRate = 1.0
-CurrentRadiation = 0.0
-MaxRadiation = 100.0
 metadata/_custom_type_script = "uid://cmuqgxd0j234w"
 
 [node name="BirdWatching" type="RigidBody2D" node_paths=PackedStringArray("ShipSprite", "ShipCollision", "WeaponHardpoints")]
@@ -44,9 +30,13 @@ visible = false
 polygon = PackedVector2Array(-78, 1, 64, 2, -1, 73)
 
 [node name="WeaponHardpoint" type="Node2D" parent="."]
-position = Vector2(0, 53)
+position = Vector2(0, 55)
 script = ExtResource("3_c7tq6")
+_type = 2
+_size = 2
 metadata/_custom_type_script = "uid://du2xg4jb1s43y"
+
+[node name="HeavyKnight" parent="WeaponHardpoint" instance=ExtResource("5_x2vu2")]
 
 [node name="WeaponHardpoint2" type="Node2D" parent="."]
 position = Vector2(-19, 29)

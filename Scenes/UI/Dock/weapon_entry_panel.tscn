@@ -39,4 +39,4 @@ text = "费用：10"
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "费用：10"
+text = "射程：10"
