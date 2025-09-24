@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://mvp64ga1qplj"]
+[gd_scene load_steps=3 format=3 uid="uid://mvp64ga1qplj"]
 
 [ext_resource type="Texture2D" uid="uid://do5dsyklduc6r" path="res://Assets/贴图/飞船贴图/武器/Missile/goat_gloomy_m.png" id="1_t3dwa"]
+[ext_resource type="Script" uid="uid://cr6jwdktu4b27" path="res://Scripts/UI/Dock/WeaponEntryPanel.cs" id="1_xp4nd"]
 
 [node name="WeaponEntryPanel" type="Panel"]
 custom_minimum_size = Vector2(0, 75)
 offset_right = 450.0
 offset_bottom = 75.0
+script = ExtResource("1_xp4nd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
