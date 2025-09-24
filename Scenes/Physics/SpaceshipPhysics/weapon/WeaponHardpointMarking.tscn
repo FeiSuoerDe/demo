@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bba7idy8rg8ee" path="res://Scripts/Physics/SpaceshipPhysics/Weapon/WeaponHardpointMarking.cs" id="2_akgic"]
 
 [node name="Sprite2D" type="TextureButton" node_paths=PackedStringArray("PanelContainer")]
-z_index = 5
-z_as_relative = false
+z_index = 2
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 1
 texture_normal = ExtResource("1_eqsog")
 texture_pressed = ExtResource("1_eqsog")
 texture_hover = ExtResource("1_eqsog")
@@ -16,9 +16,10 @@ script = ExtResource("2_akgic")
 PanelContainer = NodePath("Control")
 
 [node name="Control" type="Control" parent="."]
+z_index = 5
+z_as_relative = false
 anchors_preset = 0
 offset_left = 64.0
 offset_right = 104.0
 offset_bottom = 40.0
-
-[connection signal="button_down" from="." to="." method="_on_button_down"]
+mouse_filter = 1

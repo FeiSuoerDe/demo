@@ -142,11 +142,12 @@ public partial class Dock : Control
             var markingInstance = markingScene.Instantiate<WeaponHardpointMarking>();
 
             // 设置标记位置和旋转
-            // markingInstance.Position = hardpoint.Position - new Vector2(16, 16); // 偏移16,16使其居中
+            markingInstance.Position = hardpoint.Position - new Vector2(16, 16); // 偏移16,16使其居中
+            markingInstance.CurrentWeaponData = hardpoint.Data.weaponData;
             // 将标记添加为武器槽位的子节点
-            // ShipDisplayPosition.AddChild(markingInstance);
-            markingInstance.Position -= new Vector2(16, 16); // 偏移16,16使其居中
-            hardpoint.AddChild(markingInstance);
+            ShipDisplayPosition.AddChild(markingInstance);
+            // markingInstance.Position -= new Vector2(16, 16); // 偏移16,16使其居中
+            // hardpoint.AddChild(markingInstance);
         }
     }
 

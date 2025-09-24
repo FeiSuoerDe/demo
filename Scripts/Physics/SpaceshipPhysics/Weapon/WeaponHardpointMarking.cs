@@ -1,5 +1,6 @@
 using Godot;
 using TimelapseInvoices.Scripts.Autoloads;
+using TimelapseInvoices.Scripts.DataClass;
 using TimelapseInvoices.Scripts.Physics.SpaceshipPhysics.Weapon.WeaponHardpoint;
 
 public partial class WeaponHardpointMarking : TextureButton
@@ -14,12 +15,15 @@ public partial class WeaponHardpointMarking : TextureButton
         MouseEntered += OnMouseEntered;
         MouseExited += OnMouseExited;
     }
+    // 鼠标是否进入
+    public bool isMousExited = false;
 
     private void OnMouseEntered()
     {
         // 鼠标进入：不透明并显示详情
         Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         ShowWeaponDetail();
+        isMousExited = true;
     }
 
     private void OnMouseExited()
@@ -29,7 +33,9 @@ public partial class WeaponHardpointMarking : TextureButton
         if (_weaponInfoPanel != null)
         {
             _weaponInfoPanel.Visible = false;
+            isMousExited = false;
         }
+
     }
 
     // 武器信息面板
@@ -39,6 +45,8 @@ public partial class WeaponHardpointMarking : TextureButton
     [Export]
     public Control PanelContainer;
 
+    // 当前武器数据
+    public WeaponData CurrentWeaponData;
     public void ShowWeaponDetail()
     {
         GD.Print("显示武器详情面板");
@@ -48,9 +56,7 @@ public partial class WeaponHardpointMarking : TextureButton
             if (panelScene != null)
             {
                 _weaponInfoPanel = panelScene.Instantiate<WeaponInfoPanel>();
-                // 查找父节点
-                GD.Print("Parent Node: " + GetParent().Name);
-                _weaponInfoPanel.weaponData = ((WeaponHardpoint)GetParent()).Data.weaponData;
+                _weaponInfoPanel.weaponData = CurrentWeaponData;
                 PanelContainer.AddChild(_weaponInfoPanel);
                 _weaponInfoPanel.UpdateUI();
             }
@@ -62,23 +68,32 @@ public partial class WeaponHardpointMarking : TextureButton
         }
     }
 
-    // 检测点击外部区域关闭详情面板（使用面板的全局矩形判断）
+    // 检测点击事件
     public override void _Input(InputEvent @event)
     {
-        if (_weaponInfoPanel == null || !_weaponInfoPanel.Visible)
+        // 是否进入
+        if (isMousExited)
         {
-            return;
-        }
-
-        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
-        {
-            Vector2 mousePosition = mouseEvent.Position;
-            // 使用面板的全局矩形来判断点击是否在面板外部
-            Rect2 panelRect = _weaponInfoPanel.GetGlobalRect();
-            if (!panelRect.HasPoint(mousePosition))
+            // 按下鼠标左键
+            if (@event is InputEventMouseButton mouseEvent &&
+                mouseEvent.Pressed &&
+                mouseEvent.ButtonIndex == MouseButton.Left)
             {
-                _weaponInfoPanel.Visible = false;
+                GD.Print("检测到左键按下");
+                OnLeftClick();
+                // 标记事件已处理，防止继续向下传递（需要时启用）
             }
         }
+    }
+
+    // 在此方法中放置左键点击后的逻辑（示例：打印并确保信息面板可见）
+    private void OnLeftClick()
+    {
+        GD.Print("WeaponHardpoint 被左键点击");
+        if (_weaponInfoPanel != null)
+        {
+            _weaponInfoPanel.Visible = true;
+        }
+        // 其它点击逻辑可在此扩展（选中、切换武器等）
     }
 }

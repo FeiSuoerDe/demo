@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://do5dsyklduc6r" path="res://Assets/贴图/飞船贴图/武器/Missile/goat_gloomy_m.png" id="1_t3dwa"]
 
 [node name="WeaponEntryPanel" type="Panel"]
-offset_right = 431.0
+custom_minimum_size = Vector2(0, 75)
+offset_right = 450.0
 offset_bottom = 75.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

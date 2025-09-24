@@ -33,12 +33,26 @@ public partial class AutocannonWeapon : Weapon
     /// </summary>
     public override void _Ready()
     {
+        // 
         base._Ready();
 
+        // 将原本 _Ready 内的初始化逻辑拆分为独立方法
+        InitializeWeaponType();
+        LoadBulletScene();
+        InitializeAimLine();
+        InitializeSpreadLines();
+    }
+
+    // 新增：初始化武器类型
+    private void InitializeWeaponType()
+    {
         // 设置武器类型 (修正枚举引用)
         Data.SpecificWeaponType = DataClass.WeaponData.HardpointType.Kinetic; // 设置为动能武器
+    }
 
-        // 加载子弹场景
+    // 新增：加载子弹场景
+    private void LoadBulletScene()
+    {
         try
         {
             _bulletScene = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["Projectile"]);
@@ -47,7 +61,13 @@ public partial class AutocannonWeapon : Weapon
         {
             GD.PrintErr($"无法加载子弹资源: {ex.Message}");
         }
-        // 初始化瞄准线长度等于射程
+    }
+
+    // 新增：初始化瞄准线
+    private void InitializeAimLine()
+    {
+        // 默认不显示
+        _aimLine.Visible = false;
         if (_aimLine != null)
         {
             _aimLine.Width = 2; // 设置瞄准线宽度
@@ -56,9 +76,14 @@ public partial class AutocannonWeapon : Weapon
             // 设置瞄准线长度为射程
             _aimLine.AddPoint(new Vector2(Data.Range, 0)); // 添加第二个点为射程长度
             GD.Print($"瞄准线初始化完成，长度为: {Data.Range}");
-            // 
         }
-        // // 初始化散布线
+    }
+
+    // 新增：初始化散布线
+    private void InitializeSpreadLines()
+    {
+        _leftSpreadLine.Visible = false;
+        _rightSpreadLine.Visible = false;
         if (_leftSpreadLine != null && _rightSpreadLine != null)
         {
             _leftSpreadLine.Width = 1; // 设置左散布线宽度
@@ -72,7 +97,6 @@ public partial class AutocannonWeapon : Weapon
             GD.Print("散布线初始化完成");
         }
     }
-
 
     /// <summary>
     /// 处理武器更新逻辑
