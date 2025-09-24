@@ -79,20 +79,23 @@ public partial class WeaponHardpointMarking : TextureButton
                 mouseEvent.Pressed &&
                 mouseEvent.ButtonIndex == MouseButton.Left)
             {
-                GD.Print("检测到左键按下");
                 OnLeftClick();
                 // 标记事件已处理，防止继续向下传递（需要时启用）
             }
         }
     }
+    WeaponSelectionList _weaponSelectionList;
 
     // 在此方法中放置左键点击后的逻辑（示例：打印并确保信息面板可见）
     private void OnLeftClick()
     {
-        GD.Print("WeaponHardpoint 被左键点击");
         if (_weaponInfoPanel != null)
         {
-            _weaponInfoPanel.Visible = true;
+            // 
+            var SelectionList = ResourceLoader.Load<PackedScene>(NodeController.NodeDictionary["WeaponSeleList"]);
+            _weaponSelectionList = SelectionList.Instantiate<WeaponSelectionList>();
+            PanelContainer.AddChild(_weaponSelectionList);
+            // 输出当前武器的类型与大小
         }
         // 其它点击逻辑可在此扩展（选中、切换武器等）
     }
