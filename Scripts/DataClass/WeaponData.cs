@@ -185,4 +185,7 @@ public partial class WeaponData : Godot.Resource
     public float SpreadRecoveryRate = 2.0f;
 
     #endregion
+    // ]装配点数
+    [Export]
+    public int Cost = 1;
 }

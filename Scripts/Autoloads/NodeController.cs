@@ -42,6 +42,7 @@ public partial class NodeController : Node
         { "WeaponHardpointMarking", "res://Scenes/Physics/SpaceshipPhysics/weapon/WeaponHardpointMarking.tscn" },
         {"DockShipCard","res://Scenes/UI/Dock/dock_ship_card.tscn"},
         {"WeaponInfoPanel","res://Scenes/UI/Dock/WeaponInfoPanel.tscn"},
-        {"WeaponSeleList","res://Scenes/UI/Dock/weapon_selection_list.tscn"}
+        {"WeaponSeleList","res://Scenes/UI/Dock/weapon_selection_list.tscn"},
+        {"WeaponEntryPanel","res://Scenes/UI/Dock/weapon_entry_panel.tscn"}
     };
 }
