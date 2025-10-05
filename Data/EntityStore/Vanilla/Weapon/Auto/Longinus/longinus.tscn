@@ -11,20 +11,7 @@ WeaponName = "朗基努斯之枪"
 Size = 2
 SpecificWeaponType = 2
 FireRate = 0.5
-Range = 1000.0
-IsAutomatic = false
-Damage = 10
-ShieldDamageMultiplier = 0.5
-ArmorDamageMultiplier = 1.0
-HealthDamageMultiplier = 1.0
-AmmoCapacity = 100
-CurrentAmmo = 100
-ReloadTime = 2.0
-TexturePath = "res://Textures/Weapons/DefaultWeapon.png"
-BaseSpreadAngle = 1.0
-SpreadIncreasePerShot = 0.5
-MaxSpreadAngle = 15.0
-SpreadRecoveryRate = 2.0
+TexturePath = "res://Assets/贴图/飞船贴图/武器/Auto/Longinus/longinus_t.png"
 metadata/_custom_type_script = "uid://csfjf8h7uujn3"
 
 [node name="Longinus" type="Node2D" node_paths=PackedStringArray("_aimLine", "_leftSpreadLine", "_rightSpreadLine", "WeaponSprite", "FirePoint")]

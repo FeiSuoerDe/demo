@@ -10,6 +10,7 @@ script = ExtResource("2_xfcke")
 WeaponName = "重型骑士"
 Size = 2
 SpecificWeaponType = 2
+TexturePath = "res://Assets/贴图/飞船贴图/武器/Auto/HeavyKnight/goat_raise_hardpoint_t.png"
 metadata/_custom_type_script = "uid://csfjf8h7uujn3"
 
 [node name="HeavyKnight" type="Node2D" node_paths=PackedStringArray("_aimLine", "_leftSpreadLine", "_rightSpreadLine", "WeaponSprite", "FirePoint")]
